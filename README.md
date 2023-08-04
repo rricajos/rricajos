@@ -1,4 +1,4 @@
-### Hi there 👋
+### hello world👋
 
 Soy un apasionado desarrollador de software con experiencia en el desarrollo web y aplicaciones. Me especializo en tecnologías front-end como HTML, CSS y JavaScript, y también tengo conocimientos en frameworks como React y Angular. Además, he estudiado Full Stack (HTML5, Java, C#) y DevOps (Docker). Poseo habilidades en diseño de interfaces y experiencia de usuario. Estoy interesado en abrir un blog para compartir mis lecturas favoritas en el sector y estoy dispuesto a colaborar en proyectos emocionantes.
 <!--
