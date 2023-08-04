@@ -1,0 +1,22 @@
+/* Estilo para el nav */
+nav {
+    background-color: #444;
+    /* Color de fondo del nav */
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Sombra ligera */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #555;
+}

@@ -1,0 +1,43 @@
+#projects {
+    margin-top: 3rem;
+}
+
+#projects h2 {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.project {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background.jpg');
+    background-size: cover;
+    background-position: 0 -128px;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.project h3 {
+    margin-top: 0;
+
+}
+
+.project p {
+    margin-bottom: 1rem;
+
+}
+
+.project a {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.project a:hover {
+    background-color: #444;
+}

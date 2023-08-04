@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rricajos</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/section-about.css">
+    <link rel="stylesheet" href="css/section-projects.css">
+    <link rel="stylesheet" href="css/section-contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="header-component-container">
+            <!-- Primer componente: Imagen y botón "Contrátame" -->
+
+            <div id="avatar" class="header-component">
+                <img src="avatar.png" alt="Ricard Penin Honrubia">
+            </div>
+
+            <!-- Segundo componente: Hora de Barcelona y contadores -->
+            <div id="stats" class="header-component">
+                <h3>Ricard Penin Honrubia</h3>
+                <div id="call-actions">
+                    <button id="hireme-button">Contrátame</button>
+                    <button id="coffe-button"> Buy me a coffe</button>
+                    <!-- <button id="rss-button">RSS</button> -->
+
+
+                </div>
+                <table border="0" style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <p>Barcelona</p>
+                        </td>
+                        <td style="text-align: center;">⌚</td>
+                        <td style="text-align: right; display: flex; flex-direction: row-reverse; ">
+                            <p id="bcn-time"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Horas de estudio </td>
+                        <td style="text-align: center;">🎓</td>
+                        <td style="text-align: right;">
+                            <span id="timming-study">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Horas de trabajo </td>
+                        <td style="text-align: center;">💼</td>
+                        <td style="text-align: right;">
+                            <span id="timming-work">0</span>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </div>
+        </div>
+    </header>
+
+
+    <nav>
+        <a id="about-button">Acerca de mí</a>
+        <a id="projects-button">Proyectos</a>
+        <a id="contact-button">Contacto</a>
+    </nav>
+
+    <section id="about" class="about-me">
+        <h2>Acerca de mí</h2>
+        <p>
+            <strong>Soy</strong> un <strong>apasionado desarrollador de software</strong> con experiencia en el
+            desarrollo web y
+            aplicaciones. Me especializo en tecnologías <strong>front-end</strong> como HTML, CSS y JavaScript, y
+            también tengo
+            conocimientos en frameworks como <strong>React</strong> y <strong>Angular</strong>. Además, he estudiado
+            <strong>Full Stack</strong> (HTML5,
+            Java, C#) y <strong>DevOps</strong> (Docker). Poseo habilidades en <strong>diseño de interfaces UI</strong> y
+            <strong>experiencia de usuario UX</strong>. <br><br>Estoy interesado en abrir un blog para compartir mis lecturas
+            favoritas en el sector y estoy dispuesto a colaborar en proyectos emocionantes.
+        </p><br>
+
+        <div class="resources">
+            <!-- Tab links -->
+            <div class="tab">
+                <button class="tablinks" onclick="oopen(event, 'src')">Recursos</button>
+                <button class="tablinks" onclick="oopen(event, 'exp')">Experiencia</button>
+                <button class="tablinks" onclick="oopen(event, 'studies')">Estudios</button>
+                <button class="tablinks" onclick="oopen(event, 'lan')">Lenguas</button>
+
+            </div>
+
+            <!-- Tab content -->
+            <div id="src" class="tabcontent">
+                <h3>Recursos Favoritos</h3>
+                <p>
+                    Super útiles para desarrolladores y personas interesadas en el desarrollo web, aplicaciones
+                    móviles, pentesting (pruebas de penetración), diseño de interfaz de usuario (UI) y más:
+                </p>
+
+                <br>
+
+                <div class="links-container">
+                    <div id="links" class="links-flex-container">
+                        <!-- Los primeros 10 enlaces visibles -->
+                        <div class="link-box"><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a>
+                        </div>
+                        <div class="link-box"><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></div>
+                        <div class="link-box"><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></div>
+                        <div class="link-box"><a href="https://www.smashingmagazine.com/" target="_blank">Smashing
+                                Magazine</a></div>
+                        <div class="link-box"><a href="https://alistapart.com/" target="_blank">A List Apart</a></div>
+                        <div class="link-box"><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>
+                        </div>
+                        <div class="link-box"><a href="https://github.com/" target="_blank">GitHub</a></div>
+                        <div class="link-box"><a href="https://www.freecodecamp.org/" target="_blank">FreeCodeCamp</a>
+                        </div>
+                        <div class="link-box"><a href="https://www.codecademy.com/" target="_blank">Codecademy</a></div>
+
+
+                        <!-- Enlaces adicionales ocultos -->
+                        <div class="link-box hidden"><a href="https://developer.android.com/" target="_blank">Android
+                                Developers</a></div>
+                        <div class="link-box hidden"><a href="https://developer.apple.com/ios/" target="_blank">iOS Dev
+                                Center</a></div>
+                        <div class="link-box hidden"><a href="https://reactnative.dev/" target="_blank">React Native</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://dotnet.microsoft.com/apps/xamarin"
+                                target="_blank">Xamarin</a></div>
+                        <div class="link-box hidden"><a href="https://owasp.org/" target="_blank">OWASP</a></div>
+                        <div class="link-box hidden"><a href="https://www.exploit-db.com/" target="_blank">Exploit
+                                Database</a></div>
+                        <div class="link-box hidden"><a href="https://www.metasploitunleashed.com/"
+                                target="_blank">Metasploit Unleashed</a></div>
+                        <div class="link-box hidden"><a href="https://www.hackthebox.eu/" target="_blank">Hack The
+                                Box</a></div>
+                        <div class="link-box hidden"><a href="https://www.behance.net/" target="_blank">Behance</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://uxdesign.cc/" target="_blank">UX Collective</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://www.nngroup.com/" target="_blank">Nielsen Norman
+                                Group</a></div>
+                        <div class="link-box hidden"><a href="https://reactjs.org/" target="_blank">React</a></div>
+                        <div class="link-box hidden"><a href="https://angular.io/" target="_blank">Angular</a></div>
+                        <div class="link-box hidden"><a href="https://vuejs.org/" target="_blank">Vue.js</a></div>
+                        <div class="link-box hidden"><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://bulma.io/" target="_blank">Bulma</a></div>
+                        <div class="link-box hidden"><a href="https://code.visualstudio.com/" target="_blank">Visual
+                                Studio Code</a></div>
+                        <div class="link-box hidden"><a href="https://devdocs.io/" target="_blank">DevDocs</a></div>
+                        <div class="link-box hidden"><a href="https://caniuse.com/" target="_blank">Can I use...?</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://developers.google.com/" target="_blank">Google
+                                Developers</a></div>
+                        <div class="link-box hidden"><a href="https://www.udemy.com/" target="_blank">Udemy</a></div>
+                        <div class="link-box hidden"><a href="https://www.coursera.org/" target="_blank">Coursera</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://www.pluralsight.com/"
+                                target="_blank">Pluralsight</a></div>
+                        <div class="link-box hidden"><a href="https://www.udacity.com/" target="_blank">Udacity</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://www.reddit.com/r/webdev/"
+                                target="_blank">Reddit</a></div>
+                        <div class="link-box hidden"><a href="https://hashnode.com/" target="_blank">Hashnode</a></div>
+                        <div class="link-box hidden"><a href="https://dev.to/" target="_blank">Dev.to</a></div>
+                        <div class="link-box hidden"><a href="https://stackexchange.com/" target="_blank">Stack
+                                Exchange</a></div>
+                        <div class="link-box hidden"><a href="https://medium.com/" target="_blank">Medium</a></div>
+                        <div class="link-box hidden"><a href="https://www.sitepoint.com/" target="_blank">SitePoint</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://scotch.io/" target="_blank">Scotch.io</a></div>
+                        <div class="link-box hidden"><a href="https://css-weekly.com/" target="_blank">CSS Weekly</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://www.postman.com/" target="_blank">Postman</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://jshint.com/" target="_blank">JSHint</a></div>
+                        <div class="link-box hidden"><a href="https://www.browserstack.com/"
+                                target="_blank">BrowserStack</a></div>
+                        <div class="link-box hidden"><a href="https://www.netlify.com/" target="_blank">Netlify</a>
+                        </div>
+                        <div class="link-box hidden"><a href="https://vercel.com/" target="_blank">Vercel</a></div>
+                        <div class="link-box hidden"><a href="https://www.heroku.com/" target="_blank">Heroku</a></div>
+                        <div class="link-box hidden"><a href="https://www.digitalocean.com/"
+                                target="_blank">DigitalOcean</a></div>
+                    </div>
+                    <div class="show-more-button" onclick="toggleHiddenLinks()">Mostrar / Ocultar enlaces</div>
+                </div>
+            </div>
+
+            <div id="exp" class="tabcontent">
+                <h3>Experiencia Laboral</h3>
+                <p>Experiencia laboral / profesional relevante en el sector.</p><br>
+                <ul class="experience-list">
+                    <li>
+                        <span class="company-name">Plexus Technology</span><br>
+                        <em class="job-title">Desarrollador Junior Appian</em><br>
+                        <span class="dates">3 meses</span><br>
+                        Formación online en Appian Academy.
+                    </li>
+                    <li>
+                        <span class="company-name">Comercial Arque</span><br>
+                        <em class="job-title">Software Engineer Junior</em><br>
+                        <span class="dates">6 meses</span><br>
+                        Contratado para realizar ingenieria inversa de bases de datos Microsoft SQL Server generada con
+                        Genexus y formarme en
+                        Java Spring Boot y librerias Java como ApachePOI, JasperReports... para optar a desarrollar
+                        proyectos internos en el futuro.
+                    </li>
+                    <li>
+                        <span class="company-name">Opirata Commerce</span><br>
+                        <em class="job-title">SEO Copywriter</em><br>
+                        <span class="dates">3 meses</span><br>
+                        La mision era describir productos de la tienda ECommerce y crear posts en el blog del
+                        opirata.com
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="studies" class="tabcontent">
+                <h3>Experiencia Académica </h3>
+
+                <p>Estos son los centros de estudios en los que he cursado.</p><br>
+                <ul class="experience-list">
+                    <li>
+                        <span class="company-name">CFGS Desarrollador de Aplicaciones Multiplataforma</span><br>
+                        <em class="job-title">UNIR Formación Profesional, Online</em><br>
+                        <span class="dates">Fecha de inicio - Fecha de finalización</span><br>
+                        Descripción de tus responsabilidades y logros en esta posición.
+                    </li>
+                    <li>
+                        <span class="company-name">CFGM Sistemas Microinformaticos y Redes</span><br>
+                        <em class="job-title">Aula Estudio de Vigo, Galicia</em><br>
+                        <span class="dates">Fecha de inicio - Fecha de finalización</span><br>
+                        Descripción de tus responsabilidades y logros en esta posición.
+                    </li>
+                </ul>
+            </div>
+
+            <div id="lan" class="tabcontent">
+                <h3>Lenguas / Idiomas</h3>
+                <p>He tenido la suerte de crecer hablando dos lenguas en casa. No siempre he tenido un gran interes en
+                    los idiomas extranjeros, pero aprender la cultura de otras partes del mundo me resulta una gran
+                    oportunidad para conocer personas extraordinarias.</p>
+                <p></p><br>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Escrito</th>
+                            <th>Leído</th>
+                            <th>Hablado</th>
+                            <th>Escuchado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Español</td>
+                            <td class="nivel-avanzado">-</td>
+                            <td class="nivel-avanzado">-</td>
+                            <td class="nivel-avanzado">-</td>
+                            <td class="nivel-avanzado">Materno</td>
+                        </tr>
+                        <tr>
+                            <td>Catalán</td>
+                            <td class="nivel-avanzado">-</td>
+                            <td class="nivel-avanzado">-</td>
+                            <td class="nivel-avanzado">-</td>
+                            <td class="nivel-avanzado">Paterno</td>
+                        </tr>
+                        <tr>
+                            <td>Inglés</td>
+                            <td class="nivel-intermedio">Intermedio</td>
+                            <td class="nivel-avanzado">Avanzado</td>
+                            <td class="nivel-intermedio">Intermedio</td>
+                            <td class="nivel-avanzado">Avanzado</td>
+                        </tr>
+                        <tr>
+                            <td>Chino</td>
+                            <td class="nivel-basico">Básico</td>
+                            <td class="nivel-basico">Básico</td>
+                            <td class="nivel-basico">Básico</td>
+                            <td class="nivel-basico">Básico</td>
+                        </tr>
+                        <tr>
+                            <td>Gallego</td>
+                            <td class="nivel-intermedio">-</td>
+                            <td class="nivel-intermedio">-</td>
+                            <td class="nivel-basico">Básico</td>
+                            <td class="nivel-intermedio">Básico</td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <section id="projects">
+        <h2>Proyectos</h2>
+        <div id="projects-container">
+            <!-- Los proyectos se cargarán aquí con JavaScript -->
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <h2>Contacto</h2>
+        <div class="contact-card">
+
+
+            <ul>
+                <li>
+                    <i class="fas fa-envelope"></i> <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a>
+                </li>
+                <li>
+                    <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rricajos/"
+                        target="_blank">linkedin.com/rricajos</a>
+                </li>
+                <li>
+                    <i class="fab fa-github"></i> <a href="https://github.com/rricajos"
+                        target="_blank">github.com/rricajos</a>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Derechos de autor © 2023 - Mi Portafolio</p>
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script src="js/fetch-github-projects.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/about-me.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            // Actualizar la hora de Barcelona cada segundo
+            setInterval(showBarcelonaTime, 1000);
+
+            // Actualizar los contadores cada hora
+            setInterval(() => {
+                incrementStudyHours();
+                incrementWorkHours();
+            }, 3600000); // 3600000 milisegundos = 1 hora
+
+            hideHiddenLinks();
+
+            oopen(event, 'src');
+
+            displayProjects();
+        });
+
+    </script>
+
+</body>
+
+</html>

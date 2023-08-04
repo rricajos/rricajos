@@ -1,0 +1,189 @@
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    width: 100%;
+    background-color: inherit;
+    float: left;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1rem 0.3rem;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1rem 1rem;
+}
+
+.about-me {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1rem 1rem;
+    padding: 1.5rem;
+}
+
+.links-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.links-container h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.links-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.link-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.link-box a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.link-box.hidden {
+    display: none;
+}
+
+.show-more-button {
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.show-more-button:hover {
+    background-color: #0056b3;
+}
+
+.link-box a:hover {
+    color: #0056b3;
+}
+
+
+.experience-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.experience-list li {
+    margin-bottom: 30px;
+    padding: 10px;
+    border-left: 6px solid #007bff;
+
+}
+
+.experience-list li:last-child {
+    margin-bottom: 0;
+}
+
+.company-name {
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.job-title {
+    color: #555;
+    font-size: 16px;
+}
+
+.dates {
+    color: #777;
+    font-size: 14px;
+}
+
+/* Opcional: para agregar un ícono antes de cada li */
+.experience-list li::before {
+    content: "\2022";
+    color: #007bff;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    margin-right: 10px;
+}
+
+
+
+/* IDIOMAS */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table th {
+    background-color: #f2f2f2;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilos para los niveles lingüísticos */
+.nivel-avanzado {
+    color: green;
+}
+
+.nivel-intermedio {
+    color: rgb(237, 154, 0);
+
+}
+
+.nivel-basico {
+    color: red;
+
+}
