@@ -18,12 +18,12 @@
      line-height: 1.6;
      margin: 0;
      padding: 0;
-     background-color: #9a9a9a;
+     background-color: #A39B90;
      color: #333;
  }
 
  section {
-     padding: 2rem 2rem 0rem 2rem;
+     padding: 2rem 1rem 0rem 1rem;
      max-width: 800px;
      margin: 0 auto;
  }

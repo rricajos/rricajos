@@ -1,5 +1,7 @@
 /* Estilo para el nav */
 nav {
+    left: 0px;
+    position: sticky;
     background-color: #444;
     /* Color de fondo del nav */
     padding: 1rem;
