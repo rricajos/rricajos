@@ -41,6 +41,7 @@
     border-top: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 1rem 1rem;
+    padding-bottom: 32px;
 }
 
 .about-me {
@@ -106,22 +107,43 @@
 }
 
 
-.experience-list {
+
+li::before {
     list-style-type: none;
-    padding: 0;
+    list-style: none;
+   
+ 
 }
 
 .experience-list li {
     margin-bottom: 30px;
     padding: 10px;
-    border-left: 6px solid #007bff;
+    border-left: 8px solid #007bff;
+
+
+}
+.experience-list li.not-get-yet {
+ 
+    border-left: 8px solid #2fff00;
+
+}
+.experience-list li.not-get {
+ 
+    border-left: 8px solid #ff0000;
+
+}
+.experience-list li.get {
+    
+    border-left: 8px solid #007bff;
 
 }
 
 .experience-list li:last-child {
     margin-bottom: 0;
 }
-
+.not-get .company-name {
+    color:#ff0000;
+}
 .company-name {
     color: #007bff;
     font-size: 18px;
@@ -140,11 +162,10 @@
 
 /* Opcional: para agregar un ícono antes de cada li */
 .experience-list li::before {
-    content: "\2022";
     color: #007bff;
     font-weight: bold;
-    display: inline-block;
     width: 1em;
+    list-style-image: none;
     margin-left: -1em;
     margin-right: 10px;
 }
