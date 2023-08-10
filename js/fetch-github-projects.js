@@ -34,30 +34,34 @@ async function displayProjects() {
     const repos = await fetchRepos();
 
     for (const repo of repos) {
-        const projectElement = document.createElement("div");
-        projectElement.classList.add("project");
-
-        const titleElement = document.createElement("h3");
-        titleElement.textContent = repo.name;
-
-        const descriptionElement = document.createElement("p");
-        descriptionElement.textContent = repo.description || "Sin descripción.";
-
-        const linkElement = document.createElement("a");
-        linkElement.textContent = "Ver proyecto en GitHub";
-        linkElement.href = repo.html_url;
-        linkElement.target = "_blank";
-
-        const imageSrc = await fetchReadmeImage(repo.name);
-        if (imageSrc) {
-            projectElement.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('${imageSrc}')`;
+        if (repo.name != "rricajos") { // evita mostrar el cv como proyecto
+            const projectElement = document.createElement("div");
+           
+            projectElement.classList.add("project");
+    
+            const titleElement = document.createElement("h3");
+            titleElement.textContent = repo.name;
+    
+            const descriptionElement = document.createElement("p");
+            descriptionElement.textContent = repo.description || "Sin descripción.";
+    
+            const linkElement = document.createElement("a");
+            linkElement.textContent = "。ｇｉｔ";
+            linkElement.href = repo.html_url;
+            linkElement.target = "_blank";
+    
+            const imageSrc = await fetchReadmeImage(repo.name);
+            if (imageSrc) {
+                projectElement.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('${imageSrc}')`;
+            }
+    
+            projectElement.appendChild(titleElement);
+            projectElement.appendChild(descriptionElement);
+            projectElement.appendChild(linkElement);
+    
+            projectsContainer.appendChild(projectElement);
         }
-
-        projectElement.appendChild(titleElement);
-        projectElement.appendChild(descriptionElement);
-        projectElement.appendChild(linkElement);
-
-        projectsContainer.appendChild(projectElement);
+        
     }
 }
 

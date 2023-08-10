@@ -15,7 +15,7 @@
     width: 100%;
     background-color: inherit;
     float: left;
-    font-size: 1rem;
+    font-size: 1.3rem;
     border: none;
     outline: none;
     cursor: pointer;
@@ -182,14 +182,15 @@
 /* Estilos para los niveles lingüísticos */
 .nivel-avanzado {
     color: green;
+    font-weight: bold;
 }
 
 .nivel-intermedio {
     color: rgb(237, 154, 0);
-
+    font-weight: bold;
 }
 
 .nivel-basico {
     color: red;
-
+    font-weight: bold;
 }
