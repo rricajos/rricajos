@@ -41,7 +41,6 @@
     border-top: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 1rem 1rem;
-    padding-bottom: 32px;
 }
 
 .about-me {
@@ -120,7 +119,6 @@ li::before {
     padding: 10px;
     border-left: 8px solid #007bff;
 
-
 }
 .experience-list li.not-get-yet {
  
@@ -138,9 +136,7 @@ li::before {
 
 }
 
-.experience-list li:last-child {
-    margin-bottom: 0;
-}
+
 .not-get .company-name {
     color:#ff0000;
 }

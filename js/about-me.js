@@ -1,5 +1,17 @@
 
+function oopenMoreInfo(listItemId){
+    let item = document.getElementById(listItemId);
 
+    if (item.style.display === "none") {
+        item.style.display = "block";
+    } else {
+        item.style.display = "none";
+    }
+    
+
+
+    
+}
 
 
 function oopen(evt, name) {
