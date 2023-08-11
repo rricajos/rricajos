@@ -1,4 +1,49 @@
 
+.collapsible-active > i {
+    transform: scale3d(1.5, -1.5, 1);
+
+}
+
+.collapsible-not-active > i {
+    transform: scale3d(1.5, 1.5, 1);
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible:hover + li {
+    border-left: 0.5rem solid #0056b3;
+
+}
+.collapsible:hover {
+    background-color: #0056b3;
+}
+
+.collapsible {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+
+    border-radius: 2rem 2rem 2rem 0rem;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.collapsible-content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+ 
+}
 
 /* Style the tab */
 .tab {
@@ -110,45 +155,66 @@
 li::before {
     list-style-type: none;
     list-style: none;
-   
- 
+
+
 }
 
 .experience-list li {
     margin-bottom: 30px;
     padding: 10px;
-    border-left: 8px solid #007bff;
+    border-left: 0.5rem solid #007bff;
 
 }
+.not-gett {
+    background-color: #ff0000;
+    color: #fff;
+}
+.not-gett:hover {
+    background-color: #d00000;
+    color: #fff;
+}
+.not-gett:hover + li{
+    border-left: 0.5rem solid #d00000;
+
+}
+
+.not-gett-yet {
+    background-color: #2fff00;
+    color: #fff;
+}
+
 .experience-list li.not-get-yet {
- 
-    border-left: 8px solid #2fff00;
+
+    border-left: 4px solid #2fff00;
 
 }
+
 .experience-list li.not-get {
- 
-    border-left: 8px solid #ff0000;
+
+    border-left: 4px solid #ff0000;
 
 }
+
 .experience-list li.get {
-    
-    border-left: 8px solid #007bff;
+
+    border-left: 4px solid #007bff;
 
 }
 
 
 .not-get .company-name {
-    color:#ff0000;
+    color: #ff0000;
 }
+
 .company-name {
-    color: #007bff;
+    color: #fff;
     font-size: 18px;
     font-weight: bold;
 }
 
 .job-title {
-    color: #555;
-    font-size: 16px;
+   
+    font-style: normal;
 }
 
 .dates {
@@ -178,7 +244,7 @@ li::before {
     width: 98%;
     border-collapse: collapse;
     margin-top: 10px;
-    
+
 }
 
 .custom-table th,

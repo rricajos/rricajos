@@ -1,11 +1,23 @@
 
+function toggleIconYScale(collapsibleId) {
+    let element = document.getElementById(collapsibleId);
+    element.classList.toggle("collapsible-active");
+    element.classList.toggle("collapsible-not-active");
+    element.scrollIntoView({  block: "center", behavior: "smooth" });
+
+}
+
 function oopenMoreInfo(listItemId){
     let item = document.getElementById(listItemId);
 
     if (item.style.display === "none") {
         item.style.display = "block";
+        item.scrollIntoView({ behavior: "smooth" });
+
+
     } else {
         item.style.display = "none";
+
     }
     
 

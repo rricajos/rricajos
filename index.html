@@ -7,6 +7,7 @@
     <title>rricajos</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+
     <!-- css -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header.css">
@@ -14,7 +15,9 @@
     <link rel="stylesheet" href="css/section-about.css">
     <link rel="stylesheet" href="css/section-projects.css">
     <link rel="stylesheet" href="css/section-contact.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -87,7 +90,7 @@
             <br><br>
 
             Tengo con experiencia personal y profesional en el
-            backend y el frontend. Puedo trabajar en  <strong>lenguajes front-end como
+            backend y el frontend. Puedo trabajar en <strong>lenguajes front-end como
                 HTML, CSS y JavaScript</strong> y podria adaptarme a trabajar con XSD, XSL y XSLT
             muy rapido.
 
@@ -122,7 +125,8 @@
 
             <br><br>
 
-            <strong>Java es el lenguaje con el que tengo más experiencia</strong>, me encantaria tener la oportunidad de seguir
+            <strong>Java es el lenguaje con el que tengo más experiencia</strong>, me encantaria tener la oportunidad de
+            seguir
             desarrollandome mientras logro ganarme la vida creando, testeando y mejorando muchas apps y aprender las
             mejores practicas de programación.
 
@@ -247,26 +251,59 @@
                 <h3>Experiencia Laboral</h3>
                 <p>Experiencia laboral / profesional <strong>relevante en el sector</strong>.</p><br>
                 <ul class="experience-list">
-                    <li id="plexus" onclick="oopenMoreInfo('experience-detail-plexus')">
-                        <span class="company-name">Plexus Technology</span><br>
-                        <em class="job-title">Desarrollador Junior Appian</em><br>
-                        <span class="dates">3 meses</span><br>
+
+                    <button type="button" class="collapsible collapsible-not-active" id="plexus"
+                        onclick="oopenMoreInfo('experience-detail-plexus'); toggleIconYScale('plexus')">
+                        <span class="company-name">Plexus Technology</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <li id="plexus">
+                        <p class="job-title"><strong>Desarrollador Junior con Appian</strong></p>
+
                         <span id="experience-detail-plexus" style="display: none;">
-                            Formación online en Appian Academy.
+                            Formación online en Appian Academy como.
 
                         </span>
-                    </li>
-                    <li>
-                        <span class="company-name">Comercial Arque</span><br>
-                        <em class="job-title">Desarrollador Junior de Microsoft SQL Server</em><br>
-                        <span class="dates">6 meses</span><br>
-                        Ingenieria inversa de bases de datos, documentación y desvinculación de servicios externos.
-                    </li>
-                    <li>
-                        <span class="company-name">Opirata Commerce</span><br>
-                        <em class="job-title">SEO Copywriter</em><br>
                         <span class="dates">3 meses</span><br>
-                        SEO Organico en productos ECommerce y en posts del blog.opirata.com
+
+                    </li>
+
+                    <button type="button" class="collapsible collapsible-not-active" id="arque"
+                        onclick="oopenMoreInfo('experience-detail-arque'); toggleIconYScale('arque')">
+                        <span class="company-name">Comercial Arque</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <li>
+
+                        <p class="job-title"><strong>Desarrollador Junior con Microsoft SQL Server</strong>
+
+                            <span id="experience-detail-arque" style="display: none;">
+
+                                Ingenieria inversa de bases de datos documentación, objetivo: programar
+                                soluciones internas para lograr la desvinculación de servicios externos de
+                                mantenimiento.
+
+                            </span>
+                        </p>
+                        <span class="dates">6 meses</span><br>
+
+
+                    </li>
+
+                    <button type="button" class="collapsible collapsible-not-active" id="opirata"
+                        onclick="oopenMoreInfo('experience-detail-opirata'); toggleIconYScale('opirata')">
+                        <span class="company-name">Opirata Commerce</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <li>
+                        <p class="job-title"><strong>SEO Copywriter</strong></p>
+
+                        <span id="experience-detail-opirata" style="display: none;">
+                            SEO Organico en productos ECommerce y en posts del blog.opirata.com
+
+                        </span>
+                        <span class="dates">3 meses</span><br>
                     </li>
                 </ul>
             </div>
@@ -276,24 +313,59 @@
                 <h3>Experiencia Académica </h3>
 
                 <p>Estos son los centros de estudios en los que he cursado.</p><br>
+
+
+
+
                 <ul class="experience-list">
+
+                    <button type="button" class="collapsible collapsible-not-active" id="edix"
+                        onclick="oopenMoreInfo('experience-detail-edix'); toggleIconYScale('edix')">
+                        <span class="company-name">UNIR Formación Profesional, Online</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
                     <li class="get">
-                        <span class="company-name">CFGS Desarrollador de Aplicaciones Multiplataforma</span><br>
-                        <em class="job-title">UNIR Formación Profesional, Online</em><br>
-                        <span class="dates">Sept 2021 - Jun 2023</span><br>
+                        <p class="job-title"><strong>CFGS Desarrollador de Aplicaciones Multiplataforma</strong></p>
+
+                        <span id="experience-detail-edix" style="display: none;">
+                            SEO Organico en productos ECommerce y en posts del blog.opirata.com
+
+                        </span>
+                        <span class="dates">Sept 2021 - Jun 2023 (2 años)</span><br>
                     </li>
+
+                    <button type="button" class="not-gett collapsible collapsible-not-active" id="itb"
+                        onclick="oopenMoreInfo('experience-detail-itb'); toggleIconYScale('itb')">
+                        <span class="company-name">Institu Tecnologico de Barcelona, Catalunya</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
                     <li class="not-get">
-                        <span class="company-name">CFGS Desarrollador de Aplicaciones Multiplataforma y Videojuegos</span><br>
-                        <em class="job-title">Institu Tecnologico de Barcelona, Catalunya</em><br>
+                        <p class="job-title"><strong>CFGS Desarrollador de Aplicaciones Multiplataforma y
+                            Videojuegos</strong></p>
+
+                        <span id="experience-detail-itb" style="display: none;">
+                            SEO Organico en productos ECommerce y en posts del blog.opirata.com
+
+                        </span>
                         <span class="dates">Sept 2019 - Marz 2021 (covid)</span><br>
-
                     </li>
-                    <li class="get">
-                        <span class="company-name">CFGM Sistemas Microinformaticos y Redes</span><br>
-                        <em class="job-title">Aula Estudio de Vigo, Galicia</em><br>
-                        <span class="dates">Sept 2017 - Jun 2019</span><br>
+                  
 
+                    <button type="button" class=" collapsible collapsible-not-active" id="aula"
+                        onclick="oopenMoreInfo('experience-detail-aula'); toggleIconYScale('aula')">
+                        <span class="company-name">Aula Estudio de Vigo, Galicia</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <li>
+                        <p class="job-title"><strong>CFGM Sistemas Microinformaticos y Redes</strong></p>
+
+                        <span id="experience-detail-aula" style="display: none;">
+                            SEO Organico en productos ECommerce y en posts del blog.opirata.com
+
+                        </span>
+                        <span class="dates">Sept 2017 - Jun 2019 (2 años)</span><br>
                     </li>
+                    
                 </ul>
             </div>
 
@@ -418,7 +490,7 @@
 
             hideHiddenLinks();
 
-            oopen(event, 'studies');
+            oopen(event, 'exp');
 
             displayProjects();
         });
