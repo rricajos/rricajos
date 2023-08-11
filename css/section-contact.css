@@ -51,6 +51,8 @@
     color: #333;
     display: flex;
     align-items: center;
+    transition: filter 0.3s ease-in-out; /* Agrega una transición suave */
+
 }
 
 .contact-card li i {
@@ -65,11 +67,13 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0 0.25rem;
-    transition: background-color 0.3s;
+
     border-radius: 1rem;
     font-size: 1em;
 }
 
 .contact-card li:hover {
-    background-color: #333;
+    filter: brightness(5); /* Aumenta el brillo al 120% */
+    font-weight: bold;
+    
 }
