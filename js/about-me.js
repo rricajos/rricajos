@@ -3,11 +3,21 @@ function toggleIconYScale(collapsibleId) {
     let element = document.getElementById(collapsibleId);
     element.classList.toggle("collapsible-active");
     element.classList.toggle("collapsible-not-active");
-    element.scrollIntoView({  block: "center", behavior: "smooth" });
+   
 
+    // Convierte la lista de clases en un array para poder iterar sobre ellas
+    let arr = Array.from(element.classList);
+
+    // Itera a través del array de clases y haz lo que necesites con cada una
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == "collapsible-active") {
+            element.scrollIntoView({ block: "center", behavior: "smooth" });
+
+        }
+    }
 }
 
-function oopenMoreInfo(listItemId){
+function oopenMoreInfo(listItemId) {
     let item = document.getElementById(listItemId);
 
     if (item.style.display === "none") {
@@ -19,10 +29,10 @@ function oopenMoreInfo(listItemId){
         item.style.display = "none";
 
     }
-    
 
 
-    
+
+
 }
 
 
