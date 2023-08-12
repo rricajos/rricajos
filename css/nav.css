@@ -1,5 +1,8 @@
 /* Estilo para el nav */
 nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     left: 0px;
     position: sticky;
     background-color: #444;

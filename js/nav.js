@@ -1,11 +1,4 @@
 
-document.getElementById("about-button").addEventListener("click", () => {
-    const contactSection = document.getElementById("about");
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-});
-
 document.getElementById("projects-button").addEventListener("click", () => {
     const contactSection = document.getElementById("projects");
     if (contactSection) {
