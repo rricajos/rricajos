@@ -1,6 +1,6 @@
 
 
-        
+
 const languageColors = {
     java: '#d79436',
     kotlin: '#d200a5',
@@ -19,71 +19,76 @@ async function fetchRepositories() {
         const repos = await response.json();
 
         repos.forEach(async repo => {
-            const repoContainer = document.createElement('div');
-            repoContainer.className = 'repo-container';
-            repoContainer.dataset.category = determineCategory(repo);
 
-            const repoHeader = document.createElement('div');
-            repoHeader.className = 'repo-header';
+            if (`${repo.name}` != "rricajos") {
 
+                const repoContainer = document.createElement('div');
+                repoContainer.className = 'repo-container';
+                repoContainer.dataset.category = determineCategory(repo);
 
-            const repoName = document.createElement('div');
-            repoName.className = 'repo-name';
-            repoName.textContent = `${repo.name}`;
+                const repoHeader = document.createElement('div');
+                repoHeader.className = 'repo-header';
 
 
-            const repoDescription = document.createElement('div');
-            repoDescription.className = 'repo-description';
-            repoDescription.textContent = `${repo.description}`;
+                const repoName = document.createElement('div');
+                repoName.className = 'repo-name';
+                repoName.textContent = `${repo.name}`;
 
-            const repoLanguages = document.createElement('div');
-            repoLanguages.className = 'repo-languages';
 
-            const languages = await fetchLanguages(repo.languages_url);
-            const totalCode = languages.reduce((sum, lang) => sum + lang.size, 0);
-            languages.forEach(language => {
-                const repoLanguage = document.createElement('span');
-                repoLanguage.className = 'repo-language';
-                repoLanguage.style.backgroundColor = languageColors[language.name.toLowerCase()] || '#ddd';
-                repoLanguage.textContent = language.name;
-                repoLanguage.style.width = `${(language.size / totalCode) * 100}%`;
-                repoLanguages.appendChild(repoLanguage);
-            });
+                const repoDescription = document.createElement('div');
+                repoDescription.className = 'repo-description';
+                repoDescription.textContent = `${repo.description}`;
 
-            const repoLinks = document.createElement('div');
-            repoLinks.className = 'repo-links';
+                const repoLanguages = document.createElement('div');
+                repoLanguages.className = 'repo-languages';
 
-            const repoLink = document.createElement('a');
-            repoLink.className = 'repo-link';
-            repoLink.textContent = '.git';
-            repoLink.href = repo.html_url;
-            repoLink.target = '_blank';
+                const languages = await fetchLanguages(repo.languages_url);
+                const totalCode = languages.reduce((sum, lang) => sum + lang.size, 0);
+                languages.forEach(language => {
+                    const repoLanguage = document.createElement('span');
+                    repoLanguage.className = 'repo-language';
+                    repoLanguage.style.backgroundColor = languageColors[language.name.toLowerCase()] || '#ddd';
+                    repoLanguage.textContent = language.name;
+                    repoLanguage.style.width = `${(language.size / totalCode) * 100}%`;
+                    repoLanguages.appendChild(repoLanguage);
+                });
 
-            repoLinks.appendChild(repoLink);
+                const repoLinks = document.createElement('div');
+                repoLinks.className = 'repo-links';
 
-            if (repo.homepage) {
-                const repoPageLink = document.createElement('a');
-                repoPageLink.className = 'repo-link';
-                repoPageLink.textContent = '.io';
-                repoPageLink.href = repo.homepage;
-                repoPageLink.target = '_blank';
+                const repoLink = document.createElement('a');
+                repoLink.className = 'repo-link';
+                repoLink.textContent = '.git';
+                repoLink.href = repo.html_url;
+                repoLink.target = '_blank';
 
-                repoLinks.appendChild(repoPageLink);
+                repoLinks.appendChild(repoLink);
+
+                if (repo.homepage) {
+                    const repoPageLink = document.createElement('a');
+                    repoPageLink.className = 'repo-link';
+                    repoPageLink.textContent = '.io';
+                    repoPageLink.href = repo.homepage;
+                    repoPageLink.target = '_blank';
+
+                    repoLinks.appendChild(repoPageLink);
+                }
+
+                const imageSrc = await fetchReadmeImage(repo.name);
+                if (imageSrc) {
+                    repoContainer.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imageSrc}')`;
+                    repoContainer.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.5)';
+                }
+
+                repoHeader.appendChild(repoName);
+                repoHeader.appendChild(repoLinks);
+                repoContainer.appendChild(repoHeader);
+                repoContainer.appendChild(repoDescription);
+
+                repoContainer.appendChild(repoLanguages);
+                repoList.appendChild(repoContainer);
             }
 
-            const imageSrc = await fetchReadmeImage(repo.name);
-            if (imageSrc) {
-                repoContainer.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imageSrc}')`;
-                repoContainer.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.5)';
-            }
-
-            repoHeader.appendChild(repoName);
-            repoHeader.appendChild(repoLinks);
-            repoContainer.appendChild(repoHeader);
-            repoContainer.appendChild(repoDescription);
-            
-            repoContainer.appendChild(repoLanguages);
-            repoList.appendChild(repoContainer);
         });
     } catch (error) {
         console.error('Error fetching repositories:', error);
@@ -152,10 +157,10 @@ function filterByCategory(category) {
 
         if (category === 'all' || repoCategory === category) {
             container.style.display = 'flex';
-             
+
         } else {
             container.style.display = 'none';
-            console.log( category);
+            console.log(category);
         }
     });
 }
