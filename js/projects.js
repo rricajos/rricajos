@@ -2,10 +2,12 @@
 
         
 const languageColors = {
-    javascript: '#f1e05a',
+    java: '#d79436',
+    kotlin: '#d200a5',
+    javascript: '#d5c000',
     typescript: '#2b7489',
     html: '#e34c26',
-    css: '#563d7c',
+    css: '#8300d0',
     python: '#3572A5',
     // Agregar colores para otros lenguajes...
     // Ejemplo: ruby: '#701516'
@@ -21,9 +23,18 @@ async function fetchRepositories() {
             repoContainer.className = 'repo-container';
             repoContainer.dataset.category = determineCategory(repo);
 
+            const repoHeader = document.createElement('div');
+            repoHeader.className = 'repo-header';
+
+
+            const repoName = document.createElement('div');
+            repoName.className = 'repo-name';
+            repoName.textContent = `${repo.name}`;
+
+
             const repoDescription = document.createElement('div');
             repoDescription.className = 'repo-description';
-            repoDescription.textContent = `${repo.name} - ${repo.description}`;
+            repoDescription.textContent = `${repo.description}`;
 
             const repoLanguages = document.createElement('div');
             repoLanguages.className = 'repo-languages';
@@ -31,7 +42,6 @@ async function fetchRepositories() {
             const languages = await fetchLanguages(repo.languages_url);
             const totalCode = languages.reduce((sum, lang) => sum + lang.size, 0);
             languages.forEach(language => {
-                console.log(language);
                 const repoLanguage = document.createElement('span');
                 repoLanguage.className = 'repo-language';
                 repoLanguage.style.backgroundColor = languageColors[language.name.toLowerCase()] || '#ddd';
@@ -45,7 +55,7 @@ async function fetchRepositories() {
 
             const repoLink = document.createElement('a');
             repoLink.className = 'repo-link';
-            repoLink.textContent = 'Repository';
+            repoLink.textContent = '.git';
             repoLink.href = repo.html_url;
             repoLink.target = '_blank';
 
@@ -67,9 +77,11 @@ async function fetchRepositories() {
                 repoContainer.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.5)';
             }
 
+            repoHeader.appendChild(repoName);
+            repoHeader.appendChild(repoLinks);
+            repoContainer.appendChild(repoHeader);
             repoContainer.appendChild(repoDescription);
             
-            repoContainer.appendChild(repoLinks);
             repoContainer.appendChild(repoLanguages);
             repoList.appendChild(repoContainer);
         });
