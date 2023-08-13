@@ -46,7 +46,7 @@ async function displayProjects() {
             descriptionElement.textContent = repo.description || "Sin descripción.";
     
             const linkElement = document.createElement("a");
-            linkElement.textContent = "。ｇｉｔ";
+            linkElement.textContent = ".git";
             linkElement.href = repo.html_url;
             linkElement.target = "_blank";
     

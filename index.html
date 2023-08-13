@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/section-about.css">
     <link rel="stylesheet" href="css/section-projects.css">
     <link rel="stylesheet" href="css/section-contact.css">
+    <link rel="stylesheet" href="css/projects.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -464,9 +465,22 @@
 
     <section id="projects">
         <h2>Proyectos</h2>
-        <div id="projects-container">
-            <!-- Los proyectos se cargarán aquí con JavaScript -->
+        <div class="category-buttons">
+            <button class="category-button" data-category="all">Todos</button>
+            <button class="category-button" data-category="frontend">Front-end</button>
+            <button class="category-button" data-category="backend">Back-end</button>
+            <button class="category-button" data-category="database">Database</button>
+            <button class="category-button" data-category="devops">DevOps</button>
+            <button class="category-button" data-category="mobile">Mobile</button>
+            <button class="category-button" data-category="fullstack">Full Stack</button>
         </div>
+    
+        <div class="repo-list" id="repo-list"></div>
+    
+        <!-- <div><h2>Proyectos</h2></div>
+        
+        <div id="projects-container">
+        </div> -->
     </section>
 
 
@@ -559,6 +573,7 @@
     <script src="js/fetch-github-projects.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/about-me.js"></script>
+    <script src="js/projects.js"></script>
     <script>
 
         document.addEventListener("DOMContentLoaded", () => {
