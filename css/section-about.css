@@ -212,7 +212,7 @@ li::before {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 1rem 1rem;
-    padding: 1.5rem;
+    padding: 1rem;
 }
 
 .links-container {
