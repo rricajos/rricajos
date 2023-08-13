@@ -11,7 +11,6 @@ function toggleIconYScale(collapsibleId) {
     // Itera a través del array de clases y haz lo que necesites con cada una
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] == "collapsible-active") {
-            element.scrollIntoView({ block: "center", behavior: "smooth" });
 
         }
     }
@@ -21,8 +20,7 @@ function oopenMoreInfo(listItemId) {
     let item = document.getElementById(listItemId);
 
     if (item.style.display === "none") {
-        item.style.display = "block";
-        item.scrollIntoView({ behavior: "smooth" });
+        item.style.display = "initial";
 
 
     } else {
