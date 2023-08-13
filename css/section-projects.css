@@ -1,31 +1,34 @@
 #projects {
     margin-top: 3rem;
-    margin-bottom: 6rem;
+    padding-bottom: 6rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem 1rem 0 0;
 }
 
-#projects h2 {
-    color: #fff;
-    font-size: 2rem;
-}
+
+
 #projects-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
 .project {
+    font-size: 1.5rem;
+    font-family: monospace;   
     width: 320px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background.jpg');
     background-size: cover;
     background-position: 0 -128px;
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 12px;
     padding: 1.5rem;
     margin-top: 1.5rem;
-    
-    
 }
+
 @media (max-width: 850px) {
     .project {
         width: 85%;
@@ -49,7 +52,7 @@
     color: #fff;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 2rem;
     border-color: #fff;
     
     transition: background-color 0.3s;
