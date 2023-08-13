@@ -149,10 +149,13 @@ function filterByCategory(category) {
     const repoContainers = document.querySelectorAll('.repo-container');
     repoContainers.forEach(container => {
         const repoCategory = container.dataset.category;
+
         if (category === 'all' || repoCategory === category) {
-            container.style.display = 'block';
+            container.style.display = 'flex';
+             
         } else {
             container.style.display = 'none';
+            console.log( category);
         }
     });
 }
