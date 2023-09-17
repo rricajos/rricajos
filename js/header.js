@@ -5,9 +5,9 @@
 //     }
 // });
 
-document.getElementById("coffe-button").addEventListener("click", () => {
-    window.open("https://bmc.link/rricajos", "_blank")
-});
+// document.getElementById("coffe-button").addEventListener("click", () => {
+//     window.open("https://bmc.link/rricajos", "_blank")
+// });
 
 // Función para obtener y mostrar la hora actual de Barcelona
 function showBarcelonaTime() {
@@ -51,7 +51,7 @@ fetch(workUrl)
             const formattedResult = convertSecondsToYearsMonthsDays(seconds);
             document.getElementById("timming-work").innerText = formattedResult;
         } else {
-            document.getElementById("timming-work").innerText = "0";
+            document.getElementById("timming-work").innerText = "";
         }
     })
     .catch(error => {
@@ -71,7 +71,7 @@ fetch(studyWork)
             const formattedResult = convertSecondsToYearsMonthsDays(seconds);
             document.getElementById("timming-study").innerText = formattedResult;
         } else {
-            document.getElementById("timming-study").innerText = "0";
+            document.getElementById("timming-study").innerText = "";
         }
     })
     .catch(error => {
