@@ -93,14 +93,14 @@
             text-align: center;
         }
 
-        #stats>#call-actions {
+        #call-actions {
             width: 100%;
             display: flex;
             flex-flow: row wrap;
             padding-bottom: 1rem;
         }
 
-        #stats>#call-actions>button {
+        #call-actions> a > button {
             background-color: #007bff;
             color: #fff;
             font-size: 1.2rem;
@@ -119,7 +119,7 @@
 
         table {
             width: 100%;
-            margin: 0.5rem;
+            margin: 1rem 0.5rem 0 0;
         }
 
         tr :nth-child(3)>p {
