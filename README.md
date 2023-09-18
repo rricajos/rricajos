@@ -1,6 +1,10 @@
 ### hello world👋
 
-Soy un apasionado desarrollador de software con experiencia en el desarrollo web y aplicaciones. Me especializo en tecnologías front-end como HTML, CSS y JavaScript, y también tengo conocimientos en frameworks como React y Angular. Además, he estudiado Full Stack (HTML5, Java, C#) y DevOps (Docker). Poseo habilidades en diseño de interfaces y experiencia de usuario. Estoy interesado en abrir un blog para compartir mis lecturas favoritas en el sector y estoy dispuesto a colaborar en proyectos emocionantes.
+**Desarrollador Java** apasionado en el mundo del desarrollo orientado en aspectos, me podrás encontrar en constante inyección de dependencias dentro de **Spring Framework** y mapeando objetos relaciones con **Hibernate**. 
+
+Te invito a ver mis proyectos en https://rricajos.github.io/rricajos/
+
+
 <!--
 **rricajos/rricajos** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
