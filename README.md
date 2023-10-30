@@ -1,6 +1,6 @@
-### hello world👋
+### hola mundo👋
 
-**Desarrollador Java** apasionado en el mundo del desarrollo orientado en aspectos, me podrás encontrar en constante inyección de dependencias dentro de **Spring Framework** y mapeando objetos relaciones con **Hibernate**. 
+Sigo aprendiendo a desarrollar, implementar, documentar y mantener Aplicaciones Multiplataforma con tecnologías y entornos de desarrollo específicos, garantizando el acceso a los datos de forma segura con tecnologías específicas y entornos de desarrollo, cumpliendo los criterios de usabilidad, calidad, y escalabilidad.
 
 Te invito a ver mis proyectos en https://rricajos.github.io/rricajos/
 
