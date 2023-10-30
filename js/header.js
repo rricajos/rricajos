@@ -1,13 +1,4 @@
-//  document.getElementById("hireme-button").addEventListener("click", () => {
-//     const contactSection = document.getElementById("contact");
-//     if (contactSection) {
-//         contactSection.scrollIntoView({ behavior: "smooth" });
-//     }
-// });
 
-// document.getElementById("coffe-button").addEventListener("click", () => {
-//     window.open("https://bmc.link/rricajos", "_blank")
-// });
 
 // Función para obtener y mostrar la hora actual de Barcelona
 function showBarcelonaTime() {
