@@ -3,6 +3,8 @@
 Sigo aprendiendo a desarrollar, implementar, documentar y mantener Aplicaciones Multiplataforma con tecnologías y entornos de desarrollo específicos, garantizando el acceso a los datos de forma segura con tecnologías específicas y entornos de desarrollo, cumpliendo los criterios de usabilidad, calidad, y escalabilidad.
 
 Te invito a ver mis proyectos en https://rricajos.github.io/rricajos/
+![image](https://github.com/rricajos/rricajos/assets/81053395/befa0b58-05c0-49dd-9d87-a01c2896a161)
+
 
 
 <!--
