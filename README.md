@@ -5,7 +5,7 @@ Sigo aprendiendo a desarrollar, implementar, documentar y mantener Aplicaciones 
 Te invito a ver mis proyectos en https://rricajos.github.io/rricajos/
 ![image](https://github.com/rricajos/rricajos/assets/81053395/befa0b58-05c0-49dd-9d87-a01c2896a161)
 
-
+![image](https://github.com/rricajos/edix/assets/81053395/234453db-9254-409f-bee8-bfa8e7428086)
 
 <!--
 **rricajos/rricajos** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
