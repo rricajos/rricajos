@@ -2,13 +2,15 @@
 
 
 const languageColors = {
-    java: '#d79436',
-    kotlin: '#d200a5',
-    javascript: '#d5c000',
-    typescript: '#2b7489',
-    html: '#e34c26',
-    css: '#8300d0',
-    python: '#3572A5',
+    "java": "rgba(215, 148, 54, 0.25)",
+    "kotlin": "rgba(210, 0, 165, 0.25)",
+    "javascript": "rgba(213, 192, 0, 0.25)",
+    "typescript": "rgba(43, 116, 137, 0.25)",
+    "html": "rgba(227, 76, 38, 0.25)",
+    "css": "rgba(131, 0, 208, 0.25)",
+    "python": "rgba(53, 114, 165, 0.25)",
+    "svelte": "rgba(153, 0, 0, 0.25)",
+    "swift": "rgba(153, 77, 0, 0.25)"
     // Agregar colores para otros lenguajes...
     // Ejemplo: ruby: '#701516'
 };
@@ -76,8 +78,8 @@ async function fetchRepositories() {
 
                 const imageSrc = await fetchReadmeImage(repo.name);
                 if (imageSrc) {
-                    repoContainer.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imageSrc}')`;
-                    repoContainer.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.5)';
+                    repoContainer.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('${imageSrc}')`;
+                    repoContainer.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.25)';
                 }
 
                 repoHeader.appendChild(repoName);
