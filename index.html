@@ -21,6 +21,107 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+    <style>
+        nav {
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        button {
+            margin: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border: 0;
+            background-color: #0366d6;
+            letter-spacing: 1.5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: #044da2  0px 10px 0px 0px;
+            color: hsl(0, 0%, 100%);
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        button:hover {
+            box-shadow: #033c7e 0px 8px 0px 0px;
+            transform: translateY(2px);
+        }
+
+        button:active {
+            background-color: #026be3;
+            box-shadow: #033c7e 0px 0px 0px 0px;
+            transform: translateY(8px);
+            transition: 200ms;
+
+            outline: none;
+        }
+
+        /* Estilos para la barra de desplazamiento en WebKit (Chrome, Safari) */
+        ::-webkit-scrollbar {
+            width: 2px;
+            /* Ancho de la barra de desplazamiento */
+        }
+
+        /* Estilos para el riel de la barra de desplazamiento en WebKit */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Color del fondo del riel */
+        }
+
+        /* Estilos para el pulgar de la barra de desplazamiento en WebKit */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Color del pulgar */
+        }
+
+        /* Estilos para el pulgar al pasar el ratón sobre él en WebKit */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            /* Color del pulgar al pasar el ratón sobre él */
+        }
+
+        .container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+    </style>
 </head>
 
 <body>
@@ -36,12 +137,24 @@
             <!-- Segundo componente: Titulo Hora y contadores -->
             <div id="stats" class="header-component" style="padding: 1rem 0;">
 
-                <h1 style="font-size: 1.2rem;">@rricajos - Ricard Penin Honrubia</h1>
-                
-                <p style=" font-size: 1.2rem;">
-                    <br>Empecé con 8 años con Blogger, Game Maker y Pivot Animator en bibliotecas y locutorios/cibercafés.
+                <h1 style="font-size: 1.5rem;">Ricard Penin Honrubia</h1>
+
+                <p style=" font-size: 1.2rem; margin: 0.5rem 0;">
+                    En internet soy <strong>@rricajos</strong> pero mis amigos me llaman Ricky porque juego como Ricky
+                    Rubio 🏀
                     <!-- <br><br>Hoy busco oportunidades laborales a largo plazo y pequeños clientes que necesiten desarrollar su gran marca digital. -->
                 </p>
+
+                <div>
+                    <button>
+                        Seguir leyendo 🏀
+                    </button>
+
+                    <button id="btn-call-action-contact">
+                        Contactar
+                    </button>
+                </div>
+
                 <!-- <table style="width: 100%;">
                     <tr>
                         <td style="text-align: left;">
@@ -92,13 +205,13 @@
     </header>
 
 
-    <nav style="color: white;">
+    <nav>
 
         <p>Escultor de <strong>paginas web reactivas 🔥</strong> y maquina de las <strong>redes sociales ⚡</strong></p>
     </nav>
 
 
-    <section id="projects">
+    <section id="projects" style="min-height: 1000px;">
 
 
         <div class="repo-list" id="repo-list">
@@ -111,7 +224,7 @@
 
 
 
-    <nav id="contact">
+    <nav id="contact" style="z-index: 9;">
         <p> <a href="LICENSE" target="_blank">GPL-3.0 License</a></p>
         <p> <a href="https://ricajos.blogspot.com/" target="_blank">Personal Blog</a></p>
 
@@ -119,8 +232,32 @@
 
 
     </nav>
-    <footer>
+    <footer id="sect-contact">
 
+        <div class="container">
+            <h2>Formulario de Contacto</h2>
+            <form action="enviar.php" method="post">
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+              </div>
+              <div class="form-group">
+                <label for="fecha_hora">Fecha y Hora:</label>
+                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+              </div>
+              <div>
+                <button onclick="">Dar más detalles</button>
+                <button type="submit">Enviar</button>
+
+              </div>
+              
+            </form>
+          </div>
+        
 
         <div class="fooder-component-container">
             <!-- Primer componente: Imagen y botón "Contrátame" -->
@@ -203,14 +340,15 @@
             // Actualizar la hora de Barcelona cada segundo
             setInterval(showBarcelonaTime, 1000);
 
-            // Actualizar los contadores cada hora
-            setInterval(() => {
-                incrementStudyHours();
-                incrementWorkHours();
-            }, 3600000); // 3600000 milisegundos = 1 hora
 
-            // hideHiddenLinks();
+            var btnContact = document.getElementById('btn-call-action-contact');
+            var sectContact = document.getElementById('contact');
+            btnContact.addEventListener('click', function () {
+                setTimeout(() => {
+                    sectContact.scrollIntoView({ behavior: 'smooth' });
 
+                }, 300);
+            });
             // oopen(event, 'exp');
 
             displayProjects();
