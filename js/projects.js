@@ -58,18 +58,19 @@ async function fetchRepositories() {
                 const repoLinks = document.createElement('div');
                 repoLinks.className = 'repo-links';
 
-                const repoLink = document.createElement('a');
-                repoLink.className = 'repo-link';
-                repoLink.textContent = '.git';
+                
+                const repoLink = document.createElement('button');
+    
+                repoLink.textContent = 'ver código';
                 repoLink.href = repo.html_url;
                 repoLink.target = '_blank';
 
                 repoLinks.appendChild(repoLink);
 
                 if (repo.homepage) {
-                    const repoPageLink = document.createElement('a');
-                    repoPageLink.className = 'repo-link';
-                    repoPageLink.textContent = '.io';
+                    const repoPageLink = document.createElement('button');
+         
+                    repoPageLink.textContent = 'ver web';
                     repoPageLink.href = repo.homepage;
                     repoPageLink.target = '_blank';
 
@@ -83,8 +84,8 @@ async function fetchRepositories() {
                 }
 
                 repoHeader.appendChild(repoName);
-                repoHeader.appendChild(repoLinks);
                 repoContainer.appendChild(repoHeader);
+                repoDescription.appendChild(repoLinks);
                 repoContainer.appendChild(repoDescription);
 
                 repoContainer.appendChild(repoLanguages);

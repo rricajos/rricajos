@@ -93,6 +93,9 @@
     margin: 10px;
     color: #fff;
     height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
 }
 
 .repo-languages {
