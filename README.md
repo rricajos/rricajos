@@ -1,5 +1,6 @@
-### hola mundo👋
+### hola mundo 
 
+Soy un programador junior con experiencia en desarrollo de apps nativas y paginas web
 
 
 <!--
