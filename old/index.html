@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rricajos</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/section-projects.css">
+    <link rel="stylesheet" href="css/section-contact.css">
+    <link rel="stylesheet" href="css/projects.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        nav {
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        button {
+            margin: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border: 0;
+            background-color: #0366d6;
+            letter-spacing: 1.5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: #044da2  0px 10px 0px 0px;
+            color: hsl(0, 0%, 100%);
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        button:hover {
+            box-shadow: #033c7e 0px 8px 0px 0px;
+            transform: translateY(2px);
+        }
+
+        button:active {
+            background-color: #026be3;
+            box-shadow: #033c7e 0px 0px 0px 0px;
+            transform: translateY(8px);
+            transition: 200ms;
+
+            outline: none;
+        }
+
+        /* Estilos para la barra de desplazamiento en WebKit (Chrome, Safari) */
+        ::-webkit-scrollbar {
+            width: 2px;
+            /* Ancho de la barra de desplazamiento */
+        }
+
+        /* Estilos para el riel de la barra de desplazamiento en WebKit */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Color del fondo del riel */
+        }
+
+        /* Estilos para el pulgar de la barra de desplazamiento en WebKit */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Color del pulgar */
+        }
+
+        /* Estilos para el pulgar al pasar el ratón sobre él en WebKit */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            /* Color del pulgar al pasar el ratón sobre él */
+        }
+
+        .container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-component-container">
+            <!-- Primer componente: Imagen -->
+
+            <div id="avatar" class="header-component">
+                <img src="avatar.png" alt="Ricard Penin Honrubia">
+
+            </div>
+
+            <!-- Segundo componente: Titulo Hora y contadores -->
+            <div id="stats" class="header-component" style="padding: 1rem 0;">
+
+                <h1 style="font-size: 1.5rem;">Ricard Penin Honrubia</h1>
+
+                <p style=" font-size: 1.2rem; margin: 0.5rem 0;">
+                    En internet soy <strong>@rricajos</strong> pero mis amigos me llaman Ricky porque juego como Ricky
+                    Rubio 🏀
+                    <!-- <br><br>Hoy busco oportunidades laborales a largo plazo y pequeños clientes que necesiten desarrollar su gran marca digital. -->
+                </p>
+
+                <div>
+                    <button>
+                        Seguir leyendo 🏀
+                    </button>
+
+                    <button id="btn-call-action-contact">
+                        Contactar
+                    </button>
+                </div>
+
+                <!-- <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <button class="stream">
+                                <i class="fa fa-circle-thin" style="padding-right: 12px;"></i>
+                                Local time
+                            </button>
+                        </td>
+                        <td style="text-align: center;">
+                            ⌚</td>
+                        <td style="text-align: right; display: flex; flex-direction: row-reverse; ">
+                            <p id="bcn-time"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <button class="stream">
+                                <i class="fa fa-circle-thin" style="padding-right: 12px;"></i>
+                                Studied
+                            </button>
+                        </td>
+                        <td style="text-align: center;">
+                            🎓</td>
+                        <td style="text-align: right;">
+                            <span id="timming-study"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <button class="stream">
+                                <i class="fa fa-circle-thin" style="padding-right: 12px;"></i>
+                                Worked
+                            </button>
+                        </td>
+                        <td style="text-align: center;">
+                            💼</td>
+                        <td style="text-align: right;">
+                            <span id="timming-work"></span>
+                        </td>
+                    </tr>
+
+                </table> -->
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <nav>
+
+        <p>Escultor de <strong>paginas web reactivas 🔥</strong> y maquina de las <strong>redes sociales ⚡</strong></p>
+    </nav>
+
+
+    <section id="projects" style="min-height: 1000px;">
+
+
+        <div class="repo-list" id="repo-list">
+            <!-- From github API-->
+        </div>
+
+    </section>
+
+
+
+
+
+    <nav id="contact" style="z-index: 9;">
+        <p> <a href="LICENSE" target="_blank">GPL-3.0 License</a></p>
+        <p> <a href="https://ricajos.blogspot.com/" target="_blank">Personal Blog</a></p>
+
+
+
+
+    </nav>
+    <footer id="sect-contact">
+
+        <div class="container">
+            <h2>Formulario de Contacto</h2>
+            <form action="enviar.php" method="post">
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+              </div>
+              <div class="form-group">
+                <label for="fecha_hora">Fecha y Hora:</label>
+                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+              </div>
+              <div>
+                <button onclick="">Dar más detalles</button>
+                <button type="submit">Enviar</button>
+
+              </div>
+              
+            </form>
+          </div>
+        
+
+        <div class="fooder-component-container">
+            <!-- Primer componente: Imagen y botón "Contrátame" -->
+
+            <div class="hex-container">
+                <div class="hexagon-dummy">
+
+                </div>
+                <div class="hexagon">
+                    <a href="https://github.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="mailto:ergoegos@gmail.com" class="icon" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.linkedin.com/in/rickynudo/" class="icon" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.instagram.com/rricajos/" class="icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://twitter.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.twitch.tv/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.reddit.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-reddit"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.facebook.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.youtube.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.patreon.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-patreon"></i>
+                    </a>
+                </div>
+                <div class="hexagon">
+                    <a href="https://www.spotify.com/rricajos" class="icon" target="_blank">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+        </div>
+
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script src="js/fetch-github-projects.js"></script>
+    <script src="js/projects.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            // Actualizar la hora de Barcelona cada segundo
+            setInterval(showBarcelonaTime, 1000);
+
+
+            var btnContact = document.getElementById('btn-call-action-contact');
+            var sectContact = document.getElementById('contact');
+            btnContact.addEventListener('click', function () {
+                setTimeout(() => {
+                    sectContact.scrollIntoView({ behavior: 'smooth' });
+
+                }, 300);
+            });
+            // oopen(event, 'exp');
+
+            displayProjects();
+        });
+
+    </script>
+
+</body>
+
+</html>

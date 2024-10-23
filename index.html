@@ -1,361 +1,500 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RRicajos - Freelancer</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rricajos</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Enlace a Google Fonts para importar la fuente Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
-
-    <!-- css -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/section-projects.css">
-    <link rel="stylesheet" href="css/section-contact.css">
-    <link rel="stylesheet" href="css/projects.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!-- Enlaces CSS separados -->
+    <link rel="stylesheet" href="css/superheader.css" />
+    <link rel="stylesheet" href="css/supernav.css" />
+    <link rel="stylesheet" href="css/superfooter.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/section-services.css" />
+    <link rel="stylesheet" href="css/section-portfolio.css" />
+    <link rel="stylesheet" href="css/section-contact.css" />
+    <link rel="stylesheet" href="css/section-shop.css" />
 
     <style>
-        nav {
-            color: white;
-            position: sticky;
-            top: 0;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
 
-        button {
-            margin: 1rem;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            border: 0;
-            background-color: #0366d6;
-            letter-spacing: 1.5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: #044da2  0px 10px 0px 0px;
-            color: hsl(0, 0%, 100%);
-            cursor: pointer;
-            outline: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+      * {
+        margin: 0;
 
-        }
+        box-sizing: border-box;
+      }
 
-        button:hover {
-            box-shadow: #033c7e 0px 8px 0px 0px;
-            transform: translateY(2px);
-        }
+      .supercontainer {
+        max-width: 1280px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 1rem;
+      }
 
-        button:active {
-            background-color: #026be3;
-            box-shadow: #033c7e 0px 0px 0px 0px;
-            transform: translateY(8px);
-            transition: 200ms;
-
-            outline: none;
-        }
-
-        /* Estilos para la barra de desplazamiento en WebKit (Chrome, Safari) */
-        ::-webkit-scrollbar {
-            width: 2px;
-            /* Ancho de la barra de desplazamiento */
-        }
-
-        /* Estilos para el riel de la barra de desplazamiento en WebKit */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            /* Color del fondo del riel */
-        }
-
-        /* Estilos para el pulgar de la barra de desplazamiento en WebKit */
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            /* Color del pulgar */
-        }
-
-        /* Estilos para el pulgar al pasar el ratón sobre él en WebKit */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-            /* Color del pulgar al pasar el ratón sobre él */
-        }
-
-        .container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 1rem;
-  padding-bottom: 2rem;
-}
-
-.form-group {
-  margin-bottom: 20px;
-  display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
+      /* Ocultar scrollbar en WebKit */
+      iframe::-webkit-scrollbar {
+        display: none; /* Oculta la scrollbar */
+      }
+      .hidden-scroll {
+        overflow: hidden;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <header>
-        <div class="header-component-container">
-            <!-- Primer componente: Imagen -->
+  <body>
+    <!-- Hero Header -->
+    <header class="superheader">
+      <div id="heroheader" class="hero-content">
+        <h1>Ricard Penin Honrubia</h1>
+        <hr />
+        <p>
+          Soy un pequeño emprendedor preparado para hacerte pensar en grande, te
+          ofrezco tu paginas web a medida, asesoria en marketing y redes y
+          asistencia tecnologica general entre otras muchas cosas.
+        </p>
+        <button id="heroheaderCTA" class="cta-button">
+          ¡Hagamos realidad tus ideas!
+        </button>
+      </div>
+      <div id="heroform" class="hero-content">
+        <form method="post">
+          <label for="heroformEMail" hidden>Nombre o título del mensaje</label>
+          <input
+            type="email"
+            id="heroformEMail"
+            name="heroformEMail"
+            required
+            placeholder="Escribe tu eMail"
+          />
+          <hr />
+          <label for="heroformTextArea" hidden
+            >Mensaje (máximo 255 caracteres)</label
+          >
+          <textarea
+            id="heroformTextArea"
+            name="heroformTextArea"
+            maxlength="255"
+            required
+            placeholder="Escribe tu mensaje aquí"
+          ></textarea>
 
-            <div id="avatar" class="header-component">
-                <img src="avatar.png" alt="Ricard Penin Honrubia">
-
-            </div>
-
-            <!-- Segundo componente: Titulo Hora y contadores -->
-            <div id="stats" class="header-component" style="padding: 1rem 0;">
-
-                <h1 style="font-size: 1.5rem;">Ricard Penin Honrubia</h1>
-
-                <p style=" font-size: 1.2rem; margin: 0.5rem 0;">
-                    En internet soy <strong>@rricajos</strong> pero mis amigos me llaman Ricky porque juego como Ricky
-                    Rubio 🏀
-                    <!-- <br><br>Hoy busco oportunidades laborales a largo plazo y pequeños clientes que necesiten desarrollar su gran marca digital. -->
-                </p>
-
-                <div>
-                    <button>
-                        Seguir leyendo 🏀
-                    </button>
-
-                    <button id="btn-call-action-contact">
-                        Contactar
-                    </button>
-                </div>
-
-                <!-- <table style="width: 100%;">
-                    <tr>
-                        <td style="text-align: left;">
-                            <button class="stream">
-                                <i class="fa fa-circle-thin" style="padding-right: 12px;"></i>
-                                Local time
-                            </button>
-                        </td>
-                        <td style="text-align: center;">
-                            ⌚</td>
-                        <td style="text-align: right; display: flex; flex-direction: row-reverse; ">
-                            <p id="bcn-time"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <button class="stream">
-                                <i class="fa fa-circle-thin" style="padding-right: 12px;"></i>
-                                Studied
-                            </button>
-                        </td>
-                        <td style="text-align: center;">
-                            🎓</td>
-                        <td style="text-align: right;">
-                            <span id="timming-study"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <button class="stream">
-                                <i class="fa fa-circle-thin" style="padding-right: 12px;"></i>
-                                Worked
-                            </button>
-                        </td>
-                        <td style="text-align: center;">
-                            💼</td>
-                        <td style="text-align: right;">
-                            <span id="timming-work"></span>
-                        </td>
-                    </tr>
-
-                </table> -->
-
-            </div>
-
-        </div>
-
+          <div class="form-buttons">
+            <button type="button" id="heroformBack">Volver</button>
+            <button type="submit" id="heroformSubmit">Enviar Mensaje</button>
+          </div>
+        </form>
+      </div>
     </header>
 
-
-    <nav>
-
-        <p>Escultor de <strong>paginas web reactivas 🔥</strong> y maquina de las <strong>redes sociales ⚡</strong></p>
-    </nav>
-
-
-    <section id="projects" style="min-height: 1000px;">
-
-
-        <div class="repo-list" id="repo-list">
-            <!-- From github API-->
-        </div>
-
-    </section>
-
-
-
-
-
-    <nav id="contact" style="z-index: 9;">
-        <p> <a href="LICENSE" target="_blank">GPL-3.0 License</a></p>
-        <p> <a href="https://ricajos.blogspot.com/" target="_blank">Personal Blog</a></p>
-
-
-
-
-    </nav>
-    <footer id="sect-contact">
-
-        <div class="container">
-            <h2>Formulario de Contacto</h2>
-            <form action="enviar.php" method="post">
-              <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-              </div>
-              <div class="form-group">
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-              </div>
-              <div class="form-group">
-                <label for="fecha_hora">Fecha y Hora:</label>
-                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
-              </div>
-              <div>
-                <button onclick="">Dar más detalles</button>
-                <button type="submit">Enviar</button>
-
-              </div>
-              
-            </form>
-          </div>
-        
-
-        <div class="fooder-component-container">
-            <!-- Primer componente: Imagen y botón "Contrátame" -->
-
-            <div class="hex-container">
-                <div class="hexagon-dummy">
-
-                </div>
-                <div class="hexagon">
-                    <a href="https://github.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="mailto:ergoegos@gmail.com" class="icon" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.linkedin.com/in/rickynudo/" class="icon" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.instagram.com/rricajos/" class="icon" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://twitter.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.twitch.tv/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-twitch"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.reddit.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-reddit"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.facebook.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.youtube.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.patreon.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-patreon"></i>
-                    </a>
-                </div>
-                <div class="hexagon">
-                    <a href="https://www.spotify.com/rricajos" class="icon" target="_blank">
-                        <i class="fab fa-spotify"></i>
-                    </a>
-                </div>
-            </div>
-
-
-        </div>
-        </div>
-
-    </footer>
-
-    <script src="js/header.js"></script>
-    <script src="js/fetch-github-projects.js"></script>
-    <script src="js/projects.js"></script>
+    <!-- JavaScript para el seguimiento del mouse y el formulario dinámico -->
     <script>
+      const superheader = document.querySelector(".superheader");
 
-        document.addEventListener("DOMContentLoaded", () => {
+      const heroheader = document.getElementById("heroheader");
+      const heroheaderCTA = document.getElementById("heroheaderCTA");
 
+      const heroform = document.getElementById("heroform");
+      const heroformEMail = document.getElementById("heroformEMail");
+      const heroformTextArea = document.getElementById("heroformTextArea");
+      const heroformSubmit = document.getElementById("heroformSubmit");
+      const heroformBack = document.getElementById("heroformBack");
 
-            // Actualizar la hora de Barcelona cada segundo
-            setInterval(showBarcelonaTime, 1000);
+      // Lógica de seguimiento del mouse para el efecto de fondo
+      document.addEventListener("mousemove", (e) => {
+        const { clientX: mouseX, clientY: mouseY } = e;
+        const { innerWidth: width, innerHeight: height } = window;
 
+        const moveX = (mouseX / width - 0.5) * 30;
+        const moveY = (mouseY / height - 0.5) * 30;
 
-            var btnContact = document.getElementById('btn-call-action-contact');
-            var sectContact = document.getElementById('contact');
-            btnContact.addEventListener('click', function () {
-                setTimeout(() => {
-                    sectContact.scrollIntoView({ behavior: 'smooth' });
+        superheader.style.backgroundPosition = `${moveX}px ${moveY}px`;
+      });
 
-                }, 300);
-            });
-            // oopen(event, 'exp');
+      heroheaderCTA.addEventListener("click", () => {
+        heroheader.style.display = "none";
+        heroform.style.display = "flex ";
+      });
 
-            displayProjects();
-        });
+      heroformBack.addEventListener("click", () => {
+        heroheader.style.display = "flex";
+        heroform.style.display = "none";
+      });
 
+      // Añadir el evento para enviar el formulario
+      heroform.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Obtener los valores del formulario
+        const title = document.getElementById("title").value;
+        const message = document.getElementById("message").value;
+
+        // Aquí puedes integrar la lógica para enviar el correo
+
+        alert(`Formulario enviado:\nTítulo: ${title}\nMensaje: ${message}`);
+      });
+
+      // Función de simulación de escritura
+      function typingEffect(element, texts) {
+        let textoIndex = 0; // índice del texto actual
+        let charIndex = 0; // índice del carácter actual
+        let isDeleting = false; // Para saber si está borrando
+        let currentText = texts[textoIndex]; // Texto actual
+
+        function type() {
+          // Actualiza el placeholder según si está escribiendo o borrando
+          if (!isDeleting && charIndex <= currentText.length) {
+            element.setAttribute(
+              "placeholder",
+              currentText.substring(0, charIndex)
+            );
+            charIndex++;
+          } else if (isDeleting && charIndex >= 0) {
+            element.setAttribute(
+              "placeholder",
+              currentText.substring(0, charIndex)
+            );
+            charIndex--;
+          }
+
+          // Si ha terminado de escribir, comienza a borrar
+          if (charIndex === currentText.length && !isDeleting) {
+            isDeleting = true;
+            setTimeout(type, 9000); // Espera un segundo antes de empezar a borrar
+          }
+          // Si ha terminado de borrar, pasa al siguiente texto
+          else if (charIndex === 0 && isDeleting) {
+            isDeleting = false;
+            textoIndex = (textoIndex + 1) % texts.length; // Cambia al siguiente texto
+            currentText = texts[textoIndex]; // Actualiza el texto actual
+            setTimeout(type, 1000); // Espera un momento antes de empezar a escribir
+          } else {
+            setTimeout(type, isDeleting ? 25 : 100); // Velocidad de escritura/borrado
+          }
+        }
+
+        type();
+      }
+
+      const textareas = [
+        " ej -> Hola buenas tardes, necesito hacer una pagina web para mi bar con la carta, el horario y las reseñas de google maps. ¿Seria posible que la carta pudiera actulizarla yo mismo desde mi excel/google sheet?",
+        " ej -> Hola Ricky, estoy buscando un editor de contenido de mi banda de Rock, tambien estamos pensando en hacer un poco de merchandasing de nuestro proximo album, espero tu respuesta.",
+        " ej -> Hey rricajos, te he visto por Youtube y me gustaria saber si podriamos quedar para hacerte una consulta para trabjar como freelance sin experiencia",
+      ];
+
+      typingEffect(heroformTextArea, textareas);
     </script>
 
-</body>
+    <!-- Sticky Nav -->
+    <nav class="supernav" aria-label="1">
+      <div class="supercontainer">
+        <button
+          id="supernav-button-home"
+          class="supernav-button"
+          onclick="nav('home')"
+        >
+          Ricajos.com
+        </button>
+        <div class="super-sub-nav">
+          <button
+            id="supernav-button-blog"
+            class="supernav-button"
+            onclick="nav('blog')"
+          >
+            Blog
+          </button>
+          <button
+            id="supernav-button-services"
+            class="supernav-button active"
+            onclick="nav('services')"
+          >
+            Servicios
+          </button>
+          <button
+            id="supernav-button-portfolio"
+            class="supernav-button"
+            onclick="nav('portfolio')"
+          >
+            Portfolio
+          </button>
+          <button
+            id="supernav-button-shop"
+            class="supernav-button"
+            onclick="nav('shop')"
+          >
+            Tienda
+          </button>
+        </div>
+      </div>
+    </nav>
 
+    <main>
+      <!-- Secciones -->
+      <section id="home" class="supersection">
+        <div class="supercontainer">
+          <h2>Efectivamente,</h2>
+          <p>
+            I am a passionate web developer with years of experience in creating
+            high-quality, professional websites. My expertise spans across
+            front-end and back-end development, ensuring full-stack solutions.
+          </p>
+        </div>
+      </section>
+
+      <section id="blog" class="supersection">
+        <div class="hidden-scroll">
+          <iframe
+            id="iframeblog"
+            title="blog"
+            src="https://rricajos.blogspot.com"
+            width="100%"
+            class=""
+            style="overflow: hidden; display: block"
+            frameborder="0"
+          ></iframe>
+          <script>
+            window.addEventListener("message", function (event) {
+              // Asegúrate de que el mensaje proviene del dominio correcto
+              // if (event.origin !== "https://nombre-del-blog.blogspot.com") return;
+
+              let iframe = document.getElementById("iframeblog");
+              iframe.style.height = event.data + "px"; // Ajustar la altura del iframe
+            });
+      
+          </script>
+        </div>
+      </section>
+
+      <section id="services" class="supersection active fade-in">
+        <div class="supercontainer">
+          <div class="services-info">
+            <h2>Servicios</h2>
+            <p>
+              Servicio de desarrollo de aplicaciones web y multiplataforma a
+              medida y a tu gusto. Edición de vídeo e imagen y puesta en
+              producción en redes sociales. Ademas que siempre que me sea
+              posible procuro dar bases de posicionamiento en internet como por
+              ejemplo:
+            </p>
+            <ul>
+              <li>El mismo dominio web y nickname en todas las redes</li>
+              <li>Analisis de nicho de mercado, palabras clave...</li>
+              <li>Estrategias de contenido de calidad</li>
+            </ul>
+            <p>
+              Todos mis servicios tendran un post en el blog dando más detalles.
+            </p>
+          </div>
+          <div>
+            <table id="services-table">
+              <thead>
+                <tr>
+                  <th onclick="sortTable(0)">Servicio</th>
+                  <th onclick="sortTable(1)">Coste</th>
+                  <th onclick="sortTable(2)">Tiempo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Página web estática</td>
+                  <td>6€ / Hora</td>
+                  <td>2 horas - 8 horas</td>
+                </tr>
+                <tr>
+                  <td>Página web dinámica</td>
+                  <td>10€ / Hora</td>
+                  <td>5 horas - 15 horas</td>
+                </tr>
+                <tr>
+                  <td>Base de Datos Relacional</td>
+                  <td>10€ / Hora</td>
+                  <td>5 horas - 15 horas</td>
+                </tr>
+                <tr>
+                  <td>Base de Datos No Relacional</td>
+                  <td>15€ / Hora</td>
+                  <td>5 horas - 15 horas</td>
+                </tr>
+                <tr>
+                  <td>Servidor RestFulAPI</td>
+                  <td>10€ / Hora</td>
+                  <td>5 horas - 15 horas</td>
+                </tr>
+                <tr>
+                  <td>SEO y optimización</td>
+                  <td>8€ / Hora</td>
+                  <td>3 horas - 10 horas</td>
+                </tr>
+                <tr>
+                  <td>Diseño gráfico</td>
+                  <td>12€ / Hora</td>
+                  <td>1 horas - 6 horas</td>
+                </tr>
+                <tr>
+                  <td>Edición de vídeo</td>
+                  <td>12€ / Hora</td>
+                  <td>2 horas - 6 horas</td>
+                </tr>
+                <tr>
+                  <td>Consultoría tecnológica</td>
+                  <td>15€ / Hora</td>
+                  <td>1 hora - 5 horas</td>
+                </tr>
+                <tr>
+                  <td>Mantenimiento web</td>
+                  <td>10€ / mes</td>
+                  <td>1 hora - 4 horas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <script>
+        let sortDirection = false; // Para controlar si es ascendente o descendente
+
+        function sortTable(columnIndex) {
+          const table = document.getElementById("services-table");
+          const tbody = table.tBodies[0];
+          const rows = Array.from(tbody.rows);
+
+          // Remover flechas de todas las columnas
+          document
+            .querySelectorAll("th")
+            .forEach((th) => th.classList.remove("asc", "desc"));
+
+          // Alternar la dirección de ordenación
+          sortDirection = !sortDirection;
+
+          rows.sort((rowA, rowB) => {
+            const cellA = rowA.cells[columnIndex].innerText.trim();
+            const cellB = rowB.cells[columnIndex].innerText.trim();
+
+            if (columnIndex === 1) {
+              // Ordenar precios numéricamente
+              return sortDirection
+                ? parseFloat(cellA.replace(/[^\d.-]/g, "")) -
+                    parseFloat(cellB.replace(/[^\d.-]/g, ""))
+                : parseFloat(cellB.replace(/[^\d.-]/g, "")) -
+                    parseFloat(cellA.replace(/[^\d.-]/g, ""));
+            } else {
+              return sortDirection
+                ? cellA.localeCompare(cellB)
+                : cellB.localeCompare(cellA);
+            }
+          });
+
+          // Reagregar las filas ordenadas al tbody
+          rows.forEach((row) => tbody.appendChild(row));
+
+          // Añadir la clase asc o desc según corresponda
+          const header = table.querySelectorAll("th")[columnIndex];
+          header.classList.toggle("asc", sortDirection);
+          header.classList.toggle("desc", !sortDirection);
+        }
+      </script>
+
+      <section id="portfolio" class="supersection">
+        <div class="supercontainer">
+          <nav aria-label="1" class="portfolio-dev-nav">
+            <h2>Portfolio</h2>
+            <div>
+              <!-- Campo de búsqueda para repositorios -->
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Buscar repositorios"
+              />
+            </div>
+
+            <div>
+              <!-- Contenedor de lenguajes seleccionados -->
+              <div id="selected-languages-container"></div>
+            </div>
+          </nav>
+
+          <div id="repos-container">
+            <!-- Aquí se insertarán las cartas de los repositorios -->
+          </div>
+
+          <script src="portfolio.js"></script>
+
+          <p>Check out some of my latest projects:</p>
+        </div>
+      </section>
+
+      <section id="shop" class="supersection">
+        <div class="supercontainer">
+          <header class="section-shop-header">
+            <h2>🚧 Tienda en desarrrollo 🚧</h2>
+            <p>
+              No dudes en ponerte en contacto conmigo para colaborar o realizar
+              proyectos independientes. ¡Siempre me entusiasma trabajar en
+              nuevas ideas!
+            </p>
+            <strong>Primera consulta es gratis!</strong>
+          </header>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      let currentSection = "services";
+      let navegatting = false;
+
+      function nav(sectionId) {
+        if (!navegatting && currentSection !== sectionId) {
+          navegatting = true;
+
+          const fout = document.getElementById(currentSection);
+          const fin = document.getElementById(sectionId);
+
+          const foutb = document.getElementById(
+            "supernav-button-" + currentSection
+          );
+          const finb = document.getElementById("supernav-button-" + sectionId);
+          foutb.classList.remove("active");
+          finb.classList.add("active");
+
+          try {
+            fout.classList.remove("fade-in");
+            fout.classList.add("fade-out");
+            setTimeout(() => {
+              fout.classList.remove("active");
+              fin.classList.add("active");
+              setTimeout(() => {
+                fin.classList.remove("fade-out");
+                fin.classList.add("fade-in");
+              }, 100);
+            }, 100);
+
+            currentSection = sectionId;
+            navegatting = false;
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        sortTable(1);
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="superfooter">
+      <div class="supercontainer">
+        <p style="color: #fff; text-align: center; padding: 1rem">
+          &copy; 2024 RRicajos - All Rights Reserved
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
