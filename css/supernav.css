@@ -1,0 +1,68 @@
+/* Sticky Nav */
+.supernav {
+  min-height: 10vh;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #0A0921;
+  z-index: 3;
+
+}
+
+.supernav > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.super-sub-nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+
+
+.supernav-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.3rem;
+
+  position: relative; 
+  display: inline-flex;
+  justify-content: center; 
+  align-items: center;
+
+  transition: color 0.3s; 
+}
+
+.supernav-button:hover {
+  cursor: pointer;
+
+ 
+}
+
+.supernav-button::before {  
+  content: '·'; 
+  margin-right: 0.3rem;
+  font-size: 3rem;
+  opacity: 0;
+  transition: opacity 0.3s; 
+  pointer-events: none; /* Ignorar interacciones con el pseudo-elemento */
+}
+
+.supernav-button.active::before { 
+  opacity: 1;
+  color: #007BFF !important;
+}
+
+.supernav-button:hover::before {  
+  opacity: 1; 
+  color: #c0deff;
+}
