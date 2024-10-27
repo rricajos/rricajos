@@ -267,32 +267,174 @@
               let iframe = document.getElementById("iframeblog");
               iframe.style.height = event.data + "px"; // Ajustar la altura del iframe
             });
-      
           </script>
         </div>
       </section>
 
       <section id="services" class="supersection active fade-in">
         <div class="supercontainer">
-          <div class="services-info">
-            <h2>Servicios</h2>
-            <p>
-              Servicio de desarrollo de aplicaciones web y multiplataforma a
-              medida y a tu gusto. Edición de vídeo e imagen y puesta en
-              producción en redes sociales. Ademas que siempre que me sea
-              posible procuro dar bases de posicionamiento en internet como por
-              ejemplo:
-            </p>
+          <!-- Servicios a service-close-price cerrado -->
+          <article class="services-price-close">
+            <h2>Precio cerrado</h2>
+            <div id="services-close-price-buttons-container">
+              <div>
+                <!-- Sitio Web Básico -->
+                <button
+                  class="service-close-pack"
+                  onclick="toggleDetail('web-basic')"
+                >
+                  <div class="service-close-pack-header">
+                    <div class="service-close-pack-header-right">
+                      <h3>Web Funcional</h3>
+                    </div>
+                    <p class="service-close-price">32€ - 128€</p>
+                  </div>
+
+                  <p>
+                    Página Web con datos fijos y/o dinamicos. Super rápida,
+                    práctica y fiable. Siempre a tu gusto con tu diseño personal
+                    y adaptada a todas las pantallas del mundo.
+                  </p>
+                </button>
+
+                <!-- Sitio Web AutoMutable -->
+                <button
+                  class="service-close-pack"
+                  onclick="toggleDetail('web-adv')"
+                >
+                  <div class="service-close-pack-header">
+                    <div class="service-close-pack-header-right">
+                      <h3>Web Avanzada</h3>
+                    </div>
+                    <p class="service-close-price">256€ - 1024€</p>
+                  </div>
+
+                  <p>
+                    Web Funcional + Base de Datos para tener usuarios
+                    registrados, pasarelas de pago, funciones por rol, correo
+                    electronico directo...
+                  </p>
+                </button>
+
+                <!-- Sitio Web AutoMutable -->
+                <button
+                  class="service-close-pack"
+                  onclick="toggleDetail('sup-basic')"
+                >
+                  <div class="service-close-pack-header">
+                    <div class="service-close-pack-header-right">
+                      <h3>Soporte Básico</h3>
+                    </div>
+                    <p class="service-close-price">9€ / mes</p>
+                  </div>
+
+                  <ul>
+                    <li>Web en linea 24/7</li>
+                    <li>Certificado de Conexion Segura</li>
+                    <li>Un email corporativo personalizado</li>
+                    <li>CopyRight actualizado y en regla</li>
+                  </ul>
+                </button>
+
+                <!-- Sitio Web AutoMutable -->
+                <button
+                  class="service-close-pack"
+                  onclick="toggleDetail('sup-adv')"
+                >
+                  <div class="service-close-pack-header">
+                    <div class="service-close-pack-header-right">
+                      <h3>Soporte Avanzado</h3>
+                    </div>
+                    <p class="service-close-price">99€ / mes</p>
+                  </div>
+
+                  <ul>
+                    <li>Super reporte mensual.</li>
+                    <li>CopyRight</li>
+                    <li>Tres emails personalizables</li>
+                    <li>Telefono de contacto directo</li>
+                  </ul>
+                </button>
+              </div>
+
+              <script>
+                // JavaScript para mostrar/ocultar service-close-detailss
+                function toggleDetail(string) {
+                  document.getElementById("web-basic").style.display = "none";
+                  document.getElementById("web-adv").style.display = "none";
+                  document.getElementById("sup-basic").style.display = "none";
+                  document.getElementById("sup-adv").style.display = "none";
+                  document.getElementById(string).style.display = "block";
+                }
+              </script>
+            </div>
+
+            <div class="service-close-details">
+              <div id="web-basic" class="service-close-detail">
+                <h3>Web Básica</h3>
+                <p>
+                  Crearemos desde una web con datos fijos sencilla, animada y
+                  fiable hasta una web con datos dinamicos de otras plataformas
+                  en tiempo real, como por ejemplo: google maps, youtube,
+                  facebook... Siempre con tu estilo personal, las mejores
+                  prácticas y adaptable a todas las pantallas.
+                </p>
+
+                <strong>Pros</strong>
+                <ul>
+                  <li>Apto para todos los bolsillos</li>
+                  <li>Adaptable a telefonos, ordenadores, tablets...</li>
+                  <li>Mostrar datos de google maps, youtube...</li>
+                  <li>Web personalizada a tu gusto y demanda</li>
+                </ul>
+              </div>
+              <div id="web-adv" class="service-close-detail">
+                <p>
+                  Servicio de desarrollo de aplicaciones web y multiplataforma a
+                  medida y a tu gusto. Edición de vídeo e imagen y puesta en
+                  producción en redes sociales. Ademas que siempre que me sea
+                  posible procuro dar bases de posicionamiento en internet como
+                  por ejemplo:
+                </p>
+              </div>
+              <div id="sup-basic" class="service-close-detail">
+                <p>
+                  Servicio de desarrollo de aplicaciones web y multiplataforma a
+                  medida y a tu gusto. Edición de vídeo e imagen y puesta en
+                  producción en redes sociales. Ademas que siempre que me sea
+                  posible procuro dar bases de posicionamiento en internet como
+                  por ejemplo:
+                </p>
+              </div>
+              <div id="sup-adv" class="service-close-detail">
+                <p>
+                  Servicio de desarrollo de aplicaciones web y multiplataforma a
+                  medida y a tu gusto. Edición de vídeo e imagen y puesta en
+                  producción en redes sociales. Ademas que siempre que me sea
+                  posible procuro dar bases de posicionamiento en internet como
+                  por ejemplo:
+                </p>
+              </div>
+            </div>
+
             <ul>
               <li>El mismo dominio web y nickname en todas las redes</li>
               <li>Analisis de nicho de mercado, palabras clave...</li>
               <li>Estrategias de contenido de calidad</li>
             </ul>
             <p>
-              Todos mis servicios tendran un post en el blog dando más detalles.
+              Todos mis servicios tendran un post en el blog dando más
+              service-close-detailss.
             </p>
-          </div>
-          <div>
+          </article>
+
+          <!-- Tabla de Servicios Por Hora -->
+          <article class="services-price-per-hour">
+            <h2>Precio por hora</h2>
+            <p>
+              Cunado pagan por hora me gusta trabajar delante del cliente o
+              grabarlo para mostrar el proceso del servicio que esta pagando.
+            </p>
             <table id="services-table">
               <thead>
                 <tr>
@@ -354,57 +496,57 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+            <script>
+              let sortDirection = false; // Para controlar si es ascendente o descendente
+
+              function sortTable(columnIndex) {
+                const table = document.getElementById("services-table");
+                const tbody = table.tBodies[0];
+                const rows = Array.from(tbody.rows);
+
+                // Remover flechas de todas las columnas
+                document
+                  .querySelectorAll("th")
+                  .forEach((th) => th.classList.remove("asc", "desc"));
+
+                // Alternar la dirección de ordenación
+                sortDirection = !sortDirection;
+
+                rows.sort((rowA, rowB) => {
+                  const cellA = rowA.cells[columnIndex].innerText.trim();
+                  const cellB = rowB.cells[columnIndex].innerText.trim();
+
+                  if (columnIndex === 1) {
+                    // Ordenar service-close-prices numéricamente
+                    return sortDirection
+                      ? parseFloat(cellA.replace(/[^\d.-]/g, "")) -
+                          parseFloat(cellB.replace(/[^\d.-]/g, ""))
+                      : parseFloat(cellB.replace(/[^\d.-]/g, "")) -
+                          parseFloat(cellA.replace(/[^\d.-]/g, ""));
+                  } else {
+                    return sortDirection
+                      ? cellA.localeCompare(cellB)
+                      : cellB.localeCompare(cellA);
+                  }
+                });
+
+                // Reagregar las filas ordenadas al tbody
+                rows.forEach((row) => tbody.appendChild(row));
+
+                // Añadir la clase asc o desc según corresponda
+                const header = table.querySelectorAll("th")[columnIndex];
+                header.classList.toggle("asc", sortDirection);
+                header.classList.toggle("desc", !sortDirection);
+              }
+            </script>
+          </article>
         </div>
       </section>
-      <script>
-        let sortDirection = false; // Para controlar si es ascendente o descendente
-
-        function sortTable(columnIndex) {
-          const table = document.getElementById("services-table");
-          const tbody = table.tBodies[0];
-          const rows = Array.from(tbody.rows);
-
-          // Remover flechas de todas las columnas
-          document
-            .querySelectorAll("th")
-            .forEach((th) => th.classList.remove("asc", "desc"));
-
-          // Alternar la dirección de ordenación
-          sortDirection = !sortDirection;
-
-          rows.sort((rowA, rowB) => {
-            const cellA = rowA.cells[columnIndex].innerText.trim();
-            const cellB = rowB.cells[columnIndex].innerText.trim();
-
-            if (columnIndex === 1) {
-              // Ordenar precios numéricamente
-              return sortDirection
-                ? parseFloat(cellA.replace(/[^\d.-]/g, "")) -
-                    parseFloat(cellB.replace(/[^\d.-]/g, ""))
-                : parseFloat(cellB.replace(/[^\d.-]/g, "")) -
-                    parseFloat(cellA.replace(/[^\d.-]/g, ""));
-            } else {
-              return sortDirection
-                ? cellA.localeCompare(cellB)
-                : cellB.localeCompare(cellA);
-            }
-          });
-
-          // Reagregar las filas ordenadas al tbody
-          rows.forEach((row) => tbody.appendChild(row));
-
-          // Añadir la clase asc o desc según corresponda
-          const header = table.querySelectorAll("th")[columnIndex];
-          header.classList.toggle("asc", sortDirection);
-          header.classList.toggle("desc", !sortDirection);
-        }
-      </script>
 
       <section id="portfolio" class="supersection">
         <div class="supercontainer">
           <nav aria-label="1" class="portfolio-dev-nav">
-            <h2>Portfolio</h2>
+            <h2>Portfolio dev</h2>
             <div>
               <!-- Campo de búsqueda para repositorios -->
               <input
@@ -425,8 +567,6 @@
           </div>
 
           <script src="portfolio.js"></script>
-
-          <p>Check out some of my latest projects:</p>
         </div>
       </section>
 

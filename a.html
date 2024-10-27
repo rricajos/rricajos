@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Desarrollo Web</title>
+    <style>
+        /* CSS Base */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .paquete {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .paquete:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .paquete h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #007bff;
+        }
+
+        .paquete p {
+            margin: 10px 0;
+        }
+
+        .precio {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .detalle {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .mostrar-mas {
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        /* Mobile friendly */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Paquetes de Desarrollo Web</h1>
+
+        <!-- Paquete: Sitio Web Básico -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>Sitio Web Básico</h3>
+            <p>Un sitio web de 5-10 páginas con diseño simple y optimización SEO inicial.</p>
+            <p class="precio">$800 - $1,500</p>
+            <div class="detalle">
+                <p>Ideal para pequeñas empresas o proyectos personales. Incluye diseño responsivo y optimización básica para buscadores.</p>
+                <p><strong>Tiempo estimado:</strong> 3 semanas.</p>
+            </div>
+        </div>
+
+        <!-- Paquete: Tienda en Línea Completa -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>Tienda en Línea Completa</h3>
+            <p>Desarrollo de una tienda en línea con hasta 50 productos y seguridad básica.</p>
+            <p class="precio">$2,000 - $4,000</p>
+            <div class="detalle">
+                <p>Integraciones de pago, carrito de compras, y opciones de envío. Perfecto para empezar a vender online.</p>
+                <p><strong>Tiempo estimado:</strong> 5-7 semanas.</p>
+            </div>
+        </div>
+
+        <!-- Paquete: Mantenimiento + Seguridad -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>Mantenimiento + Seguridad</h3>
+            <p>Mantenimiento mensual del sitio web y auditoría de seguridad.</p>
+            <p class="precio">$200/mes</p>
+            <div class="detalle">
+                <p>Incluye actualizaciones regulares, monitoreo de seguridad y pequeñas mejoras continuas.</p>
+            </div>
+        </div>
+
+        <!-- Paquete: Aplicación Web Interactiva -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>Aplicación Web Interactiva</h3>
+            <p>Aplicaciones dinámicas con interacción de usuarios como foros o reservas.</p>
+            <p class="precio">$5,000 - $8,000</p>
+            <div class="detalle">
+                <p>Desarrollo de plataformas interactivas, con funciones avanzadas y personalizadas para usuarios.</p>
+                <p><strong>Tiempo estimado:</strong> 8-10 semanas.</p>
+            </div>
+        </div>
+
+        <!-- Paquete: Tienda en Línea Avanzada -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>Tienda en Línea Avanzada</h3>
+            <p>Solución completa para tiendas con más de 100 productos y características avanzadas.</p>
+            <p class="precio">$4,000 - $7,000</p>
+            <div class="detalle">
+                <p>Funcionalidades avanzadas de envío, inventario, y personalización de la experiencia del usuario.</p>
+                <p><strong>Tiempo estimado:</strong> 6-8 semanas.</p>
+            </div>
+        </div>
+
+        <!-- Paquete: SEO y Marketing Digital -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>SEO y Marketing Digital</h3>
+            <p>Optimización para motores de búsqueda y estrategias básicas de marketing digital.</p>
+            <p class="precio">$1,500 - $3,000</p>
+            <div class="detalle">
+                <p>Incluye optimización técnica de SEO, estrategias de contenido y configuraciones iniciales de Google Ads.</p>
+                <p><strong>Tiempo estimado:</strong> 4 semanas.</p>
+            </div>
+        </div>
+
+        <!-- Paquete: Landing Page Premium -->
+        <div class="paquete" onclick="toggleDetail(this)">
+            <h3>Landing Page Premium</h3>
+            <p>Página de aterrizaje optimizada para conversiones con diseño moderno.</p>
+            <p class="precio">$500 - $1,000</p>
+            <div class="detalle">
+                <p>Diseño personalizado y optimización de velocidad, ideal para campañas publicitarias y promociones.</p>
+                <p><strong>Tiempo estimado:</strong> 1-2 semanas.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript para mostrar/ocultar detalles
+        function toggleDetail(element) {
+            var detalle = element.querySelector('.detalle');
+            if (detalle.style.display === "none" || detalle.style.display === "") {
+                detalle.style.display = "block";
+            } else {
+                detalle.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
