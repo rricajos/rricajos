@@ -1,11 +1,11 @@
 // URLs de repositorios de ejemplo
 const repoUrls = [
-  "https://api.github.com/repos/rricajos/DAM",
-  "https://api.github.com/repos/rricajos/DAW",
-  "https://api.github.com/repos/rricajos/sierra",
-  "https://api.github.com/repos/rricajos/rick-api-junkie",
-  "https://api.github.com/repos/rricajos/cafe-bar-castillo",
-  "https://api.github.com/repos/torvalds/linux"
+  // "https://api.github.com/repos/rricajos/DAM",
+  // "https://api.github.com/repos/rricajos/DAW",
+  // "https://api.github.com/repos/rricajos/sierra",
+  // "https://api.github.com/repos/rricajos/rick-api-junkie",
+  // "https://api.github.com/repos/rricajos/cafe-bar-castillo",
+
 
 ];
 
@@ -76,7 +76,7 @@ function createRepoCard(repo) {
     const langButton = document.createElement('button');
     
     // Aquí aplicamos la conversión de bytes
-    langButton.textContent = `${language} (${formatBytes(size)})`;
+    langButton.textContent = `${language} ${formatBytes(size)}`;
     langButton.dataset.language = language;
     langButton.classList.add('language-button');
 
@@ -156,7 +156,7 @@ function filterByRepoName(query) {
 
 // Función auxiliar para convertir bytes a KB, MB, GB, etc.
 function formatBytes(bytes) {
-  const units = ['bytes', 'KB', 'MB', 'GB', 'TB'];
+  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
   let i = 0;
   let value = bytes;
 
@@ -165,7 +165,7 @@ function formatBytes(bytes) {
     i++;
   }
 
-  return `${Math.max(value.toFixed(2), parseFloat(value.toFixed(0)))} ${units[i]}`;
+  return `${Math.max(value.toFixed(2), parseFloat(value.toFixed(0)))}${units[i]}`;
 }
 
 // Iniciar el proceso al cargar la página
