@@ -36,7 +36,7 @@
         max-width: 1280px;
         width: 100%;
         margin: 0 auto;
-        padding: 1rem;
+        padding: 0 1rem;
       }
 
       /* Ocultar scrollbar en WebKit */
@@ -56,9 +56,7 @@
         <h1>Ricard Penin Honrubia</h1>
         <hr />
         <p>
-          Soy un pequeño emprendedor preparado para hacerte pensar en grande, te
-          ofrezco tu paginas web a medida, asesoria en marketing y redes y
-          asistencia tecnologica general entre otras muchas cosas.
+          Me encanta todo lo relacionado con internet, aplicaciones y servidores.   
         </p>
         <button id="heroheaderCTA" class="cta-button">
           ¡Hagamos realidad tus ideas!
@@ -92,105 +90,105 @@
           </div>
         </form>
       </div>
-    </header>
 
-    <!-- JavaScript para el seguimiento del mouse y el formulario dinámico -->
-    <script>
-      const superheader = document.querySelector(".superheader");
+      <!-- JavaScript para el seguimiento del mouse y el formulario dinámico -->
+      <script>
+        const superheader = document.querySelector(".superheader");
 
-      const heroheader = document.getElementById("heroheader");
-      const heroheaderCTA = document.getElementById("heroheaderCTA");
+        const heroheader = document.getElementById("heroheader");
+        const heroheaderCTA = document.getElementById("heroheaderCTA");
 
-      const heroform = document.getElementById("heroform");
-      const heroformEMail = document.getElementById("heroformEMail");
-      const heroformTextArea = document.getElementById("heroformTextArea");
-      const heroformSubmit = document.getElementById("heroformSubmit");
-      const heroformBack = document.getElementById("heroformBack");
+        const heroform = document.getElementById("heroform");
+        const heroformEMail = document.getElementById("heroformEMail");
+        const heroformTextArea = document.getElementById("heroformTextArea");
+        const heroformSubmit = document.getElementById("heroformSubmit");
+        const heroformBack = document.getElementById("heroformBack");
 
-      // Lógica de seguimiento del mouse para el efecto de fondo
-      document.addEventListener("mousemove", (e) => {
-        const { clientX: mouseX, clientY: mouseY } = e;
-        const { innerWidth: width, innerHeight: height } = window;
+        // Lógica de seguimiento del mouse para el efecto de fondo
+        document.addEventListener("mousemove", (e) => {
+          const { clientX: mouseX, clientY: mouseY } = e;
+          const { innerWidth: width, innerHeight: height } = window;
 
-        const moveX = (mouseX / width - 0.5) * 30;
-        const moveY = (mouseY / height - 0.5) * 30;
+          const moveX = (mouseX / width - 0.5) * 30;
+          const moveY = (mouseY / height - 0.5) * 30;
 
-        superheader.style.backgroundPosition = `${moveX}px ${moveY}px`;
-      });
+          superheader.style.backgroundPosition = `${moveX}px ${moveY}px`;
+        });
 
-      heroheaderCTA.addEventListener("click", () => {
-        heroheader.style.display = "none";
-        heroform.style.display = "flex ";
-      });
+        heroheaderCTA.addEventListener("click", () => {
+          heroheader.style.display = "none";
+          heroform.style.display = "flex ";
+        });
 
-      heroformBack.addEventListener("click", () => {
-        heroheader.style.display = "flex";
-        heroform.style.display = "none";
-      });
+        heroformBack.addEventListener("click", () => {
+          heroheader.style.display = "flex";
+          heroform.style.display = "none";
+        });
 
-      // Añadir el evento para enviar el formulario
-      heroform.addEventListener("submit", (event) => {
-        event.preventDefault();
+        // Añadir el evento para enviar el formulario
+        heroform.addEventListener("submit", (event) => {
+          event.preventDefault();
 
-        // Obtener los valores del formulario
-        const title = document.getElementById("title").value;
-        const message = document.getElementById("message").value;
+          // Obtener los valores del formulario
+          const title = document.getElementById("title").value;
+          const message = document.getElementById("message").value;
 
-        // Aquí puedes integrar la lógica para enviar el correo
+          // Aquí puedes integrar la lógica para enviar el correo
 
-        alert(`Formulario enviado:\nTítulo: ${title}\nMensaje: ${message}`);
-      });
+          alert(`Formulario enviado:\nTítulo: ${title}\nMensaje: ${message}`);
+        });
 
-      // Función de simulación de escritura
-      function typingEffect(element, texts) {
-        let textoIndex = 0; // índice del texto actual
-        let charIndex = 0; // índice del carácter actual
-        let isDeleting = false; // Para saber si está borrando
-        let currentText = texts[textoIndex]; // Texto actual
+        // Función de simulación de escritura
+        function typingEffect(element, texts) {
+          let textoIndex = 0; // índice del texto actual
+          let charIndex = 0; // índice del carácter actual
+          let isDeleting = false; // Para saber si está borrando
+          let currentText = texts[textoIndex]; // Texto actual
 
-        function type() {
-          // Actualiza el placeholder según si está escribiendo o borrando
-          if (!isDeleting && charIndex <= currentText.length) {
-            element.setAttribute(
-              "placeholder",
-              currentText.substring(0, charIndex)
-            );
-            charIndex++;
-          } else if (isDeleting && charIndex >= 0) {
-            element.setAttribute(
-              "placeholder",
-              currentText.substring(0, charIndex)
-            );
-            charIndex--;
+          function type() {
+            // Actualiza el placeholder según si está escribiendo o borrando
+            if (!isDeleting && charIndex <= currentText.length) {
+              element.setAttribute(
+                "placeholder",
+                currentText.substring(0, charIndex)
+              );
+              charIndex++;
+            } else if (isDeleting && charIndex >= 0) {
+              element.setAttribute(
+                "placeholder",
+                currentText.substring(0, charIndex)
+              );
+              charIndex--;
+            }
+
+            // Si ha terminado de escribir, comienza a borrar
+            if (charIndex === currentText.length && !isDeleting) {
+              isDeleting = true;
+              setTimeout(type, 9000); // Espera un segundo antes de empezar a borrar
+            }
+            // Si ha terminado de borrar, pasa al siguiente texto
+            else if (charIndex === 0 && isDeleting) {
+              isDeleting = false;
+              textoIndex = (textoIndex + 1) % texts.length; // Cambia al siguiente texto
+              currentText = texts[textoIndex]; // Actualiza el texto actual
+              setTimeout(type, 1000); // Espera un momento antes de empezar a escribir
+            } else {
+              setTimeout(type, isDeleting ? 25 : 100); // Velocidad de escritura/borrado
+            }
           }
 
-          // Si ha terminado de escribir, comienza a borrar
-          if (charIndex === currentText.length && !isDeleting) {
-            isDeleting = true;
-            setTimeout(type, 9000); // Espera un segundo antes de empezar a borrar
-          }
-          // Si ha terminado de borrar, pasa al siguiente texto
-          else if (charIndex === 0 && isDeleting) {
-            isDeleting = false;
-            textoIndex = (textoIndex + 1) % texts.length; // Cambia al siguiente texto
-            currentText = texts[textoIndex]; // Actualiza el texto actual
-            setTimeout(type, 1000); // Espera un momento antes de empezar a escribir
-          } else {
-            setTimeout(type, isDeleting ? 25 : 100); // Velocidad de escritura/borrado
-          }
+          type();
         }
 
-        type();
-      }
+        const textareas = [
+          " ej -> Hola buenas tardes, necesito hacer una pagina web para mi bar con la carta, el horario y las reseñas de google maps. ¿Seria posible que la carta pudiera actulizarla yo mismo desde mi excel/google sheet?",
+          " ej -> Hola Ricky, estoy buscando un editor de contenido de mi banda de Rock, tambien estamos pensando en hacer un poco de merchandasing de nuestro proximo album, espero tu respuesta.",
+          " ej -> Hey rricajos, te he visto por Youtube y me gustaria saber si podriamos quedar para hacerte una consulta para trabjar como freelance sin experiencia",
+        ];
 
-      const textareas = [
-        " ej -> Hola buenas tardes, necesito hacer una pagina web para mi bar con la carta, el horario y las reseñas de google maps. ¿Seria posible que la carta pudiera actulizarla yo mismo desde mi excel/google sheet?",
-        " ej -> Hola Ricky, estoy buscando un editor de contenido de mi banda de Rock, tambien estamos pensando en hacer un poco de merchandasing de nuestro proximo album, espero tu respuesta.",
-        " ej -> Hey rricajos, te he visto por Youtube y me gustaria saber si podriamos quedar para hacerte una consulta para trabjar como freelance sin experiencia",
-      ];
-
-      typingEffect(heroformTextArea, textareas);
-    </script>
+        typingEffect(heroformTextArea, textareas);
+      </script>
+    </header>
 
     <!-- Sticky Nav -->
     <nav class="supernav" aria-label="1">
@@ -202,7 +200,7 @@
         >
           Ricajos.com
         </button>
-        <div class="super-sub-nav">
+        <div class="subnav-desktop">
           <button
             id="supernav-button-blog"
             class="supernav-button"
@@ -232,6 +230,56 @@
             Tienda
           </button>
         </div>
+
+        <div id="super-sub-nav-not-desktop">
+          <button
+            id="notd-subnav-button"
+            onclick="openSuvNav()"
+          >+
+          </button>
+          <script>
+            function openSuvNav() {
+              if (document.getElementById('notd-subnav').classList.contains('close-subnav')) {
+                document.getElementById('notd-subnav').classList.remove('close-subnav')
+              } else {
+                document.getElementById('notd-subnav').classList.add('close-subnav')
+              }
+            }
+          </script>
+
+       
+        </div>
+        <div id="notd-subnav" class="close-subnav">
+          <button
+            id="supernav-button-blog"
+            class="supernav-button"
+            onclick="nav('blog')"
+          >
+            Blog
+          </button>
+          <button
+            id="supernav-button-services"
+            class="supernav-button active"
+            onclick="nav('services')"
+          >
+            Servicios
+          </button>
+          <button
+            id="supernav-button-portfolio"
+            class="supernav-button"
+            onclick="nav('portfolio')"
+          >
+            Portfolio
+          </button>
+          <button
+            id="supernav-button-shop"
+            class="supernav-button"
+            onclick="nav('shop')"
+          >
+            Tienda
+          </button>
+        </div>
+        
       </div>
     </nav>
 
@@ -319,6 +367,42 @@
                 <!-- Sitio Web AutoMutable -->
                 <button
                   class="service-close-pack"
+                  onclick="toggleDetail('sup-adv')"
+                >
+                  <div class="service-close-pack-header">
+                    <div class="service-close-pack-header-right">
+                      <h3>Estadísticas</h3>
+                    </div>
+                    <p class="service-close-price">32€ - 64€</p>
+                  </div>
+
+                  <p>
+                    Informe de estádisticas en redes sociales, posicionamiento
+                    en google y/o actividad en tu web
+                  </p>
+                </button>
+
+                <!-- Servicios de Redes Sociales -->
+                <button
+                  class="service-close-pack"
+                  onclick="toggleDetail('sup-adv')"
+                >
+                  <div class="service-close-pack-header">
+                    <div class="service-close-pack-header-right">
+                      <h3>Redes Sociales</h3>
+                    </div>
+                    <p class="service-close-price">64€ / semana</p>
+                  </div>
+
+                  <p>
+                    Generar y publicar contenido audiovisual, responder
+                    comentarios y reseñas
+                  </p>
+                </button>
+
+                <!-- Servicio de Soporte Básico -->
+                <button
+                  class="service-close-pack"
                   onclick="toggleDetail('sup-basic')"
                 >
                   <div class="service-close-pack-header">
@@ -330,13 +414,12 @@
 
                   <ul>
                     <li>Web en linea 24/7</li>
-                    <li>Certificado de Conexion Segura</li>
-                    <li>Un email corporativo personalizado</li>
-                    <li>CopyRight actualizado y en regla</li>
+                    <li>Conexion Segura HTTPS</li>
+                    <li>Tres emails Corporativos</li>
                   </ul>
                 </button>
 
-                <!-- Sitio Web AutoMutable -->
+                <!-- Servicio de Soporte Avanzado -->
                 <button
                   class="service-close-pack"
                   onclick="toggleDetail('sup-adv')"
@@ -349,10 +432,16 @@
                   </div>
 
                   <ul>
-                    <li>Super reporte mensual.</li>
-                    <li>CopyRight</li>
-                    <li>Tres emails personalizables</li>
-                    <li>Telefono de contacto directo</li>
+                    <li>Consultas gratuitas</li>
+                    <li>Teléfono de contacto</li>
+                    <li>
+                      Incluye:
+                      <ul>
+                        <li>Soporte Básico</li>
+                        <li>Redes Sociales /sem</li>
+                        <li>Estadísticas /sem</li>
+                      </ul>
+                    </li>
                   </ul>
                 </button>
               </div>
@@ -440,59 +529,48 @@
                 <tr>
                   <th onclick="sortTable(0)">Servicio</th>
                   <th onclick="sortTable(1)">Coste</th>
-                  <th onclick="sortTable(2)">Tiempo</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Página web estática</td>
                   <td>6€ / Hora</td>
-                  <td>2 horas - 8 horas</td>
                 </tr>
                 <tr>
                   <td>Página web dinámica</td>
                   <td>10€ / Hora</td>
-                  <td>5 horas - 15 horas</td>
                 </tr>
                 <tr>
                   <td>Base de Datos Relacional</td>
                   <td>10€ / Hora</td>
-                  <td>5 horas - 15 horas</td>
                 </tr>
                 <tr>
                   <td>Base de Datos No Relacional</td>
                   <td>15€ / Hora</td>
-                  <td>5 horas - 15 horas</td>
                 </tr>
                 <tr>
                   <td>Servidor RestFulAPI</td>
                   <td>10€ / Hora</td>
-                  <td>5 horas - 15 horas</td>
                 </tr>
                 <tr>
                   <td>SEO y optimización</td>
                   <td>8€ / Hora</td>
-                  <td>3 horas - 10 horas</td>
                 </tr>
                 <tr>
                   <td>Diseño gráfico</td>
                   <td>12€ / Hora</td>
-                  <td>1 horas - 6 horas</td>
                 </tr>
                 <tr>
                   <td>Edición de vídeo</td>
                   <td>12€ / Hora</td>
-                  <td>2 horas - 6 horas</td>
                 </tr>
                 <tr>
                   <td>Consultoría tecnológica</td>
                   <td>15€ / Hora</td>
-                  <td>1 hora - 5 horas</td>
                 </tr>
                 <tr>
                   <td>Mantenimiento web</td>
                   <td>10€ / mes</td>
-                  <td>1 hora - 4 horas</td>
                 </tr>
               </tbody>
             </table>

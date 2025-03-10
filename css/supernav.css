@@ -1,13 +1,14 @@
 /* Sticky Nav */
 .supernav {
-  min-height: 10vh;
+  min-height: 3vh;
   position: sticky;
   top: 0;
   bottom: 0;
   width: 100%;
   background-color: #0A0921;
   z-index: 3;
-
+  display: flex;
+  box-shadow: 8px 8px 8px 6px black;
 }
 
 .supernav > div {
@@ -21,6 +22,39 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   gap: 2rem;
+}
+
+#notd-subnav-button {
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 2rem;
+  margin: 1rem;
+  background-color: #007BFF;
+
+}
+#super-sub-nav-not-desktop {
+  display: none;
+}
+
+#notd-subnav {
+  background-color: #0A0921;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 85%;
+  width: 100%;
+  left: 0;
+  padding: 1rem 1rem 0 1rem;
+  transition: all .3s ease-out;
+  z-index: -2;
+}
+
+#notd-subnav.close-subnav {
+  bottom: -300%;
 }
 
 
@@ -66,3 +100,33 @@
   opacity: 1; 
   color: #c0deff;
 }
+
+nav > .supercontainer {
+
+    
+}
+@media screen and (max-width: 1280px) {
+ 
+
+  nav > .supercontainer {
+    
+    max-width: 720px;
+    padding: 0 1rem !important;
+  }
+
+
+}
+
+@media screen and (max-width: 720px) {
+  .supernav {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+  }
+  .subnav-desktop {
+    display: none !important;
+  }
+  #super-sub-nav-not-desktop {
+    display: block;
+  }
+ }

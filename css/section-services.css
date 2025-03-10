@@ -1,19 +1,18 @@
 #services>.supercontainer {
   
-  display: grid;
-  grid-template-columns:
-    repeat(
-      auto-fit, 
-      minmax(525px, 1fr)
-      );
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   gap: 2rem;
   position: relative;
   margin: 2rem auto;
 }
+#services>.supercontainer>.services-price-close {
 
+}
 #services>.supercontainer>.services-price-close,
 #services>.supercontainer>.services-price-per-hour {  
-
+  max-width: 600px;
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
