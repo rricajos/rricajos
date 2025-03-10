@@ -1,7 +1,7 @@
 /* Manteniendo el estilo del header para el formulario */
 .superheader {
   position: relative;
-  height: 90vh;
+  height: 96vh;
   background: url('../space.jpg') no-repeat center center/cover;
   display: flex;
   flex-flow: column nowrap;
