@@ -1,6 +1,6 @@
 ### hola mundo 
 
-Soy un programador junior con experiencia en desarrollo de apps nativas y paginas web
+Soy un programador con experiencia en desarrollo de apps nativas y paginas web
 
 
 <!--
