@@ -116,10 +116,10 @@
     right: 0;
     box-shadow: none;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(10, 9, 33, 0.92);
+    background: rgba(10, 9, 33, 0.95);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0.5rem);
   }
 
   .mobile-tabbar {
@@ -184,9 +184,10 @@
     transform: scale(0.92);
   }
 
-  /* Space for the fixed bottom nav */
+  /* Space for the fixed bottom nav + system nav */
   body {
-    padding-bottom: 4.5rem;
+    padding-bottom: 5.5rem;
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0.5rem));
   }
 
   /* Footer needs extra bottom margin on mobile */
