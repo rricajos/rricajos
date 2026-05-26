@@ -106,6 +106,43 @@
   font-size: 0.85rem;
 }
 
+/* Fact cards */
+.fact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0 1rem 4rem;
+}
+
+.fact-card {
+  background-color: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.fact-card:hover {
+  border-color: #007bff;
+  transform: translateY(-3px);
+}
+
+.fact-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5ba8ff;
+  line-height: 1.1;
+}
+
+.fact-label {
+  font-size: 0.85rem;
+  color: #999;
+}
+
 @media screen and (max-width: 720px) {
   .about-me {
     padding: 2rem 1rem;
@@ -114,5 +151,12 @@
   .about-me-avatar img {
     width: 140px;
     height: 140px;
+  }
+  .fact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 1rem 2rem;
+  }
+  .fact-number {
+    font-size: 1.5rem;
   }
 }
