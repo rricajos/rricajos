@@ -8,10 +8,33 @@
   color: #fff;
 }
 
-#repos-container {
+.repos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+}
+
+.section-subtitle {
+  color: #999;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.portfolio-section-title {
+  margin-top: 3rem;
+  color: #fff;
+}
+
+/* Pinned card highlight */
+.pinned-card {
+  border-color: rgba(0, 123, 255, 0.3);
+  background: linear-gradient(135deg, #1a1a2e 0%, #1c1c3a 100%);
+}
+
+.pinned-card h3::before {
+  content: "\2605 ";
+  color: #f0c040;
+  font-size: 0.9rem;
 }
 
 .repo-card {

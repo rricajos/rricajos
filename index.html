@@ -173,48 +173,26 @@
             Contacto
           </button>
         </div>
+      </div>
 
-        <!-- Mobile hamburger -->
-        <div id="super-sub-nav-not-desktop">
-          <button id="notd-subnav-button" onclick="openSuvNav()" aria-label="Menu de navegacion">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-          </button>
-          <script>
-            function openSuvNav() {
-              const subnav = document.getElementById("notd-subnav");
-              const btn = document.getElementById("notd-subnav-button");
-              subnav.classList.toggle("close-subnav");
-              btn.classList.toggle("open");
-            }
-          </script>
-        </div>
-
-        <!-- Mobile dropdown -->
-        <div id="notd-subnav" class="close-subnav">
-          <button
-            class="supernav-button active"
-            data-section="services"
-            onclick="nav('services')"
-          >
-            Servicios
-          </button>
-          <button
-            class="supernav-button"
-            data-section="portfolio"
-            onclick="nav('portfolio')"
-          >
-            Portfolio
-          </button>
-          <button
-            class="supernav-button"
-            data-section="contact"
-            onclick="nav('contact')"
-          >
-            Contacto
-          </button>
-        </div>
+      <!-- Mobile tab bar -->
+      <div class="mobile-tabbar">
+        <button class="tabbar-btn" data-section="home" onclick="nav('home')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Inicio</span>
+        </button>
+        <button class="tabbar-btn active" data-section="services" onclick="nav('services')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span>Servicios</span>
+        </button>
+        <button class="tabbar-btn" data-section="portfolio" onclick="nav('portfolio')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Portfolio</span>
+        </button>
+        <button class="tabbar-btn" data-section="contact" onclick="nav('contact')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Contacto</span>
+        </button>
       </div>
     </nav>
 
@@ -558,9 +536,14 @@
       <!-- Portfolio -->
       <section id="portfolio" class="supersection">
         <div class="supercontainer">
-          <h2>Portfolio</h2>
-          <p class="section-subtitle">Mis proyectos destacados en GitHub.</p>
-          <div id="repos-container"></div>
+          <h2>Destacados</h2>
+          <p class="section-subtitle">Mis proyectos principales.</p>
+          <div id="pinned-container" class="repos-grid"></div>
+
+          <h2 class="portfolio-section-title">Todos los repositorios</h2>
+          <p class="section-subtitle">Proyectos, estudios y experimentos.</p>
+          <div id="all-repos-container" class="repos-grid"></div>
+
           <script src="portfolio.js"></script>
         </div>
       </section>
@@ -630,33 +613,23 @@
           const fout = document.getElementById(currentSection);
           const fin = document.getElementById(sectionId);
 
-          // Usar querySelectorAll con data-section para evitar IDs duplicados
-          document
-            .querySelectorAll(
-              '.supernav-button[data-section="' + currentSection + '"]'
-            )
-            .forEach((btn) => btn.classList.remove("active"));
-          document
-            .querySelectorAll(
-              '.supernav-button[data-section="' + sectionId + '"]'
-            )
-            .forEach((btn) => btn.classList.add("active"));
-
-          // Cerrar menu movil al navegar
-          const mobileNav = document.getElementById("notd-subnav");
-          const hamburgerBtn = document.getElementById("notd-subnav-button");
-          if (!mobileNav.classList.contains("close-subnav")) {
-            mobileNav.classList.add("close-subnav");
-            hamburgerBtn.classList.remove("open");
-          }
+          // Actualizar desktop nav + mobile tabbar
+          document.querySelectorAll('[data-section="' + currentSection + '"]')
+            .forEach(function(btn) { btn.classList.remove("active"); });
+          document.querySelectorAll('[data-section="' + sectionId + '"]')
+            .forEach(function(btn) { btn.classList.add("active"); });
 
           try {
             fout.classList.remove("fade-in");
             fout.classList.add("fade-out");
-            setTimeout(() => {
+            setTimeout(function() {
               fout.classList.remove("active");
               fin.classList.add("active");
-              setTimeout(() => {
+
+              // Autoscroll al inicio de la seccion
+              window.scrollTo({ top: 0, behavior: "smooth" });
+
+              setTimeout(function() {
                 fin.classList.remove("fade-out");
                 fin.classList.add("fade-in");
                 navegatting = false;
