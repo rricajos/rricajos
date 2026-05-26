@@ -10,6 +10,12 @@
   display: block;
 }
 
+/* Espaciado vertical estándar para todas las secciones */
+.supersection > .supercontainer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .fade-out {
   opacity: 0;
 }
@@ -59,7 +65,6 @@
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding: 4rem 1rem;
 }
 
 .about-me-text {
@@ -67,9 +72,10 @@
   max-width: 600px;
 }
 
+.about-me-text h1,
 .about-me-text h2 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
   color: #fff;
 }
 
@@ -111,7 +117,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  padding: 0 1rem 4rem;
 }
 
 .fact-card {
@@ -144,9 +149,16 @@
 }
 
 @media screen and (max-width: 720px) {
+  .supersection > .supercontainer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
   .about-me {
-    padding: 2rem 1rem;
     gap: 2rem;
+  }
+  .about-me-text h1,
+  .about-me-text h2 {
+    font-size: 1.8rem;
   }
   .about-me-avatar img {
     width: 140px;
@@ -154,7 +166,6 @@
   }
   .fact-cards-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 1rem 2rem;
   }
   .fact-number {
     font-size: 1.5rem;
