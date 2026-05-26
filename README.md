@@ -1,6 +1,6 @@
 # Ricard Penin Honrubia
 
-🍀 Desarrollador en Conexia Telecom y freelance en Barcelona, con más de 6 años de experiencia construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura self-hosted (proxies, hosting, despliegues automatizados).
+🍀 Ingeniero DevOps en Conexia Telecom y programador freelance en Barcelona, con muchos años de experiencia construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura self-hosted (proxies, hosting, despliegues automatizados).
 
 Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base sólida en sistemas Unix y C++. Eso se traduce en proyectos que no solo funcionan el día del entregable, sino que aguantan en producción.
 
