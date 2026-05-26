@@ -9,7 +9,22 @@ const pinnedRepos = [
 
 const reposContainer = document.getElementById("repos-container");
 
+function showSkeletons() {
+  reposContainer.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    const skeleton = document.createElement("div");
+    skeleton.classList.add("repo-card", "skeleton-card");
+    skeleton.innerHTML =
+      '<div class="skeleton-line skeleton-title"></div>' +
+      '<div class="skeleton-line skeleton-text"></div>' +
+      '<div class="skeleton-line skeleton-text short"></div>' +
+      '<div class="skeleton-line skeleton-badges"></div>';
+    reposContainer.appendChild(skeleton);
+  }
+}
+
 async function loadPinnedRepos() {
+  showSkeletons();
   try {
     const repos = await Promise.all(
       pinnedRepos.map(async (url) => {
@@ -46,7 +61,7 @@ function renderRepos(repos) {
     card.href = repo.html_url;
     card.target = "_blank";
     card.rel = "noopener";
-    card.classList.add("repo-card");
+    card.classList.add("repo-card", "animate-in");
 
     const langKeys = Object.keys(repo.languages);
     const langHTML = langKeys

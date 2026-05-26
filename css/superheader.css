@@ -2,7 +2,9 @@
 .superheader {
   position: relative;
   height: 96vh;
-  background: url("../space.jpg") no-repeat center center/cover;
+  background: url("../space.jpg") no-repeat center center;
+  background-size: 110%;
+  transition: background-position 0.15s ease-out;
   display: flex;
   flex-flow: column nowrap;
   overflow: hidden;
@@ -14,14 +16,12 @@
 .superheader::before {
   content: "";
   position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  background: inherit;
-  filter: brightness(50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  transition: background-position 0.1s ease-out;
 }
 
 .hero-content {
