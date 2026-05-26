@@ -37,7 +37,7 @@ function createCard(repo, isPinned) {
     ? '<span class="repo-homepage">Demo &rarr;</span>'
     : "";
 
-  var desc = repo.description || "Sin descripcion.";
+  var desc = repo.description || "Sin descripción.";
   if (desc.length > 100) desc = desc.substring(0, 100) + "...";
 
   card.innerHTML =
@@ -90,7 +90,7 @@ async function loadPortfolio() {
       }
     });
 
-    // Ordenar pinned segun el orden definido
+    // Ordenar pinned según el orden definido
     pinned.sort(function(a, b) {
       return PINNED_NAMES.indexOf(a.name) - PINNED_NAMES.indexOf(b.name);
     });
@@ -104,7 +104,7 @@ async function loadPortfolio() {
     // Renderizar otros
     allContainer.innerHTML = "";
     if (others.length === 0) {
-      allContainer.innerHTML = '<p style="color:#777;">No hay mas repositorios.</p>';
+      allContainer.innerHTML = '<p style="color:#777;">No hay más repositorios.</p>';
     } else {
       others.forEach(function(repo) {
         allContainer.appendChild(createCard(repo, false));
