@@ -1,93 +1,123 @@
-// Repos pinneados de rricajos
-const pinnedRepos = [
-  "https://api.github.com/repos/rricajos/DAM",
-  "https://api.github.com/repos/rricajos/outlink",
-  "https://api.github.com/repos/rricajos/smm",
-  "https://api.github.com/repos/rricajos/languages",
-  "https://api.github.com/repos/rricajos/qrsgen",
-];
+// Portfolio: Destacados (pinned) + Todos los repos
+const GITHUB_USER = "rricajos";
+const PINNED_NAMES = ["qrsgen", "smm", "outlink", "DAM", "languages"];
+const HIDDEN_REPOS = ["rricajos"]; // profile repo
 
-const reposContainer = document.getElementById("repos-container");
+const pinnedContainer = document.getElementById("pinned-container");
+const allContainer = document.getElementById("all-repos-container");
 
-function showSkeletons() {
-  reposContainer.innerHTML = "";
-  for (let i = 0; i < 5; i++) {
-    const skeleton = document.createElement("div");
+function showSkeletons(container, count) {
+  container.innerHTML = "";
+  for (var i = 0; i < count; i++) {
+    var skeleton = document.createElement("div");
     skeleton.classList.add("repo-card", "skeleton-card");
     skeleton.innerHTML =
       '<div class="skeleton-line skeleton-title"></div>' +
       '<div class="skeleton-line skeleton-text"></div>' +
       '<div class="skeleton-line skeleton-text short"></div>' +
       '<div class="skeleton-line skeleton-badges"></div>';
-    reposContainer.appendChild(skeleton);
+    container.appendChild(skeleton);
   }
 }
 
-async function loadPinnedRepos() {
-  showSkeletons();
+function createCard(repo, isPinned) {
+  var card = document.createElement("a");
+  card.href = repo.html_url;
+  card.target = "_blank";
+  card.rel = "noopener";
+  card.classList.add("repo-card", "animate-in");
+  if (isPinned) card.classList.add("pinned-card");
+
+  var langHTML = "";
+  if (repo.language) {
+    langHTML = '<span class="language-badge">' + repo.language + "</span>";
+  }
+
+  var homepageHTML = repo.homepage
+    ? '<span class="repo-homepage">Demo &rarr;</span>'
+    : "";
+
+  var desc = repo.description || "Sin descripcion.";
+  if (desc.length > 100) desc = desc.substring(0, 100) + "...";
+
+  card.innerHTML =
+    "<h3>" + repo.name + "</h3>" +
+    "<p>" + desc + "</p>" +
+    '<div class="repo-meta">' +
+    '<div class="repo-languages">' + langHTML + "</div>" +
+    homepageHTML +
+    "</div>";
+
+  return card;
+}
+
+async function loadPortfolio() {
+  showSkeletons(pinnedContainer, 5);
+  showSkeletons(allContainer, 6);
+
   try {
-    const repos = await Promise.all(
-      pinnedRepos.map(async (url) => {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Failed to fetch " + url);
-        const repo = await response.json();
+    // Cargar todos los repos (paginados)
+    var allRepos = [];
+    var page = 1;
+    var hasMore = true;
 
-        const langResponse = await fetch(repo.languages_url);
-        const languages = langResponse.ok ? await langResponse.json() : {};
+    while (hasMore) {
+      var response = await fetch(
+        "https://api.github.com/users/" + GITHUB_USER + "/repos?sort=updated&per_page=50&page=" + page
+      );
+      if (!response.ok) throw new Error("API error: " + response.status);
+      var batch = await response.json();
+      if (batch.length === 0) {
+        hasMore = false;
+      } else {
+        allRepos = allRepos.concat(batch);
+        page++;
+      }
+    }
 
-        return {
-          name: repo.name,
-          description: repo.description || "Sin descripcion disponible.",
-          html_url: repo.html_url,
-          homepage: repo.homepage,
-          languages: languages,
-        };
-      })
-    );
+    // Separar pinned y el resto
+    var pinned = [];
+    var others = [];
 
-    renderRepos(repos);
+    allRepos.forEach(function(repo) {
+      if (HIDDEN_REPOS.indexOf(repo.name) !== -1) return;
+      if (repo.fork) return;
+
+      if (PINNED_NAMES.indexOf(repo.name) !== -1) {
+        pinned.push(repo);
+      } else {
+        others.push(repo);
+      }
+    });
+
+    // Ordenar pinned segun el orden definido
+    pinned.sort(function(a, b) {
+      return PINNED_NAMES.indexOf(a.name) - PINNED_NAMES.indexOf(b.name);
+    });
+
+    // Renderizar destacados
+    pinnedContainer.innerHTML = "";
+    pinned.forEach(function(repo) {
+      pinnedContainer.appendChild(createCard(repo, true));
+    });
+
+    // Renderizar otros
+    allContainer.innerHTML = "";
+    if (others.length === 0) {
+      allContainer.innerHTML = '<p style="color:#777;">No hay mas repositorios.</p>';
+    } else {
+      others.forEach(function(repo) {
+        allContainer.appendChild(createCard(repo, false));
+      });
+    }
+
   } catch (error) {
     console.error("Error loading repos:", error);
-    reposContainer.innerHTML =
-      '<p class="portfolio-error">No se pudieron cargar los repositorios. Visita <a href="https://github.com/rricajos" target="_blank" rel="noopener">mi GitHub</a> directamente.</p>';
+    pinnedContainer.innerHTML =
+      '<p class="portfolio-error">No se pudieron cargar los repositorios. ' +
+      'Visita <a href="https://github.com/' + GITHUB_USER + '" target="_blank" rel="noopener">mi GitHub</a> directamente.</p>';
+    allContainer.innerHTML = "";
   }
 }
 
-function renderRepos(repos) {
-  reposContainer.innerHTML = "";
-
-  repos.forEach((repo) => {
-    const card = document.createElement("a");
-    card.href = repo.html_url;
-    card.target = "_blank";
-    card.rel = "noopener";
-    card.classList.add("repo-card", "animate-in");
-
-    const langKeys = Object.keys(repo.languages);
-    const langHTML = langKeys
-      .map((lang) => '<span class="language-badge">' + lang + "</span>")
-      .join("");
-
-    const homepageHTML = repo.homepage
-      ? '<span class="repo-homepage">Demo disponible</span>'
-      : "";
-
-    card.innerHTML =
-      "<h3>" +
-      repo.name +
-      "</h3>" +
-      "<p>" +
-      repo.description +
-      "</p>" +
-      '<div class="repo-meta">' +
-      '<div class="repo-languages">' +
-      langHTML +
-      "</div>" +
-      homepageHTML +
-      "</div>";
-
-    reposContainer.appendChild(card);
-  });
-}
-
-loadPinnedRepos();
+loadPortfolio();
