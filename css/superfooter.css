@@ -26,13 +26,17 @@
 .footer-links a {
   color: #666;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
   transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
   color: #5ba8ff;
+}
+
+.footer-links svg {
+  display: block;
 }
 
 .footer-top {
