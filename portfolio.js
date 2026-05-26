@@ -1,6 +1,6 @@
 // Portfolio: Destacados (pinned) + Todos los repos
 const GITHUB_USER = "rricajos";
-const PINNED_NAMES = ["qrsgen", "smm", "outlink", "DAM", "languages"];
+const PINNED_NAMES = ["smm", "languages", "qrsgen", "unix"];
 const HIDDEN_REPOS = ["rricajos"]; // profile repo
 
 const pinnedContainer = document.getElementById("pinned-container");
@@ -52,7 +52,7 @@ function createCard(repo, isPinned) {
 }
 
 async function loadPortfolio() {
-  showSkeletons(pinnedContainer, 5);
+  showSkeletons(pinnedContainer, 4);
   showSkeletons(allContainer, 6);
 
   try {
