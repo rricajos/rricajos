@@ -1,4 +1,11 @@
+/* Footer */
 .superfooter {
-  background-color: #222;
-  min-height: 50vh;
+  background-color: #060515;
+  padding: 2rem 0;
+}
+
+.superfooter p {
+  color: #888;
+  text-align: center;
+  font-size: 0.9rem;
 }

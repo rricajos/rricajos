@@ -1,19 +1,89 @@
-/* Estilos para las secciones */
+/* Secciones generales */
 .supersection {
   display: none;
   opacity: 0;
-  min-height: 200vh; 
-  transition: opacity 0.1s ease; 
+  min-height: 80vh;
+  transition: opacity 0.3s ease;
 }
 
 .supersection.active {
- display: block;
+  display: block;
 }
 
 .fade-out {
-  opacity: 0; 
+  opacity: 0;
 }
 
 .fade-in {
-  opacity: 1; 
+  opacity: 1;
+}
+
+.section-subtitle {
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+/* About Me */
+.about-me {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 1rem;
+}
+
+.about-me-text {
+  flex: 1 1 400px;
+  max-width: 600px;
+}
+
+.about-me-text h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.about-me-text p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+.about-me-avatar {
+  flex: 0 0 auto;
+}
+
+.about-me-avatar img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  object-fit: cover;
+}
+
+.about-me-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background-color: rgba(0, 123, 255, 0.15);
+  color: #5ba8ff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+}
+
+@media screen and (max-width: 720px) {
+  .about-me {
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+  .about-me-avatar img {
+    width: 140px;
+    height: 140px;
+  }
 }
