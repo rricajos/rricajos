@@ -1,8 +1,4 @@
 /* Portfolio */
-#portfolio h2 {
-  margin-bottom: 0.5rem;
-}
-
 .repos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
