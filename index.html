@@ -169,13 +169,9 @@
               <h1>Ricard Penin Honrubia</h1>
               <p class="landing-tagline">Ingeniero DevOps en Conexia Telecom · Freelance en Barcelona</p>
               <p>
-                Muchos años construyendo soluciones a medida: webs,
-                aplicaciones de escritorio e infraestructura self-hosted con despliegues automatizados.
-              </p>
-              <p>
-                Mi stack combina Go, TypeScript y SvelteKit
-                con sistemas Unix y C++. También trabajo con
-                Java, PHP y Node.js para evolución de sistemas existentes.
+                Programando desde los 11 años, con 5 de carrera profesional entre desarrollo y sistemas.
+                Construyo soluciones que aguantan en producción: webs, aplicaciones de escritorio
+                e infraestructura self-hosted con despliegues automatizados.
               </p>
               <div class="about-me-tags">
                 <span class="tag">Go</span>
@@ -197,23 +193,24 @@
             </div>
           </div>
 
-          <div class="fact-cards-grid animate-in">
-            <div class="fact-card">
-              <span class="fact-number">11+</span>
-              <span class="fact-label">Tecnologías</span>
-            </div>
-            <div class="fact-card">
-              <span class="fact-number">Full Stack</span>
-              <span class="fact-label">Frontend · Backend · Infra</span>
-            </div>
-            <div class="fact-card">
-              <span class="fact-number">DevOps</span>
-              <span class="fact-label">Docker · Traefik · Prometheus</span>
-            </div>
-            <div class="fact-card">
-              <span class="fact-number">BCN</span>
-              <span class="fact-label">Barcelona</span>
-            </div>
+          <h2 class="production-title animate-in">En producción</h2>
+          <div class="production-grid animate-in">
+            <a href="https://github.com/rricajos/qrsgen" target="_blank" rel="noopener" class="production-card">
+              <div class="production-card-header">
+                <h3>qrsgen</h3>
+                <span class="tag">Go</span>
+              </div>
+              <p>Bridge WhatsApp ↔ HTTP API. Multi-instancia, audit log inmutable, métricas Prometheus.</p>
+              <span class="production-stat">4+ instancias via Docker Swarm</span>
+            </a>
+            <a href="https://github.com/rricajos/smm" target="_blank" rel="noopener" class="production-card">
+              <div class="production-card-header">
+                <h3>smm</h3>
+                <span class="tag">Svelte</span>
+              </div>
+              <p>Smart Mail Manager. Extensión de Thunderbird con features de IA.</p>
+              <span class="production-stat">Extensión en producción</span>
+            </a>
           </div>
         </div>
       </section>
