@@ -1,27 +1,28 @@
-### hola mundo 
+# Ricard Penin Honrubia
 
-Soy un programador con experiencia en desarrollo de apps nativas y paginas web
+Desarrollador freelance en Barcelona. Trabajo con web, aplicaciones nativas y servidores.
 
+### Stack
 
-<!--
-Sigo aprendiendo a desarrollar, implementar, documentar y mantener Aplicaciones Multiplataforma con tecnologías y entornos de desarrollo específicos, garantizando el acceso a los datos de forma segura con tecnologías específicas y entornos de desarrollo, cumpliendo los criterios de usabilidad, calidad, y escalabilidad.
+```
+Frontend    HTML / CSS / JS · TypeScript · Svelte
+Backend     Go · Java · PHP · Node.js
+Infra       Docker · Linux · REST APIs
+```
 
-Te invito a ver mis proyectos en https://rricajos.github.io/rricajos/
-![image](https://github.com/rricajos/rricajos/assets/81053395/befa0b58-05c0-49dd-9d87-a01c2896a161)
+### Proyectos destacados
 
-![image](https://github.com/rricajos/edix/assets/81053395/234453db-9254-409f-bee8-bfa8e7428086)
-![image](https://github.com/rricajos/rricajos/assets/81053395/e21c23a3-7776-4f96-947f-2e28460d5fc2)
-![image](https://github.com/rricajos/rricajos/assets/81053395/4c115732-9bae-4b41-acd9-ddfd4661068f)
-**rricajos/rricajos** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+| Proyecto | Descripcion |
+|----------|-------------|
+| [qrsgen](https://github.com/rricajos/qrsgen) | WhatsApp - HTTP API bridge en Go. Multi-instance, webhooks, Docker Swarm. |
+| [smm](https://github.com/rricajos/smm) | Smart Mail Manager - Extension de Thunderbird con IA. |
+| [outlink](https://github.com/rricajos/outlink) | Herramienta de gestion de enlaces. |
+| [DAM](https://github.com/rricajos/DAM) | Repositorio de proyectos de Desarrollo de Aplicaciones Multiplataforma. |
+| [languages](https://github.com/rricajos/languages) | Estudio y practica de lenguajes de programacion. |
 
-Here are some ideas to get you started:
+### Contacto
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- Web: [rricajos.github.io/rricajos](https://rricajos.github.io/rricajos/)
+- Email: ergoegos@gmail.com
+- LinkedIn: [linkedin.com/in/rricajos](https://linkedin.com/in/rricajos)
+- X: [@rricajos](https://x.com/rricajos)

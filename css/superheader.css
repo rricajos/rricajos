@@ -44,6 +44,21 @@
   opacity: 0.9;
 }
 
+.hero-typing {
+  min-height: 1.8rem;
+}
+
+.hero-typing::after {
+  content: "|";
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 .hero-content hr {
   width: 60px;
   border: none;
