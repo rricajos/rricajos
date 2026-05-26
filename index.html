@@ -101,62 +101,6 @@
       </p>
     </noscript>
 
-    <!-- Hero Header -->
-    <header class="superheader">
-      <div id="heroheader" class="hero-content">
-        <img src="avatar.png" alt="Ricard Penin Honrubia" class="hero-avatar" width="120" height="120" />
-        <h1>Ricard Penin Honrubia</h1>
-        <hr />
-        <p class="hero-typing" id="hero-typing"></p>
-        <a href="javascript:void(0)" onclick="nav('contact')" class="cta-button">Contacta conmigo</a>
-      </div>
-
-      <script>
-        // Typing effect
-        (function() {
-          const phrases = [
-            "Desarrollo web a medida.",
-            "Aplicaciones nativas.",
-            "Servidores y APIs.",
-            "Soluciones escalables."
-          ];
-          const el = document.getElementById("hero-typing");
-          let phraseIdx = 0;
-          let charIdx = 0;
-          let deleting = false;
-          let pause = false;
-
-          function tick() {
-            const current = phrases[phraseIdx];
-            if (pause) {
-              pause = false;
-              setTimeout(tick, deleting ? 400 : 1800);
-              return;
-            }
-
-            if (!deleting) {
-              el.textContent = current.substring(0, charIdx + 1);
-              charIdx++;
-              if (charIdx === current.length) {
-                deleting = true;
-                pause = true;
-              }
-            } else {
-              el.textContent = current.substring(0, charIdx - 1);
-              charIdx--;
-              if (charIdx === 0) {
-                deleting = false;
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                pause = true;
-              }
-            }
-            setTimeout(tick, deleting ? 35 : 70);
-          }
-          tick();
-        })();
-      </script>
-    </header>
-
     <!-- Sticky Nav -->
     <nav class="supernav" aria-label="Navegación principal">
       <div class="supercontainer">
@@ -217,20 +161,20 @@
     </nav>
 
     <main>
-      <!-- Sobre Mi -->
-      <section id="home" class="supersection active fade-in">
+      <!-- Inicio -->
+      <section id="home" class="supersection landing active fade-in">
         <div class="supercontainer about-me">
           <div class="about-me-text animate-in">
-            <h2>Sobre Mi</h2>
+            <h1>Ricard Penin Honrubia</h1>
+            <p class="landing-tagline">Desarrollador en Conexia Telecom · Freelance en Barcelona</p>
             <p>
-              Soy Ricard Penin Honrubia, desarrollador en Barcelona.
-              Llevo más de 6 años construyendo soluciones a medida: webs,
+              Más de 6 años construyendo soluciones a medida: webs,
               aplicaciones de escritorio e infraestructura self-hosted con despliegues automatizados.
             </p>
             <p>
-              Mi stack combina lenguajes modernos como Go, TypeScript y SvelteKit
-              con conocimiento de sistemas Unix y C++. También trabajo con
-              stacks tradicionales (Java, PHP, Node.js) para mantenimiento y evolución de sistemas.
+              Mi stack combina Go, TypeScript y SvelteKit
+              con sistemas Unix y C++. También trabajo con
+              Java, PHP y Node.js para evolución de sistemas existentes.
             </p>
             <div class="about-me-tags">
               <span class="tag">Go</span>
@@ -245,6 +189,7 @@
               <span class="tag">Docker Swarm</span>
               <span class="tag">Unix / Linux</span>
             </div>
+            <a href="javascript:void(0)" onclick="nav('portfolio')" class="cta-button">Ver portfolio</a>
           </div>
           <div class="about-me-avatar animate-in">
             <img src="avatar.png" alt="Ricard Penin Honrubia" loading="lazy" width="180" height="180" />
