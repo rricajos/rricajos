@@ -21,6 +21,39 @@
     <meta name="twitter:description" content="Desarrollo web, aplicaciones nativas y servidores." />
     <meta name="twitter:image" content="https://rricajos.github.io/rricajos/avatar.png" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://rricajos.github.io/rricajos/" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "RRicajos - Desarrollador Freelance",
+      "url": "https://rricajos.github.io/rricajos/",
+      "logo": "https://rricajos.github.io/rricajos/avatar.png",
+      "description": "Desarrollador freelance especializado en web, aplicaciones nativas y servidores.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barcelona",
+        "addressCountry": "ES"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Ricard Penin Honrubia",
+        "jobTitle": "Desarrollador Freelance",
+        "url": "https://github.com/rricajos",
+        "sameAs": [
+          "https://github.com/rricajos",
+          "https://x.com/rricajos",
+          "https://linkedin.com/in/rricajos"
+        ]
+      },
+      "knowsAbout": ["HTML", "CSS", "JavaScript", "TypeScript", "Go", "Svelte", "Java", "PHP", "Docker", "REST APIs"],
+      "priceRange": "18-35 EUR/h"
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,6 +94,13 @@
   </head>
 
   <body>
+    <noscript>
+      <p style="text-align:center;padding:2rem;color:#e0e0e0;background:#0a0921;">
+        Este sitio requiere JavaScript. Por favor, activalo en tu navegador o
+        visita <a href="https://github.com/rricajos" style="color:#5ba8ff;">mi GitHub</a> directamente.
+      </p>
+    </noscript>
+
     <!-- Hero Header -->
     <header class="superheader">
       <div id="heroheader" class="hero-content">
@@ -144,6 +184,7 @@
         <button
           id="supernav-button-home"
           class="supernav-button"
+          data-section="home"
           onclick="nav('home')"
         >
           Ricajos.com
@@ -200,7 +241,7 @@
       <!-- Sobre Mi -->
       <section id="home" class="supersection">
         <div class="supercontainer about-me">
-          <div class="about-me-text">
+          <div class="about-me-text animate-in">
             <h2>Sobre Mi</h2>
             <p>
               Soy Ricard Penin Honrubia, desarrollador freelance.
@@ -223,7 +264,7 @@
               <span class="tag">Servidores</span>
             </div>
           </div>
-          <div class="about-me-avatar">
+          <div class="about-me-avatar animate-in">
             <img src="avatar.png" alt="Ricard Penin Honrubia" loading="lazy" width="180" height="180" />
           </div>
         </div>
@@ -626,8 +667,10 @@
               fout.classList.remove("active");
               fin.classList.add("active");
 
-              // Autoscroll al inicio de la seccion
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              // Autoscroll al inicio de la seccion (no al hero)
+              var mainEl = document.querySelector("main");
+              var navHeight = document.querySelector(".supernav").offsetHeight;
+              window.scrollTo({ top: mainEl.offsetTop - navHeight, behavior: "smooth" });
 
               setTimeout(function() {
                 fin.classList.remove("fade-out");
