@@ -1,7 +1,6 @@
 /* Portfolio */
 #portfolio h2 {
   margin-bottom: 0.5rem;
-  color: #fff;
 }
 
 .repos-grid {
@@ -12,7 +11,6 @@
 
 .portfolio-section-title {
   margin-top: 3rem;
-  color: #fff;
 }
 
 /* Pinned card highlight */

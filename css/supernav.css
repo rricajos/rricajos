@@ -190,8 +190,4 @@
     padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0.5rem));
   }
 
-  /* Footer needs extra bottom margin on mobile */
-  .superfooter {
-    margin-bottom: 0;
-  }
 }
