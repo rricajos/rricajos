@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RRicajos - Freelancer</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- Enlace a Google Fonts para importar la fuente Poppins -->
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Enlaces CSS separados -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/superheader.css" />
     <link rel="stylesheet" href="css/supernav.css" />
     <link rel="stylesheet" href="css/superfooter.css" />
@@ -19,32 +20,25 @@
     <link rel="stylesheet" href="css/section-services.css" />
     <link rel="stylesheet" href="css/section-portfolio.css" />
     <link rel="stylesheet" href="css/section-contact.css" />
-    <link rel="stylesheet" href="css/section-shop.css" />
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "Poppins", sans-serif;
+        background-color: #0a0921;
+        color: #e0e0e0;
       }
-
       * {
         margin: 0;
-
         box-sizing: border-box;
       }
-
       .supercontainer {
         max-width: 1280px;
         width: 100%;
         margin: 0 auto;
         padding: 0 1rem;
-      }
-
-      /* Ocultar scrollbar en WebKit */
-      iframe::-webkit-scrollbar {
-        display: none; /* Oculta la scrollbar */
-      }
-      .hidden-scroll {
-        overflow: hidden;
       }
     </style>
   </head>
@@ -53,145 +47,27 @@
     <!-- Hero Header -->
     <header class="superheader">
       <div id="heroheader" class="hero-content">
+        <img src="avatar.png" alt="Ricard Penin Honrubia" class="hero-avatar" />
         <h1>Ricard Penin Honrubia</h1>
         <hr />
-        <p>
-          Me encanta todo lo relacionado con internet, aplicaciones y servidores.   
-        </p>
-        <button id="heroheaderCTA" class="cta-button">
-          ¡Hagamos realidad tus ideas!
-        </button>
-      </div>
-      <div id="heroform" class="hero-content">
-        <form method="post">
-          <label for="heroformEMail" hidden>Nombre o título del mensaje</label>
-          <input
-            type="email"
-            id="heroformEMail"
-            name="heroformEMail"
-            required
-            placeholder="Escribe tu eMail"
-          />
-          <hr />
-          <label for="heroformTextArea" hidden
-            >Mensaje (máximo 255 caracteres)</label
-          >
-          <textarea
-            id="heroformTextArea"
-            name="heroformTextArea"
-            maxlength="255"
-            required
-            placeholder="Escribe tu mensaje aquí"
-          ></textarea>
-
-          <div class="form-buttons">
-            <button type="button" id="heroformBack">Volver</button>
-            <button type="submit" id="heroformSubmit">Enviar Mensaje</button>
-          </div>
-        </form>
+        <p>Desarrollo web, aplicaciones nativas y servidores.</p>
+        <a href="#contact" class="cta-button">Contacta conmigo</a>
       </div>
 
-      <!-- JavaScript para el seguimiento del mouse y el formulario dinámico -->
       <script>
         const superheader = document.querySelector(".superheader");
-
-        const heroheader = document.getElementById("heroheader");
-        const heroheaderCTA = document.getElementById("heroheaderCTA");
-
-        const heroform = document.getElementById("heroform");
-        const heroformEMail = document.getElementById("heroformEMail");
-        const heroformTextArea = document.getElementById("heroformTextArea");
-        const heroformSubmit = document.getElementById("heroformSubmit");
-        const heroformBack = document.getElementById("heroformBack");
-
-        // Lógica de seguimiento del mouse para el efecto de fondo
         document.addEventListener("mousemove", (e) => {
           const { clientX: mouseX, clientY: mouseY } = e;
           const { innerWidth: width, innerHeight: height } = window;
-
           const moveX = (mouseX / width - 0.5) * 30;
           const moveY = (mouseY / height - 0.5) * 30;
-
           superheader.style.backgroundPosition = `${moveX}px ${moveY}px`;
         });
-
-        heroheaderCTA.addEventListener("click", () => {
-          heroheader.style.display = "none";
-          heroform.style.display = "flex ";
-        });
-
-        heroformBack.addEventListener("click", () => {
-          heroheader.style.display = "flex";
-          heroform.style.display = "none";
-        });
-
-        // Añadir el evento para enviar el formulario
-        heroform.addEventListener("submit", (event) => {
-          event.preventDefault();
-
-          // Obtener los valores del formulario
-          const title = document.getElementById("title").value;
-          const message = document.getElementById("message").value;
-
-          // Aquí puedes integrar la lógica para enviar el correo
-
-          alert(`Formulario enviado:\nTítulo: ${title}\nMensaje: ${message}`);
-        });
-
-        // Función de simulación de escritura
-        function typingEffect(element, texts) {
-          let textoIndex = 0; // índice del texto actual
-          let charIndex = 0; // índice del carácter actual
-          let isDeleting = false; // Para saber si está borrando
-          let currentText = texts[textoIndex]; // Texto actual
-
-          function type() {
-            // Actualiza el placeholder según si está escribiendo o borrando
-            if (!isDeleting && charIndex <= currentText.length) {
-              element.setAttribute(
-                "placeholder",
-                currentText.substring(0, charIndex)
-              );
-              charIndex++;
-            } else if (isDeleting && charIndex >= 0) {
-              element.setAttribute(
-                "placeholder",
-                currentText.substring(0, charIndex)
-              );
-              charIndex--;
-            }
-
-            // Si ha terminado de escribir, comienza a borrar
-            if (charIndex === currentText.length && !isDeleting) {
-              isDeleting = true;
-              setTimeout(type, 9000); // Espera un segundo antes de empezar a borrar
-            }
-            // Si ha terminado de borrar, pasa al siguiente texto
-            else if (charIndex === 0 && isDeleting) {
-              isDeleting = false;
-              textoIndex = (textoIndex + 1) % texts.length; // Cambia al siguiente texto
-              currentText = texts[textoIndex]; // Actualiza el texto actual
-              setTimeout(type, 1000); // Espera un momento antes de empezar a escribir
-            } else {
-              setTimeout(type, isDeleting ? 25 : 100); // Velocidad de escritura/borrado
-            }
-          }
-
-          type();
-        }
-
-        const textareas = [
-          " ej -> Hola buenas tardes, necesito hacer una pagina web para mi bar con la carta, el horario y las reseñas de google maps. ¿Seria posible que la carta pudiera actulizarla yo mismo desde mi excel/google sheet?",
-          " ej -> Hola Ricky, estoy buscando un editor de contenido de mi banda de Rock, tambien estamos pensando en hacer un poco de merchandasing de nuestro proximo album, espero tu respuesta.",
-          " ej -> Hey rricajos, te he visto por Youtube y me gustaria saber si podriamos quedar para hacerte una consulta para trabjar como freelance sin experiencia",
-        ];
-
-        typingEffect(heroformTextArea, textareas);
       </script>
     </header>
 
     <!-- Sticky Nav -->
-    <nav class="supernav" aria-label="1">
+    <nav class="supernav" aria-label="Navegacion principal">
       <div class="supercontainer">
         <button
           id="supernav-button-home"
@@ -200,133 +76,109 @@
         >
           Ricajos.com
         </button>
+
+        <!-- Desktop nav -->
         <div class="subnav-desktop">
           <button
-            id="supernav-button-blog"
-            class="supernav-button"
-            onclick="nav('blog')"
-          >
-            Blog
-          </button>
-          <button
-            id="supernav-button-services"
             class="supernav-button active"
+            data-section="services"
             onclick="nav('services')"
           >
             Servicios
           </button>
           <button
-            id="supernav-button-portfolio"
             class="supernav-button"
+            data-section="portfolio"
             onclick="nav('portfolio')"
           >
             Portfolio
           </button>
           <button
-            id="supernav-button-shop"
             class="supernav-button"
-            onclick="nav('shop')"
+            data-section="contact"
+            onclick="nav('contact')"
           >
-            Tienda
+            Contacto
           </button>
         </div>
 
+        <!-- Mobile hamburger -->
         <div id="super-sub-nav-not-desktop">
-          <button
-            id="notd-subnav-button"
-            onclick="openSuvNav()"
-          >+
-          </button>
+          <button id="notd-subnav-button" onclick="openSuvNav()">+</button>
           <script>
             function openSuvNav() {
-              if (document.getElementById('notd-subnav').classList.contains('close-subnav')) {
-                document.getElementById('notd-subnav').classList.remove('close-subnav')
-              } else {
-                document.getElementById('notd-subnav').classList.add('close-subnav')
-              }
+              const subnav = document.getElementById("notd-subnav");
+              subnav.classList.toggle("close-subnav");
             }
           </script>
-
-       
         </div>
+
+        <!-- Mobile dropdown -->
         <div id="notd-subnav" class="close-subnav">
           <button
-            id="supernav-button-blog"
-            class="supernav-button"
-            onclick="nav('blog')"
-          >
-            Blog
-          </button>
-          <button
-            id="supernav-button-services"
             class="supernav-button active"
+            data-section="services"
             onclick="nav('services')"
           >
             Servicios
           </button>
           <button
-            id="supernav-button-portfolio"
             class="supernav-button"
+            data-section="portfolio"
             onclick="nav('portfolio')"
           >
             Portfolio
           </button>
           <button
-            id="supernav-button-shop"
             class="supernav-button"
-            onclick="nav('shop')"
+            data-section="contact"
+            onclick="nav('contact')"
           >
-            Tienda
+            Contacto
           </button>
         </div>
-        
       </div>
     </nav>
 
     <main>
-      <!-- Secciones -->
+      <!-- Sobre Mi -->
       <section id="home" class="supersection">
-        <div class="supercontainer">
-          <h2>Efectivamente,</h2>
-          <p>
-            I am a passionate web developer with years of experience in creating
-            high-quality, professional websites. My expertise spans across
-            front-end and back-end development, ensuring full-stack solutions.
-          </p>
+        <div class="supercontainer about-me">
+          <div class="about-me-text">
+            <h2>Sobre Mi</h2>
+            <p>
+              Soy Ricard Penin Honrubia, desarrollador freelance.
+              Me apasiona todo lo relacionado con internet, las aplicaciones y los servidores.
+            </p>
+            <p>
+              Tengo experiencia en desarrollo de aplicaciones multiplataforma,
+              paginas web a medida y gestion de servidores. Trabajo con tecnologias
+              modernas garantizando soluciones rapidas, seguras y escalables.
+            </p>
+            <div class="about-me-tags">
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">Java</span>
+              <span class="tag">Go</span>
+              <span class="tag">Svelte</span>
+              <span class="tag">PHP</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Servidores</span>
+            </div>
+          </div>
+          <div class="about-me-avatar">
+            <img src="avatar.png" alt="Ricard Penin Honrubia" />
+          </div>
         </div>
       </section>
 
-      <section id="blog" class="supersection">
-        <div class="hidden-scroll">
-          <iframe
-            id="iframeblog"
-            title="blog"
-            src="https://rricajos.blogspot.com"
-            width="100%"
-            class=""
-            style="overflow: hidden; display: block"
-            frameborder="0"
-          ></iframe>
-          <script>
-            window.addEventListener("message", function (event) {
-              // Asegúrate de que el mensaje proviene del dominio correcto
-              // if (event.origin !== "https://nombre-del-blog.blogspot.com") return;
-
-              let iframe = document.getElementById("iframeblog");
-              iframe.style.height = event.data + "px"; // Ajustar la altura del iframe
-            });
-          </script>
-        </div>
-      </section>
-
+      <!-- Servicios -->
       <section id="services" class="supersection active fade-in">
         <div class="supercontainer">
-          <!-- Servicios a service-close-price cerrado -->
+          <!-- Servicios a precio cerrado -->
           <article class="services-price-close">
             <h2>Precio cerrado</h2>
             <div id="services-close-price-buttons-container">
               <div>
-                <!-- Sitio Web Básico -->
                 <button
                   class="service-close-pack"
                   onclick="toggleDetail('web-basic')"
@@ -335,17 +187,15 @@
                     <div class="service-close-pack-header-right">
                       <h3>Web Funcional</h3>
                     </div>
-                    <p class="service-close-price">32€ - 128€</p>
+                    <p class="service-close-price">32 - 128 EUR</p>
                   </div>
-
                   <p>
-                    Página Web con datos fijos y/o dinamicos. Super rápida,
-                    práctica y fiable. Siempre a tu gusto con tu diseño personal
-                    y adaptada a todas las pantallas del mundo.
+                    Pagina Web con datos fijos y/o dinamicos. Super rapida,
+                    practica y fiable. Siempre a tu gusto con tu diseno personal
+                    y adaptada a todas las pantallas.
                   </p>
                 </button>
 
-                <!-- Sitio Web AutoMutable -->
                 <button
                   class="service-close-pack"
                   onclick="toggleDetail('web-adv')"
@@ -354,9 +204,8 @@
                     <div class="service-close-pack-header-right">
                       <h3>Web Avanzada</h3>
                     </div>
-                    <p class="service-close-price">256€ - 1024€</p>
+                    <p class="service-close-price">256 - 1024 EUR</p>
                   </div>
-
                   <p>
                     Web Funcional + Base de Datos para tener usuarios
                     registrados, pasarelas de pago, funciones por rol, correo
@@ -364,54 +213,48 @@
                   </p>
                 </button>
 
-                <!-- Sitio Web AutoMutable -->
                 <button
                   class="service-close-pack"
-                  onclick="toggleDetail('sup-adv')"
+                  onclick="toggleDetail('estadisticas')"
                 >
                   <div class="service-close-pack-header">
                     <div class="service-close-pack-header-right">
-                      <h3>Estadísticas</h3>
+                      <h3>Estadisticas</h3>
                     </div>
-                    <p class="service-close-price">32€ - 64€</p>
+                    <p class="service-close-price">32 - 64 EUR</p>
                   </div>
-
                   <p>
-                    Informe de estádisticas en redes sociales, posicionamiento
-                    en google y/o actividad en tu web
+                    Informe de estadisticas en redes sociales, posicionamiento
+                    en google y/o actividad en tu web.
                   </p>
                 </button>
 
-                <!-- Servicios de Redes Sociales -->
                 <button
                   class="service-close-pack"
-                  onclick="toggleDetail('sup-adv')"
+                  onclick="toggleDetail('redes')"
                 >
                   <div class="service-close-pack-header">
                     <div class="service-close-pack-header-right">
                       <h3>Redes Sociales</h3>
                     </div>
-                    <p class="service-close-price">64€ / semana</p>
+                    <p class="service-close-price">64 EUR / semana</p>
                   </div>
-
                   <p>
                     Generar y publicar contenido audiovisual, responder
-                    comentarios y reseñas
+                    comentarios y resenas.
                   </p>
                 </button>
 
-                <!-- Servicio de Soporte Básico -->
                 <button
                   class="service-close-pack"
                   onclick="toggleDetail('sup-basic')"
                 >
                   <div class="service-close-pack-header">
                     <div class="service-close-pack-header-right">
-                      <h3>Soporte Básico</h3>
+                      <h3>Soporte Basico</h3>
                     </div>
-                    <p class="service-close-price">9€ / mes</p>
+                    <p class="service-close-price">9 EUR / mes</p>
                   </div>
-
                   <ul>
                     <li>Web en linea 24/7</li>
                     <li>Conexion Segura HTTPS</li>
@@ -419,7 +262,6 @@
                   </ul>
                 </button>
 
-                <!-- Servicio de Soporte Avanzado -->
                 <button
                   class="service-close-pack"
                   onclick="toggleDetail('sup-adv')"
@@ -428,18 +270,17 @@
                     <div class="service-close-pack-header-right">
                       <h3>Soporte Avanzado</h3>
                     </div>
-                    <p class="service-close-price">99€ / mes</p>
+                    <p class="service-close-price">99 EUR / mes</p>
                   </div>
-
                   <ul>
                     <li>Consultas gratuitas</li>
-                    <li>Teléfono de contacto</li>
+                    <li>Telefono de contacto</li>
                     <li>
                       Incluye:
                       <ul>
-                        <li>Soporte Básico</li>
+                        <li>Soporte Basico</li>
                         <li>Redes Sociales /sem</li>
-                        <li>Estadísticas /sem</li>
+                        <li>Estadisticas /sem</li>
                       </ul>
                     </li>
                   </ul>
@@ -447,61 +288,72 @@
               </div>
 
               <script>
-                // JavaScript para mostrar/ocultar service-close-detailss
-                function toggleDetail(string) {
-                  document.getElementById("web-basic").style.display = "none";
-                  document.getElementById("web-adv").style.display = "none";
-                  document.getElementById("sup-basic").style.display = "none";
-                  document.getElementById("sup-adv").style.display = "none";
-                  document.getElementById(string).style.display = "block";
+                function toggleDetail(id) {
+                  const details = document.querySelectorAll(
+                    ".service-close-detail"
+                  );
+                  details.forEach((d) => (d.style.display = "none"));
+                  const target = document.getElementById(id);
+                  if (target) target.style.display = "block";
                 }
               </script>
             </div>
 
             <div class="service-close-details">
               <div id="web-basic" class="service-close-detail">
-                <h3>Web Básica</h3>
+                <h3>Web Funcional</h3>
                 <p>
                   Crearemos desde una web con datos fijos sencilla, animada y
                   fiable hasta una web con datos dinamicos de otras plataformas
-                  en tiempo real, como por ejemplo: google maps, youtube,
-                  facebook... Siempre con tu estilo personal, las mejores
-                  prácticas y adaptable a todas las pantallas.
+                  en tiempo real, como por ejemplo: Google Maps, YouTube,
+                  Facebook... Siempre con tu estilo personal, las mejores
+                  practicas y adaptable a todas las pantallas.
                 </p>
-
                 <strong>Pros</strong>
                 <ul>
                   <li>Apto para todos los bolsillos</li>
                   <li>Adaptable a telefonos, ordenadores, tablets...</li>
-                  <li>Mostrar datos de google maps, youtube...</li>
+                  <li>Mostrar datos de Google Maps, YouTube...</li>
                   <li>Web personalizada a tu gusto y demanda</li>
                 </ul>
               </div>
               <div id="web-adv" class="service-close-detail">
+                <h3>Web Avanzada</h3>
                 <p>
-                  Servicio de desarrollo de aplicaciones web y multiplataforma a
-                  medida y a tu gusto. Edición de vídeo e imagen y puesta en
-                  producción en redes sociales. Ademas que siempre que me sea
-                  posible procuro dar bases de posicionamiento en internet como
-                  por ejemplo:
+                  Desarrollo de aplicaciones web y multiplataforma a medida.
+                  Incluye base de datos, autenticacion de usuarios, pasarelas
+                  de pago, panel de administracion y correo electronico integrado.
+                </p>
+              </div>
+              <div id="estadisticas" class="service-close-detail">
+                <h3>Estadisticas</h3>
+                <p>
+                  Informe detallado del rendimiento de tus redes sociales,
+                  posicionamiento en Google y actividad en tu web. Datos
+                  accionables para mejorar tu presencia online.
+                </p>
+              </div>
+              <div id="redes" class="service-close-detail">
+                <h3>Redes Sociales</h3>
+                <p>
+                  Creacion y publicacion de contenido audiovisual adaptado
+                  a cada plataforma. Gestion de comentarios, resenas y
+                  comunidad.
                 </p>
               </div>
               <div id="sup-basic" class="service-close-detail">
+                <h3>Soporte Basico</h3>
                 <p>
-                  Servicio de desarrollo de aplicaciones web y multiplataforma a
-                  medida y a tu gusto. Edición de vídeo e imagen y puesta en
-                  producción en redes sociales. Ademas que siempre que me sea
-                  posible procuro dar bases de posicionamiento en internet como
-                  por ejemplo:
+                  Tu web siempre online con conexion segura HTTPS y hasta
+                  tres cuentas de correo corporativo incluidas.
                 </p>
               </div>
               <div id="sup-adv" class="service-close-detail">
+                <h3>Soporte Avanzado</h3>
                 <p>
-                  Servicio de desarrollo de aplicaciones web y multiplataforma a
-                  medida y a tu gusto. Edición de vídeo e imagen y puesta en
-                  producción en redes sociales. Ademas que siempre que me sea
-                  posible procuro dar bases de posicionamiento en internet como
-                  por ejemplo:
+                  Incluye todo el Soporte Basico mas gestion semanal de
+                  redes sociales, informes de estadisticas y consultas
+                  gratuitas con telefono de contacto directo.
                 </p>
               </div>
             </div>
@@ -511,17 +363,13 @@
               <li>Analisis de nicho de mercado, palabras clave...</li>
               <li>Estrategias de contenido de calidad</li>
             </ul>
-            <p>
-              Todos mis servicios tendran un post en el blog dando más
-              service-close-detailss.
-            </p>
           </article>
 
           <!-- Tabla de Servicios Por Hora -->
           <article class="services-price-per-hour">
             <h2>Precio por hora</h2>
             <p>
-              Cunado pagan por hora me gusta trabajar delante del cliente o
+              Cuando pagan por hora me gusta trabajar delante del cliente o
               grabarlo para mostrar el proceso del servicio que esta pagando.
             </p>
             <table id="services-table">
@@ -533,61 +381,59 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Página web estática</td>
-                  <td>6€ / Hora</td>
+                  <td>Pagina web estatica</td>
+                  <td>6 EUR / Hora</td>
                 </tr>
                 <tr>
-                  <td>Página web dinámica</td>
-                  <td>10€ / Hora</td>
+                  <td>Pagina web dinamica</td>
+                  <td>10 EUR / Hora</td>
                 </tr>
                 <tr>
                   <td>Base de Datos Relacional</td>
-                  <td>10€ / Hora</td>
+                  <td>10 EUR / Hora</td>
                 </tr>
                 <tr>
                   <td>Base de Datos No Relacional</td>
-                  <td>15€ / Hora</td>
+                  <td>15 EUR / Hora</td>
                 </tr>
                 <tr>
                   <td>Servidor RestFulAPI</td>
-                  <td>10€ / Hora</td>
+                  <td>10 EUR / Hora</td>
                 </tr>
                 <tr>
-                  <td>SEO y optimización</td>
-                  <td>8€ / Hora</td>
+                  <td>SEO y optimizacion</td>
+                  <td>8 EUR / Hora</td>
                 </tr>
                 <tr>
-                  <td>Diseño gráfico</td>
-                  <td>12€ / Hora</td>
+                  <td>Diseno grafico</td>
+                  <td>12 EUR / Hora</td>
                 </tr>
                 <tr>
-                  <td>Edición de vídeo</td>
-                  <td>12€ / Hora</td>
+                  <td>Edicion de video</td>
+                  <td>12 EUR / Hora</td>
                 </tr>
                 <tr>
-                  <td>Consultoría tecnológica</td>
-                  <td>15€ / Hora</td>
+                  <td>Consultoria tecnologica</td>
+                  <td>15 EUR / Hora</td>
                 </tr>
                 <tr>
                   <td>Mantenimiento web</td>
-                  <td>10€ / mes</td>
+                  <td>10 EUR / mes</td>
                 </tr>
               </tbody>
             </table>
             <script>
-              let sortDirection = false; // Para controlar si es ascendente o descendente
+              let sortDirection = false;
 
               function sortTable(columnIndex) {
                 const table = document.getElementById("services-table");
                 const tbody = table.tBodies[0];
                 const rows = Array.from(tbody.rows);
 
-                // Remover flechas de todas las columnas
                 document
-                  .querySelectorAll("th")
+                  .querySelectorAll("#services-table th")
                   .forEach((th) => th.classList.remove("asc", "desc"));
 
-                // Alternar la dirección de ordenación
                 sortDirection = !sortDirection;
 
                 rows.sort((rowA, rowB) => {
@@ -595,7 +441,6 @@
                   const cellB = rowB.cells[columnIndex].innerText.trim();
 
                   if (columnIndex === 1) {
-                    // Ordenar service-close-prices numéricamente
                     return sortDirection
                       ? parseFloat(cellA.replace(/[^\d.-]/g, "")) -
                           parseFloat(cellB.replace(/[^\d.-]/g, ""))
@@ -608,10 +453,8 @@
                   }
                 });
 
-                // Reagregar las filas ordenadas al tbody
                 rows.forEach((row) => tbody.appendChild(row));
 
-                // Añadir la clase asc o desc según corresponda
                 const header = table.querySelectorAll("th")[columnIndex];
                 header.classList.toggle("asc", sortDirection);
                 header.classList.toggle("desc", !sortDirection);
@@ -621,48 +464,70 @@
         </div>
       </section>
 
+      <!-- Portfolio -->
       <section id="portfolio" class="supersection">
         <div class="supercontainer">
-          <nav aria-label="1" class="portfolio-dev-nav">
-            <h2>Portfolio dev</h2>
-            <div>
-              <!-- Campo de búsqueda para repositorios -->
-              <input
-                type="text"
-                id="search-input"
-                placeholder="Buscar repositorios"
-              />
-            </div>
-
-            <div>
-              <!-- Contenedor de lenguajes seleccionados -->
-              <div id="selected-languages-container"></div>
-            </div>
-          </nav>
-
-          <div id="repos-container">
-            <!-- Aquí se insertarán las cartas de los repositorios -->
-          </div>
-
+          <h2>Portfolio</h2>
+          <p class="section-subtitle">Mis proyectos destacados en GitHub.</p>
+          <div id="repos-container"></div>
           <script src="portfolio.js"></script>
         </div>
       </section>
 
-      <section id="shop" class="supersection">
-        <div class="supercontainer">
-          <header class="section-shop-header">
-            <h2>🚧 Tienda en desarrrollo 🚧</h2>
-            <p>
-              No dudes en ponerte en contacto conmigo para colaborar o realizar
-              proyectos independientes. ¡Siempre me entusiasma trabajar en
-              nuevas ideas!
-            </p>
-            <strong>Primera consulta es gratis!</strong>
-          </header>
+      <!-- Contacto -->
+      <section id="contact" class="supersection">
+        <div class="supercontainer contact-section">
+          <h2>Contacto</h2>
+          <p>
+            No dudes en ponerte en contacto conmigo para colaborar o realizar
+            proyectos.
+          </p>
+
+          <div class="contact-links">
+            <a
+              href="mailto:ergoegos@gmail.com"
+              class="contact-link"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="contact-icon">&#9993;</span>
+              <span>ergoegos@gmail.com</span>
+            </a>
+            <a
+              href="https://github.com/rricajos"
+              class="contact-link"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="contact-icon">GH</span>
+              <span>github.com/rricajos</span>
+            </a>
+            <a
+              href="https://x.com/rricajos"
+              class="contact-link"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="contact-icon">X</span>
+              <span>@rricajos</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/rricajos"
+              class="contact-link"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="contact-icon">in</span>
+              <span>linkedin.com/in/rricajos</span>
+            </a>
+          </div>
+
+          <p class="contact-cta">Primera consulta gratis!</p>
         </div>
       </section>
     </main>
 
+    <!-- Navegacion JS -->
     <script>
       let currentSection = "services";
       let navegatting = false;
@@ -674,12 +539,23 @@
           const fout = document.getElementById(currentSection);
           const fin = document.getElementById(sectionId);
 
-          const foutb = document.getElementById(
-            "supernav-button-" + currentSection
-          );
-          const finb = document.getElementById("supernav-button-" + sectionId);
-          foutb.classList.remove("active");
-          finb.classList.add("active");
+          // Usar querySelectorAll con data-section para evitar IDs duplicados
+          document
+            .querySelectorAll(
+              '.supernav-button[data-section="' + currentSection + '"]'
+            )
+            .forEach((btn) => btn.classList.remove("active"));
+          document
+            .querySelectorAll(
+              '.supernav-button[data-section="' + sectionId + '"]'
+            )
+            .forEach((btn) => btn.classList.add("active"));
+
+          // Cerrar menu movil al navegar
+          const mobileNav = document.getElementById("notd-subnav");
+          if (!mobileNav.classList.contains("close-subnav")) {
+            mobileNav.classList.add("close-subnav");
+          }
 
           try {
             fout.classList.remove("fade-in");
@@ -690,13 +566,14 @@
               setTimeout(() => {
                 fin.classList.remove("fade-out");
                 fin.classList.add("fade-in");
+                navegatting = false;
               }, 100);
             }, 100);
 
             currentSection = sectionId;
-            navegatting = false;
           } catch (error) {
-            console.log(error);
+            console.error("Navigation error:", error);
+            navegatting = false;
           }
         }
       }
@@ -709,9 +586,7 @@
     <!-- Footer -->
     <footer class="superfooter">
       <div class="supercontainer">
-        <p style="color: #fff; text-align: center; padding: 1rem">
-          &copy; 2024 RRicajos - All Rights Reserved
-        </p>
+        <p>&copy; 2026 Ricard Penin Honrubia - Todos los derechos reservados</p>
       </div>
     </footer>
   </body>

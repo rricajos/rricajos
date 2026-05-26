@@ -1,172 +1,78 @@
-// URLs de repositorios de ejemplo
-const repoUrls = [
-  // "https://api.github.com/repos/rricajos/DAM",
-  // "https://api.github.com/repos/rricajos/DAW",
-  // "https://api.github.com/repos/rricajos/sierra",
-  // "https://api.github.com/repos/rricajos/rick-api-junkie",
-  // "https://api.github.com/repos/rricajos/cafe-bar-castillo",
-
-
+// Repos pinneados de rricajos
+const pinnedRepos = [
+  "https://api.github.com/repos/rricajos/DAM",
+  "https://api.github.com/repos/rricajos/outlink",
+  "https://api.github.com/repos/rricajos/smm",
+  "https://api.github.com/repos/rricajos/languages",
+  "https://api.github.com/repos/rricajos/qrsgen",
 ];
 
-// Elementos del DOM
-const reposContainer = document.getElementById('repos-container');
-const selectedLanguagesContainer = document.getElementById('selected-languages-container');
-const searchInput = document.getElementById('search-input');
+const reposContainer = document.getElementById("repos-container");
 
-let selectedLanguages = new Set(); // Para mantener un seguimiento de los lenguajes seleccionados
+async function loadPinnedRepos() {
+  try {
+    const repos = await Promise.all(
+      pinnedRepos.map(async (url) => {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Failed to fetch " + url);
+        const repo = await response.json();
 
-// Función principal que inicia el proceso
-async function init() {
-  const reposData = await fetchReposData(repoUrls);
-  renderRepos(reposData);
-  setupSearchListener(reposData);
+        const langResponse = await fetch(repo.languages_url);
+        const languages = langResponse.ok ? await langResponse.json() : {};
+
+        return {
+          name: repo.name,
+          description: repo.description || "Sin descripcion disponible.",
+          html_url: repo.html_url,
+          homepage: repo.homepage,
+          languages: languages,
+        };
+      })
+    );
+
+    renderRepos(repos);
+  } catch (error) {
+    console.error("Error loading repos:", error);
+    reposContainer.innerHTML =
+      '<p class="portfolio-error">No se pudieron cargar los repositorios. Visita <a href="https://github.com/rricajos" target="_blank" rel="noopener">mi GitHub</a> directamente.</p>';
+  }
 }
 
-// 1. Obtener datos de los repositorios desde GitHub
-async function fetchReposData(urls) {
-  const repoDataPromises = urls.map(async url => {
-    const response = await fetch(url);
-    const repo = await response.json();
-
-    const languagesResponse = await fetch(repo.languages_url);
-    const languages = await languagesResponse.json();
-
-    return {
-      name: repo.name,
-      description: repo.description,
-      languages
-    };
-  });
-
-  return Promise.all(repoDataPromises);
-}
-
-// 2. Renderizar las cartas de los repositorios
 function renderRepos(repos) {
-  reposContainer.innerHTML = '';
+  reposContainer.innerHTML = "";
 
-  repos.forEach(repo => {
-    const card = createRepoCard(repo);
+  repos.forEach((repo) => {
+    const card = document.createElement("a");
+    card.href = repo.html_url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    card.classList.add("repo-card");
+
+    const langKeys = Object.keys(repo.languages);
+    const langHTML = langKeys
+      .map((lang) => '<span class="language-badge">' + lang + "</span>")
+      .join("");
+
+    const homepageHTML = repo.homepage
+      ? '<span class="repo-homepage">Demo disponible</span>'
+      : "";
+
+    card.innerHTML =
+      "<h3>" +
+      repo.name +
+      "</h3>" +
+      "<p>" +
+      repo.description +
+      "</p>" +
+      '<div class="repo-meta">' +
+      '<div class="repo-languages">' +
+      langHTML +
+      "</div>" +
+      homepageHTML +
+      "</div>";
+
     reposContainer.appendChild(card);
   });
 }
 
-// 3. Crear la carta de un repositorio
-function createRepoCard(repo) {
-  const card = document.createElement('div');
-  card.classList.add('repo-card');
-
-  // Título
-  const title = document.createElement('h3');
-  title.textContent = repo.name;
-  card.appendChild(title);
-
-  // Descripción
-  const description = document.createElement('p');
-  description.textContent = repo.description || 'No description provided.';
-  card.appendChild(description);
-
-  // Lenguajes
-  const languagesContainer = document.createElement('div');
-  languagesContainer.classList.add('languages-container');
-
-  const languageEntries = Object.entries(repo.languages);
-  languageEntries.forEach(([language, size]) => {
-    const langButton = document.createElement('button');
-    
-    // Aquí aplicamos la conversión de bytes
-    langButton.textContent = `${language} ${formatBytes(size)}`;
-    langButton.dataset.language = language;
-    langButton.classList.add('language-button');
-
-    // Modificación: al hacer clic en un lenguaje, agregar al contenedor de lenguajes seleccionados
-    langButton.addEventListener('click', () => {
-      if (!selectedLanguages.has(language)) {
-        selectedLanguages.add(language);
-        addLanguageToSelected(language);
-      }
-      filterReposBySelectedLanguages();
-    });
-
-    languagesContainer.appendChild(langButton);
-  });
-
-  card.appendChild(languagesContainer);
-
-  // Guardamos el lenguaje en el dataset del card para el filtrado
-  card.dataset.languages = languageEntries.map(([lang]) => lang).join(',');
-  card.dataset.repoName = repo.name.toLowerCase();  // Guardamos el nombre del repo en minúsculas para comparaciones
-  return card;
-}
-
-// 4. Agregar un lenguaje al contenedor de lenguajes seleccionados
-function addLanguageToSelected(language) {
-  const languageButton = document.createElement('button');
-  languageButton.textContent = language;
-  languageButton.classList.add('selected-language');
-  languageButton.classList.add('language-button');
-  
-  // Al hacer clic en un lenguaje seleccionado, se elimina del contenedor y del filtro
-  languageButton.addEventListener('click', () => {
-    selectedLanguages.delete(language);
-    languageButton.remove();
-    filterReposBySelectedLanguages();
-  });
-
-  selectedLanguagesContainer.appendChild(languageButton);
-}
-
-// 5. Filtrar los repositorios por lenguajes seleccionados
-function filterReposBySelectedLanguages() {
-  const repoCards = document.querySelectorAll('.repo-card');
-
-  repoCards.forEach(card => {
-    const repoLanguages = card.dataset.languages.split(',');
-    // Mostrar solo los repos que contengan todos los lenguajes seleccionados
-    if ([...selectedLanguages].every(lang => repoLanguages.includes(lang))) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
-// 6. Configurar el listener del input para búsqueda
-function setupSearchListener(repos) {
-  searchInput.addEventListener('input', (event) => {
-    const query = event.target.value.toLowerCase();
-    filterByRepoName(query);
-  });
-}
-
-// 7. Filtrar nombres de repositorios
-function filterByRepoName(query) {
-  const repoCards = document.querySelectorAll('.repo-card');
-  
-  repoCards.forEach(card => {
-    const repoName = card.dataset.repoName;
-    if (repoName.includes(query)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
-// Función auxiliar para convertir bytes a KB, MB, GB, etc.
-function formatBytes(bytes) {
-  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-  let i = 0;
-  let value = bytes;
-
-  while (value >= 1024 && i < units.length - 1) {
-    value /= 1024;
-    i++;
-  }
-
-  return `${Math.max(value.toFixed(2), parseFloat(value.toFixed(0)))}${units[i]}`;
-}
-
-// Iniciar el proceso al cargar la página
-init();
+loadPinnedRepos();
