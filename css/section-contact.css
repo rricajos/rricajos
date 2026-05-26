@@ -12,7 +12,7 @@
 }
 
 .contact-section > p {
-  color: #aaa;
+  color: #b0b0b0;
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -47,11 +47,17 @@
 }
 
 .contact-icon {
-  font-size: 1.5rem;
   min-width: 2rem;
-  text-align: center;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #5ba8ff;
+}
+
+.contact-icon svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .contact-cta {

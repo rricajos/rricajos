@@ -80,3 +80,41 @@
 .portfolio-error a {
   color: #5ba8ff;
 }
+
+/* Skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #1a1a2e 25%, #252542 50%, #1a1a2e 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 60%;
+}
+
+.skeleton-text {
+  width: 100%;
+}
+
+.skeleton-text.short {
+  width: 75%;
+}
+
+.skeleton-badges {
+  width: 40%;
+  height: 18px;
+  margin-top: 0.5rem;
+}
