@@ -46,6 +46,9 @@
   color: var(--color-accent);
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .repo-card p {
@@ -89,6 +92,12 @@
 .language-badge:hover {
   background-color: rgba(0, 123, 255, 0.3);
   transform: scale(1.05);
+}
+
+.language-badge:focus-visible,
+.repo-topic:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .repo-homepage {
@@ -223,6 +232,11 @@
   grid-column: 1 / -1;
 }
 
+/* Ensure hidden attribute wins even with filter-active display:grid */
+#portfolio-grid-view.filter-active[hidden] {
+  display: none;
+}
+
 /* ======================
    Portfolio — Detail view
    ====================== */
@@ -268,6 +282,9 @@
   color: var(--text-heading);
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .repo-detail-header p {
@@ -395,10 +412,19 @@
   padding: 0.15rem 0.3rem;
   border-radius: 3px;
   transition: background-color 0.15s ease;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .file-breadcrumb:hover {
   background-color: rgba(91, 168, 255, 0.1);
+}
+
+.file-breadcrumb:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .file-breadcrumb.active {

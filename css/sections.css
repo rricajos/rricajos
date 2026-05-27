@@ -17,6 +17,7 @@
   .supernav-button,
   .tabbar-btn,
   .supernav-button::before { transition: none; }
+  .availability-dot { animation: none; }
 }
 
 /* ======================

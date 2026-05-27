@@ -27,6 +27,12 @@
 
   var VALID_SECTIONS = ["home", "services", "portfolio", "contact"];
 
+  // ===== Preferencias de movimiento =====
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function scrollBehavior() {
+    return prefersReducedMotion.matches ? "auto" : "smooth";
+  }
+
   // ===== Detalle de servicio (acordeón) =====
   function toggleDetail(id) {
     var details = document.querySelectorAll(".service-close-detail");
@@ -57,7 +63,7 @@
       var isMobile = window.innerWidth <= 720;
       setTimeout(function () {
         if (trigger) {
-          trigger.scrollIntoView({ behavior: "smooth", block: isMobile ? "start" : "nearest" });
+          trigger.scrollIntoView({ behavior: scrollBehavior(), block: isMobile ? "start" : "nearest" });
         }
       }, isMobile ? 350 : 100);
     }
@@ -73,6 +79,7 @@
 
     table.querySelectorAll("th").forEach(function (th) {
       th.classList.remove("asc", "desc");
+      th.removeAttribute("aria-sort");
     });
 
     sortDirection = !sortDirection;
@@ -96,6 +103,7 @@
     var header = table.querySelectorAll("th")[columnIndex];
     header.classList.toggle("asc", sortDirection);
     header.classList.toggle("desc", !sortDirection);
+    header.setAttribute("aria-sort", sortDirection ? "ascending" : "descending");
   }
 
   // ===== Lazy load Cal.com =====
@@ -169,7 +177,7 @@
         // Scroll al inicio de <main> descontando la altura del nav
         var mainEl = document.querySelector("main");
         var navH = document.querySelector(".supernav").offsetHeight;
-        window.scrollTo({ top: mainEl.offsetTop - navH, behavior: "smooth" });
+        window.scrollTo({ top: mainEl.offsetTop - navH, behavior: scrollBehavior() });
 
         setTimeout(function () {
           fin.classList.remove("fade-out");
@@ -246,7 +254,18 @@
     var scrollBtn = e.target.closest("[data-scroll-top]");
     if (scrollBtn) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: scrollBehavior() });
+    }
+  });
+
+  // ===== Delegación de eventos (keydown) =====
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+
+    var sortBtn = e.target.closest("[data-sort]");
+    if (sortBtn) {
+      e.preventDefault();
+      sortTable(parseInt(sortBtn.dataset.sort, 10));
     }
   });
 
@@ -319,6 +338,9 @@
             feedback.className = "form-feedback success";
             feedback.hidden = false;
             form.reset();
+            form.querySelectorAll(".field-error, .field-valid").forEach(function (el) {
+              el.classList.remove("field-error", "field-valid");
+            });
           } else {
             throw new Error("Error " + res.status);
           }
@@ -334,6 +356,42 @@
           btn.textContent = "Enviar mensaje";
         });
       });
+
+      // Validación en tiempo real (blur)
+      form.querySelectorAll("[required]").forEach(function (field) {
+        field.addEventListener("blur", function () {
+          if (field.value.trim() === "") {
+            field.classList.add("field-error");
+            field.classList.remove("field-valid");
+          } else if (field.type === "email" && !field.validity.valid) {
+            field.classList.add("field-error");
+            field.classList.remove("field-valid");
+          } else {
+            field.classList.remove("field-error");
+            field.classList.add("field-valid");
+          }
+        });
+        field.addEventListener("input", function () {
+          field.classList.remove("field-error");
+        });
+      });
+
+      // Contador de caracteres para textarea
+      var messageField = document.getElementById("contact-message");
+      if (messageField) {
+        var maxChars = 1000;
+        var counter = document.createElement("span");
+        counter.className = "char-counter";
+        counter.textContent = "0 / " + maxChars;
+        messageField.parentNode.insertBefore(counter, messageField.nextSibling);
+
+        messageField.addEventListener("input", function () {
+          var len = messageField.value.length;
+          counter.textContent = len + " / " + maxChars;
+          counter.classList.toggle("char-counter-warn", len > maxChars * 0.9);
+          counter.classList.toggle("char-counter-over", len >= maxChars);
+        });
+      }
     }
   });
 })();
