@@ -35,7 +35,7 @@
   display: inline-block;
   padding: 0.8rem 1.8rem;
   background-color: var(--color-primary);
-  color: var(--text-heading);
+  color: #fff;
   border: none;
   border-radius: 5px;
   font-size: 0.95rem;
@@ -50,12 +50,42 @@
 .cta-button:hover {
   background-color: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.3);
+  box-shadow: var(--shadow-cta);
 }
 
 .cta-button:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+/* Hero dual CTA */
+.hero-ctas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.hero-ctas .cta-button {
+  margin-top: 0;
+}
+
+.hero-micro {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* Secondary CTA variant */
+.cta-button-secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cta-button-secondary:hover {
+  background-color: var(--color-primary);
+  color: #fff;
 }
 
 @media screen and (max-width: 720px) {

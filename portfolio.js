@@ -15,8 +15,13 @@
   var PINNED_NAMES = ["smm", "languages", "qrsgen", "unix"];
   var HIDDEN_REPOS = ["rricajos", "java", "php", "javascript"]; // profile readme + study repos (shown in About Me)
 
+  var CONFIG = {
+    CACHE_TTL: 10 * 60 * 1000,
+    MAX_FILE_DISPLAY: 512 * 1024,
+    DEBOUNCE_DELAY: 250
+  };
+
   var CACHE_KEY = "rricajos_repos";
-  var CACHE_TTL = 10 * 60 * 1000; // 10 min
 
   // Preferencias de movimiento
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -39,7 +44,6 @@
   var activeFilter = null; // { type: "tag"|"lang", value: "svelte" }
 
   // Límites para visualización de archivos
-  var MAX_FILE_DISPLAY = 512 * 1024; // 512 KB
   var IMAGE_EXTENSIONS = ["png", "jpg", "jpeg", "gif", "svg", "webp", "ico", "bmp"];
   var BINARY_EXTENSIONS = [
     "pdf", "zip", "tar", "gz", "7z", "rar",
@@ -96,7 +100,7 @@
       var raw = sessionStorage.getItem(key);
       if (!raw) return null;
       var parsed = JSON.parse(raw);
-      if (Date.now() - parsed.timestamp < CACHE_TTL) return parsed.data;
+      if (Date.now() - parsed.timestamp < CONFIG.CACHE_TTL) return parsed.data;
     } catch (e) { /* corrupted — ignorar */ }
     return null;
   }
@@ -105,6 +109,91 @@
     try {
       sessionStorage.setItem(key, JSON.stringify({ data: data, timestamp: Date.now() }));
     } catch (e) { /* quota exceeded — ignorar */ }
+  }
+
+  // ===== Card background images from README =====
+
+  /** Extracts the first meaningful image URL from README HTML (skips badges, SVGs, tiny icons). */
+  function extractFirstImage(html) {
+    var div = document.createElement("div");
+    div.innerHTML = html;
+    var imgs = div.querySelectorAll("img");
+    for (var i = 0; i < imgs.length; i++) {
+      var src = imgs[i].getAttribute("src") || "";
+      if (src.indexOf("shields.io") !== -1) continue;
+      if (src.indexOf("badge") !== -1) continue;
+      if (src.indexOf("data:image/svg") !== -1) continue;
+      if (/\.svg(\?|$)/i.test(src)) continue;
+      var w = parseInt(imgs[i].getAttribute("width"), 10);
+      var h = parseInt(imgs[i].getAttribute("height"), 10);
+      if (w && w < 64) continue;
+      if (h && h < 64) continue;
+      return src;
+    }
+    return null;
+  }
+
+  /** Applies a background image to a repo card. */
+  function applyCardBackground(card, imageUrl) {
+    card.classList.add("repo-card-with-bg");
+    card.style.backgroundImage = "url(\"" + imageUrl.replace(/"/g, "%22") + "\")";
+  }
+
+  /** Fetches README and extracts the first image for a card background. */
+  function fetchCardImage(card, repoName) {
+    var imgCacheKey = "repo_card_img_" + repoName;
+    var cachedImg = getCached(imgCacheKey);
+
+    if (cachedImg === "none") return;
+    if (cachedImg) {
+      applyCardBackground(card, cachedImg);
+      return;
+    }
+
+    var readmeCacheKey = "repo_readme_" + repoName;
+    var cachedReadme = getCached(readmeCacheKey);
+
+    if (cachedReadme) {
+      var url = extractFirstImage(cachedReadme);
+      setCache(imgCacheKey, url || "none");
+      if (url) applyCardBackground(card, url);
+      return;
+    }
+
+    fetchWithTimeout(
+      "https://api.github.com/repos/" + GITHUB_USER + "/" + repoName + "/readme",
+      { headers: { Accept: "application/vnd.github.html" } }
+    )
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        return res.text();
+      })
+      .then(function (html) {
+        setCache(readmeCacheKey, html);
+        var url = extractFirstImage(html);
+        setCache(imgCacheKey, url || "none");
+        if (url) applyCardBackground(card, url);
+      })
+      .catch(function () {
+        setCache(imgCacheKey, "none");
+      });
+  }
+
+  /** IntersectionObserver for lazy-loading card background images. */
+  var cardBgObserver = null;
+  if ("IntersectionObserver" in window) {
+    cardBgObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var card = entry.target;
+          var repoName = card.dataset.repo;
+          if (repoName && !card.classList.contains("skeleton-card")) {
+            fetchCardImage(card, repoName);
+          }
+          cardBgObserver.unobserve(card);
+        }
+      });
+    }, { rootMargin: "200px" });
   }
 
   /** Convierte una fecha ISO a texto relativo en español. */
@@ -239,6 +328,12 @@
       others.forEach(function (repo) {
         allContainer.appendChild(createCard(repo, false));
       });
+    }
+
+    // Observe cards for lazy background images
+    if (cardBgObserver) {
+      var bgCards = gridView.querySelectorAll("[data-repo]:not(.skeleton-card)");
+      bgCards.forEach(function (c) { cardBgObserver.observe(c); });
     }
   }
 
@@ -414,7 +509,7 @@
       // Esperar a que la transición termine (100ms fade-out + 100ms fade-in + margen)
       setTimeout(function () {
         openRepoDetail(repoName);
-      }, 250);
+      }, CONFIG.DEBOUNCE_DELAY);
     }
   }
 
@@ -630,7 +725,7 @@
     if (btnEl) btnEl.hidden = false;
 
     // Archivo demasiado grande
-    if (fileData.size > MAX_FILE_DISPLAY) {
+    if (fileData.size > CONFIG.MAX_FILE_DISPLAY) {
       contentEl.innerHTML =
         '<div class="file-viewer-info">' +
           "<p>Archivo demasiado grande para previsualizar (" + formatSize(fileData.size) + ").</p>" +
@@ -731,7 +826,13 @@
   /** Renderiza el README HTML. */
   function renderReadme(html) {
     var el = document.getElementById("repo-right-content");
-    if (el) el.innerHTML = html;
+    if (el) {
+      el.innerHTML = html;
+      var imgs = el.querySelectorAll("img");
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].setAttribute("loading", "lazy");
+      }
+    }
   }
 
   // ===== Fetch paginado de repos =====
@@ -818,7 +919,7 @@
           var match = !query || name.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
           card.classList.toggle("search-hidden", !match);
         });
-      }, 250);
+      }, CONFIG.DEBOUNCE_DELAY);
     });
   }
 
@@ -953,7 +1054,6 @@
       }
 
     } catch (error) {
-      console.error("Error loading repos:", error);
       var errorMsg = error.name === "AbortError"
         ? "La petición tardó demasiado. Recarga la página para reintentar."
         : error.message || "No se pudieron cargar los repositorios.";

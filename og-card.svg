@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0921"/>
+      <stop offset="100%" stop-color="#111035"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#007bff"/>
+      <stop offset="100%" stop-color="#5ba8ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <!-- Decorative circles -->
+  <circle cx="920" cy="315" r="260" fill="#007bff" opacity="0.04"/>
+  <circle cx="960" cy="315" r="180" fill="#007bff" opacity="0.06"/>
+  <!-- Avatar circle -->
+  <circle cx="180" cy="300" r="72" fill="#007bff" opacity="0.15"/>
+  <circle cx="180" cy="300" r="56" fill="#007bff" opacity="0.3"/>
+  <text x="180" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="#5ba8ff">R</text>
+  <!-- Title -->
+  <text x="300" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="#ffffff">RRicajos</text>
+  <!-- Subtitle -->
+  <text x="300" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#5ba8ff">Desarrollo y Diseño app/web a medida</text>
+  <!-- Tagline -->
+  <text x="300" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#6b7094">Sin plantillas, sin intermediarios · Barcelona</text>
+  <!-- Accent line bottom -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

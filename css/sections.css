@@ -11,6 +11,7 @@
   .animate-in { animation: none !important; opacity: 1; transform: none; }
   .production-card,
   .repo-card,
+  .showcase-card,
   .service-close-pack,
   .contact-link,
   .cta-button,
@@ -174,7 +175,7 @@
 .production-card:hover {
   border-color: var(--color-primary);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.12);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .production-card-header {
@@ -202,21 +203,246 @@
   margin-top: auto;
 }
 
-.production-coming-soon {
+/* ======================
+   Trust Strip
+   ====================== */
+.trust-strip {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.trust-item {
+  text-align: center;
+  min-width: 120px;
+}
+
+.trust-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  font-family: "Poppins", sans-serif;
+}
+
+.trust-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ======================
+   Services Preview (landing)
+   ====================== */
+.services-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-preview-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.service-preview-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.service-preview-card svg {
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.service-preview-card h3 {
+  color: var(--text-heading);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-preview-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.service-preview-price {
+  color: var(--color-success);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.services-preview-cta {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* ======================
+   Testimonios
+   ====================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.testimonial-stars {
+  color: var(--color-gold);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.testimonial-quote {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-style: italic;
+  flex: 1;
+  margin: 0;
+}
+
+.testimonial-author {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1.25rem 1.5rem;
-  background-color: var(--bg-card);
-  border: 1px dashed var(--border-color);
-  border-radius: 8px;
-  color: var(--text-dimmer);
-  font-size: 0.95rem;
 }
 
-.production-coming-soon svg {
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-primary-subtle);
   color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
   flex-shrink: 0;
+}
+
+.testimonial-name {
+  display: block;
+  color: var(--text-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-style: normal;
+}
+
+.testimonial-role {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ======================
+   Showcase clientes
+   ====================== */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.showcase-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-alt) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.showcase-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.showcase-image {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-primary-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-image-placeholder {
+  color: var(--text-subtle);
+}
+
+.showcase-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.showcase-card h3 {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+}
+
+.showcase-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.showcase-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.showcase-tags .tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+}
+
+.showcase-result {
+  color: var(--color-success);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: auto;
 }
 
 /* ======================

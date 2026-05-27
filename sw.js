@@ -1,12 +1,17 @@
-var CACHE = "rricajos-v25";
+var CACHE = "rricajos-v36";
 var ASSETS = [
   "./",
   "./index.html",
   "./main.js",
   "./portfolio.js",
   "./avatar.png",
+  "./favicon.svg",
   "./favicon.ico",
+  "./robots.txt",
+  "./404.html",
+  "./privacidad.html",
   "./css/base.css",
+  "./css/fonts.css",
   "./css/superheader.css",
   "./css/supernav.css",
   "./css/superfooter.css",
@@ -14,7 +19,12 @@ var ASSETS = [
   "./css/section-services.css",
   "./css/section-portfolio.css",
   "./css/section-contact.css",
-  "./css/print.css"
+  "./css/print.css",
+  "./fonts/poppins-400-latin.woff2",
+  "./fonts/poppins-400-latin-ext.woff2",
+  "./fonts/poppins-600-latin.woff2",
+  "./fonts/poppins-600-latin-ext.woff2",
+  "./og-card.svg"
 ];
 
 self.addEventListener("install", function (e) {
@@ -44,6 +54,9 @@ self.addEventListener("fetch", function (e) {
         return res;
       })
       .catch(function () {
+        if (e.request.mode === "navigate") {
+          return caches.match("./404.html");
+        }
         return caches.match(e.request);
       })
   );
