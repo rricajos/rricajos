@@ -1,4 +1,25 @@
 /* ======================
+   Accesibilidad
+   ====================== */
+:focus-visible {
+  outline: 2px solid #5ba8ff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .supersection { transition: none; }
+  .animate-in { animation: none !important; opacity: 1; transform: none; }
+  .production-card,
+  .repo-card,
+  .service-close-pack,
+  .contact-link,
+  .cta-button,
+  .supernav-button,
+  .tabbar-btn,
+  .supernav-button::before { transition: none; }
+}
+
+/* ======================
    Secciones generales
    ====================== */
 .supersection {
@@ -90,16 +111,14 @@
   color: #ccc;
 }
 
-.about-me-avatar {
+.about-me-radar {
   flex: 0 0 auto;
+  width: 300px;
 }
 
-.about-me-avatar img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 3px solid #007bff;
-  object-fit: cover;
+.about-me-radar svg {
+  width: 100%;
+  height: auto;
 }
 
 .about-me-tags {
@@ -115,19 +134,27 @@
   padding: 0.3rem 0.8rem;
   border-radius: 1rem;
   font-size: 0.85rem;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.tag:hover {
+  background-color: rgba(0, 123, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 /* ======================
    En producción
    ====================== */
 .production-title {
-  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .production-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .production-card {
@@ -140,12 +167,13 @@
   padding: 1.25rem;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.3s ease, transform 0.2s ease;
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .production-card:hover {
   border-color: #007bff;
   transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.12);
 }
 
 .production-card-header {
@@ -174,6 +202,19 @@
 }
 
 /* ======================
+   Tablet (721px - 1024px)
+   ====================== */
+@media screen and (min-width: 721px) and (max-width: 1024px) {
+  .about-me-text h1 {
+    font-size: 2rem;
+  }
+
+  .production-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ======================
    Mobile (max 720px)
    ====================== */
 @media screen and (max-width: 720px) {
@@ -191,9 +232,8 @@
     font-size: 1.8rem;
   }
 
-  .about-me-avatar img {
-    width: 140px;
-    height: 140px;
+  .about-me-radar {
+    width: 260px;
   }
 
   .production-grid {

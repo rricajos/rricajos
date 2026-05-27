@@ -1,4 +1,6 @@
-/* Servicios */
+/* ======================
+   Servicios — Layout
+   ====================== */
 #services > .supercontainer {
   display: flex;
   flex-flow: row wrap;
@@ -20,8 +22,10 @@
   gap: 1rem;
 }
 
-/* Tabla */
-table {
+/* ======================
+   Servicios — Tabla de precios
+   ====================== */
+.services-price-per-hour table {
   width: 100%;
   border-collapse: collapse;
   background-color: #1a1a2e;
@@ -29,42 +33,48 @@ table {
   overflow: hidden;
 }
 
-th,
-td {
+.services-price-per-hour th,
+.services-price-per-hour td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #333;
   color: #e0e0e0;
 }
 
-th {
+.services-price-per-hour th {
   background-color: #007bff;
-  color: white;
+  color: #fff;
   cursor: pointer;
   position: relative;
 }
 
-th:hover {
+.services-price-per-hour th:hover {
   background-color: #006ee4;
 }
 
-tr:hover {
+.services-price-per-hour th:active {
+  background-color: #005bc4;
+}
+
+.services-price-per-hour tr:hover {
   background-color: rgba(0, 123, 255, 0.08);
 }
 
-.asc::after {
+.services-price-per-hour .asc::after {
   content: " \25B2";
   position: absolute;
   right: 10px;
 }
 
-.desc::after {
+.services-price-per-hour .desc::after {
   content: " \25BC";
   position: absolute;
   right: 10px;
 }
 
-/* Cards de servicio */
+/* ======================
+   Servicios — Cards de precio cerrado
+   ====================== */
 .service-close-pack {
   width: 100%;
   background: #1a1a2e;
@@ -101,6 +111,7 @@ tr:hover {
   color: #0f9d58;
 }
 
+/* Expandable detail panel */
 .service-close-detail {
   max-height: 0;
   overflow: hidden;
@@ -112,7 +123,7 @@ tr:hover {
 }
 
 .service-close-detail.open {
-  max-height: 300px;
+  max-height: 500px;
   opacity: 1;
   padding: 1rem 0;
 }
@@ -164,4 +175,14 @@ tr:hover {
 
 .services-price-close > ul li {
   margin-bottom: 0.3rem;
+}
+
+/* ======================
+   Servicios — Mobile
+   ====================== */
+@media screen and (max-width: 720px) {
+  .services-price-per-hour {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
