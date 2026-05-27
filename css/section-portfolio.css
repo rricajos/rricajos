@@ -549,6 +549,19 @@
   100% { background-position: 400px 0; }
 }
 
+.detail-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+}
+
+.skeleton-file-row {
+  height: 28px;
+  width: 100%;
+  border-radius: 4px;
+}
+
 .skeleton-card {
   pointer-events: none;
 }

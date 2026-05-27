@@ -1,25 +1,130 @@
 /* ======================
-   Servicios — Layout
+   Servicios — Layout (single column, centered)
    ====================== */
 #services > .supercontainer {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
+  max-width: 800px;
 }
 
+#services > .supercontainer > .services-process,
 #services > .supercontainer > .services-price-close,
-#services > .supercontainer > .services-price-per-hour {
-  max-width: 600px;
+#services > .supercontainer > .services-price-per-hour,
+#services > .supercontainer > .services-cta {
+  width: 100%;
+}
+
+.services-price-close,
+.services-price-per-hour {
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
 }
 
-#services-close-price-buttons-container > div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+#services-close-price-buttons-container > div,
+.services-close-marketing-container > div,
+.services-close-support-container > div {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+}
+
+/* ======================
+   Servicios — Proceso "Cómo trabajo"
+   ====================== */
+.services-process {
+  background-color: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.services-process h2 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.process-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+.process-step {
+  flex: 0 1 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 0.4rem;
+}
+
+.process-step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #005bc4);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.process-step h3 {
+  color: #fff;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.process-step p {
+  color: #b0b0b0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.process-step-arrow {
+  display: flex;
+  align-items: center;
+  padding-top: 0.25rem;
+  color: #444;
+  flex-shrink: 0;
+}
+
+.process-step-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ======================
+   Servicios — Categoría label
+   ====================== */
+.service-category-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #888;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.service-category-label svg {
+  color: #5ba8ff;
+  flex-shrink: 0;
 }
 
 /* ======================
@@ -29,15 +134,16 @@
   width: 100%;
   border-collapse: collapse;
   background-color: #1a1a2e;
+  border: 1px solid #333;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .services-price-per-hour th,
 .services-price-per-hour td {
-  padding: 12px;
+  padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #2a2a40;
   color: #e0e0e0;
 }
 
@@ -46,6 +152,8 @@
   color: #fff;
   cursor: pointer;
   position: relative;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .services-price-per-hour th:hover {
@@ -56,10 +164,19 @@
   background-color: #005bc4;
 }
 
-.services-price-per-hour tr:hover {
+.services-price-per-hour tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.services-price-per-hour tbody tr:hover {
   background-color: rgba(0, 123, 255, 0.08);
 }
 
+.services-price-per-hour tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sort arrows */
 .services-price-per-hour .asc::after {
   content: " \25B2";
   position: absolute;
@@ -70,6 +187,34 @@
   content: " \25BC";
   position: absolute;
   right: 10px;
+}
+
+/* Price column: right-aligned, monospace feel */
+.services-price-per-hour td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  color: #0f9d58;
+  font-weight: 600;
+}
+
+.services-price-per-hour th:last-child {
+  text-align: right;
+}
+
+.services-table-note {
+  color: #888;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Table service icons */
+.table-service-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  color: #5ba8ff;
 }
 
 /* ======================
@@ -89,13 +234,24 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease, background 0.3s ease;
 }
 
 .service-close-pack:hover {
   box-shadow: 0 4px 16px rgba(0, 123, 255, 0.15);
   border-color: #007bff;
   transform: translateY(-2px);
+}
+
+/* Card activa (detalle abierto) */
+.service-close-pack[aria-expanded="true"] {
+  border-color: #007bff;
+  background: linear-gradient(135deg, #1a1a2e 0%, #1c1c3a 100%);
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.15);
+}
+
+.service-close-pack[aria-expanded="true"]:hover {
+  transform: none;
 }
 
 .service-close-pack ul {
@@ -109,9 +265,50 @@
 .service-close-price {
   font-weight: bold;
   color: #0f9d58;
+  white-space: nowrap;
 }
 
-/* Expandable detail panel */
+/* Pack icon */
+.pack-icon {
+  color: #5ba8ff;
+  flex-shrink: 0;
+}
+
+/* Badge (Popular, Todo incluido) */
+.pack-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 123, 255, 0.15);
+  color: #5ba8ff;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.pack-badge-accent {
+  background-color: rgba(15, 157, 88, 0.15);
+  color: #0f9d58;
+}
+
+/* Chevron indicador */
+.pack-chevron {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #666;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.service-close-pack[aria-expanded="true"] .pack-chevron {
+  transform: rotate(180deg);
+  color: #5ba8ff;
+}
+
+/* ======================
+   Servicios — Panel de detalle expandible
+   ====================== */
 .service-close-detail {
   max-height: 0;
   overflow: hidden;
@@ -119,13 +316,18 @@
   color: #ccc;
   line-height: 1.6;
   transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-  padding: 0;
+  padding: 0 1rem;
 }
 
 .service-close-detail.open {
   max-height: 500px;
   opacity: 1;
-  padding: 1rem 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(28, 28, 58, 0.6) 100%);
+  border: 1px solid rgba(0, 123, 255, 0.2);
+  border-left: 3px solid #007bff;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .service-close-detail h3,
@@ -137,30 +339,45 @@
   margin-bottom: 0.5rem;
 }
 
-.service-close-detail ul {
-  padding-left: 1.2rem;
-  margin-top: 0.5rem;
+.service-close-detail strong {
+  display: block;
+  color: #5ba8ff;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
 }
 
-.service-close-details {
-  margin: 1rem 0;
+.service-close-detail ul {
+  padding-left: 1.2rem;
+  margin-top: 0.25rem;
+}
+
+.service-close-detail li {
+  margin-bottom: 0.25rem;
+}
+
+.service-detail-note {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
 }
 
 .service-close-pack-header {
   font-size: 1rem;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 1rem;
+  gap: 0.4rem 0.75rem;
 }
 
 .service-close-pack-header-right {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: baseline;
-  gap: 1rem;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .services-price-per-hour p {
@@ -168,21 +385,253 @@
   line-height: 1.6;
 }
 
-.services-price-close > ul {
+/* ======================
+   Servicios — Bloque "Siempre incluido"
+   ====================== */
+.services-included {
+  background-color: #1a1a2e;
+  border: 1px solid #333;
+  border-left: 3px solid #007bff;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.services-included h3 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.services-included h3 svg {
+  color: #0f9d58;
+  flex-shrink: 0;
+}
+
+.services-included ul {
   padding-left: 1.2rem;
   color: #b0b0b0;
 }
 
-.services-price-close > ul li {
+.services-included li {
   margin-bottom: 0.3rem;
 }
 
 /* ======================
-   Servicios — Mobile
+   Servicios — CTA final
+   ====================== */
+.services-cta {
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.services-cta p {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* ======================
+   Servicios — Tablet (721px – 1024px)
+   ====================== */
+@media screen and (min-width: 721px) and (max-width: 1024px) {
+  .process-step {
+    flex: 0 1 160px;
+  }
+
+  .process-step p {
+    font-size: 0.7rem;
+  }
+}
+
+/* ======================
+   Servicios — Mobile (max 720px)
    ====================== */
 @media screen and (max-width: 720px) {
+  #services > .supercontainer {
+    gap: 1.5rem;
+  }
+
+  /* Process card: compact */
+  .services-process {
+    padding: 1rem 1.25rem;
+  }
+
+  .services-process h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .process-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .process-step {
+    flex: none;
+    width: 100%;
+    max-width: 300px;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+  }
+
+  .process-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .process-step h3 {
+    font-size: 0.85rem;
+  }
+
+  .process-step p {
+    font-size: 0.72rem;
+  }
+
+  .process-step-arrow {
+    transform: rotate(90deg);
+    padding: 0;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .process-step-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Card header */
+  .service-close-pack-header {
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-close-pack-header-right {
+    flex-wrap: wrap;
+  }
+
+  .service-close-price {
+    font-size: 0.9rem;
+  }
+
+  .service-close-pack {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  /* Category labels */
+  .service-category-label {
+    font-size: 0.72rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Detail panels */
+  .service-close-detail.open {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Table */
   .services-price-per-hour {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .services-price-per-hour table {
+    min-width: 360px;
+  }
+
+  .services-price-per-hour th,
+  .services-price-per-hour td {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+
+  .table-service-icon {
+    display: none;
+  }
+
+  /* Included block */
+  .services-included {
+    padding: 1rem;
+  }
+
+  .services-included h3 {
+    font-size: 0.9rem;
+  }
+
+  .services-included li {
+    font-size: 0.85rem;
+  }
+
+  /* CTA */
+  .services-cta {
+    padding-top: 0.75rem;
+  }
+
+  .services-cta p {
+    font-size: 1rem;
+  }
+
+  .services-cta .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ======================
+   Servicios — Small phones (max 380px)
+   ====================== */
+@media screen and (max-width: 380px) {
+  .services-process {
+    padding: 0.85rem 1rem;
+  }
+
+  .process-step {
+    max-width: 100%;
+  }
+
+  .process-step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .process-step h3 {
+    font-size: 0.8rem;
+  }
+
+  .process-step p {
+    font-size: 0.68rem;
+  }
+
+  .service-close-pack {
+    padding: 0.75rem;
+  }
+
+  .pack-icon {
+    display: none;
+  }
+
+  .service-close-price {
+    font-size: 0.8rem;
+  }
+
+  .pack-badge {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
   }
 }

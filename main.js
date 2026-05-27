@@ -50,6 +50,13 @@
       target.classList.add("open");
       if (trigger) trigger.setAttribute("aria-expanded", "true");
       activeDetail = target;
+
+      // Smooth scroll the opened card into view
+      setTimeout(function () {
+        if (trigger) {
+          trigger.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }, 100);
     }
   }
 
