@@ -55,4 +55,8 @@
     flex-direction: column;
     text-align: center;
   }
+
+  .superfooter {
+    padding-bottom: calc(2rem + 5rem + env(safe-area-inset-bottom, 0.5rem));
+  }
 }

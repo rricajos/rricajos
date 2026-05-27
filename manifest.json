@@ -1,0 +1,16 @@
+{
+  "name": "RRicajos - Ingeniero DevOps & Freelance",
+  "short_name": "RRicajos",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0921",
+  "theme_color": "#0a0921",
+  "icons": [
+    {
+      "src": "avatar.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

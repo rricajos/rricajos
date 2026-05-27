@@ -32,7 +32,6 @@
 /* Nav buttons (desktop) */
 .supernav-button {
   background-color: transparent;
-  outline: none;
   border: none;
   text-decoration: none;
   color: #fff;
@@ -87,6 +86,15 @@
 #supernav-button-home {
   font-size: 1.2rem;
   font-weight: 600;
+  gap: 0.5rem;
+}
+
+.nav-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
 }
 
 #supernav-button-home::before {
