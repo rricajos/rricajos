@@ -141,16 +141,26 @@
     }
   }
 
-  /** Devuelve la sección del hash actual, o null si no es válida. */
-  function getHashSection() {
+  /** Parsea el hash → { section, subPath } o null. Soporta #portfolio/smm */
+  function parseHash() {
     var hash = window.location.hash.replace("#", "");
-    return VALID_SECTIONS.indexOf(hash) !== -1 ? hash : null;
+    if (!hash) return null;
+    var slash = hash.indexOf("/");
+    var section = slash === -1 ? hash : hash.substring(0, slash);
+    var subPath = slash === -1 ? null : hash.substring(slash + 1) || null;
+    if (VALID_SECTIONS.indexOf(section) === -1) return null;
+    return { section: section, subPath: subPath };
   }
 
   // Back / forward del navegador
   window.addEventListener("popstate", function (e) {
-    var section = (e.state && e.state.section) || getHashSection();
-    if (section) nav(section, false);
+    var parsed = (e.state && e.state.section)
+      ? { section: e.state.section, subPath: e.state.subPath || null }
+      : parseHash();
+    if (parsed && parsed.section !== currentSection) {
+      nav(parsed.section, false);
+    }
+    // Cambios de sub-path dentro de la misma sección los gestiona cada módulo
   });
 
   // ===== Delegación de eventos (click) =====
@@ -183,10 +193,29 @@
 
   // ===== Inicialización =====
   document.addEventListener("DOMContentLoaded", function () {
-    // Navegar a la sección del hash si existe
-    var hashSection = getHashSection();
-    if (hashSection && hashSection !== currentSection) {
-      nav(hashSection);
+    // Navegar a la sección del hash si existe (soporta sub-path: #portfolio/smm)
+    var parsed = parseHash();
+    if (parsed) {
+      if (parsed.subPath) {
+        window.__pendingRepoDetail = parsed.subPath;
+      }
+      if (parsed.section !== currentSection) {
+        nav(parsed.section);
+        // Restaurar sub-path en el historial si existía
+        if (parsed.subPath) {
+          history.replaceState(
+            { section: parsed.section, subPath: parsed.subPath },
+            "",
+            "#" + parsed.section + "/" + parsed.subPath
+          );
+        }
+      } else {
+        history.replaceState(
+          { section: currentSection },
+          "",
+          window.location.hash || "#" + currentSection
+        );
+      }
     } else {
       history.replaceState({ section: currentSection }, "", "#" + currentSection);
     }
