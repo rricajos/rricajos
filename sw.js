@@ -1,4 +1,4 @@
-var CACHE = "rricajos-v17";
+var CACHE = "rricajos-v18";
 var ASSETS = [
   "./",
   "./index.html",

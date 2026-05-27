@@ -172,6 +172,10 @@
   color: #ccc;
 }
 
+.portfolio-filter-bar[hidden] {
+  display: none;
+}
+
 .portfolio-filter-bar strong {
   color: #5ba8ff;
 }
@@ -197,6 +201,26 @@
 /* Filtered out cards */
 .repo-card.filtered-out {
   display: none;
+}
+
+/* Filter active: merge both grids into a single flat grid */
+#portfolio-grid-view.filter-active {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+#portfolio-grid-view.filter-active > h2,
+#portfolio-grid-view.filter-active > .section-subtitle {
+  display: none;
+}
+
+#portfolio-grid-view.filter-active > .repos-grid {
+  display: contents;
+}
+
+#portfolio-grid-view.filter-active > .portfolio-filter-bar {
+  grid-column: 1 / -1;
 }
 
 /* ======================

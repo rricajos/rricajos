@@ -716,6 +716,7 @@
   function applyFilter(type, value, pushHistory) {
     if (pushHistory === undefined) pushHistory = true;
     activeFilter = { type: type, value: value };
+    gridView.classList.add("filter-active");
 
     var allCards = gridView.querySelectorAll("[data-repo]");
     var visibleCount = 0;
@@ -759,6 +760,7 @@
   function clearFilter(pushHistory) {
     if (pushHistory === undefined) pushHistory = true;
     activeFilter = null;
+    gridView.classList.remove("filter-active");
 
     var allCards = gridView.querySelectorAll("[data-repo]");
     allCards.forEach(function (card) {
