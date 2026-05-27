@@ -49,6 +49,38 @@
   --landing-gradient-1: rgba(0, 123, 255, 0.20);
   --landing-gradient-2: rgba(91, 168, 255, 0.14);
   --landing-gradient-3: rgba(22, 36, 71, 0.8);
+
+  /* Shadows */
+  --shadow-primary-sm: 0 2px 8px rgba(0, 123, 255, 0.3);
+  --shadow-primary-md: 0 4px 16px rgba(0, 123, 255, 0.15);
+  --shadow-primary-lg: 0 8px 24px rgba(0, 123, 255, 0.15);
+  --shadow-cta: 0 4px 16px rgba(0, 123, 255, 0.3);
+  --shadow-toggle-mobile: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  /* Primary backgrounds (opacity variants) */
+  --bg-primary-faint: rgba(0, 123, 255, 0.08);
+  --bg-primary-light: rgba(0, 123, 255, 0.1);
+  --bg-primary-subtle: rgba(0, 123, 255, 0.15);
+  --bg-primary-medium: rgba(0, 123, 255, 0.2);
+  --bg-primary-strong: rgba(0, 123, 255, 0.3);
+
+  /* Accent backgrounds */
+  --bg-accent-faint: rgba(91, 168, 255, 0.08);
+  --bg-accent-light: rgba(91, 168, 255, 0.1);
+
+  /* Success/Error feedback */
+  --bg-success-subtle: rgba(15, 157, 88, 0.15);
+  --border-success-subtle: rgba(15, 157, 88, 0.3);
+  --glow-success: 0 0 6px rgba(15, 157, 88, 0.5);
+  --glow-success-strong: 0 0 12px rgba(15, 157, 88, 0.8), 0 0 4px rgba(15, 157, 88, 0.4);
+  --bg-error-faint: rgba(255, 107, 107, 0.08);
+  --bg-error-subtle: rgba(255, 107, 107, 0.15);
+  --border-error-subtle: rgba(255, 107, 107, 0.3);
+
+  /* Table / Nav */
+  --bg-table-even: rgba(255, 255, 255, 0.02);
+  --bg-hover-overlay: rgba(255, 255, 255, 0.1);
+  --border-nav-mobile-top: rgba(255, 255, 255, 0.08);
 }
 
 /* Light Theme */
@@ -89,6 +121,46 @@
   --landing-gradient-1: rgba(0, 102, 214, 0.08);
   --landing-gradient-2: rgba(61, 139, 219, 0.06);
   --landing-gradient-3: rgba(245, 245, 247, 0.5);
+
+  /* Shadows */
+  --shadow-primary-sm: 0 2px 8px rgba(0, 102, 214, 0.2);
+  --shadow-primary-md: 0 4px 16px rgba(0, 102, 214, 0.1);
+  --shadow-primary-lg: 0 8px 24px rgba(0, 102, 214, 0.1);
+  --shadow-cta: 0 4px 16px rgba(0, 102, 214, 0.2);
+  --shadow-toggle-mobile: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Primary backgrounds */
+  --bg-primary-faint: rgba(0, 102, 214, 0.05);
+  --bg-primary-light: rgba(0, 102, 214, 0.08);
+  --bg-primary-subtle: rgba(0, 102, 214, 0.1);
+  --bg-primary-medium: rgba(0, 102, 214, 0.15);
+  --bg-primary-strong: rgba(0, 102, 214, 0.2);
+
+  /* Accent backgrounds */
+  --bg-accent-faint: rgba(61, 139, 219, 0.06);
+  --bg-accent-light: rgba(61, 139, 219, 0.08);
+
+  /* Success/Error feedback */
+  --bg-success-subtle: rgba(10, 124, 70, 0.12);
+  --border-success-subtle: rgba(10, 124, 70, 0.25);
+  --glow-success: 0 0 6px rgba(10, 124, 70, 0.3);
+  --glow-success-strong: 0 0 12px rgba(10, 124, 70, 0.5), 0 0 4px rgba(10, 124, 70, 0.2);
+  --bg-error-faint: rgba(217, 48, 37, 0.06);
+  --bg-error-subtle: rgba(217, 48, 37, 0.1);
+  --border-error-subtle: rgba(217, 48, 37, 0.2);
+
+  /* Table / Nav */
+  --bg-table-even: rgba(0, 0, 0, 0.02);
+  --bg-hover-overlay: rgba(0, 0, 0, 0.05);
+  --border-nav-mobile-top: rgba(0, 0, 0, 0.08);
+}
+
+/* Transición suave de tema (solo se activa vía JS al hacer toggle) */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 /* Base / Reset */

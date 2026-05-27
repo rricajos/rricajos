@@ -50,6 +50,16 @@
   color: var(--color-accent);
 }
 
+.footer-legal {
+  color: var(--text-subtle);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal:hover {
+  color: var(--color-accent);
+}
+
 @media screen and (max-width: 720px) {
   .footer-content {
     flex-direction: column;

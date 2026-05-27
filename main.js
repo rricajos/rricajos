@@ -13,6 +13,16 @@
 (function () {
   "use strict";
 
+  // ===== Configuración =====
+  var CONFIG = {
+    MOBILE_BREAKPOINT: 720,
+    FADE_DURATION: 100,
+    SCROLL_DELAY_MOBILE: 350,
+    SCROLL_DELAY_DESKTOP: 100,
+    FORM_TIMEOUT: 15000,
+    CHAR_LIMIT: 1000
+  };
+
   // ===== Service Worker =====
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
@@ -24,6 +34,7 @@
   var activeDetail = null;   // panel de servicio abierto
   var sortDirection = false; // alternar ASC / DESC en la tabla
   var calLoaded = false;     // Cal.com cargado bajo demanda
+  var feedback = null;       // form-feedback element (set on DOMContentLoaded)
 
   var VALID_SECTIONS = ["home", "services", "portfolio", "contact"];
 
@@ -44,6 +55,9 @@
     }
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = theme === "dark" ? "#0a0921" : "#f5f5f7";
+    if (calLoaded && window.Cal) {
+      Cal("ui", { theme: theme });
+    }
   }
   var savedTheme = localStorage.getItem("theme");
   if (!savedTheme) {
@@ -53,7 +67,15 @@
   if (themeToggle) {
     themeToggle.addEventListener("click", function () {
       var current = document.documentElement.getAttribute("data-theme") || "dark";
+      if (!prefersReducedMotion.matches) {
+        document.documentElement.classList.add("theme-transition");
+      }
       applyTheme(current === "dark" ? "light" : "dark");
+      if (!prefersReducedMotion.matches) {
+        setTimeout(function () {
+          document.documentElement.classList.remove("theme-transition");
+        }, 300);
+      }
     });
   }
 
@@ -84,12 +106,12 @@
 
       // Smooth scroll the opened card into view
       // On mobile, wait for the CSS max-height transition (400ms) and use "start"
-      var isMobile = window.innerWidth <= 720;
+      var isMobile = window.innerWidth <= CONFIG.MOBILE_BREAKPOINT;
       setTimeout(function () {
         if (trigger) {
           trigger.scrollIntoView({ behavior: scrollBehavior(), block: isMobile ? "start" : "nearest" });
         }
-      }, isMobile ? 350 : 100);
+      }, isMobile ? CONFIG.SCROLL_DELAY_MOBILE : CONFIG.SCROLL_DELAY_DESKTOP);
     }
   }
 
@@ -131,47 +153,68 @@
   }
 
   // ===== Lazy load Cal.com =====
+  function calLoadFailed() {
+    var container = document.getElementById("cal-inline");
+    if (container) {
+      container.innerHTML =
+        '<p class="portfolio-empty">' +
+        'No se pudo cargar el calendario. ' +
+        '<a href="https://cal.com/ricard-penin-lwzsun/consulta" target="_blank" rel="noopener">Reserva aquí directamente</a>.' +
+        '</p>';
+    }
+  }
+
   function loadCal() {
     if (calLoaded) return;
     calLoaded = true;
-    (function (C, A, L) {
-      var p = function (a, ar) { a.q.push(ar); };
-      var d = C.document;
-      C.Cal = C.Cal || function () {
-        var cal = C.Cal;
-        var ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          d.head.appendChild(d.createElement("script")).src = A;
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          var api = function () { p(api, arguments); };
-          var namespace = ar[1];
-          api.q = api.q || [];
-          if (typeof namespace === "string") {
-            cal.ns[namespace] = api;
-            p(api, ar);
-          } else {
-            p(cal, ar);
+
+    try {
+      (function (C, A, L) {
+        var p = function (a, ar) { a.q.push(ar); };
+        var d = C.document;
+        C.Cal = C.Cal || function () {
+          var cal = C.Cal;
+          var ar = arguments;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            var script = d.createElement("script");
+            script.src = A;
+            script.onerror = function () { calLoadFailed(); };
+            d.head.appendChild(script);
+            cal.loaded = true;
           }
-          return;
-        }
-        p(cal, ar);
-      };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", { origin: "https://cal.com" });
-    Cal("inline", {
-      elementOrSelector: "#cal-inline",
-      calLink: "ricard-penin-lwzsun/consulta",
-      config: { layout: "month_view", theme: "dark" }
-    });
-    Cal("ui", {
-      theme: "dark",
-      styles: { branding: { brandColor: "#007bff" } },
-      hideEventTypeDetails: false
-    });
+          if (ar[0] === L) {
+            var api = function () { p(api, arguments); };
+            var namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") {
+              cal.ns[namespace] = api;
+              p(api, ar);
+            } else {
+              p(cal, ar);
+            }
+            return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      Cal("init", { origin: "https://cal.com" });
+      var currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+      Cal("inline", {
+        elementOrSelector: "#cal-inline",
+        calLink: "ricard-penin-lwzsun/consulta",
+        config: { layout: "month_view", theme: currentTheme }
+      });
+      Cal("ui", {
+        theme: currentTheme,
+        styles: { branding: { brandColor: "#007bff" } },
+        hideEventTypeDetails: false
+      });
+    } catch (e) {
+      calLoadFailed();
+    }
   }
 
   // ===== Navegación entre secciones =====
@@ -180,6 +223,9 @@
     if (navigating || currentSection === sectionId) return;
 
     navigating = true;
+
+    // Clear contact form feedback when navigating
+    if (feedback) { feedback.hidden = true; }
 
     var fout = document.getElementById(currentSection);
     var fin = document.getElementById(sectionId);
@@ -207,8 +253,8 @@
           fin.classList.remove("fade-out");
           fin.classList.add("fade-in");
           navigating = false;
-        }, 100);
-      }, 100);
+        }, CONFIG.FADE_DURATION);
+      }, CONFIG.FADE_DURATION);
 
       currentSection = sectionId;
       if (sectionId === "contact") loadCal();
@@ -216,7 +262,6 @@
         history.pushState({ section: sectionId }, "", "#" + sectionId);
       }
     } catch (error) {
-      console.error("Navigation error:", error);
       navigating = false;
     }
   }
@@ -361,72 +406,134 @@
 
     // Formulario de contacto (FormSubmit.co)
     var form = document.getElementById("contact-form");
-    var feedback = document.getElementById("form-feedback");
+    feedback = document.getElementById("form-feedback");
 
     if (form && feedback) {
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         var btn = form.querySelector('button[type="submit"]');
+        var originalBtnText = btn.textContent;
         btn.disabled = true;
         btn.setAttribute("aria-busy", "true");
         btn.textContent = "Enviando...";
         feedback.hidden = true;
 
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function () { controller.abort(); }, CONFIG.FORM_TIMEOUT);
+
         fetch(form.action, {
           method: "POST",
           body: new FormData(form),
-          headers: { Accept: "application/json" }
+          headers: { Accept: "application/json" },
+          signal: controller.signal
         })
         .then(function (res) {
           if (res.ok) {
-            feedback.textContent = "Mensaje enviado. Te responderé lo antes posible.";
+            feedback.innerHTML = "";
+            var heading = document.createElement("strong");
+            heading.textContent = "Mensaje enviado correctamente";
+            var detail = document.createElement("p");
+            detail.style.margin = "0.4rem 0 0";
+            detail.style.fontSize = "0.85rem";
+            detail.textContent = "Reviso tu mensaje y te respondo en menos de 24 h. Si prefieres, reserva directamente una consulta gratuita:";
+            var calLink = document.createElement("a");
+            calLink.href = "#contact";
+            calLink.className = "feedback-cal-link";
+            calLink.textContent = "Reservar consulta en el calendario";
+            calLink.addEventListener("click", function (ev) {
+              ev.preventDefault();
+              var calEmbed = document.getElementById("cal-inline");
+              if (calEmbed) calEmbed.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+            });
+            feedback.appendChild(heading);
+            feedback.appendChild(detail);
+            feedback.appendChild(calLink);
             feedback.className = "form-feedback success";
             feedback.hidden = false;
             form.reset();
             form.querySelectorAll(".field-error, .field-valid").forEach(function (el) {
               el.classList.remove("field-error", "field-valid");
             });
+            form.querySelectorAll(".field-error-msg").forEach(function (span) {
+              span.textContent = "";
+              span.hidden = true;
+            });
           } else {
             throw new Error("Error " + res.status);
           }
         })
-        .catch(function () {
-          feedback.textContent = "No se pudo enviar. Prueba con el email directamente.";
+        .catch(function (err) {
+          var isTimeout = err && err.name === "AbortError";
+          var msg = isTimeout
+            ? "La solicitud tardó demasiado. Comprueba tu conexión e inténtalo de nuevo."
+            : "No se pudo enviar. Prueba con el email directamente.";
+          feedback.innerHTML = "";
+          feedback.appendChild(document.createTextNode(msg + " "));
+          var retryBtn = document.createElement("button");
+          retryBtn.type = "button";
+          retryBtn.className = "retry-btn";
+          retryBtn.textContent = "Reintentar";
+          retryBtn.addEventListener("click", function () {
+            feedback.hidden = true;
+            form.dispatchEvent(new Event("submit", { cancelable: true }));
+          });
+          feedback.appendChild(retryBtn);
           feedback.className = "form-feedback error";
           feedback.hidden = false;
         })
         .finally(function () {
+          clearTimeout(timeoutId);
           btn.disabled = false;
           btn.removeAttribute("aria-busy");
-          btn.textContent = "Enviar mensaje";
+          btn.textContent = originalBtnText;
         });
       });
 
       // Validación en tiempo real (blur)
       form.querySelectorAll("[required]").forEach(function (field) {
+        var errorSpan = document.getElementById(field.id + "-error");
+
         field.addEventListener("blur", function () {
           if (field.value.trim() === "") {
             field.classList.add("field-error");
             field.classList.remove("field-valid");
+            if (errorSpan) {
+              errorSpan.textContent = "Este campo es obligatorio.";
+              errorSpan.hidden = false;
+            }
           } else if (field.type === "email" && !field.validity.valid) {
             field.classList.add("field-error");
             field.classList.remove("field-valid");
+            if (errorSpan) {
+              errorSpan.textContent = "Introduce un email válido.";
+              errorSpan.hidden = false;
+            }
           } else {
             field.classList.remove("field-error");
             field.classList.add("field-valid");
+            if (errorSpan) {
+              errorSpan.textContent = "";
+              errorSpan.hidden = true;
+            }
           }
         });
         field.addEventListener("input", function () {
           field.classList.remove("field-error");
+          if (errorSpan) {
+            errorSpan.textContent = "";
+            errorSpan.hidden = true;
+          }
         });
       });
 
       // Contador de caracteres para textarea
       var messageField = document.getElementById("contact-message");
       if (messageField) {
-        var maxChars = 1000;
+        var maxChars = CONFIG.CHAR_LIMIT;
         var counter = document.createElement("span");
         counter.className = "char-counter";
+        counter.id = "contact-message-counter";
+        counter.setAttribute("aria-live", "polite");
         counter.textContent = "0 / " + maxChars;
         messageField.parentNode.insertBefore(counter, messageField.nextSibling);
 

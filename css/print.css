@@ -53,9 +53,29 @@
 
   /* Cards en columna simple */
   .production-grid,
+  .services-preview,
+  .testimonials-grid,
+  .showcase-grid,
   #portfolio-grid-view,
   .repos-grid {
     display: block;
+  }
+
+  .testimonial-card,
+  .showcase-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+  }
+
+  .showcase-image-placeholder {
+    display: none;
+  }
+
+  .service-preview-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
   }
 
   .repo-card,
@@ -82,9 +102,43 @@
     border-color: #ccc;
   }
 
-  /* Formulario: solo mostrar estructura */
+  /* Contacto: columna simple */
+  .contact-columns {
+    display: block;
+  }
+
+  .contact-col {
+    margin-bottom: 1rem;
+  }
+
+  .contact-form-row {
+    display: block;
+  }
+
+  .contact-form-group {
+    margin-bottom: 0.5rem;
+  }
+
   .contact-form {
     border: 1px solid #ccc;
     padding: 1rem;
+  }
+
+  .availability-slots {
+    color: #666;
+  }
+
+  /* Servicios: accordion abierto en print */
+  .service-close-detail {
+    display: block !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+
+  .service-close-pack {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
   }
 }
