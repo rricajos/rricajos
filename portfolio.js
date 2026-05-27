@@ -692,6 +692,21 @@
         "https://api.github.com/users/" + GITHUB_USER +
         "/repos?sort=updated&per_page=50&page=" + page
       );
+
+      // Detectar rate limit de la API de GitHub
+      if (response.status === 403) {
+        var remaining = response.headers.get("X-RateLimit-Remaining");
+        if (remaining === "0") {
+          var resetTime = response.headers.get("X-RateLimit-Reset");
+          var resetDate = resetTime ? new Date(parseInt(resetTime, 10) * 1000) : null;
+          var msg = "Límite de la API de GitHub alcanzado.";
+          if (resetDate) {
+            msg += " Se restablece a las " + resetDate.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) + ".";
+          }
+          throw new Error(msg);
+        }
+      }
+
       if (!response.ok) throw new Error("API error: " + response.status);
 
       var batch = await response.json();

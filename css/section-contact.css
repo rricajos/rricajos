@@ -253,6 +253,11 @@
     flex-direction: column;
   }
 
+  .contact-form select,
+  .contact-form input {
+    min-height: 48px;
+  }
+
   .contact-form .cta-button {
     align-self: center;
   }
