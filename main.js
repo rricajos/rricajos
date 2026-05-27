@@ -57,15 +57,6 @@
     });
   }
 
-  // ===== PWA install prompt =====
-  var deferredInstallPrompt = null;
-  window.addEventListener("beforeinstallprompt", function (e) {
-    e.preventDefault();
-    deferredInstallPrompt = e;
-    var installBtn = document.getElementById("pwa-install-btn");
-    if (installBtn) installBtn.hidden = false;
-  });
-
   // ===== Detalle de servicio (acordeón) =====
   function toggleDetail(id) {
     var details = document.querySelectorAll(".service-close-detail");
@@ -288,16 +279,6 @@
     if (scrollBtn) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: scrollBehavior() });
-      return;
-    }
-
-    // PWA install
-    if (e.target.id === "pwa-install-btn" && deferredInstallPrompt) {
-      deferredInstallPrompt.prompt();
-      deferredInstallPrompt.userChoice.then(function () {
-        deferredInstallPrompt = null;
-        e.target.hidden = true;
-      });
     }
   });
 
