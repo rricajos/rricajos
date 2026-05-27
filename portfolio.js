@@ -18,6 +18,12 @@
   var CACHE_KEY = "rricajos_repos";
   var CACHE_TTL = 10 * 60 * 1000; // 10 min
 
+  // Preferencias de movimiento
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function scrollBehavior() {
+    return prefersReducedMotion.matches ? "auto" : "smooth";
+  }
+
   var pinnedContainer = document.getElementById("pinned-container");
   var allContainer = document.getElementById("all-repos-container");
   var gridView = document.getElementById("portfolio-grid-view");
@@ -44,6 +50,15 @@
   ];
 
   // ===== Utilidades =====
+
+  /** Fetch con timeout usando AbortController (default 10s). */
+  function fetchWithTimeout(url, options, timeoutMs) {
+    if (timeoutMs === undefined) timeoutMs = 10000;
+    var controller = new AbortController();
+    var id = setTimeout(function () { controller.abort(); }, timeoutMs);
+    var opts = Object.assign({}, options || {}, { signal: controller.signal });
+    return fetch(url, opts).finally(function () { clearTimeout(id); });
+  }
 
   /** Escapa caracteres HTML para prevenir XSS con datos de la API. */
   function escapeHTML(str) {
@@ -143,7 +158,7 @@
 
     var langHTML = "";
     if (repo.language) {
-      langHTML = '<span class="language-badge" data-filter-lang="' + escapeHTML(repo.language) + '">' + escapeHTML(repo.language) + "</span>";
+      langHTML = '<span class="language-badge" data-filter-lang="' + escapeHTML(repo.language) + '" role="button" tabindex="0" aria-label="Filtrar por lenguaje: ' + escapeHTML(repo.language) + '">' + escapeHTML(repo.language) + "</span>";
     }
 
     var starsHTML = "";
@@ -158,7 +173,7 @@
     if (repo.topics && repo.topics.length > 0) {
       topicsHTML = '<div class="repo-topics">';
       repo.topics.forEach(function (topic) {
-        topicsHTML += '<span class="repo-topic" data-filter-tag="' + escapeHTML(topic) + '">' + escapeHTML(topic) + "</span>";
+        topicsHTML += '<span class="repo-topic" data-filter-tag="' + escapeHTML(topic) + '" role="button" tabindex="0" aria-label="Filtrar por tag: ' + escapeHTML(topic) + '">' + escapeHTML(topic) + "</span>";
       });
       topicsHTML += "</div>";
     }
@@ -240,7 +255,16 @@
   function openRepoDetail(repoName, pushHistory) {
     if (pushHistory === undefined) pushHistory = true;
     var repo = repoMap[repoName];
-    if (!repo) return;
+    if (!repo) {
+      gridView.hidden = true;
+      detailView.hidden = false;
+      detailView.innerHTML =
+        '<div class="portfolio-empty" style="padding:3rem">' +
+          '<p>El repositorio <strong>' + escapeHTML(repoName) + '</strong> no existe o no se ha cargado.</p>' +
+          '<button class="cta-button" data-repo-back style="margin-top:1rem">Volver al portfolio</button>' +
+        '</div>';
+      return;
+    }
 
     currentRepoName = repoName;
     currentPath = [];
@@ -252,7 +276,7 @@
     // Scroll arriba
     var mainEl = document.querySelector("main");
     var navH = document.querySelector(".supernav").offsetHeight;
-    window.scrollTo({ top: mainEl.offsetTop - navH, behavior: "smooth" });
+    window.scrollTo({ top: mainEl.offsetTop - navH, behavior: scrollBehavior() });
 
     // Renderizar estructura base
     var desc = repo.description ? escapeHTML(repo.description) : "Sin descripción.";
@@ -341,7 +365,15 @@
     gridView.hidden = false;
 
     if (pushHistory) {
-      history.pushState({ section: "portfolio" }, "", "#portfolio");
+      if (activeFilter) {
+        history.pushState(
+          { section: "portfolio", filter: { type: activeFilter.type, value: activeFilter.value } },
+          "",
+          "#portfolio?" + encodeURIComponent(activeFilter.type) + "=" + encodeURIComponent(activeFilter.value)
+        );
+      } else {
+        history.pushState({ section: "portfolio" }, "", "#portfolio");
+      }
     }
   }
 
@@ -417,7 +449,7 @@
     var apiUrl = "https://api.github.com/repos/" + GITHUB_USER + "/" + repoName + "/contents";
     if (path) apiUrl += "/" + path;
 
-    fetch(apiUrl)
+    fetchWithTimeout(apiUrl)
       .then(function (res) {
         if (!res.ok) throw new Error("API " + res.status);
         return res.json();
@@ -426,8 +458,11 @@
         setCache(cacheKey, files);
         renderFiles(files);
       })
-      .catch(function () {
-        if (el) el.innerHTML = '<p class="portfolio-empty">No se pudieron cargar los archivos.</p>';
+      .catch(function (err) {
+        var msg = err.name === "AbortError"
+          ? "La petición tardó demasiado. Inténtalo de nuevo."
+          : "No se pudieron cargar los archivos.";
+        if (el) el.innerHTML = '<p class="portfolio-empty">' + msg + '</p>';
       });
   }
 
@@ -547,7 +582,7 @@
     }
     if (btnEl) btnEl.hidden = false;
 
-    fetch("https://api.github.com/repos/" + GITHUB_USER + "/" + currentRepoName + "/contents/" + filePath)
+    fetchWithTimeout("https://api.github.com/repos/" + GITHUB_USER + "/" + currentRepoName + "/contents/" + filePath)
       .then(function (res) {
         if (!res.ok) throw new Error("API " + res.status);
         return res.json();
@@ -556,8 +591,11 @@
         setCache(cacheKey, data);
         renderFileViewer(data);
       })
-      .catch(function () {
-        if (contentEl) contentEl.innerHTML = '<p class="portfolio-empty">No se pudo cargar el archivo.</p>';
+      .catch(function (err) {
+        var msg = err.name === "AbortError"
+          ? "La petición tardó demasiado. Inténtalo de nuevo."
+          : "No se pudo cargar el archivo.";
+        if (contentEl) contentEl.innerHTML = '<p class="portfolio-empty">' + msg + '</p>';
       });
   }
 
@@ -656,7 +694,7 @@
       return;
     }
 
-    fetch("https://api.github.com/repos/" + GITHUB_USER + "/" + repoName + "/readme", {
+    fetchWithTimeout("https://api.github.com/repos/" + GITHUB_USER + "/" + repoName + "/readme", {
       headers: { Accept: "application/vnd.github.html" }
     })
       .then(function (res) {
@@ -688,7 +726,7 @@
     var hasMore = true;
 
     while (hasMore) {
-      var response = await fetch(
+      var response = await fetchWithTimeout(
         "https://api.github.com/users/" + GITHUB_USER +
         "/repos?sort=updated&per_page=50&page=" + page
       );
@@ -725,6 +763,7 @@
 
   var filterBar = document.createElement("div");
   filterBar.className = "portfolio-filter-bar";
+  filterBar.setAttribute("aria-live", "polite");
   filterBar.hidden = true;
   gridView.insertBefore(filterBar, gridView.firstChild);
 
@@ -755,6 +794,20 @@
       }
     });
 
+    // Limpiar mensaje vacío previo
+    var emptyMsg = document.getElementById("portfolio-filter-empty");
+    if (emptyMsg) emptyMsg.remove();
+
+    // Mostrar mensaje si no hay resultados
+    if (visibleCount === 0) {
+      var emptyEl = document.createElement("p");
+      emptyEl.id = "portfolio-filter-empty";
+      emptyEl.className = "portfolio-empty";
+      emptyEl.style.gridColumn = "1 / -1";
+      emptyEl.textContent = "No hay repositorios con este filtro.";
+      gridView.appendChild(emptyEl);
+    }
+
     var typeLabel = type === "tag" ? "tag" : "lenguaje";
     var countText = visibleCount + (visibleCount === 1 ? " repositorio" : " repositorios");
     filterBar.innerHTML =
@@ -783,6 +836,9 @@
     });
 
     filterBar.hidden = true;
+
+    var emptyMsg = document.getElementById("portfolio-filter-empty");
+    if (emptyMsg) emptyMsg.remove();
 
     if (pushHistory) {
       history.pushState({ section: "portfolio" }, "", "#portfolio");
@@ -826,8 +882,11 @@
 
     } catch (error) {
       console.error("Error loading repos:", error);
+      var errorMsg = error.name === "AbortError"
+        ? "La petición tardó demasiado. Recarga la página para reintentar."
+        : error.message || "No se pudieron cargar los repositorios.";
       pinnedContainer.innerHTML =
-        '<p class="portfolio-error">No se pudieron cargar los repositorios. ' +
+        '<p class="portfolio-error">' + escapeHTML(errorMsg) + ' ' +
         'Visita <a href="https://github.com/' + GITHUB_USER +
         '" target="_blank" rel="noopener">mi GitHub</a> directamente.</p>';
       allContainer.innerHTML = "";
@@ -945,6 +1004,27 @@
     if (fileEl && currentRepoName) {
       e.preventDefault();
       fetchFileContent(fileEl.dataset.viewFile);
+      return;
+    }
+
+    var filterTag = target.closest("[data-filter-tag]");
+    if (filterTag) {
+      e.preventDefault();
+      applyFilter("tag", filterTag.dataset.filterTag);
+      return;
+    }
+
+    var filterLang = target.closest("[data-filter-lang]");
+    if (filterLang) {
+      e.preventDefault();
+      applyFilter("lang", filterLang.dataset.filterLang);
+      return;
+    }
+
+    var clearBtn = target.closest("[data-clear-filter]");
+    if (clearBtn) {
+      e.preventDefault();
+      clearFilter();
     }
   });
 

@@ -211,7 +211,7 @@
           <h2 class="production-title animate-in">Proyectos en producción</h2>
           <p class="section-subtitle animate-in">Proyectos reales de clientes con código privado.</p>
           <div class="production-coming-soon animate-in">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <p>Próximamente — Preparando casos de éxito con permiso de los clientes.</p>
           </div>
 
@@ -590,8 +590,8 @@
             <table id="services-table">
               <thead>
                 <tr>
-                  <th scope="col" data-sort="0">Servicio</th>
-                  <th scope="col" data-sort="1">Coste</th>
+                  <th scope="col" data-sort="0" role="button" tabindex="0" aria-label="Ordenar por servicio">Servicio</th>
+                  <th scope="col" data-sort="1" role="button" tabindex="0" aria-label="Ordenar por coste">Coste</th>
                 </tr>
               </thead>
               <tbody>
@@ -752,7 +752,7 @@
                   </div>
                 </div>
                 <label for="contact-message">Tu mensaje</label>
-                <textarea id="contact-message" name="message" placeholder="Cuéntame tu proyecto..." rows="4" required></textarea>
+                <textarea id="contact-message" name="message" placeholder="Cuéntame tu proyecto..." rows="4" required maxlength="1000"></textarea>
                 <button type="submit" class="cta-button">Enviar mensaje</button>
               </form>
               <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite" hidden></div>
