@@ -210,6 +210,27 @@
     }
     actionsHTML += '<a href="' + escapeHTML(repo.html_url) + '" target="_blank" rel="noopener" class="repo-detail-github">Ver en GitHub &rarr;</a>';
 
+    // Skeleton de carga para archivos (8 filas)
+    var filesSkeleton = '<div class="detail-skeleton">';
+    for (var i = 0; i < 8; i++) {
+      filesSkeleton += '<div class="skeleton-line skeleton-file-row"></div>';
+    }
+    filesSkeleton += "</div>";
+
+    // Skeleton de carga para README
+    var readmeSkeleton = '<div class="detail-skeleton">' +
+      '<div class="skeleton-line skeleton-title"></div>' +
+      '<div class="skeleton-line skeleton-text"></div>' +
+      '<div class="skeleton-line skeleton-text"></div>' +
+      '<div class="skeleton-line skeleton-text short"></div>' +
+      '<div class="skeleton-line" style="height:10px;width:0"></div>' +
+      '<div class="skeleton-line skeleton-title" style="width:45%"></div>' +
+      '<div class="skeleton-line skeleton-text"></div>' +
+      '<div class="skeleton-line skeleton-text short"></div>' +
+      '<div class="skeleton-line skeleton-text"></div>' +
+      '<div class="skeleton-line skeleton-text" style="width:85%"></div>' +
+      "</div>";
+
     detailView.innerHTML =
       '<button class="repo-detail-back" data-repo-back>' +
         '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>' +
@@ -223,7 +244,7 @@
       '<div class="repo-detail-body">' +
         '<div class="repo-detail-files">' +
           "<h3>Archivos</h3>" +
-          '<div id="repo-files-list" class="repo-files-list"><p class="portfolio-empty">Cargando archivos...</p></div>' +
+          '<div id="repo-files-list" class="repo-files-list">' + filesSkeleton + "</div>" +
         "</div>" +
         '<div class="repo-detail-readme">' +
           '<div class="repo-right-header">' +
@@ -233,7 +254,7 @@
               " README" +
             "</button>" +
           "</div>" +
-          '<div id="repo-right-content" class="repo-readme-content"><p class="portfolio-empty">Cargando README...</p></div>' +
+          '<div id="repo-right-content" class="repo-readme-content">' + readmeSkeleton + "</div>" +
         "</div>" +
       "</div>";
 
@@ -314,7 +335,12 @@
     }
 
     var el = document.getElementById("repo-files-list");
-    if (el) el.innerHTML = '<p class="portfolio-empty">Cargando archivos...</p>';
+    if (el) {
+      var sk = '<div class="detail-skeleton">';
+      for (var s = 0; s < 6; s++) sk += '<div class="skeleton-line skeleton-file-row"></div>';
+      sk += "</div>";
+      el.innerHTML = sk;
+    }
 
     var apiUrl = "https://api.github.com/repos/" + GITHUB_USER + "/" + repoName + "/contents";
     if (path) apiUrl += "/" + path;
@@ -437,7 +463,16 @@
     var fileName = filePath.split("/").pop();
 
     if (titleEl) titleEl.textContent = fileName;
-    if (contentEl) contentEl.innerHTML = '<p class="portfolio-empty">Cargando archivo...</p>';
+    if (contentEl) {
+      contentEl.innerHTML =
+        '<div class="detail-skeleton">' +
+          '<div class="skeleton-line skeleton-text"></div>' +
+          '<div class="skeleton-line skeleton-text"></div>' +
+          '<div class="skeleton-line skeleton-text short"></div>' +
+          '<div class="skeleton-line skeleton-text"></div>' +
+          '<div class="skeleton-line skeleton-text" style="width:80%"></div>' +
+        "</div>";
+    }
     if (btnEl) btnEl.hidden = false;
 
     fetch("https://api.github.com/repos/" + GITHUB_USER + "/" + currentRepoName + "/contents/" + filePath)
