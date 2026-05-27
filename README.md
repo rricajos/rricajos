@@ -10,7 +10,7 @@ También trabajo con Java, PHP y Node.js cuando el proyecto lo requiere — úti
 
 ---
 
-### En producción
+### Mis favoritos:
 
 **[qrsgen](https://github.com/rricajos/qrsgen)** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con outbox persistido, audit log inmutable, BanWatcher proactivo y métricas Prometheus. Desplegado vía Docker Swarm con 4+ instancias activas.
 
