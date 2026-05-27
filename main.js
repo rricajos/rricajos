@@ -33,6 +33,39 @@
     return prefersReducedMotion.matches ? "auto" : "smooth";
   }
 
+  // ===== Theme toggle =====
+  var themeToggle = document.getElementById("theme-toggle");
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    if (themeToggle) {
+      themeToggle.setAttribute("aria-label",
+        theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+    }
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = theme === "dark" ? "#0a0921" : "#f5f5f7";
+  }
+  var savedTheme = localStorage.getItem("theme");
+  if (!savedTheme) {
+    savedTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(savedTheme);
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var current = document.documentElement.getAttribute("data-theme") || "dark";
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+  }
+
+  // ===== PWA install prompt =====
+  var deferredInstallPrompt = null;
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    var installBtn = document.getElementById("pwa-install-btn");
+    if (installBtn) installBtn.hidden = false;
+  });
+
   // ===== Detalle de servicio (acordeón) =====
   function toggleDetail(id) {
     var details = document.querySelectorAll(".service-close-detail");
@@ -255,6 +288,16 @@
     if (scrollBtn) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: scrollBehavior() });
+      return;
+    }
+
+    // PWA install
+    if (e.target.id === "pwa-install-btn" && deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      deferredInstallPrompt.userChoice.then(function () {
+        deferredInstallPrompt = null;
+        e.target.hidden = true;
+      });
     }
   });
 
@@ -305,6 +348,27 @@
 
     // Cargar Cal.com si la sección inicial es contacto
     if (currentSection === "contact") loadCal();
+
+    // Radar animation on viewport entry
+    var radar = document.querySelector(".about-me-radar svg polygon[fill*='rgba']");
+    var radarDots = document.querySelectorAll(".about-me-radar svg circle");
+    if (radar && !prefersReducedMotion.matches) {
+      var finalPoints = radar.getAttribute("points");
+      radar.setAttribute("points", "150,150 150,150 150,150 150,150 150,150");
+      radarDots.forEach(function (dot) { dot.style.opacity = "0"; });
+      var radarObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          radar.style.transition = "all 0.8s cubic-bezier(0.22, 1, 0.36, 1)";
+          radar.setAttribute("points", finalPoints);
+          radarDots.forEach(function (dot, i) {
+            dot.style.transition = "opacity 0.4s ease " + (0.6 + i * 0.1) + "s";
+            dot.style.opacity = "1";
+          });
+          radarObs.disconnect();
+        }
+      }, { threshold: 0.3 });
+      radarObs.observe(radar.closest(".about-me-radar"));
+    }
 
     // Orden inicial de la tabla por precio (columna 1)
     sortTable(1);

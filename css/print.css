@@ -1,0 +1,91 @@
+@media print {
+  /* Ocultar nav, footer, elementos interactivos */
+  .supernav,
+  .superfooter,
+  .mobile-tabbar,
+  .skip-link,
+  .cta-button,
+  .portfolio-controls,
+  .portfolio-filter-bar,
+  .repo-detail-share,
+  .theme-toggle-btn,
+  .pwa-install-btn,
+  #cal-inline,
+  .contact-divider,
+  .contact-cta,
+  .char-counter,
+  .gdpr-label,
+  button[type="submit"],
+  .form-feedback {
+    display: none !important;
+  }
+
+  /* Mostrar todas las secciones */
+  .supersection {
+    display: block !important;
+    opacity: 1 !important;
+    min-height: auto;
+  }
+
+  .animate-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Layout */
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+    padding: 0;
+  }
+
+  .supercontainer {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Links: mostrar URL */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  /* Cards en columna simple */
+  .production-grid,
+  #portfolio-grid-view,
+  .repos-grid {
+    display: block;
+  }
+
+  .repo-card,
+  .production-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Radar SVG: asegurar visibilidad */
+  .about-me-radar svg {
+    max-width: 250px;
+  }
+
+  /* Tabla de servicios */
+  .services-price-per-hour {
+    width: 100%;
+  }
+
+  .services-price-per-hour th,
+  .services-price-per-hour td {
+    border-color: #ccc;
+  }
+
+  /* Formulario: solo mostrar estructura */
+  .contact-form {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+}

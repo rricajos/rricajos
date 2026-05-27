@@ -1,4 +1,4 @@
-var CACHE = "rricajos-v22";
+var CACHE = "rricajos-v24";
 var ASSETS = [
   "./",
   "./index.html",
@@ -13,7 +13,8 @@ var ASSETS = [
   "./css/sections.css",
   "./css/section-services.css",
   "./css/section-portfolio.css",
-  "./css/section-contact.css"
+  "./css/section-contact.css",
+  "./css/print.css"
 ];
 
 self.addEventListener("install", function (e) {

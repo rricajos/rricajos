@@ -124,6 +124,11 @@
   margin-top: 0.25rem;
 }
 
+.label-optional {
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
@@ -230,6 +235,27 @@
   background-color: rgba(255, 107, 107, 0.15);
   color: var(--color-error);
   border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* GDPR checkbox */
+.gdpr-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+.gdpr-label input[type="checkbox"] {
+  margin-top: 0.2rem;
+  accent-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.gdpr-label a {
+  color: var(--color-accent);
 }
 
 /* ======================
