@@ -363,6 +363,19 @@
   font-style: italic;
 }
 
+.service-detail-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #5ba8ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.service-detail-link:hover {
+  color: #fff;
+}
+
 .service-close-pack-header {
   font-size: 1rem;
   display: flex;
