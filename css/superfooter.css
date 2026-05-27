@@ -50,6 +50,23 @@
   color: var(--color-accent);
 }
 
+.pwa-install-btn {
+  background: var(--color-primary);
+  color: var(--text-heading);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pwa-install-btn:hover {
+  background: var(--color-primary-hover);
+}
+
 @media screen and (max-width: 720px) {
   .footer-content {
     flex-direction: column;

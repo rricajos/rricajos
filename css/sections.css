@@ -130,7 +130,7 @@
 }
 
 .tag {
-  background-color: rgba(0, 123, 255, 0.15);
+  background-color: var(--bg-tag);
   color: var(--color-accent);
   padding: 0.3rem 0.8rem;
   border-radius: 1rem;
@@ -139,7 +139,7 @@
 }
 
 .tag:hover {
-  background-color: rgba(0, 123, 255, 0.25);
+  background-color: var(--bg-tag-hover);
   transform: translateY(-1px);
 }
 
