@@ -1,4 +1,4 @@
-var CACHE = "rricajos-v36";
+var CACHE = "rricajos-v37";
 var ASSETS = [
   "./",
   "./index.html",
@@ -18,6 +18,7 @@ var ASSETS = [
   "./css/sections.css",
   "./css/section-services.css",
   "./css/section-portfolio.css",
+  "./css/section-eventos.css",
   "./css/section-contact.css",
   "./css/print.css",
   "./fonts/poppins-400-latin.woff2",
