@@ -36,7 +36,7 @@
   var calLoaded = false;     // Cal.com cargado bajo demanda
   var feedback = null;       // form-feedback element (set on DOMContentLoaded)
 
-  var VALID_SECTIONS = ["home", "services", "portfolio", "contact"];
+  var VALID_SECTIONS = ["home", "services", "portfolio", "eventos", "contact"];
 
   // ===== Preferencias de movimiento =====
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -394,6 +394,28 @@
         }
       }, { threshold: 0.3 });
       radarObs.observe(radar.closest(".about-me-radar"));
+    }
+
+    // Hero video play/pause
+    var heroVideo = document.getElementById("hero-video");
+    var heroPlayBtn = document.querySelector(".hero-video-play");
+    if (heroVideo && heroPlayBtn) {
+      heroPlayBtn.addEventListener("click", function () {
+        if (heroVideo.paused) {
+          heroVideo.muted = false;
+          heroVideo.play();
+          heroPlayBtn.hidden = true;
+        }
+      });
+      heroVideo.addEventListener("click", function () {
+        if (!heroVideo.paused) {
+          heroVideo.pause();
+          heroPlayBtn.hidden = false;
+        }
+      });
+      heroVideo.addEventListener("ended", function () {
+        heroPlayBtn.hidden = false;
+      });
     }
 
     // Orden inicial de la tabla por precio (columna 1)
