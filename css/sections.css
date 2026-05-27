@@ -201,6 +201,23 @@
   margin-top: auto;
 }
 
+.production-coming-soon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background-color: #1a1a2e;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.production-coming-soon svg {
+  color: #5ba8ff;
+  flex-shrink: 0;
+}
+
 /* ======================
    Tablet (721px - 1024px)
    ====================== */
