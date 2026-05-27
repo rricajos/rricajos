@@ -35,15 +35,15 @@
    Servicios — Proceso "Cómo trabajo"
    ====================== */
 .services-process {
-  background-color: #1a1a2e;
-  border: 1px solid #333;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 1.5rem 2rem;
   text-align: center;
 }
 
 .services-process h2 {
-  color: #fff;
+  color: var(--text-heading);
   font-size: 1.2rem;
   margin-bottom: 1.25rem;
 }
@@ -68,8 +68,8 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #007bff, #005bc4);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: var(--text-heading);
   font-weight: 600;
   font-size: 1rem;
   display: flex;
@@ -80,13 +80,13 @@
 }
 
 .process-step h3 {
-  color: #fff;
+  color: var(--text-heading);
   font-size: 0.85rem;
   margin: 0;
 }
 
 .process-step p {
-  color: #b0b0b0;
+  color: var(--text-muted);
   font-size: 0.75rem;
   line-height: 1.4;
   margin: 0;
@@ -96,7 +96,7 @@
   display: flex;
   align-items: center;
   padding-top: 0.25rem;
-  color: #444;
+  color: var(--border-light);
   flex-shrink: 0;
 }
 
@@ -112,7 +112,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #888;
+  color: var(--text-dimmer);
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -123,7 +123,7 @@
 }
 
 .service-category-label svg {
-  color: #5ba8ff;
+  color: var(--color-accent);
   flex-shrink: 0;
 }
 
@@ -133,8 +133,8 @@
 .services-price-per-hour table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #1a1a2e;
-  border: 1px solid #333;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -144,12 +144,12 @@
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #2a2a40;
-  color: #e0e0e0;
+  color: var(--text-primary);
 }
 
 .services-price-per-hour th {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--text-heading);
   cursor: pointer;
   position: relative;
   font-size: 0.9rem;
@@ -157,11 +157,11 @@
 }
 
 .services-price-per-hour th:hover {
-  background-color: #006ee4;
+  background-color: var(--color-primary-hover);
 }
 
 .services-price-per-hour th:active {
-  background-color: #005bc4;
+  background-color: var(--color-primary-dark);
 }
 
 .services-price-per-hour tbody tr:nth-child(even) {
@@ -193,7 +193,7 @@
 .services-price-per-hour td:last-child {
   text-align: right;
   white-space: nowrap;
-  color: #0f9d58;
+  color: var(--color-success);
   font-weight: 600;
 }
 
@@ -202,7 +202,7 @@
 }
 
 .services-table-note {
-  color: #888;
+  color: var(--text-dimmer);
   font-size: 0.85rem;
   font-style: italic;
   margin-top: 0.5rem;
@@ -214,7 +214,7 @@
   align-items: center;
   vertical-align: middle;
   margin-right: 0.5rem;
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 /* ======================
@@ -222,15 +222,15 @@
    ====================== */
 .service-close-pack {
   width: 100%;
-  background: #1a1a2e;
-  border: 1px solid #333;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   cursor: pointer;
   text-align: left;
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  color: #e0e0e0;
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -239,14 +239,14 @@
 
 .service-close-pack:hover {
   box-shadow: 0 4px 16px rgba(0, 123, 255, 0.15);
-  border-color: #007bff;
+  border-color: var(--color-primary);
   transform: translateY(-2px);
 }
 
 /* Card activa (detalle abierto) */
 .service-close-pack[aria-expanded="true"] {
-  border-color: #007bff;
-  background: linear-gradient(135deg, #1a1a2e 0%, #1c1c3a 100%);
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-alt) 100%);
   box-shadow: 0 4px 16px rgba(0, 123, 255, 0.15);
 }
 
@@ -264,13 +264,13 @@
 
 .service-close-price {
   font-weight: bold;
-  color: #0f9d58;
+  color: var(--color-success);
   white-space: nowrap;
 }
 
 /* Pack icon */
 .pack-icon {
-  color: #5ba8ff;
+  color: var(--color-accent);
   flex-shrink: 0;
 }
 
@@ -283,27 +283,27 @@
   padding: 0.15rem 0.5rem;
   border-radius: 1rem;
   background-color: rgba(0, 123, 255, 0.15);
-  color: #5ba8ff;
+  color: var(--color-accent);
   white-space: nowrap;
   line-height: 1;
 }
 
 .pack-badge-accent {
   background-color: rgba(15, 157, 88, 0.15);
-  color: #0f9d58;
+  color: var(--color-success);
 }
 
 /* Chevron indicador */
 .pack-chevron {
   transition: transform 0.3s ease, color 0.3s ease;
-  color: #666;
+  color: var(--text-subtle);
   flex-shrink: 0;
   margin-left: 0.5rem;
 }
 
 .service-close-pack[aria-expanded="true"] .pack-chevron {
   transform: rotate(180deg);
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 /* ======================
@@ -313,7 +313,7 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.6;
   transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
   padding: 0 1rem;
@@ -325,14 +325,14 @@
   padding: 1rem 1.25rem;
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(28, 28, 58, 0.6) 100%);
   border: 1px solid rgba(0, 123, 255, 0.2);
-  border-left: 3px solid #007bff;
+  border-left: 3px solid var(--color-primary);
   border-radius: 8px;
   margin-bottom: 0.5rem;
 }
 
 .service-close-detail h3,
 .service-close-pack-header h3 {
-  color: #fff;
+  color: var(--text-heading);
 }
 
 .service-close-detail h3 {
@@ -341,7 +341,7 @@
 
 .service-close-detail strong {
   display: block;
-  color: #5ba8ff;
+  color: var(--color-accent);
   margin-top: 0.75rem;
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
@@ -359,7 +359,7 @@
 .service-detail-note {
   margin-top: 0.75rem;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-dimmer);
   font-style: italic;
 }
 
@@ -367,13 +367,13 @@
   display: inline-block;
   margin-top: 0.75rem;
   font-size: 0.85rem;
-  color: #5ba8ff;
+  color: var(--color-accent);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .service-detail-link:hover {
-  color: #fff;
+  color: var(--text-heading);
 }
 
 .service-close-pack-header {
@@ -394,7 +394,7 @@
 }
 
 .services-price-per-hour p {
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -402,16 +402,16 @@
    Servicios — Bloque "Siempre incluido"
    ====================== */
 .services-included {
-  background-color: #1a1a2e;
-  border: 1px solid #333;
-  border-left: 3px solid #007bff;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--color-primary);
   border-radius: 8px;
   padding: 1.25rem;
   margin-top: 0.5rem;
 }
 
 .services-included h3 {
-  color: #fff;
+  color: var(--text-heading);
   font-size: 1rem;
   margin-bottom: 0.75rem;
   display: flex;
@@ -420,13 +420,13 @@
 }
 
 .services-included h3 svg {
-  color: #0f9d58;
+  color: var(--color-success);
   flex-shrink: 0;
 }
 
 .services-included ul {
   padding-left: 1.2rem;
-  color: #b0b0b0;
+  color: var(--text-muted);
 }
 
 .services-included li {
@@ -441,11 +441,11 @@
   text-align: center;
   margin-top: 0;
   padding-top: 1rem;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--border-color);
 }
 
 .services-cta p {
-  color: #b0b0b0;
+  color: var(--text-muted);
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }

@@ -1,3 +1,41 @@
+/* ======================
+   Custom Properties
+   ====================== */
+:root {
+  /* Primary */
+  --color-primary: #007bff;
+  --color-primary-hover: #006ee4;
+  --color-primary-dark: #005bc4;
+  --color-accent: #5ba8ff;
+  --color-accent-light: #89c4ff;
+
+  /* Semantic */
+  --color-success: #0f9d58;
+  --color-error: #ff6b6b;
+  --color-gold: #f0c040;
+
+  /* Backgrounds */
+  --bg-body: #0a0921;
+  --bg-card: #1a1a2e;
+  --bg-card-alt: #1c1c3a;
+  --bg-code: #12121f;
+  --bg-footer: #060515;
+
+  /* Text */
+  --text-primary: #e0e0e0;
+  --text-heading: #fff;
+  --text-secondary: #ccc;
+  --text-muted: #b0b0b0;
+  --text-dim: #999;
+  --text-dimmer: #888;
+  --text-subtle: #666;
+  --text-faint: #555;
+
+  /* Borders */
+  --border-color: #333;
+  --border-light: #444;
+}
+
 /* Base / Reset */
 html {
   scroll-behavior: smooth;
@@ -10,8 +48,8 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #0a0921;
-  color: #e0e0e0;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
 }
 
 .supercontainer {
@@ -39,8 +77,8 @@ body {
   top: -100%;
   left: 0;
   z-index: 100;
-  background: #007bff;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--text-heading);
   padding: 0.5rem 1rem;
   border-radius: 0 0 4px 0;
   text-decoration: none;

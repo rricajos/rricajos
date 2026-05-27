@@ -24,7 +24,7 @@
 }
 
 .landing-tagline {
-  color: #5ba8ff;
+  color: var(--color-accent);
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -34,8 +34,8 @@
 .cta-button {
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--text-heading);
   border: none;
   border-radius: 5px;
   font-size: 0.95rem;
@@ -48,7 +48,7 @@
 }
 
 .cta-button:hover {
-  background-color: #006ee4;
+  background-color: var(--color-primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 123, 255, 0.3);
 }

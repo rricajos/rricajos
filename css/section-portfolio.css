@@ -14,20 +14,20 @@
 /* Destacados (pinned) */
 .pinned-card {
   border-color: rgba(0, 123, 255, 0.3);
-  background: linear-gradient(135deg, #1a1a2e 0%, #1c1c3a 100%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-alt) 100%);
 }
 
 .pinned-card h3::before {
   content: "\2605 ";
-  color: #f0c040;
+  color: var(--color-gold);
   font-size: 0.9rem;
 }
 
 .repo-card {
   display: flex;
   flex-direction: column;
-  background-color: #1a1a2e;
-  border: 1px solid #333;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
   text-decoration: none;
@@ -39,17 +39,17 @@
 .repo-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
-  border-color: #007bff;
+  border-color: var(--color-primary);
 }
 
 .repo-card h3 {
-  color: #5ba8ff;
+  color: var(--color-accent);
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
 .repo-card p {
-  color: #ccc;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -78,7 +78,7 @@
 
 .language-badge {
   background-color: rgba(0, 123, 255, 0.15);
-  color: #5ba8ff;
+  color: var(--color-accent);
   padding: 0.2rem 0.6rem;
   border-radius: 1rem;
   font-size: 0.75rem;
@@ -92,7 +92,7 @@
 }
 
 .repo-homepage {
-  color: #0f9d58;
+  color: var(--color-success);
   font-size: 0.8rem;
 }
 
@@ -100,7 +100,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  color: #f0c040;
+  color: var(--color-gold);
   font-size: 0.75rem;
 }
 
@@ -113,7 +113,7 @@
 
 .repo-topic {
   background-color: rgba(0, 123, 255, 0.08);
-  color: #89c4ff;
+  color: var(--color-accent-light);
   padding: 0.15rem 0.5rem;
   border-radius: 1rem;
   font-size: 0.7rem;
@@ -127,7 +127,7 @@
 }
 
 .repo-updated {
-  color: #888;
+  color: var(--text-dimmer);
   font-size: 0.75rem;
 }
 
@@ -138,23 +138,23 @@
 }
 
 .portfolio-empty {
-  color: #999;
+  color: var(--text-dim);
   text-align: center;
   padding: 2rem;
 }
 
 .portfolio-empty a {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 .portfolio-error {
-  color: #ff6b6b;
+  color: var(--color-error);
   text-align: center;
   padding: 2rem;
 }
 
 .portfolio-error a {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 /* Filter bar */
@@ -169,7 +169,7 @@
   padding: 0.75rem 1.25rem;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 .portfolio-filter-bar[hidden] {
@@ -177,14 +177,14 @@
 }
 
 .portfolio-filter-bar strong {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 .portfolio-filter-bar button {
   background: none;
-  border: 1px solid #444;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
-  color: #ff6b6b;
+  color: var(--color-error);
   font-family: inherit;
   font-size: 0.8rem;
   padding: 0.3rem 0.6rem;
@@ -194,7 +194,7 @@
 }
 
 .portfolio-filter-bar button:hover {
-  border-color: #ff6b6b;
+  border-color: var(--color-error);
   background-color: rgba(255, 107, 107, 0.08);
 }
 
@@ -240,9 +240,9 @@
   align-items: center;
   gap: 0.3rem;
   background: none;
-  border: 1px solid #333;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  color: #5ba8ff;
+  color: var(--color-accent);
   font-size: 0.9rem;
   font-family: inherit;
   padding: 0.5rem 1rem;
@@ -252,7 +252,7 @@
 }
 
 .repo-detail-back:hover {
-  border-color: #5ba8ff;
+  border-color: var(--color-accent);
   background-color: rgba(91, 168, 255, 0.08);
 }
 
@@ -265,13 +265,13 @@
 }
 
 .repo-detail-header h2 {
-  color: #fff;
+  color: var(--text-heading);
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
 
 .repo-detail-header p {
-  color: #b0b0b0;
+  color: var(--text-muted);
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -285,14 +285,14 @@
 }
 
 .repo-detail-github {
-  color: #5ba8ff;
+  color: var(--color-accent);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.2s ease;
 }
 
 .repo-detail-github:hover {
-  color: #89c4ff;
+  color: var(--color-accent-light);
 }
 
 .repo-detail-body {
@@ -304,8 +304,8 @@
 
 .repo-detail-files,
 .repo-detail-readme {
-  background-color: #1a1a2e;
-  border: 1px solid #333;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.25rem;
 }
@@ -316,11 +316,11 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .repo-detail-files h3 {
-  color: #fff;
+  color: var(--text-heading);
   font-size: 1rem;
   margin: 0;
 }
@@ -337,11 +337,11 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .repo-right-header h3 {
-  color: #fff;
+  color: var(--text-heading);
   font-size: 1rem;
   margin: 0;
   padding: 0;
@@ -357,9 +357,9 @@
   align-items: center;
   gap: 0.25rem;
   background: none;
-  border: 1px solid #333;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  color: #5ba8ff;
+  color: var(--color-accent);
   font-size: 0.78rem;
   font-family: inherit;
   padding: 0.3rem 0.6rem;
@@ -369,7 +369,7 @@
 }
 
 .repo-show-readme:hover {
-  border-color: #5ba8ff;
+  border-color: var(--color-accent);
   background-color: rgba(91, 168, 255, 0.08);
 }
 
@@ -390,7 +390,7 @@
 }
 
 .file-breadcrumb {
-  color: #5ba8ff;
+  color: var(--color-accent);
   cursor: pointer;
   padding: 0.15rem 0.3rem;
   border-radius: 3px;
@@ -402,7 +402,7 @@
 }
 
 .file-breadcrumb.active {
-  color: #e0e0e0;
+  color: var(--text-primary);
   cursor: default;
 }
 
@@ -411,7 +411,7 @@
 }
 
 .file-breadcrumb-sep {
-  color: #555;
+  color: var(--text-faint);
   user-select: none;
 }
 
@@ -435,7 +435,7 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.45rem 0.25rem;
-  color: #e0e0e0;
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 0.85rem;
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -444,23 +444,23 @@
 
 .file-tree-link:hover {
   background-color: rgba(91, 168, 255, 0.08);
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 .file-tree-icon {
   display: flex;
   align-items: center;
-  color: #666;
+  color: var(--text-subtle);
   flex-shrink: 0;
 }
 
 .file-tree-link:hover .file-tree-icon {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 /* README content styling */
 .repo-readme-content {
-  color: #ccc;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.7;
   overflow-x: auto;
@@ -470,13 +470,13 @@
 .repo-readme-content h2,
 .repo-readme-content h3,
 .repo-readme-content h4 {
-  color: #fff;
+  color: var(--text-heading);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
 .repo-readme-content h1 { font-size: 1.5rem; }
-.repo-readme-content h2 { font-size: 1.25rem; padding-bottom: 0.3rem; border-bottom: 1px solid #333; }
+.repo-readme-content h2 { font-size: 1.25rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border-color); }
 .repo-readme-content h3 { font-size: 1.1rem; }
 
 .repo-readme-content p {
@@ -484,20 +484,20 @@
 }
 
 .repo-readme-content a {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 .repo-readme-content code {
   background-color: rgba(91, 168, 255, 0.1);
-  color: #89c4ff;
+  color: var(--color-accent-light);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.85em;
 }
 
 .repo-readme-content pre {
-  background-color: #12121f;
-  border: 1px solid #333;
+  background-color: var(--bg-code);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1rem;
   overflow-x: auto;
@@ -507,7 +507,7 @@
 .repo-readme-content pre code {
   background: none;
   padding: 0;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 .repo-readme-content img {
@@ -527,9 +527,9 @@
 }
 
 .repo-readme-content blockquote {
-  border-left: 3px solid #5ba8ff;
+  border-left: 3px solid var(--color-accent);
   padding-left: 1rem;
-  color: #999;
+  color: var(--text-dim);
   margin: 0.75rem 0;
 }
 
@@ -541,29 +541,29 @@
 
 .repo-readme-content th,
 .repo-readme-content td {
-  border: 1px solid #333;
+  border: 1px solid var(--border-color);
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 
 .repo-readme-content th {
-  background-color: #12121f;
-  color: #fff;
+  background-color: var(--bg-code);
+  color: var(--text-heading);
 }
 
 /* Submodule entries */
 .file-tree-submodule .file-tree-icon {
-  color: #0f9d58;
+  color: var(--color-success);
 }
 
 .file-tree-external {
   margin-left: auto;
-  color: #666;
+  color: var(--text-subtle);
   font-size: 0.75rem;
 }
 
 .file-tree-link:hover .file-tree-external {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 /* File viewer */
@@ -578,24 +578,24 @@
 }
 
 .file-viewer-size {
-  color: #888;
+  color: var(--text-dimmer);
 }
 
 .file-viewer-github {
-  color: #5ba8ff;
+  color: var(--color-accent);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .file-viewer-github:hover {
-  color: #89c4ff;
+  color: var(--color-accent-light);
 }
 
 .file-viewer {
   display: flex;
   overflow-x: auto;
-  background-color: #12121f;
-  border: 1px solid #333;
+  background-color: var(--bg-code);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 0.82rem;
   line-height: 1.6;
@@ -606,9 +606,9 @@
   flex-direction: column;
   padding: 0.75rem 0.5rem;
   text-align: right;
-  color: #555;
+  color: var(--text-faint);
   user-select: none;
-  border-right: 1px solid #333;
+  border-right: 1px solid var(--border-color);
   flex-shrink: 0;
   font-family: "Consolas", "Monaco", "Courier New", monospace;
 }
@@ -624,7 +624,7 @@
   overflow-x: auto;
   background: none;
   border: none;
-  color: #ccc;
+  color: var(--text-secondary);
   font-family: "Consolas", "Monaco", "Courier New", monospace;
 }
 
@@ -638,7 +638,7 @@
 .file-viewer-info {
   text-align: center;
   padding: 2rem;
-  color: #999;
+  color: var(--text-dim);
 }
 
 .file-viewer-info p {
@@ -691,9 +691,9 @@
     align-items: center;
     gap: 0.4rem;
     background: none;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    color: #5ba8ff;
+    color: var(--color-accent);
     font-family: inherit;
     font-size: 0.8rem;
     cursor: pointer;
@@ -702,7 +702,7 @@
   }
 
   .files-toggle:hover {
-    border-color: #5ba8ff;
+    border-color: var(--color-accent);
   }
 
   .files-toggle svg {

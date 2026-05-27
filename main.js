@@ -23,6 +23,7 @@
   var navigating = false;
   var activeDetail = null;   // panel de servicio abierto
   var sortDirection = false; // alternar ASC / DESC en la tabla
+  var calLoaded = false;     // Cal.com cargado bajo demanda
 
   var VALID_SECTIONS = ["home", "services", "portfolio", "contact"];
 
@@ -52,11 +53,13 @@
       activeDetail = target;
 
       // Smooth scroll the opened card into view
+      // On mobile, wait for the CSS max-height transition (400ms) and use "start"
+      var isMobile = window.innerWidth <= 720;
       setTimeout(function () {
         if (trigger) {
-          trigger.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          trigger.scrollIntoView({ behavior: "smooth", block: isMobile ? "start" : "nearest" });
         }
-      }, 100);
+      }, isMobile ? 350 : 100);
     }
   }
 
@@ -93,6 +96,50 @@
     var header = table.querySelectorAll("th")[columnIndex];
     header.classList.toggle("asc", sortDirection);
     header.classList.toggle("desc", !sortDirection);
+  }
+
+  // ===== Lazy load Cal.com =====
+  function loadCal() {
+    if (calLoaded) return;
+    calLoaded = true;
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal;
+        var ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); };
+          var namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = api;
+            p(api, ar);
+          } else {
+            p(cal, ar);
+          }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://cal.com" });
+    Cal("inline", {
+      elementOrSelector: "#cal-inline",
+      calLink: "ricard-penin-lwzsun/consulta",
+      config: { layout: "month_view", theme: "dark" }
+    });
+    Cal("ui", {
+      theme: "dark",
+      styles: { branding: { brandColor: "#007bff" } },
+      hideEventTypeDetails: false
+    });
   }
 
   // ===== Navegación entre secciones =====
@@ -132,6 +179,7 @@
       }, 100);
 
       currentSection = sectionId;
+      if (sectionId === "contact") loadCal();
       if (pushState) {
         history.pushState({ section: sectionId }, "", "#" + sectionId);
       }
@@ -235,6 +283,9 @@
     } else {
       history.replaceState({ section: currentSection }, "", "#" + currentSection);
     }
+
+    // Cargar Cal.com si la sección inicial es contacto
+    if (currentSection === "contact") loadCal();
 
     // Orden inicial de la tabla por precio (columna 1)
     sortTable(1);
