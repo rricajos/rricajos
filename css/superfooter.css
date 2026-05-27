@@ -1,8 +1,8 @@
 /* Footer */
 .superfooter {
-  background-color: #060515;
+  background-color: var(--bg-footer);
   padding: 2rem 0;
-  border-top: 1px solid #1a1a2e;
+  border-top: 1px solid var(--bg-card);
 }
 
 .footer-content {
@@ -14,7 +14,7 @@
 }
 
 .superfooter p {
-  color: #999;
+  color: var(--text-dim);
   font-size: 0.85rem;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .footer-links a {
-  color: #666;
+  color: var(--text-subtle);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@
 }
 
 .footer-links a:hover {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 .footer-links svg {
@@ -40,14 +40,14 @@
 }
 
 .footer-top {
-  color: #666;
+  color: var(--text-subtle);
   text-decoration: none;
   font-size: 0.85rem;
   transition: color 0.2s ease;
 }
 
 .footer-top:hover {
-  color: #5ba8ff;
+  color: var(--color-accent);
 }
 
 @media screen and (max-width: 720px) {

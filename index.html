@@ -712,15 +712,41 @@
 
             <div class="contact-col">
               <h3 class="contact-col-heading">Envía un mensaje</h3>
+              <p class="contact-availability">
+                <span class="availability-dot"></span>
+                Barcelona (CET) — Respondo en menos de 24 h
+              </p>
               <form id="contact-form" class="contact-form" action="https://formsubmit.co/ergoegos@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Nuevo mensaje desde rricajos.github.io" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_next" value="https://rricajos.github.io/rricajos/#contact" />
-                <label for="contact-name" class="sr-only">Tu nombre</label>
-                <input id="contact-name" type="text" name="name" placeholder="Tu nombre" required />
-                <label for="contact-email" class="sr-only">Tu email</label>
-                <input id="contact-email" type="email" name="email" placeholder="Tu email" required />
-                <label for="contact-message" class="sr-only">Tu mensaje</label>
+                <label for="contact-name">Tu nombre</label>
+                <input id="contact-name" type="text" name="name" placeholder="Ej. María García" required />
+                <label for="contact-email">Tu email</label>
+                <input id="contact-email" type="email" name="email" placeholder="Ej. maria@ejemplo.com" required />
+                <div class="contact-form-row">
+                  <div class="contact-form-group">
+                    <label for="contact-project-type">Tipo de proyecto</label>
+                    <select id="contact-project-type" name="project_type">
+                      <option value="">Selecciona…</option>
+                      <option value="web">Desarrollo web</option>
+                      <option value="automation">Automatización</option>
+                      <option value="support">Soporte técnico</option>
+                      <option value="other">Otro</option>
+                    </select>
+                  </div>
+                  <div class="contact-form-group">
+                    <label for="contact-budget">Presupuesto orientativo</label>
+                    <select id="contact-budget" name="budget">
+                      <option value="">Selecciona…</option>
+                      <option value="<500">Menos de 500 €</option>
+                      <option value="500-1500">500 – 1.500 €</option>
+                      <option value="1500-5000">1.500 – 5.000 €</option>
+                      <option value=">5000">Más de 5.000 €</option>
+                    </select>
+                  </div>
+                </div>
+                <label for="contact-message">Tu mensaje</label>
                 <textarea id="contact-message" name="message" placeholder="Cuéntame tu proyecto..." rows="4" required></textarea>
                 <button type="submit" class="cta-button">Enviar mensaje</button>
               </form>
@@ -759,46 +785,6 @@
       </div>
     </footer>
 
-    <!-- Cal.com Embed (carga async, no bloquea) -->
-    <script>
-      (function (C, A, L) {
-        var p = function (a, ar) { a.q.push(ar); };
-        var d = C.document;
-        C.Cal = C.Cal || function () {
-          var cal = C.Cal;
-          var ar = arguments;
-          if (!cal.loaded) {
-            cal.ns = {};
-            cal.q = cal.q || [];
-            d.head.appendChild(d.createElement("script")).src = A;
-            cal.loaded = true;
-          }
-          if (ar[0] === L) {
-            var api = function () { p(api, arguments); };
-            var namespace = ar[1];
-            api.q = api.q || [];
-            if (typeof namespace === "string") {
-              cal.ns[namespace] = api;
-              p(api, ar);
-            } else {
-              p(cal, ar);
-            }
-            return;
-          }
-          p(cal, ar);
-        };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", { origin: "https://cal.com" });
-      Cal("inline", {
-        elementOrSelector: "#cal-inline",
-        calLink: "ricard-penin-lwzsun/consulta",
-        config: { layout: "month_view", theme: "dark" }
-      });
-      Cal("ui", {
-        theme: "dark",
-        styles: { branding: { brandColor: "#007bff" } },
-        hideEventTypeDetails: false
-      });
-    </script>
+    <!-- Cal.com se carga bajo demanda desde main.js al visitar #contact -->
   </body>
 </html>
