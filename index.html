@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>RRicajos - Ingeniero DevOps &amp; Freelance</title>
     <meta name="description" content="Ricard Penin Honrubia - Ingeniero DevOps y programador freelance en Barcelona. Webs, aplicaciones nativas e infraestructura self-hosted." />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" type="image/png" sizes="180x180" href="avatar.png" />
     <link rel="apple-touch-icon" href="avatar.png" />
@@ -61,6 +62,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
@@ -98,7 +100,7 @@
           class="supernav-button"
           data-section="home"
         >
-          <img src="avatar.png" alt="" class="nav-avatar" width="28" height="28" />
+          <img src="avatar.png" alt="Ricard Penin" class="nav-avatar" width="28" height="28" />
           Ricajos.dev
         </button>
 
@@ -272,6 +274,7 @@
       <!-- Servicios -->
       <section id="services" class="supersection">
         <div class="supercontainer">
+          <h1 class="sr-only">Servicios de desarrollo y soporte</h1>
 
           <!-- Cómo trabajo — proceso -->
           <div class="services-process animate-in">
@@ -587,8 +590,8 @@
             <table id="services-table">
               <thead>
                 <tr>
-                  <th data-sort="0">Servicio</th>
-                  <th data-sort="1">Coste</th>
+                  <th scope="col" data-sort="0">Servicio</th>
+                  <th scope="col" data-sort="1">Coste</th>
                 </tr>
               </thead>
               <tbody>
@@ -661,6 +664,7 @@
       <!-- Portfolio -->
       <section id="portfolio" class="supersection">
         <div class="supercontainer">
+          <h1 class="sr-only">Portfolio de proyectos</h1>
           <!-- Vista grid (listado de repos) -->
           <div id="portfolio-grid-view">
             <h2>Destacados</h2>
@@ -680,6 +684,7 @@
       <!-- Contacto -->
       <section id="contact" class="supersection">
         <div class="supercontainer contact-section">
+          <h1 class="sr-only">Contacto y reserva de consulta</h1>
           <h2 class="animate-in">Contacto</h2>
           <p class="animate-in">
             No dudes en ponerte en contacto conmigo para colaborar o realizar
@@ -750,7 +755,7 @@
                 <textarea id="contact-message" name="message" placeholder="Cuéntame tu proyecto..." rows="4" required></textarea>
                 <button type="submit" class="cta-button">Enviar mensaje</button>
               </form>
-              <div id="form-feedback" class="form-feedback" hidden></div>
+              <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite" hidden></div>
             </div>
           </div>
 

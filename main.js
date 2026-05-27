@@ -304,6 +304,7 @@
         e.preventDefault();
         var btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
+        btn.setAttribute("aria-busy", "true");
         btn.textContent = "Enviando...";
         feedback.hidden = true;
 
@@ -329,6 +330,7 @@
         })
         .finally(function () {
           btn.disabled = false;
+          btn.removeAttribute("aria-busy");
           btn.textContent = "Enviar mensaje";
         });
       });

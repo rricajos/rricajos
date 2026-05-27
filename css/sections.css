@@ -113,7 +113,7 @@
 
 .about-me-radar {
   flex: 0 0 auto;
-  width: 300px;
+  width: min(300px, 90vw);
 }
 
 .about-me-radar svg {
