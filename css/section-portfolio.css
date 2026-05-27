@@ -15,9 +15,14 @@
 .portfolio-controls {
   display: flex;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.portfolio-controls + .portfolio-section-title {
+  margin-top: 0.75rem;
 }
 
 .portfolio-search-wrap {
@@ -295,6 +300,10 @@
 
 #portfolio-grid-view.filter-active > .portfolio-filter-bar {
   grid-column: 1 / -1;
+}
+
+#portfolio-grid-view.filter-active > .portfolio-controls {
+  display: none;
 }
 
 /* Ensure hidden attribute wins even with filter-active display:grid */
