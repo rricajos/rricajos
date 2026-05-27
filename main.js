@@ -141,15 +141,26 @@
     }
   }
 
-  /** Parsea el hash → { section, subPath } o null. Soporta #portfolio/smm */
+  /** Parsea el hash → { section, subPath, params } o null.
+   *  Soporta #portfolio/smm y #portfolio?tag=svelte */
   function parseHash() {
     var hash = window.location.hash.replace("#", "");
     if (!hash) return null;
-    var slash = hash.indexOf("/");
-    var section = slash === -1 ? hash : hash.substring(0, slash);
-    var subPath = slash === -1 ? null : hash.substring(slash + 1) || null;
+    var qIndex = hash.indexOf("?");
+    var path = qIndex === -1 ? hash : hash.substring(0, qIndex);
+    var queryStr = qIndex === -1 ? "" : hash.substring(qIndex + 1);
+    var slash = path.indexOf("/");
+    var section = slash === -1 ? path : path.substring(0, slash);
+    var subPath = slash === -1 ? null : path.substring(slash + 1) || null;
     if (VALID_SECTIONS.indexOf(section) === -1) return null;
-    return { section: section, subPath: subPath };
+    var params = {};
+    if (queryStr) {
+      queryStr.split("&").forEach(function (pair) {
+        var kv = pair.split("=");
+        if (kv.length === 2) params[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+      });
+    }
+    return { section: section, subPath: subPath, params: params };
   }
 
   // Back / forward del navegador
@@ -193,27 +204,32 @@
 
   // ===== Inicialización =====
   document.addEventListener("DOMContentLoaded", function () {
-    // Navegar a la sección del hash si existe (soporta sub-path: #portfolio/smm)
+    // Navegar a la sección del hash (soporta sub-path y query params)
+    var originalHash = window.location.hash;
     var parsed = parseHash();
     if (parsed) {
       if (parsed.subPath) {
         window.__pendingRepoDetail = parsed.subPath;
       }
+      var hasParams = parsed.params && Object.keys(parsed.params).length > 0;
+      if (hasParams) {
+        window.__pendingPortfolioFilter = parsed.params;
+      }
       if (parsed.section !== currentSection) {
         nav(parsed.section);
-        // Restaurar sub-path en el historial si existía
-        if (parsed.subPath) {
+        // Restaurar hash original si tenía sub-path o query params
+        if (parsed.subPath || hasParams) {
           history.replaceState(
-            { section: parsed.section, subPath: parsed.subPath },
+            { section: parsed.section, subPath: parsed.subPath, params: parsed.params },
             "",
-            "#" + parsed.section + "/" + parsed.subPath
+            originalHash
           );
         }
       } else {
         history.replaceState(
           { section: currentSection },
           "",
-          window.location.hash || "#" + currentSection
+          originalHash || "#" + currentSection
         );
       }
     } else {

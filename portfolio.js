@@ -30,6 +30,7 @@
   var currentRepoName = "";
   var currentPath = []; // segmentos del path actual, e.g. ["src", "components"]
   var readmeHTMLCache = ""; // README renderizado, para restaurar tras ver un archivo
+  var activeFilter = null; // { type: "tag"|"lang", value: "svelte" }
 
   // Límites para visualización de archivos
   var MAX_FILE_DISPLAY = 512 * 1024; // 512 KB
@@ -104,6 +105,18 @@
     return "hoy";
   }
 
+  /** Parsea un query string "tag=svelte&lang=js" → { tag: "svelte", lang: "js" } */
+  function parseQueryString(str) {
+    var params = {};
+    if (str) {
+      str.split("&").forEach(function (pair) {
+        var kv = pair.split("=");
+        if (kv.length === 2) params[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+      });
+    }
+    return params;
+  }
+
   // ===== Skeleton loading =====
   function showSkeletons(container, count) {
     container.innerHTML = "";
@@ -130,7 +143,7 @@
 
     var langHTML = "";
     if (repo.language) {
-      langHTML = '<span class="language-badge">' + escapeHTML(repo.language) + "</span>";
+      langHTML = '<span class="language-badge" data-filter-lang="' + escapeHTML(repo.language) + '">' + escapeHTML(repo.language) + "</span>";
     }
 
     var starsHTML = "";
@@ -145,7 +158,7 @@
     if (repo.topics && repo.topics.length > 0) {
       topicsHTML = '<div class="repo-topics">';
       repo.topics.forEach(function (topic) {
-        topicsHTML += '<span class="repo-topic">' + escapeHTML(topic) + "</span>";
+        topicsHTML += '<span class="repo-topic" data-filter-tag="' + escapeHTML(topic) + '">' + escapeHTML(topic) + "</span>";
       });
       topicsHTML += "</div>";
     }
@@ -693,6 +706,72 @@
     return allRepos;
   }
 
+  // ===== Filtro por tag / lenguaje =====
+
+  var filterBar = document.createElement("div");
+  filterBar.className = "portfolio-filter-bar";
+  filterBar.hidden = true;
+  gridView.insertBefore(filterBar, gridView.firstChild);
+
+  function applyFilter(type, value, pushHistory) {
+    if (pushHistory === undefined) pushHistory = true;
+    activeFilter = { type: type, value: value };
+
+    var allCards = gridView.querySelectorAll("[data-repo]");
+    var visibleCount = 0;
+
+    allCards.forEach(function (card) {
+      var repo = repoMap[card.dataset.repo];
+      if (!repo) { card.classList.add("filtered-out"); return; }
+
+      var matches = false;
+      if (type === "tag") {
+        matches = repo.topics && repo.topics.indexOf(value) !== -1;
+      } else if (type === "lang") {
+        matches = repo.language && repo.language.toLowerCase() === value.toLowerCase();
+      }
+
+      if (matches) {
+        card.classList.remove("filtered-out");
+        visibleCount++;
+      } else {
+        card.classList.add("filtered-out");
+      }
+    });
+
+    var typeLabel = type === "tag" ? "tag" : "lenguaje";
+    var countText = visibleCount + (visibleCount === 1 ? " repositorio" : " repositorios");
+    filterBar.innerHTML =
+      '<span>Filtrando por ' + typeLabel + ': <strong>' + escapeHTML(value) +
+      '</strong> — ' + countText + '</span>' +
+      '<button data-clear-filter>&times; Limpiar</button>';
+    filterBar.hidden = false;
+
+    if (pushHistory) {
+      history.pushState(
+        { section: "portfolio", filter: { type: type, value: value } },
+        "",
+        "#portfolio?" + encodeURIComponent(type) + "=" + encodeURIComponent(value)
+      );
+    }
+  }
+
+  function clearFilter(pushHistory) {
+    if (pushHistory === undefined) pushHistory = true;
+    activeFilter = null;
+
+    var allCards = gridView.querySelectorAll("[data-repo]");
+    allCards.forEach(function (card) {
+      card.classList.remove("filtered-out");
+    });
+
+    filterBar.hidden = true;
+
+    if (pushHistory) {
+      history.pushState({ section: "portfolio" }, "", "#portfolio");
+    }
+  }
+
   // ===== Punto de entrada =====
   async function loadPortfolio() {
     showSkeletons(pinnedContainer, 4);
@@ -714,6 +793,17 @@
         delete window.__pendingRepoDetail;
         if (repoMap[pending]) {
           openRepoDetail(pending, false);
+        }
+      }
+
+      // Deep-link: aplicar filtro si llegamos con #portfolio?tag=x
+      if (window.__pendingPortfolioFilter) {
+        var pf = window.__pendingPortfolioFilter;
+        delete window.__pendingPortfolioFilter;
+        if (pf.tag) {
+          applyFilter("tag", pf.tag, false);
+        } else if (pf.lang) {
+          applyFilter("lang", pf.lang, false);
         }
       }
 
@@ -774,6 +864,30 @@
       return;
     }
 
+    // Filtrar por tag (click en topic pill)
+    var filterTag = e.target.closest("[data-filter-tag]");
+    if (filterTag) {
+      e.preventDefault();
+      applyFilter("tag", filterTag.dataset.filterTag);
+      return;
+    }
+
+    // Filtrar por lenguaje (click en language badge)
+    var filterLang = e.target.closest("[data-filter-lang]");
+    if (filterLang) {
+      e.preventDefault();
+      applyFilter("lang", filterLang.dataset.filterLang);
+      return;
+    }
+
+    // Limpiar filtro
+    var clearBtn = e.target.closest("[data-clear-filter]");
+    if (clearBtn) {
+      e.preventDefault();
+      clearFilter();
+      return;
+    }
+
     // Abrir repo desde sección externa (e.g. "Sobre mi")
     var openRepoEl = e.target.closest("[data-open-repo]");
     if (openRepoEl) {
@@ -817,19 +931,34 @@
     }
   });
 
-  // Back / forward del navegador dentro de portfolio (sub-path)
+  // Back / forward del navegador dentro de portfolio (sub-path + filtros)
   window.addEventListener("popstate", function () {
     var hash = window.location.hash.replace("#", "");
-    var parts = hash.split("/");
+    var qIndex = hash.indexOf("?");
+    var path = qIndex === -1 ? hash : hash.substring(0, qIndex);
+    var queryStr = qIndex === -1 ? "" : hash.substring(qIndex + 1);
+    var parts = path.split("/");
     if (parts[0] !== "portfolio") return;
 
     var subPath = parts[1] || null;
+
     if (subPath && repoMap[subPath]) {
       if (currentRepoName !== subPath) {
         openRepoDetail(subPath, false);
       }
-    } else if (!subPath && currentRepoName) {
-      closeRepoDetail(false);
+    } else if (!subPath) {
+      if (currentRepoName) {
+        closeRepoDetail(false);
+      }
+      // Restaurar filtro si lo había
+      var params = parseQueryString(queryStr);
+      if (params.tag) {
+        applyFilter("tag", params.tag, false);
+      } else if (params.lang) {
+        applyFilter("lang", params.lang, false);
+      } else if (activeFilter) {
+        clearFilter(false);
+      }
     }
   });
 
