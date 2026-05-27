@@ -224,7 +224,8 @@
   var ICON_SUBMODULE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
 
   /** Abre la vista detalle de un repositorio. */
-  function openRepoDetail(repoName) {
+  function openRepoDetail(repoName, pushHistory) {
+    if (pushHistory === undefined) pushHistory = true;
     var repo = repoMap[repoName];
     if (!repo) return;
 
@@ -302,19 +303,33 @@
         "</div>" +
       "</div>";
 
+    // Actualizar hash en la URL
+    if (pushHistory) {
+      history.pushState(
+        { section: "portfolio", subPath: repoName },
+        "",
+        "#portfolio/" + repoName
+      );
+    }
+
     // Fetch archivos y README en paralelo
     fetchContents(currentRepoName, "");
     fetchReadme(currentRepoName);
   }
 
   /** Cierra la vista detalle y vuelve al grid. */
-  function closeRepoDetail() {
+  function closeRepoDetail(pushHistory) {
+    if (pushHistory === undefined) pushHistory = true;
     currentRepoName = "";
     currentPath = [];
     readmeHTMLCache = "";
     detailView.hidden = true;
     detailView.innerHTML = "";
     gridView.hidden = false;
+
+    if (pushHistory) {
+      history.pushState({ section: "portfolio" }, "", "#portfolio");
+    }
   }
 
   // ===== Apertura desde secciones externas (e.g. "Sobre mi") =====
@@ -687,12 +702,20 @@
       var cached = getCached(CACHE_KEY);
       if (cached) {
         renderRepos(cached);
-        return;
+      } else {
+        var allRepos = await fetchRepos();
+        setCache(CACHE_KEY, allRepos);
+        renderRepos(allRepos);
       }
 
-      var allRepos = await fetchRepos();
-      setCache(CACHE_KEY, allRepos);
-      renderRepos(allRepos);
+      // Deep-link: abrir repo si llegamos con #portfolio/nombre
+      if (window.__pendingRepoDetail) {
+        var pending = window.__pendingRepoDetail;
+        delete window.__pendingRepoDetail;
+        if (repoMap[pending]) {
+          openRepoDetail(pending, false);
+        }
+      }
 
     } catch (error) {
       console.error("Error loading repos:", error);
@@ -791,6 +814,22 @@
     if (fileEl && currentRepoName) {
       e.preventDefault();
       fetchFileContent(fileEl.dataset.viewFile);
+    }
+  });
+
+  // Back / forward del navegador dentro de portfolio (sub-path)
+  window.addEventListener("popstate", function () {
+    var hash = window.location.hash.replace("#", "");
+    var parts = hash.split("/");
+    if (parts[0] !== "portfolio") return;
+
+    var subPath = parts[1] || null;
+    if (subPath && repoMap[subPath]) {
+      if (currentRepoName !== subPath) {
+        openRepoDetail(subPath, false);
+      }
+    } else if (!subPath && currentRepoName) {
+      closeRepoDetail(false);
     }
   });
 
