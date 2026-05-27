@@ -89,6 +89,40 @@
   font-size: 0.8rem;
 }
 
+.repo-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #f0c040;
+  font-size: 0.75rem;
+}
+
+.repo-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.repo-topic {
+  background-color: rgba(0, 123, 255, 0.08);
+  color: #89c4ff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+}
+
+.repo-updated {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.repo-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .portfolio-empty {
   color: #999;
   text-align: center;
@@ -196,12 +230,24 @@
   padding: 1.25rem;
 }
 
-.repo-detail-files h3 {
-  color: #fff;
-  font-size: 1rem;
+.files-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #333;
+}
+
+.repo-detail-files h3 {
+  color: #fff;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Hidden on desktop — only visible on mobile */
+.files-toggle {
+  display: none;
 }
 
 /* Right panel header (README / file viewer toggle) */
@@ -536,8 +582,55 @@
     grid-template-columns: 1fr;
   }
 
+  /* README first, files second */
+  .repo-detail-readme {
+    order: 1;
+  }
+
+  .repo-detail-files {
+    order: 2;
+  }
+
   .repo-detail-header h2 {
     font-size: 1.4rem;
+  }
+
+  /* Collapsible file browser */
+  .repo-detail-files .repo-files-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .repo-detail-files.files-open .repo-files-list {
+    max-height: 2000px;
+  }
+
+  .files-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #5ba8ff;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .files-toggle:hover {
+    border-color: #5ba8ff;
+  }
+
+  .files-toggle svg {
+    transition: transform 0.3s ease;
+  }
+
+  .files-open .files-toggle svg {
+    transform: rotate(180deg);
   }
 }
 

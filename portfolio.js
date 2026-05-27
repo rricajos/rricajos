@@ -13,7 +13,7 @@
 
   var GITHUB_USER = "rricajos";
   var PINNED_NAMES = ["smm", "languages", "qrsgen", "unix"];
-  var HIDDEN_REPOS = ["rricajos"]; // profile readme repo
+  var HIDDEN_REPOS = ["rricajos", "java", "php", "javascript"]; // profile readme + study repos (shown in About Me)
 
   var CACHE_KEY = "rricajos_repos";
   var CACHE_TTL = 10 * 60 * 1000; // 10 min
@@ -91,6 +91,19 @@
     } catch (e) { /* quota exceeded — ignorar */ }
   }
 
+  /** Convierte una fecha ISO a texto relativo en español. */
+  function timeAgo(dateStr) {
+    var diff = Date.now() - new Date(dateStr).getTime();
+    var days = Math.floor(diff / 86400000);
+    var months = Math.floor(days / 30);
+    var years = Math.floor(days / 365);
+
+    if (years > 0)  return "hace " + years + (years === 1 ? " año" : " años");
+    if (months > 0) return "hace " + months + (months === 1 ? " mes" : " meses");
+    if (days > 0)   return "hace " + days + (days === 1 ? " día" : " días");
+    return "hoy";
+  }
+
   // ===== Skeleton loading =====
   function showSkeletons(container, count) {
     container.innerHTML = "";
@@ -120,6 +133,28 @@
       langHTML = '<span class="language-badge">' + escapeHTML(repo.language) + "</span>";
     }
 
+    var starsHTML = "";
+    if (repo.stargazers_count > 0) {
+      starsHTML = '<span class="repo-stars">' +
+        '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ' +
+        repo.stargazers_count +
+      "</span>";
+    }
+
+    var topicsHTML = "";
+    if (repo.topics && repo.topics.length > 0) {
+      topicsHTML = '<div class="repo-topics">';
+      repo.topics.forEach(function (topic) {
+        topicsHTML += '<span class="repo-topic">' + escapeHTML(topic) + "</span>";
+      });
+      topicsHTML += "</div>";
+    }
+
+    var updatedHTML = "";
+    if (repo.updated_at) {
+      updatedHTML = '<span class="repo-updated">' + timeAgo(repo.updated_at) + "</span>";
+    }
+
     var homepageHTML = repo.homepage
       ? '<span class="repo-homepage">Demo &rarr;</span>'
       : "";
@@ -130,9 +165,10 @@
     card.innerHTML =
       "<h3>" + escapeHTML(repo.name) + "</h3>" +
       "<p>" + escapeHTML(desc) + "</p>" +
+      topicsHTML +
       '<div class="repo-meta">' +
-        '<div class="repo-languages">' + langHTML + "</div>" +
-        homepageHTML +
+        '<div class="repo-languages">' + langHTML + starsHTML + "</div>" +
+        '<div class="repo-meta-right">' + updatedHTML + homepageHTML + "</div>" +
       "</div>";
 
     return card;
@@ -144,10 +180,12 @@
     var others = [];
 
     allRepos.forEach(function (repo) {
-      if (HIDDEN_REPOS.indexOf(repo.name) !== -1) return;
       if (repo.fork) return;
 
+      // Always index (needed for data-open-repo links from About Me)
       repoMap[repo.name] = repo;
+
+      if (HIDDEN_REPOS.indexOf(repo.name) !== -1) return;
 
       if (PINNED_NAMES.indexOf(repo.name) !== -1) {
         pinned.push(repo);
@@ -243,7 +281,13 @@
       "</div>" +
       '<div class="repo-detail-body">' +
         '<div class="repo-detail-files">' +
-          "<h3>Archivos</h3>" +
+          '<div class="files-header">' +
+            "<h3>Archivos</h3>" +
+            '<button class="files-toggle" data-files-toggle aria-expanded="false">' +
+              "<span>Ver archivos</span>" +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>' +
+            "</button>" +
+          "</div>" +
           '<div id="repo-files-list" class="repo-files-list">' + filesSkeleton + "</div>" +
         "</div>" +
         '<div class="repo-detail-readme">' +
@@ -675,6 +719,19 @@
     if (readmeBtn) {
       e.preventDefault();
       showReadme();
+      return;
+    }
+
+    // Toggle file browser (mobile collapsible)
+    var filesToggle = e.target.closest("[data-files-toggle]");
+    if (filesToggle) {
+      e.preventDefault();
+      var filesContainer = filesToggle.closest(".repo-detail-files");
+      if (filesContainer) {
+        var isOpen = filesContainer.classList.toggle("files-open");
+        filesToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        filesToggle.querySelector("span").textContent = isOpen ? "Ocultar archivos" : "Ver archivos";
+      }
       return;
     }
 
