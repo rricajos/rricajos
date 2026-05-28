@@ -1,7 +1,7 @@
 ---
 import Base from './Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BlogNav from '../components/BlogNav.astro';
+import BlogFooter from '../components/BlogFooter.astro';
 
 interface Props {
   title: string;
@@ -19,8 +19,8 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 });
 ---
 
-<Base title={title} description={description}>
-  <Header />
+<Base title={`${title} — RRicajos Blog`} description={description}>
+  <BlogNav />
   <main class="container">
     <article>
       <div class="post-header">
@@ -39,5 +39,9 @@ const formattedDate = date.toLocaleDateString('es-ES', {
       </div>
     </article>
   </main>
-  <Footer />
+  <BlogFooter />
 </Base>
+
+<style is:global>
+  @import '../styles/blog.css';
+</style>
