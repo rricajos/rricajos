@@ -29,4 +29,4 @@ Infra       Docker Swarm · Traefik · Portainer · Prometheus
 ### Contacto
 - 🌐 [ricajos.com](https://rricajos.github.io/rricajos)
 - 📧 [ricard.penin.honrubia@gmail.com](mailto:ricard.penin.honrubia@gmail.com)
-- 📻 Radioaficionado · [TU-INDICATIVO]
+- 📻 Radioaficionado WSL · EA9666
