@@ -20,8 +20,12 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 ---
 
 <Base title={`${title} — RRicajos Blog`} description={description}>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/css/supernav.css" />
+    <link rel="stylesheet" href="/css/superfooter.css" />
+  </Fragment>
   <BlogNav />
-  <main class="container">
+  <main class="blog-content">
     <article>
       <div class="post-header">
         <h1>{title}</h1>
