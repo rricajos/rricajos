@@ -20,4 +20,4 @@ npm-debug.log*
 .vscode/
 
 # old blog directory (migrated to root)
-blog/
+/blog/
