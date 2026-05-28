@@ -1,8 +1,8 @@
 # Ricard Penin Honrubia
 
-🍀 Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona. Programando desde los 11 años, hoy con 25 años acumulo 5 años de carrera profesional entre desarrollo y sistemas, construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura self-hosted (proxies, hosting, despliegues automatizados).
+🍀 Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona. Empeze programando desde los 11 años un shutdown -s -t 1800 -m "has sido hackeado!" en el pc de mi padre, hoy con 25 años acumulo 5 años de carrera profesional entre desarrollo y sistemas, construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura en la nuebe o self-hosted (proxies, hosting, despliegues automatizados).
 
-Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base sólida en sistemas Unix y C++. Eso se traduce en proyectos que no solo funcionan el día del entregable, sino que aguantan en producción.
+Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base sólida en sistemas. Eso se traduce en proyectos que no solo funcionan el día del entregable, sino que aguantan en producción.
 
 También trabajo con Java, PHP y Node.js cuando el proyecto lo requiere — útil si necesitas evolucionar o mantener una base de código existente.
 
@@ -28,5 +28,5 @@ Infra       Docker Swarm · Traefik · Portainer · Prometheus
 
 ### Contacto
 
-- 🌐 [rricajos.github.io/rricajos](https://rricajos.github.io/rricajos)
+- 🌐 [ricajos.com](https://rricajos.github.io/rricajos)
 - 📧 [ricard.penin.honrubia@gmail.com](mailto:ricard.penin.honrubia@gmail.com)
