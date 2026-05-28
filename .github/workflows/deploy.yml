@@ -24,27 +24,15 @@ jobs:
         with:
           node-version: 22
 
-      # Build Astro blog
-      - name: Install blog dependencies
-        working-directory: blog
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build blog
-        working-directory: blog
+      - name: Build site
         run: npm run build
-
-      # Assemble site: portfolio (root) + blog (subdirectory)
-      - name: Assemble site
-        run: |
-          mkdir -p _site
-          # Copy portfolio files (everything except blog/, node_modules, _site, .github)
-          rsync -a --exclude='blog/' --exclude='node_modules/' --exclude='_site/' --exclude='.github/' --exclude='.git/' . _site/
-          # Copy blog build output into /blog/
-          cp -r blog/dist/ _site/blog/
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist
 
   deploy:
     needs: build
