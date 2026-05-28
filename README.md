@@ -1,6 +1,6 @@
 # Ricard Penin Honrubia
 
-🍀 Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona. Empeze programando desde los 11 años un shutdown -s -t 1800 -m "has sido hackeado!" en el pc de mi padre, hoy con 25 años acumulo 5 años de carrera profesional entre desarrollo y sistemas, construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura en la nuebe o self-hosted (proxies, hosting, despliegues automatizados).
+🍀 Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona. Empecé programando desde los 11 años un shutdown -s -t 1800 -m "has sido hackeado!" en el pc de mi padre, hoy con 25 años acumulo 5 años de carrera profesional entre desarrollo y sistemas, construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura en la nube o self-hosted (proxies, hosting, despliegues automatizados...).
 
 Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base sólida en sistemas. Eso se traduce en proyectos que no solo funcionan el día del entregable, sino que aguantan en producción.
 
@@ -9,24 +9,21 @@ También trabajo con Java, PHP y Node.js cuando el proyecto lo requiere — úti
 ¿Tienes un proyecto en mente? Consulta [mi tabla de servicios](https://rricajos.github.io/rricajos/#services) o escríbeme para una asesoría a medida.
 
 ---
-
-### Mis favoritos:
-
+### Últimos proyectos:
 **[qrsgen](https://github.com/rricajos/qrsgen)** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con outbox persistido, audit log inmutable, BanWatcher proactivo y métricas Prometheus. Desplegado vía Docker Swarm con 4+ instancias activas.
 
 **[smm](https://github.com/rricajos/smm)** — Smart Mail Manager. Extensión de Thunderbird con features de IA.
 
-### Stack
 
+### Orientación tecnológica:
 ```
 Frontend    SvelteKit · TypeScript · HTML / CSS / JS
 Backend     Go (Echo) · Node.js · Java · PHP
-Datos       PostgreSQL · MongoDB
-Sistemas    C++ · Unix / Linux
+Datos       PostgreSQL · MongoDB · Prisma
+Sistemas    C++ · Unix / Linux 
 Infra       Docker Swarm · Traefik · Portainer · Prometheus
 ```
-
 ### Contacto
-
 - 🌐 [ricajos.com](https://rricajos.github.io/rricajos)
 - 📧 [ricard.penin.honrubia@gmail.com](mailto:ricard.penin.honrubia@gmail.com)
+- 📻 Radioaficionado · [EA9666]
