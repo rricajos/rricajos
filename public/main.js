@@ -36,7 +36,7 @@
   var calLoaded = false;     // Cal.com cargado bajo demanda
   var feedback = null;       // form-feedback element (set on DOMContentLoaded)
 
-  var VALID_SECTIONS = ["home", "services", "portfolio", "eventos", "contact"];
+  var VALID_SECTIONS = ["home", "services", "portfolio", "contact"];
 
   // ===== Preferencias de movimiento =====
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
