@@ -34,15 +34,6 @@
 }
 
 /* ======================
-   Blog — Layout: footer siempre al fondo
-   ====================== */
-body:has(.blog-content) {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* ======================
    Blog — Content container
    ====================== */
 .blog-content {

@@ -184,6 +184,14 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-body);
   color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Footer siempre al fondo — portfolio SPA */
+#main-content {
+  flex: 1;
 }
 
 .supercontainer {
