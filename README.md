@@ -11,10 +11,11 @@ También trabajo con Java, PHP y Node.js cuando el proyecto lo requiere — úti
 ---
 ### Últimos proyectos:
 
+**[pingunix](https://github.com/rricajos/pingunix)** — Plataforma de estudio para LPIC-1/2/3 y ciberseguridad en español. 820 páginas, 2.280 flashcards con SM-2, 1.910 preguntas tipo test y 8 simulacros con corrección automática. Sitio estático con Quartz v5, base de datos portable, sin registro ni dependencias externas.
+
 **[qrsgen](https://github.com/rricajos/qrsgen)** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con outbox persistido, audit log inmutable, BanWatcher proactivo y métricas Prometheus. Desplegado vía Docker Swarm con 4+ instancias activas.
 
-**[smm](https://github.com/rricajos/smm)** — Smart Mail Manager. Extensión de Thunderbird con features de IA.
-
+**[smm](https://github.com/rricajos/smm)** — Extensión Thunderbird 128+ con clasificación IA, reglas automáticas y asistente de chat. Multi-proveedor (OpenAI, Anthropic, Google, OpenRouter), TypeScript estricto, Svelte 5 con runes y 917 tests a 97% de cobertura.
 
 ### Tecnológia favorita:
 ```
