@@ -184,6 +184,13 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-body);
   color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1;
 }
 
 .supercontainer {
