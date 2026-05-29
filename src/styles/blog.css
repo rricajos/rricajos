@@ -1,11 +1,46 @@
 /* ======================
+   Blog — Entry animations (same as portfolio)
+   ====================== */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blog-content .animate-in {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+.blog-content .animate-in:nth-child(1) { animation-delay: 0s; }
+.blog-content .animate-in:nth-child(2) { animation-delay: 0.08s; }
+.blog-content .animate-in:nth-child(3) { animation-delay: 0.16s; }
+.blog-content .animate-in:nth-child(4) { animation-delay: 0.24s; }
+.blog-content .animate-in:nth-child(5) { animation-delay: 0.32s; }
+.blog-content .animate-in:nth-child(6) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-content .animate-in {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ======================
    Blog — Content container
    ====================== */
 .blog-content {
   max-width: 720px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 3rem 1rem;
 }
 
 /* ======================
