@@ -1,6 +1,10 @@
 # Ricard Penin Honrubia
 
-🍀 Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona. Empecé programando desde los 11 años un shutdown -s -t 1800 -m "has sido hackeado!" en el pc de mi padre, hoy con 25 años acumulo 5 años de carrera profesional entre desarrollo y sistemas, construyendo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura en la nube o self-hosted (proxies, hosting, despliegues automatizados...).
+# Ricard Penin Honrubia
+
+Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona, con más de 5 años de carrera entre desarrollo y sistemas.
+
+Empecé a los 11 años con un `shutdown -s -t 1800 -m "has sido hackeado!"` en el PC de mi padre. Desde entonces construyo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura self-hosted (proxies, hosting, despliegues automatizados...).
 
 Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base sólida en sistemas. Eso se traduce en proyectos que no solo funcionan el día del entregable, sino que aguantan en producción.
 
