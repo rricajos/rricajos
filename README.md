@@ -6,7 +6,7 @@ Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base s
 
 También trabajo con Java, PHP y Node.js cuando el proyecto lo requiere — útil si necesitas evolucionar o mantener una base de código existente.
 
-¿Tienes un proyecto en mente? Consulta [mi tabla de servicios](https://rricajos.github.io/rricajos/#services) o escríbeme para una asesoría a medida.
+¿Tienes un proyecto en mente? Consulta [ricajos.com](https://ricajos.com) o escríbeme para una asesoría a medida.
 
 ---
 ### Últimos proyectos:
