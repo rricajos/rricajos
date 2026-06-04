@@ -1,4 +1,4 @@
-# Ricard Penin Honrubia
+# Ricard
 
 Backend & DevOps Engineer en **Conexia Telecom** (Barcelona). 
 Construyo APIs, herramientas internas e integraciones con foco en 
