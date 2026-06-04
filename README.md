@@ -1,34 +1,34 @@
 # Ricard Penin Honrubia
 
-# Ricard Penin Honrubia
+Backend & DevOps Engineer en **Conexia Telecom** (Barcelona). 
+Construyo APIs, herramientas internas e integraciones con foco en 
+producción real: software que no solo funciona, sino que se puede 
+desplegar, mantener y operar.
 
-Ingeniero DevOps en Conexia Telecom y desarrollador freelance en Barcelona, con más de 5 años de carrera entre desarrollo y sistemas.
+Vengo de soporte IT y desarrollo Appian (Plexus Tech, SEMIC, 
+FC Barcelona). Desde finales de 2025 trabajo a tiempo completo en 
+backend y DevOps, profundizando en Go, Linux y operación de sistemas 
+en producción.
 
-Empecé a los 11 años con un `shutdown -s -t 1800 -m "has sido hackeado!"` en el PC de mi padre. Desde entonces construyo soluciones a medida: webs, aplicaciones nativas de escritorio e infraestructura self-hosted (proxies, hosting, despliegues automatizados...).
+### Stack
 
-Mi enfoque combina desarrollo moderno (Go, TypeScript, SvelteKit) con una base sólida en sistemas. Eso se traduce en proyectos que no solo funcionan el día del entregable, sino que aguantan en producción.
+    Frontend    HTML / CSS / JS · TypeScript · Svelte
+    Backend     Go · Node.js · Java · PHP
+    Infra       Docker · Linux · PostgreSQL · REST APIs
 
-También trabajo con Java, PHP y Node.js cuando el proyecto lo requiere — útil si necesitas evolucionar o mantener una base de código existente.
+### Profundizando en
 
-¿Tienes un proyecto en mente? Consulta [ricajos.com](https://ricajos.com) o escríbeme para una asesoría a medida.
+CI/CD · observabilidad · infraestructura self-hosted · Prometheus
 
----
-### Últimos proyectos:
 
-**[pingunix](https://github.com/rricajos/pingunix)** — Plataforma de estudio para LPIC-1/2/3 y ciberseguridad en español. 820 páginas, 2.280 flashcards con SM-2, 1.910 preguntas tipo test y 8 simulacros con corrección automática. Sitio estático con Quartz v5, base de datos portable, sin registro ni dependencias externas.
+### Proyectos destacados
 
-**[qrsgen](https://github.com/rricajos/qrsgen)** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con outbox persistido, audit log inmutable, BanWatcher proactivo y métricas Prometheus. Desplegado vía Docker Swarm con 4+ instancias activas.
-
-**[smm](https://github.com/rricajos/smm)** — Extensión Thunderbird 128+ con clasificación IA, reglas automáticas y asistente de chat. Multi-proveedor (OpenAI, Anthropic, Google, OpenRouter), TypeScript estricto, Svelte 5 con runes y 917 tests a 97% de cobertura.
-
-### Tecnológia favorita:
-```
-Frontend    SvelteKit · TypeScript · HTML / CSS / JS
-Backend     Go (Echo) · Node.js · Java · PHP
-Datos       PostgreSQL · MongoDB · Prisma
-Sistemas    C++ · Unix / Linux 
-Infra       Docker Swarm · Traefik · Portainer · Prometheus
-```
+- **qrsgen** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con 
+  Docker Swarm, audit log inmutable y métricas Prometheus.
+- **smm** — Smart Mail Manager: extensión de Thunderbird con features 
+  de IA, en Svelte.
+- **pingunix** — Herramientas y scripts para administración de 
+  sistemas Unix/Linux.
 
 
 ### Contacto
