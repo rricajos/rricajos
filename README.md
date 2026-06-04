@@ -1,5 +1,3 @@
-# Ricard
-
 Backend & DevOps Engineer en **Conexia Telecom** (Barcelona). 
 Construyo APIs, herramientas internas e integraciones con foco en 
 producción real: software que no solo funciona, sino que se puede 
