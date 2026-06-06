@@ -21,11 +21,11 @@ CI/CD · observabilidad · infraestructura self-hosted · Prometheus
 
 ### Proyectos destacados
 
-- **qrsgen** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con 
+- **[qrsgen](https://rricajos.github.io/qrsgen/)** — Bridge WhatsApp ↔ HTTP API en Go. Multi-instancia con 
   Docker Swarm, audit log inmutable y métricas Prometheus.
-- **smm** — Smart Mail Manager: extensión de Thunderbird con features 
+- **[smm](https://github.com/smm)** — Smart Mail Manager: extensión de Thunderbird con features 
   de IA, en Svelte.
-- **pingunix** — Herramientas y scripts para administración de 
+- **[pingunix.com](https://pingunix.com/)** — Herramientas y scripts para administración de 
   sistemas Unix/Linux.
 
 
