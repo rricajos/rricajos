@@ -25,7 +25,10 @@
     "outlink",         // Generador de URLs de login M365
     "php-task-manager",// CLI + REST API en PHP 8 (JWT, SQLite)
     "rick-api-junkie", // Demo de consumo de API
-    "dojo"             // Estudio y práctica de lenguajes de programación
+    "dojo",            // Estudio y práctica de lenguajes de programación
+    "java",            // Estudio de Java
+    "javascript",      // Scripts de práctica de JavaScript
+    "php"              // Estudio del lenguaje PHP
   ];
   var PINNED_NAMES = ["pingunix", "smm", "outlink"];
 
