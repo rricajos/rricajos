@@ -12,8 +12,22 @@
   "use strict";
 
   var GITHUB_USER = "rricajos";
-  var PINNED_NAMES = ["smm", "languages", "qrsgen", "unix"];
-  var HIDDEN_REPOS = ["rricajos", "java", "php", "javascript"]; // profile readme + study repos (shown in About Me)
+
+  // ── ALLOWLIST de escaparate ──────────────────────────────────────────────
+  // SOLO los repos listados aquí se muestran (y se pueden explorar) en el
+  // portfolio. Cualquier otro repo público — y todo repo nuevo futuro — queda
+  // OCULTO por defecto. Para destacar un repo arriba, ponlo también en PINNED.
+  // Edita SHOWCASE para añadir/quitar piezas. NO metas repos de cliente,
+  // infra interna (qrsgen, *-omnia, lacasa-*) ni académicos.
+  var SHOWCASE = [
+    "pingunix",        // Plataforma de estudio LPIC (producto propio)
+    "smm",             // Smart Mail Manager — extensión Thunderbird con IA
+    "outlink",         // Generador de URLs de login M365
+    "spider-chart",    // Componente modular reutilizable
+    "php-task-manager",// CLI + REST API en PHP 8 (JWT, SQLite)
+    "rick-api-junkie"  // Demo de consumo de API
+  ];
+  var PINNED_NAMES = ["pingunix", "smm", "outlink"];
 
   var CONFIG = {
     CACHE_TTL: 10 * 60 * 1000,
@@ -299,10 +313,11 @@
     allRepos.forEach(function (repo) {
       if (repo.fork) return;
 
-      // Always index (needed for data-open-repo links from About Me)
-      repoMap[repo.name] = repo;
+      // Allowlist: solo repos en SHOWCASE se indexan y muestran. El resto
+      // queda fuera del portfolio y NO es explorable dentro de la web.
+      if (SHOWCASE.indexOf(repo.name) === -1) return;
 
-      if (HIDDEN_REPOS.indexOf(repo.name) !== -1) return;
+      repoMap[repo.name] = repo;
 
       if (PINNED_NAMES.indexOf(repo.name) !== -1) {
         pinned.push(repo);
