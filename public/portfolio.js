@@ -23,7 +23,6 @@
     "pingunix",        // Plataforma de estudio LPIC (producto propio)
     "smm",             // Smart Mail Manager — extensión Thunderbird con IA
     "outlink",         // Generador de URLs de login M365
-    "spider-chart",    // Componente modular reutilizable
     "php-task-manager",// CLI + REST API en PHP 8 (JWT, SQLite)
     "rick-api-junkie"  // Demo de consumo de API
   ];
