@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import BlogNav from '../components/BlogNav.astro';
+import BlogFooter from '../components/BlogFooter.astro';
+
+const updated = '21 de junio de 2026';
+---
+
+<Base
+  title="Política de Privacidad — RRicajos"
+  description="Política de privacidad y protección de datos de ricajos.com, conforme al RGPD y la LOPDGDD."
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/css/supernav.css" />
+    <link rel="stylesheet" href="/css/superfooter.css" />
+    <meta name="robots" content="noindex, follow" />
+  </Fragment>
+  <BlogNav />
+  <main class="blog-content">
+    <article>
+      <div class="post-header animate-in">
+        <h1>Política de Privacidad</h1>
+        <div class="post-meta">
+          <span>Última actualización: {updated}</span>
+        </div>
+      </div>
+      <div class="post-content animate-in">
+        <p>
+          Esta política de privacidad regula el tratamiento de los datos personales que se
+          recogen a través del sitio web <strong>ricajos.com</strong>, de conformidad con el
+          Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
+        </p>
+
+        <h2>1. Responsable del tratamiento</h2>
+        <ul>
+          <li><strong>Titular:</strong> Ricard Penin Honrubia</li>
+          <li><strong>NIF:</strong> [completar NIF/DNI]</li>
+          <li><strong>Domicilio:</strong> Barcelona (España) [completar dirección si procede]</li>
+          <li><strong>Correo de contacto:</strong> <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a></li>
+          <li><strong>Sitio web:</strong> ricajos.com</li>
+        </ul>
+
+        <h2>2. ¿Qué datos recogemos y con qué finalidad?</h2>
+        <p>
+          A través del formulario de contacto recogemos los datos que tú mismo nos facilitas:
+          <strong>nombre, dirección de correo electrónico y el contenido del mensaje</strong>.
+          La finalidad es <strong>atender y gestionar tu consulta o solicitud</strong> y, en su
+          caso, mantener la comunicación posterior que se derive de ella.
+        </p>
+        <p>
+          No elaboramos perfiles ni tomamos decisiones automatizadas con tus datos.
+        </p>
+
+        <h2>3. Legitimación</h2>
+        <p>
+          La base legal del tratamiento es tu <strong>consentimiento</strong>, que prestas al
+          marcar la casilla de aceptación y enviar el formulario (art. 6.1.a RGPD). Puedes
+          retirar dicho consentimiento en cualquier momento.
+        </p>
+
+        <h2>4. Conservación de los datos</h2>
+        <p>
+          Conservaremos tus datos durante el tiempo necesario para atender tu consulta y, una
+          vez resuelta, durante el plazo legalmente exigible para atender posibles
+          responsabilidades. Cuando dejen de ser necesarios, se eliminarán.
+        </p>
+
+        <h2>5. Destinatarios y encargados del tratamiento</h2>
+        <p>
+          No cedemos tus datos a terceros, salvo obligación legal. Para la prestación del
+          servicio nos apoyamos en los siguientes proveedores, que actúan como encargados del
+          tratamiento:
+        </p>
+        <ul>
+          <li>
+            <strong>FormSubmit</strong> (formsubmit.co) — procesa el envío del formulario de
+            contacto y lo entrega por correo electrónico.
+          </li>
+          <li>
+            <strong>GitHub Pages</strong> (GitHub, Inc.) — alojamiento del sitio web.
+          </li>
+        </ul>
+        <p>
+          Algunos de estos proveedores pueden estar ubicados fuera del Espacio Económico
+          Europeo; en tal caso, las transferencias se amparan en las garantías previstas por el
+          RGPD (cláusulas contractuales tipo u otros mecanismos válidos).
+        </p>
+
+        <h2>6. Tus derechos</h2>
+        <p>
+          Puedes ejercer los derechos de <strong>acceso, rectificación, supresión, oposición,
+          limitación del tratamiento y portabilidad</strong> de tus datos escribiendo a
+          <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a>, indicando el derecho que
+          deseas ejercer. Si consideras que el tratamiento no se ajusta a la normativa, tienes
+          derecho a presentar una reclamación ante la Agencia Española de Protección de Datos
+          (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).
+        </p>
+
+        <h2>7. Cookies</h2>
+        <p>
+          Este sitio <strong>no utiliza cookies de seguimiento ni de analítica</strong>.
+          Únicamente se emplea almacenamiento local del navegador (<em>localStorage</em>) para
+          recordar tu preferencia de tema claro/oscuro, dato que no se comparte con terceros.
+        </p>
+
+        <h2>8. Cambios en esta política</h2>
+        <p>
+          Esta política puede actualizarse para adaptarse a cambios normativos o del servicio.
+          La fecha de la última revisión figura al inicio de esta página.
+        </p>
+      </div>
+    </article>
+  </main>
+  <BlogFooter />
+</Base>
+
+<style is:global>
+  @import '../styles/blog.css';
+</style>
