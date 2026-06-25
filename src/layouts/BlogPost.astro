@@ -1,7 +1,7 @@
 ---
 import Base from './Base.astro';
 import BlogNav from '../components/BlogNav.astro';
-import BlogFooter from '../components/BlogFooter.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -43,7 +43,7 @@ const formattedDate = date.toLocaleDateString('es-ES', {
       </div>
     </article>
   </main>
-  <BlogFooter />
+  <Footer />
 </Base>
 
 <style is:global>

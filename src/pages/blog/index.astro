@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import BlogNav from '../../components/BlogNav.astro';
-import BlogFooter from '../../components/BlogFooter.astro';
+import Footer from '../../components/Footer.astro';
 import PostCard from '../../components/PostCard.astro';
 
 const posts = (await getCollection('posts'))
@@ -33,7 +33,7 @@ const posts = (await getCollection('posts'))
       ))}
     </div>
   </main>
-  <BlogFooter />
+  <Footer />
 </Base>
 
 <style is:global>
