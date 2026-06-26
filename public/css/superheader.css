@@ -100,6 +100,11 @@
   flex-shrink: 0;
 }
 
+.hero-benefits strong {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
 /* Secondary CTA variant */
 .cta-button-secondary {
   background-color: transparent;
