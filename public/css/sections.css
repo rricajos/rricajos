@@ -144,6 +144,25 @@
   transform: translateY(-1px);
 }
 
+.tech-strip {
+  text-align: center;
+  margin: 0 0 2.5rem;
+}
+
+.tech-strip-label {
+  display: block;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.tech-strip .about-me-tags {
+  justify-content: center;
+  margin-top: 0;
+}
+
 /* ======================
    En producción
    ====================== */
