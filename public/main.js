@@ -396,14 +396,28 @@
       radarObs.observe(radar.closest(".about-me-radar"));
     }
 
-    // Hero video play/pause
+    // Hero video play/pause with fallback
     var heroVideo = document.getElementById("hero-video");
     var heroPlayBtn = document.querySelector(".hero-video-play");
+    var heroVideoWrap = document.querySelector(".hero-video");
+    if (heroVideo) {
+      heroVideo.addEventListener("error", function () {
+        if (heroVideoWrap) heroVideoWrap.hidden = true;
+      });
+      var source = heroVideo.querySelector("source");
+      if (source) {
+        source.addEventListener("error", function () {
+          if (heroVideoWrap) heroVideoWrap.hidden = true;
+        });
+      }
+    }
     if (heroVideo && heroPlayBtn) {
       heroPlayBtn.addEventListener("click", function () {
         if (heroVideo.paused) {
           heroVideo.muted = false;
-          heroVideo.play();
+          heroVideo.play().catch(function () {
+            if (heroVideoWrap) heroVideoWrap.hidden = true;
+          });
           heroPlayBtn.hidden = true;
         }
       });
@@ -416,6 +430,45 @@
       heroVideo.addEventListener("ended", function () {
         heroPlayBtn.hidden = false;
       });
+    }
+
+    // Scroll-triggered animations (IntersectionObserver)
+    if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
+      var animateObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-visible");
+            animateObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+      document.querySelectorAll(".animate-in").forEach(function (el) {
+        animateObserver.observe(el);
+      });
+    }
+
+    // Availability indicator (CET business hours: Mon-Fri 9-18h)
+    var availDot = document.querySelector(".availability-dot");
+    var availText = document.querySelector(".contact-availability");
+    if (availDot && availText) {
+      var now = new Date();
+      var cetOffset = 1;
+      var utcHour = now.getUTCHours();
+      var isDST = (function () {
+        var jan = new Date(now.getFullYear(), 0, 1).getTimezoneOffset();
+        var jul = new Date(now.getFullYear(), 6, 1).getTimezoneOffset();
+        return Math.max(jan, jul) !== now.getTimezoneOffset();
+      })();
+      var cetHour = (utcHour + cetOffset + (isDST ? 1 : 0)) % 24;
+      var day = now.getUTCDay();
+      var isBusinessHours = day >= 1 && day <= 5 && cetHour >= 9 && cetHour < 18;
+
+      if (isBusinessHours) {
+        availDot.classList.add("available-now");
+      } else {
+        availDot.classList.add("available-later");
+      }
     }
 
     // Orden inicial de la tabla por precio (columna 1)
