@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404 — Página no encontrada | RRicajos">
+  <Fragment slot="head">
+    <link rel="icon" type="image/png" sizes="400x400" href="/avatar.png" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <style>
+      .error-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: 700;
+        color: var(--color-accent, #5ba8ff);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .error-title {
+        font-size: 1.5rem;
+        color: var(--text-heading, #fff);
+        margin-bottom: 0.75rem;
+      }
+
+      .error-desc {
+        color: var(--text-secondary, #b0b0b0);
+        max-width: 400px;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .error-cta {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        background: var(--color-primary, #007bff);
+        color: #fff;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.2s ease, transform 0.15s ease;
+      }
+
+      .error-cta:hover {
+        background: var(--color-primary-hover, #0069d9);
+        transform: translateY(-1px);
+      }
+    </style>
+  </Fragment>
+
+  <main class="error-page">
+    <p class="error-code">404</p>
+    <h1 class="error-title">Página no encontrada</h1>
+    <p class="error-desc">La página que buscas no existe o ha sido movida. Pero no te preocupes, puedes volver al inicio.</p>
+    <a href="/" class="error-cta">Volver al inicio</a>
+  </main>
+</Base>

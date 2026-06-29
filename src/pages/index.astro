@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Footer from '../components/Footer.astro';
+
+const mes = new Date().toLocaleString('es-ES', { month: 'long' });
 ---
 
 <Base title="RRicajos — Desarrollo y Diseño app/web a medida en Barcelona">
@@ -14,21 +16,21 @@ import Footer from '../components/Footer.astro';
     <!-- Open Graph -->
     <meta property="og:title" content="RRicajos — Desarrollo y Diseño app/web a medida en Barcelona" />
     <meta property="og:description" content="Desarrollo y Diseño app/web a medida, automatizaciones y soporte técnico en Barcelona. Sin plantillas, sin intermediarios." />
-    <meta property="og:image" content="https://ricajos.com/og-card.svg" />
+    <meta property="og:image" content="https://ricajos.com/og-card.png" />
     <meta property="og:url" content="https://ricajos.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="RRicajos" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:type" content="image/png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@rricajos" />
     <meta name="twitter:title" content="RRicajos — Desarrollo y Diseño app/web a medida en Barcelona" />
     <meta name="twitter:description" content="Desarrollo y Diseño app/web a medida, automatizaciones y soporte técnico en Barcelona." />
-    <meta name="twitter:image" content="https://ricajos.com/og-card.svg" />
+    <meta name="twitter:image" content="https://ricajos.com/og-card.png" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://ricajos.com/" />
@@ -40,17 +42,28 @@ import Footer from '../components/Footer.astro';
       "name": "RRicajos — Desarrollo y Diseño app/web a medida",
       "url": "https://ricajos.com/",
       "logo": "https://ricajos.com/avatar.png",
+      "image": "https://ricajos.com/og-card.png",
       "description": "Desarrollo y Diseño app/web a medida, automatizaciones y soporte técnico en Barcelona. Sin plantillas, sin intermediarios.",
-      "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressRegion": "Cataluña", "addressCountry": "ES" },
+      "areaServed": { "@type": "Place", "name": "Barcelona, España" },
       "founder": {
         "@type": "Person",
         "name": "Ricard Penin Honrubia",
         "jobTitle": "Desarrollador web & DevOps",
-        "url": "https://github.com/rricajos",
+        "url": "https://ricajos.com/",
         "sameAs": ["https://github.com/rricajos","https://x.com/rricajos","https://linkedin.com/in/rricajos"]
       },
       "knowsAbout": ["Go","TypeScript","SvelteKit","C++","Java","PHP","Node.js","PostgreSQL","MongoDB","Docker Swarm","Unix","Traefik","Prometheus"],
-      "priceRange": "45-80 EUR/h"
+      "priceRange": "45-80 EUR/h",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de desarrollo web",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Web Funcional", "price": "500", "priceCurrency": "EUR", "description": "Web profesional a medida con diseño responsive" },
+          { "@type": "Offer", "name": "Web Avanzada", "price": "3000", "priceCurrency": "EUR", "description": "Aplicación web completa con login, pagos y panel de gestión" },
+          { "@type": "Offer", "name": "Soporte Básico", "price": "59", "priceCurrency": "EUR", "description": "Hosting, SSL, backups y correo corporativo" }
+        ]
+      }
     })} />
 
     <!-- Preconnect -->
@@ -84,11 +97,12 @@ import Footer from '../components/Footer.astro';
         RRicajos
       </button>
       <div class="subnav-desktop">
-        <button class="supernav-button" data-section="home">Inicio</button>
-        <button class="supernav-button" data-section="portfolio">Portfolio</button>
-        <button class="supernav-button" data-section="services">Servicios</button>
-        <a href="/blog/" class="supernav-button">Blog</a>
-        <button class="supernav-button" data-section="contact">Contacto</button>
+        <button class="supernav-button" data-section="home" data-i18n="nav.home">Inicio</button>
+        <button class="supernav-button" data-section="portfolio" data-i18n="nav.portfolio">Portfolio</button>
+        <button class="supernav-button" data-section="services" data-i18n="nav.services">Servicios</button>
+        <a href="/blog/" class="supernav-button" data-i18n="nav.blog">Blog</a>
+        <button class="supernav-button" data-section="contact" data-i18n="nav.contact">Contacto</button>
+        <button id="lang-toggle" class="lang-toggle-btn" aria-label="Switch to English">EN</button>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar a modo claro">
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -125,9 +139,9 @@ import Footer from '../components/Footer.astro';
       <div class="supercontainer">
         <div class="about-me">
           <div class="about-me-text animate-in">
-            <h1>Páginas web y apps que cargan rápido y venden en dos clics</h1>
-            <p class="landing-tagline">Ricard Penin · Freelance en Barcelona</p>
-            <p>Todo de la misma persona: sin intermediarios, sin plantillas. Código limpio que carga rápido y se posiciona bien en Google.</p>
+            <h1 data-i18n="hero.title">Páginas web y apps que cargan rápido y venden en dos clics</h1>
+            <p class="landing-tagline" data-i18n="hero.tagline">Ricard Penin · Freelance en Barcelona</p>
+            <p data-i18n="hero.desc">Todo de la misma persona: sin intermediarios, sin plantillas. Código limpio que carga rápido y se posiciona bien en Google.</p>
             <ul class="hero-benefits">
               <li><svg class="hero-benefit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Todo en uno:</strong> desarrollo, diseño y puesta online</li>
               <li><svg class="hero-benefit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Automatizaciones multicanal</strong> (WhatsApp, email…)</li>
@@ -135,7 +149,8 @@ import Footer from '../components/Footer.astro';
               <li><svg class="hero-benefit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Integro IA</strong> en tu negocio sin disparar costes</li>
             </ul>
             <div class="hero-ctas">
-              <a href="#contact" data-section="contact" class="cta-button">Solicita tu auditoría web gratis</a>
+              <a href="#contact" data-section="contact" class="cta-button" data-i18n="hero.cta">Solicita tu auditoría web gratis</a>
+              <a href="#portfolio" data-section="portfolio" class="cta-button cta-button-secondary" data-i18n="hero.cta2">Ver portfolio</a>
             </div>
             <p class="hero-micro">Sin compromiso · Respuesta en menos de 24 h</p>
           </div>
@@ -155,8 +170,7 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
-        {/* TESTIMONIOS — ocultos hasta tener reseñas reales
-        <h2 class="production-title animate-in">Lo que dicen mis clientes</h2>
+        <h2 class="production-title animate-in" data-i18n="testimonials.title">Lo que dicen mis clientes</h2>
         <div class="testimonials-grid animate-in">
           <blockquote class="testimonial-card">
             <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
@@ -174,7 +188,6 @@ import Footer from '../components/Footer.astro';
             <footer class="testimonial-author"><div class="testimonial-avatar">AL</div><div><cite class="testimonial-name">Ana L.</cite><span class="testimonial-role">Directora Marketing, Consultoría</span></div></footer>
           </blockquote>
         </div>
-        */}
 
         <h2 class="production-title animate-in">¿Qué puedo hacer por ti?</h2>
         <div class="services-preview animate-in">
@@ -201,7 +214,39 @@ import Footer from '../components/Footer.astro';
           <a href="#services" data-section="services" class="cta-button cta-button-secondary">Ver todos los servicios</a>
         </div>
 
-        <h2 class="production-title animate-in">Código abierto en GitHub</h2>
+        <h2 class="production-title animate-in" data-i18n="showcase.title">Proyectos para clientes</h2>
+        <p class="section-subtitle animate-in" data-i18n="showcase.subtitle">Webs y aplicaciones en producción para negocios reales.</p>
+        <div class="showcase-grid animate-in">
+          <a href="#" class="showcase-card" target="_blank" rel="noopener">
+            <div class="showcase-image"><span class="showcase-image-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span></div>
+            <div class="showcase-body">
+              <h3>Proyecto Cliente 1</h3>
+              <p>Web corporativa con panel de gestión y sistema de reservas integrado.</p>
+              <div class="showcase-tags"><span class="tag">SvelteKit</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span></div>
+              <span class="showcase-result">Carga en &lt;1s · SEO 95+</span>
+            </div>
+          </a>
+          <a href="#" class="showcase-card" target="_blank" rel="noopener">
+            <div class="showcase-image"><span class="showcase-image-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></span></div>
+            <div class="showcase-body">
+              <h3>Proyecto Cliente 2</h3>
+              <p>Automatización de publicación en redes sociales con flujos n8n personalizados.</p>
+              <div class="showcase-tags"><span class="tag">n8n</span><span class="tag">Node.js</span><span class="tag">API REST</span></div>
+              <span class="showcase-result">+200 publicaciones/mes automatizadas</span>
+            </div>
+          </a>
+          <a href="#" class="showcase-card" target="_blank" rel="noopener">
+            <div class="showcase-image"><span class="showcase-image-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span></div>
+            <div class="showcase-body">
+              <h3>Proyecto Cliente 3</h3>
+              <p>E-commerce con pagos Stripe, zona de usuarios y panel de administración completo.</p>
+              <div class="showcase-tags"><span class="tag">TypeScript</span><span class="tag">Stripe</span><span class="tag">Go</span></div>
+              <span class="showcase-result">+35% conversiones vs web anterior</span>
+            </div>
+          </a>
+        </div>
+
+        <h2 class="production-title animate-in" data-i18n="opensource.title">Código abierto en GitHub</h2>
         <p class="section-subtitle animate-in">Herramientas, estudios y experimentos que comparto con la comunidad.</p>
         <div class="production-grid animate-in">
           <a href="https://github.com/rricajos/smm" class="production-card" data-open-repo="smm"><div class="production-card-header"><h3>smm</h3><span class="tag">Svelte</span></div><p>Smart Mail Manager. Extensión de Thunderbird con features de IA.</p><span class="production-stat">Extensión en producción</span></a>
@@ -328,7 +373,7 @@ import Footer from '../components/Footer.astro';
           </div>
           <div class="contact-col">
             <h3 class="contact-col-heading">Envía un mensaje</h3>
-            <p class="contact-availability"><span class="availability-dot"></span> Barcelona (CET) — Respondo en menos de 24 h <span class="availability-slots">· 2 plazas en junio</span></p>
+            <p class="contact-availability"><span class="availability-dot"></span> Barcelona (CET) — Respondo en menos de 24 h <span class="availability-slots">· 2 plazas en {mes}</span></p>
             <form id="contact-form" class="contact-form" action="https://formsubmit.co/ergoegos@gmail.com" method="POST">
               <input type="hidden" name="_subject" value="Nuevo mensaje desde ricajos.com" />
               <input type="hidden" name="_captcha" value="false" />
@@ -361,9 +406,15 @@ import Footer from '../components/Footer.astro';
     </section>
   </main>
 
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/34XXXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
   <!-- Footer -->
   <Footer />
 
   <script is:inline src="/main.js" defer></script>
   <script is:inline src="/portfolio.js" defer></script>
+  <script is:inline src="/i18n.js" defer></script>
 </Base>
