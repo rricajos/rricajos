@@ -453,8 +453,8 @@ import Base from '../layouts/Base.astro';
     opacity: 1;
   }
 
-  .hero-globe planet-login > a[href*="ricajos"] {
-    display: none;
+  .hero-globe planet-login > :global(a[href*="ricajos"]) {
+    display: none !important;
   }
 
   h1 {
@@ -941,13 +941,14 @@ import Base from '../layouts/Base.astro';
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .hero {
-      min-height: auto;
-      padding-bottom: 3rem;
+      min-height: 100dvh;
+      padding-bottom: 0;
     }
     .hero-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
-      padding-top: 2rem;
+      grid-template-rows: auto 1fr;
+      gap: 1rem;
+      padding-top: 1rem;
     }
     .hero-text {
       text-align: center;
@@ -955,6 +956,7 @@ import Base from '../layouts/Base.astro';
     }
     .hero-globe {
       order: 1;
+      justify-content: center;
     }
     .globe-hint {
       opacity: 0.6;
@@ -964,14 +966,14 @@ import Base from '../layouts/Base.astro';
       margin-right: auto;
     }
     .cta {
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
     }
     h1 {
       font-size: clamp(2rem, 8vw, 3rem);
     }
     .hero-globe planet-login {
-      max-width: 320px;
-      height: 320px;
+      max-width: min(320px, 55vw);
+      height: min(320px, 55vw);
     }
     nav a {
       padding: 0.5rem 0.75rem;
@@ -1006,12 +1008,12 @@ import Base from '../layouts/Base.astro';
       padding: 4rem 0 2.5rem;
     }
     .hero-globe planet-login {
-      max-width: 280px;
-      height: 280px;
+      max-width: min(280px, 55vw);
+      height: min(280px, 55vw);
     }
     .hero-grid {
-      gap: 1.5rem;
-      padding-top: 1.5rem;
+      gap: 1rem;
+      padding-top: 1rem;
     }
   }
 
@@ -1030,8 +1032,8 @@ import Base from '../layouts/Base.astro';
       font-size: 0.9rem;
     }
     .hero-globe planet-login {
-      max-width: 240px;
-      height: 240px;
+      max-width: min(240px, 52vw);
+      height: min(240px, 52vw);
     }
     h1 {
       font-size: clamp(1.75rem, 8vw, 2.25rem);
