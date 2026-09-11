@@ -221,9 +221,9 @@ import Base from '../layouts/Base.astro';
       <p>ricajos &mdash; Barcelona</p>
     </div>
   </footer>
-</Base>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@planetlogin/planetlogin@0.3.0"></script>
+  <script is:inline type="module" src="https://cdn.jsdelivr.net/npm/@planetlogin/planetlogin@0.3.0"></script>
+</Base>
 
 <style>
   .wrap {
@@ -311,11 +311,10 @@ import Base from '../layouts/Base.astro';
   }
 
   .hero-globe planet-login {
+    display: block;
     width: 100%;
-    aspect-ratio: 1;
     max-width: 420px;
-    border-radius: 50%;
-    overflow: hidden;
+    height: 420px;
   }
 
   .globe-hint {
@@ -667,6 +666,7 @@ import Base from '../layouts/Base.astro';
     }
     .hero-globe planet-login {
       max-width: 320px;
+      height: 320px;
     }
   }
 
@@ -689,6 +689,7 @@ import Base from '../layouts/Base.astro';
     }
     .hero-globe planet-login {
       max-width: 280px;
+      height: 280px;
     }
   }
 
