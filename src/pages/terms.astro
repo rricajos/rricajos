@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="T&eacute;rminos — ricajos" description="T&eacute;rminos de uso de ricajos.com">
+  <div class="page">
+    <a href="/" class="back" id="back">&larr; ricajos.com</a>
+    <h1 id="title">T&eacute;rminos de uso</h1>
+    <div class="body" id="body">
+      <p>Este sitio web es un portfolio personal de Ricard Penin Honrubia. Su uso est&aacute; sujeto a las siguientes condiciones.</p>
+      <h2>Contenido</h2>
+      <p>Todo el contenido publicado en este sitio (textos, dise&ntilde;os, c&oacute;digo, im&aacute;genes) es propiedad de su autor salvo que se indique lo contrario. No est&aacute; permitida su reproducci&oacute;n sin autorizaci&oacute;n previa.</p>
+      <h2>Enlaces externos</h2>
+      <p>Este sitio puede contener enlaces a sitios de terceros. No me responsabilizo del contenido, disponibilidad ni pol&iacute;ticas de privacidad de esos sitios.</p>
+      <h2>Formulario de contacto</h2>
+      <p>Al enviar el formulario de contacto, aceptas que tus datos (nombre, email y mensaje) se transmitan al titular del sitio a trav&eacute;s de <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>. Los datos se usan exclusivamente para responder a tu consulta.</p>
+      <h2>Modificaciones</h2>
+      <p>Estos t&eacute;rminos pueden actualizarse en cualquier momento. La fecha de la &uacute;ltima actualizaci&oacute;n se refleja al pie de esta p&aacute;gina.</p>
+      <p class="updated">Actualizado en septiembre de 2026.</p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 4rem;
+    line-height: 1.75;
+  }
+
+  .back {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .back:hover {
+    opacity: 0.7;
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin: 1.5rem 0 2rem;
+    letter-spacing: -0.03em;
+  }
+
+  .body h2 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 2rem 0 0.5rem;
+  }
+
+  .body p {
+    color: var(--text-2);
+    margin-bottom: 1rem;
+  }
+
+  .body a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .body a:hover {
+    text-decoration: underline;
+  }
+
+  .updated {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin-top: 2rem;
+  }
+</style>
+
+<script>
+  const t = {
+    es: {
+      title: 'Términos de uso',
+      back: '← ricajos.com',
+      body: '<p>Este sitio web es un portfolio personal de Ricard Penin Honrubia. Su uso está sujeto a las siguientes condiciones.</p><h2>Contenido</h2><p>Todo el contenido publicado en este sitio (textos, diseños, código, imágenes) es propiedad de su autor salvo que se indique lo contrario. No está permitida su reproducción sin autorización previa.</p><h2>Enlaces externos</h2><p>Este sitio puede contener enlaces a sitios de terceros. No me responsabilizo del contenido, disponibilidad ni políticas de privacidad de esos sitios.</p><h2>Formulario de contacto</h2><p>Al enviar el formulario de contacto, aceptas que tus datos (nombre, email y mensaje) se transmitan al titular del sitio a través de <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>. Los datos se usan exclusivamente para responder a tu consulta.</p><h2>Modificaciones</h2><p>Estos términos pueden actualizarse en cualquier momento. La fecha de la última actualización se refleja al pie de esta página.</p><p class="updated">Actualizado en septiembre de 2026.</p>',
+    },
+    en: {
+      title: 'Terms of use',
+      back: '← ricajos.com',
+      body: '<p>This website is a personal portfolio by Ricard Penin Honrubia. Its use is subject to the following conditions.</p><h2>Content</h2><p>All content published on this site (text, designs, code, images) belongs to its author unless otherwise stated. Reproduction without prior authorization is not permitted.</p><h2>External links</h2><p>This site may contain links to third-party websites. I am not responsible for their content, availability, or privacy policies.</p><h2>Contact form</h2><p>By submitting the contact form, you agree that your data (name, email, and message) will be forwarded to the site owner through <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>. Data is used exclusively to respond to your inquiry.</p><h2>Changes</h2><p>These terms may be updated at any time. The date of the last update is shown at the bottom of this page.</p><p class="updated">Updated September 2026.</p>',
+    },
+    zh: {
+      title: '使用条款',
+      back: '← ricajos.com',
+      body: '<p>本网站是 Ricard Penin Honrubia 的个人作品集。使用须遵守以下条件。</p><h2>内容</h2><p>本站发布的所有内容（文字、设计、代码、图片）均为作者所有，除非另有说明。未经授权不得转载。</p><h2>外部链接</h2><p>本站可能包含第三方网站链接。本人不对其内容、可用性或隐私政策负责。</p><h2>联系表单</h2><p>提交联系表单即表示您同意通过 <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a> 将您的数据（姓名、邮箱和消息）转发给网站所有者。数据仅用于回复您的咨询。</p><h2>修改</h2><p>这些条款可能随时更新。最后更新日期显示在本页底部。</p><p class="updated">更新于2026年9月。</p>',
+    },
+  };
+
+  const raw = navigator.language?.split('-')[0] || 'es';
+  const lang = ['es', 'en', 'zh'].includes(raw) ? raw : 'en';
+
+  try {
+    const saved = localStorage.getItem('lang');
+    const l = (saved && t[saved]) ? saved : (t[lang] ? lang : 'es');
+    document.getElementById('title').textContent = t[l].title;
+    document.getElementById('back').innerHTML = t[l].back;
+    document.getElementById('body').innerHTML = t[l].body;
+  } catch {}
+</script>

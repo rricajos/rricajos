@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Privacidad — ricajos" description="Pol&iacute;tica de privacidad de ricajos.com">
+  <div class="page">
+    <a href="/" class="back" id="back">&larr; ricajos.com</a>
+    <h1 id="title">Privacidad</h1>
+    <div class="body" id="body">
+      <p>Este sitio web es un portfolio personal. No utiliza cookies, no ejecuta scripts de seguimiento y no recopila datos de navegaci&oacute;n.</p>
+      <h2>Formulario de contacto</h2>
+      <p>El formulario de contacto env&iacute;a los datos (nombre, email y mensaje) a trav&eacute;s de <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>, un servicio externo de reenv&iacute;o de formularios. Los datos se transmiten directamente al correo del titular del sitio y no se almacenan en ning&uacute;n servidor propio. Consulta la <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">pol&iacute;tica de privacidad de FormSubmit</a> para m&aacute;s informaci&oacute;n.</p>
+      <h2>Alojamiento</h2>
+      <p>El sitio est&aacute; alojado en <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>. GitHub puede recopilar datos t&eacute;cnicos b&aacute;sicos (direcci&oacute;n IP, tipo de navegador) seg&uacute;n su propia pol&iacute;tica de privacidad.</p>
+      <h2>Contacto</h2>
+      <p>Para cualquier consulta relacionada con la privacidad, puedes escribir a <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a>.</p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 4rem;
+    line-height: 1.75;
+  }
+
+  .back {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .back:hover {
+    opacity: 0.7;
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin: 1.5rem 0 2rem;
+    letter-spacing: -0.03em;
+  }
+
+  .body h2 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 2rem 0 0.5rem;
+  }
+
+  .body p {
+    color: var(--text-2);
+    margin-bottom: 1rem;
+  }
+
+  .body a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .body a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  const t = {
+    es: {
+      title: 'Privacidad',
+      back: '← ricajos.com',
+      body: '<p>Este sitio web es un portfolio personal. No utiliza cookies, no ejecuta scripts de seguimiento y no recopila datos de navegación.</p><h2>Formulario de contacto</h2><p>El formulario de contacto envía los datos (nombre, email y mensaje) a través de <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>, un servicio externo de reenvío de formularios. Los datos se transmiten directamente al correo del titular del sitio y no se almacenan en ningún servidor propio. Consulta la <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">política de privacidad de FormSubmit</a> para más información.</p><h2>Alojamiento</h2><p>El sitio está alojado en <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>. GitHub puede recopilar datos técnicos básicos (dirección IP, tipo de navegador) según su propia política de privacidad.</p><h2>Contacto</h2><p>Para cualquier consulta relacionada con la privacidad, puedes escribir a <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a>.</p>',
+    },
+    en: {
+      title: 'Privacy',
+      back: '← ricajos.com',
+      body: '<p>This website is a personal portfolio. It does not use cookies, tracking scripts, or collect browsing data.</p><h2>Contact form</h2><p>The contact form sends data (name, email, and message) through <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>, an external form forwarding service. Data is sent directly to the site owner\'s email and is not stored on any proprietary server. See <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">FormSubmit\'s privacy policy</a> for details.</p><h2>Hosting</h2><p>The site is hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>. GitHub may collect basic technical data (IP address, browser type) per its own privacy policy.</p><h2>Contact</h2><p>For any privacy-related inquiries, you can reach <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a>.</p>',
+    },
+    zh: {
+      title: '隐私',
+      back: '← ricajos.com',
+      body: '<p>本网站是个人作品集。不使用Cookie、不运行跟踪脚本、不收集浏览数据。</p><h2>联系表单</h2><p>联系表单通过 <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a> 发送数据（姓名、邮箱和消息）。数据直接发送到网站所有者的邮箱，不存储在任何自有服务器上。详见 <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">FormSubmit 隐私政策</a>。</p><h2>托管</h2><p>本站托管在 <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>。GitHub 可能根据其隐私政策收集基本技术数据（IP地址、浏览器类型）。</p><h2>联系</h2><p>如有隐私相关问题，请联系 <a href="mailto:ergoegos@gmail.com">ergoegos@gmail.com</a>。</p>',
+    },
+  };
+
+  const raw = navigator.language?.split('-')[0] || 'es';
+  const lang = ['es', 'en', 'zh'].includes(raw) ? raw : 'en';
+
+  try {
+    const saved = localStorage.getItem('lang');
+    const l = (saved && t[saved]) ? saved : (t[lang] ? lang : 'es');
+    document.getElementById('title').textContent = t[l].title;
+    document.getElementById('back').innerHTML = t[l].back;
+    document.getElementById('body').innerHTML = t[l].body;
+  } catch {}
+</script>
