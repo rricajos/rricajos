@@ -884,6 +884,13 @@ import Base from '../layouts/Base.astro';
   const globe = document.querySelector('planet-login');
   if (globe) {
     globe.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
+
+    customElements.whenDefined('planet-login').then(() => {
+      setTimeout(() => {
+        if (typeof globe.flyTo === 'function') globe.flyTo(2.17, 41.39);
+      }, 800);
+    });
+
     globe.addEventListener('locale', (e) => {
       const loc = e.detail;
       const raw = loc.language || '';
