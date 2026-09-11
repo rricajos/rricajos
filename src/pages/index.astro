@@ -1341,38 +1341,20 @@ import Base from '../layouts/Base.astro';
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Typewriter
+  // Type ".com" once after load
   const typed = document.getElementById('typed');
+  const cursor = document.querySelector('.cursor');
   if (typed) {
-    const exts = ['.com', '.dev', '.net', '.org', '.io', '.es'];
-    let ei = 0;
-    const TYPE_SPEED = 100;
-    const DELETE_SPEED = 60;
-    const PAUSE = 2000;
-
-    function typeExt() {
-      const ext = exts[ei];
-      let ci = 0;
-      const typeInterval = setInterval(() => {
-        typed.textContent = ext.slice(0, ++ci);
-        if (ci === ext.length) {
-          clearInterval(typeInterval);
-          setTimeout(deleteExt, PAUSE);
+    const text = '.com';
+    let i = 0;
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        typed.textContent = text.slice(0, ++i);
+        if (i === text.length) {
+          clearInterval(interval);
+          setTimeout(() => { if (cursor) cursor.style.display = 'none'; }, 1500);
         }
-      }, TYPE_SPEED);
-    }
-
-    function deleteExt() {
-      const delInterval = setInterval(() => {
-        typed.textContent = typed.textContent.slice(0, -1);
-        if (!typed.textContent) {
-          clearInterval(delInterval);
-          ei = (ei + 1) % exts.length;
-          setTimeout(typeExt, 300);
-        }
-      }, DELETE_SPEED);
-    }
-
-    setTimeout(typeExt, 1200);
+      }, 120);
+    }, 1200);
   }
 </script>
