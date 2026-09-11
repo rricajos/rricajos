@@ -29,7 +29,7 @@ import Base from '../layouts/Base.astro';
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <h1>ricajos<span class="cursor"></span></h1>
+        <h1>ricajos<span class="typed" id="typed"></span><span class="cursor"></span></h1>
         <p class="lead" data-i18n="hero.lead">
           Desarrollador full-stack en Barcelona. Diseño, construyo y despliego
           productos web — del esquema de base de datos al pipeline de deploy.
@@ -434,6 +434,10 @@ import Base from '../layouts/Base.astro';
     line-height: 1.05;
     letter-spacing: -0.045em;
     text-wrap: balance;
+  }
+
+  .typed {
+    color: var(--accent);
   }
 
   .cursor {
@@ -1256,4 +1260,39 @@ import Base from '../layouts/Base.astro';
   // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  // Typewriter
+  const typed = document.getElementById('typed');
+  if (typed) {
+    const exts = ['.com', '.dev', '.net', '.org', '.io', '.es'];
+    let ei = 0;
+    const TYPE_SPEED = 100;
+    const DELETE_SPEED = 60;
+    const PAUSE = 2000;
+
+    function typeExt() {
+      const ext = exts[ei];
+      let ci = 0;
+      const typeInterval = setInterval(() => {
+        typed.textContent = ext.slice(0, ++ci);
+        if (ci === ext.length) {
+          clearInterval(typeInterval);
+          setTimeout(deleteExt, PAUSE);
+        }
+      }, TYPE_SPEED);
+    }
+
+    function deleteExt() {
+      const delInterval = setInterval(() => {
+        typed.textContent = typed.textContent.slice(0, -1);
+        if (!typed.textContent) {
+          clearInterval(delInterval);
+          ei = (ei + 1) % exts.length;
+          setTimeout(typeExt, 300);
+        }
+      }, DELETE_SPEED);
+    }
+
+    setTimeout(typeExt, 1200);
+  }
 </script>
