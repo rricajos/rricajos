@@ -29,7 +29,7 @@ import Base from '../layouts/Base.astro';
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <h1>ricajos<span class="typed" id="typed"></span><span class="cursor"></span></h1>
+        <h1><span id="typed-base"></span><span class="typed" id="typed"></span><span class="cursor"></span></h1>
         <p class="lead" data-i18n="hero.lead">
           Diseño, construyo y despliego tu producto web. Del primer
           wireframe al servidor en producción, sin intermediarios.
@@ -1341,20 +1341,27 @@ import Base from '../layouts/Base.astro';
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Type ".com" once after load
-  const typed = document.getElementById('typed');
+  // Type "ricajos.com" from empty, ".com" in accent
+  const typedBase = document.getElementById('typed-base');
+  const typedExt = document.getElementById('typed');
   const cursor = document.querySelector('.cursor');
-  if (typed) {
-    const text = '.com';
+  if (typedBase && typedExt) {
+    const base = 'ricajos';
+    const ext = '.com';
     let i = 0;
     setTimeout(() => {
       const interval = setInterval(() => {
-        typed.textContent = text.slice(0, ++i);
-        if (i === text.length) {
+        if (i < base.length) {
+          typedBase.textContent = base.slice(0, i + 1);
+        } else {
+          typedExt.textContent = ext.slice(0, i - base.length + 1);
+        }
+        i++;
+        if (i === base.length + ext.length) {
           clearInterval(interval);
           setTimeout(() => { if (cursor) cursor.style.display = 'none'; }, 1500);
         }
-      }, 120);
-    }, 1200);
+      }, 100);
+    }, 800);
   }
 </script>
