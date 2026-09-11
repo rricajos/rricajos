@@ -12,6 +12,7 @@ import Base from '../layouts/Base.astro';
         <nav>
           <a href="#projects" data-i18n="nav.projects" data-section="projects">Proyectos</a>
           <a href="#about" data-i18n="nav.about" data-section="about">Sobre mí</a>
+          <a href="/blog/" data-i18n="nav.blog">Blog</a>
           <a href="#contact" data-i18n="nav.contact" data-section="contact">Contacto</a>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
@@ -177,7 +178,6 @@ import Base from '../layouts/Base.astro';
         Cuéntame qué necesitas. En 48h te respondo con una propuesta
         concreta: alcance, tecnología y calendario.
       </p>
-      <div class="contact-body" id="contact-body">
       <div class="topic-cards" id="topic-cards">
         <button class="topic-card" data-topic="new">
           <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -230,7 +230,6 @@ import Base from '../layouts/Base.astro';
         </div>
         <button type="submit" class="submit-btn" data-i18n="form.send">Enviar mensaje</button>
       </form>
-      </div>
     </div>
   </section>
 
@@ -256,6 +255,7 @@ import Base from '../layouts/Base.astro';
         <ul>
           <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
           <li><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="/blog/" data-i18n="nav.blog">Blog</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </div>
@@ -858,7 +858,7 @@ import Base from '../layouts/Base.astro';
   /* ── Contact ── */
   .contact-section {
     text-align: center;
-    padding: 7rem 0 6rem;
+    padding: 5rem 0 4rem;
   }
 
   .contact-heading {
@@ -866,19 +866,13 @@ import Base from '../layouts/Base.astro';
     font-weight: 600;
     letter-spacing: -0.025em;
     text-wrap: balance;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .contact-sub {
     color: var(--text-2);
     font-size: 1rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .contact-body {
-    position: relative;
-    overflow: hidden;
-    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 1.75rem;
   }
 
   .topic-cards {
@@ -887,13 +881,10 @@ import Base from '../layouts/Base.astro';
     gap: 0.75rem;
     max-width: 640px;
     margin: 0 auto;
-    transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
   .topic-cards.hidden {
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
+    display: none;
   }
 
   .topic-card {
@@ -932,19 +923,26 @@ import Base from '../layouts/Base.astro';
   }
 
   .contact-form {
+    display: none;
     max-width: 520px;
     margin: 0 auto;
     text-align: left;
-    opacity: 0;
-    transform: translateY(16px);
-    pointer-events: none;
-    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
   }
 
   .contact-form.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+    display: block;
+    animation: fadeInUp 0.4s ease both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .form-row {
@@ -1210,7 +1208,7 @@ import Base from '../layouts/Base.astro';
       padding: 3.5rem 0;
     }
     .contact-section {
-      padding: 4rem 0 2.5rem;
+      padding: 3.5rem 0 2.5rem;
     }
     .hero-globe planet-login {
       max-width: min(460px, 80vw);
@@ -1298,6 +1296,7 @@ import Base from '../layouts/Base.astro';
       'a11y.skip': 'Ir al contenido',
       'nav.projects': 'Proyectos',
       'nav.about': 'Sobre mí',
+      'nav.blog': 'Blog',
       'nav.contact': 'Contacto',
       'hero.lead': 'Diseño, construyo y despliego tu producto web. Del primer wireframe al servidor en producción, sin intermediarios.',
       'hero.cta': 'Cuéntame tu idea',
@@ -1353,6 +1352,7 @@ import Base from '../layouts/Base.astro';
       'a11y.skip': 'Skip to content',
       'nav.projects': 'Projects',
       'nav.about': 'About',
+      'nav.blog': 'Blog',
       'nav.contact': 'Contact',
       'hero.lead': 'I design, build, and deploy your web product. From the first wireframe to the production server, no middlemen.',
       'hero.cta': 'Tell me your idea',
@@ -1408,6 +1408,7 @@ import Base from '../layouts/Base.astro';
       'a11y.skip': '跳至内容',
       'nav.projects': '项目',
       'nav.about': '关于',
+      'nav.blog': '博客',
       'nav.contact': '联系',
       'hero.lead': '我设计、构建并部署你的网络产品。从线框图到生产服务器，没有中间人。',
       'hero.cta': '告诉我你的想法',
@@ -1621,34 +1622,24 @@ import Base from '../layouts/Base.astro';
   };
   const topicCardsEl = document.getElementById('topic-cards');
   const contactFormEl = document.getElementById('contact-form');
-  const contactBody = document.getElementById('contact-body');
-  document.querySelectorAll('.topic-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const topic = card.dataset.topic;
-      const msg = document.getElementById('message');
-      const topicSelect = document.getElementById('topic');
-      const lang = currentLang || 'es';
-      const prefills = topicPrefills[lang] || topicPrefills.es;
+  document.querySelectorAll('.topic-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var topic = card.dataset.topic;
+      var msg = document.getElementById('message');
+      var topicSelect = document.getElementById('topic');
+      var lang = currentLang || 'es';
+      var prefills = topicPrefills[lang] || topicPrefills.es;
       if (msg) msg.value = prefills[topic] || '';
       if (topicSelect) {
-        const opt = topicSelect.querySelector('[data-topic="' + topic + '"]');
+        var opt = topicSelect.querySelector('[data-topic="' + topic + '"]');
         if (opt) topicSelect.value = opt.value;
       }
-      if (!contactBody || !topicCardsEl || !contactFormEl) return;
-      var startH = topicCardsEl.offsetHeight;
-      contactBody.style.height = startH + 'px';
-      topicCardsEl.classList.add('hidden');
-      contactFormEl.classList.add('visible');
-      requestAnimationFrame(function() {
-        var endH = contactFormEl.offsetHeight;
-        contactBody.style.height = endH + 'px';
-      });
+      if (topicCardsEl) topicCardsEl.classList.add('hidden');
+      if (contactFormEl) contactFormEl.classList.add('visible');
       setTimeout(function() {
-        contactBody.style.height = 'auto';
-        topicCardsEl.style.display = 'none';
         document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'center' });
         if (msg) msg.focus();
-      }, 550);
+      }, 100);
     });
   });
 
