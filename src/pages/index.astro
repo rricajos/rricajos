@@ -107,30 +107,52 @@ import Base from '../layouts/Base.astro';
   <section id="about">
     <div class="wrap reveal">
       <p class="label" data-i18n="about.label">Sobre mí</p>
-      <h2 class="heading" data-i18n="about.heading">Cómo trabajo</h2>
-      <div class="prose">
-        <p data-i18n="about.p1">
-          Soy Ricard — un desarrollador al que le gusta controlar el panorama
-          completo. Mis proyectos corren en infraestructura que gestiono yo,
-          desde el clúster Docker Swarm hasta los pipelines CI/CD que
-          despliegan código en cada push.
-        </p>
-        <p data-i18n="about.p2">
-          Construyo productos, no solo funcionalidades. Cada proyecto de este
-          portfolio lo he concebido, diseñado y desplegado de principio a fin.
-          Cuando trabajo con clientes, aplico la misma mentalidad de ownership.
-        </p>
+      <h2 class="heading" data-i18n="about.heading">De la idea al servidor</h2>
+      <div class="about-grid">
+        <div class="prose">
+          <p data-i18n="about.p1">
+            Cada producto de este portfolio existe porque lo necesitaba y no
+            encontré nada que me convenciera. Así que lo construí: desde el
+            diseño de la base de datos hasta el pipeline que despliega en cada
+            push a un VPS que administro yo.
+          </p>
+          <p data-i18n="about.p2">
+            No delego la infraestructura. Mis proyectos corren en un clúster
+            Docker Swarm sobre Linux, con CI/CD en GitHub Actions y zero
+            downtime en cada deploy. Cuando algo se rompe a las 3 AM, soy yo
+            quien lo arregla.
+          </p>
+          <p data-i18n="about.p3">
+            Busco el mismo tipo de proyectos como freelance: productos con
+            ambición técnica donde una sola persona pueda mover más que un
+            equipo lento.
+          </p>
+        </div>
+        <div class="about-aside">
+          <div class="about-block">
+            <p class="about-block-label" data-i18n="about.stack_label">Stack principal</p>
+            <ul class="stack-compact">
+              <li>SvelteKit</li>
+              <li>Astro</li>
+              <li>Node.js</li>
+              <li>PostgreSQL</li>
+              <li>Prisma</li>
+              <li>Docker Swarm</li>
+              <li>Linux / VPS</li>
+              <li>GitHub Actions</li>
+            </ul>
+          </div>
+          <div class="about-block">
+            <p class="about-block-label" data-i18n="about.also_label">También trabajo con</p>
+            <ul class="stack-compact secondary">
+              <li>Python</li>
+              <li>Go</li>
+              <li>PowerShell</li>
+              <li>Bash</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <ul class="stack">
-        <li>SvelteKit <span class="role">framework</span></li>
-        <li>Prisma <span class="role">ORM</span></li>
-        <li>PostgreSQL <span class="role" data-i18n="stack.database">base de datos</span></li>
-        <li>Docker Swarm <span class="role" data-i18n="stack.orchestration">orquestación</span></li>
-        <li>GitHub Actions <span class="role">CI/CD</span></li>
-        <li>Linux / VPS <span class="role" data-i18n="stack.infra">infraestructura</span></li>
-        <li>Node.js <span class="role">runtime</span></li>
-        <li>Python <span class="role">scripting</span></li>
-      </ul>
     </div>
   </section>
 
@@ -173,9 +195,9 @@ import Base from '../layouts/Base.astro';
           GitHub
         </a>
         <span class="social-sep">·</span>
-        <a href="https://x.com/rricajos" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X
+        <a href="https://instagram.com/rricajos" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
         </a>
         <span class="social-sep">·</span>
         <a href="https://linkedin.com/in/rricajos" target="_blank" rel="noopener">
@@ -663,6 +685,13 @@ import Base from '../layouts/Base.astro';
   }
 
   /* ── About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
   .prose {
     font-size: 1rem;
     line-height: 1.75;
@@ -673,28 +702,40 @@ import Base from '../layouts/Base.astro';
     margin-top: 1rem;
   }
 
-  .stack {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    list-style: none;
-    margin-top: 2.5rem;
-  }
-
-  .stack li {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    padding: 0.625rem 0.75rem;
-    border: 1px solid var(--border);
-    margin: -0.5px;
+  .about-aside {
     display: flex;
     flex-direction: column;
-    gap: 0.125rem;
+    gap: 1.75rem;
   }
 
-  .role {
+  .about-block-label {
+    font-family: var(--font-mono);
     font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--muted);
+    margin-bottom: 0.625rem;
+  }
+
+  .stack-compact {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .stack-compact li {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.625rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+  }
+
+  .stack-compact.secondary li {
+    color: var(--text-2);
   }
 
   /* ── Contact ── */
@@ -877,8 +918,9 @@ import Base from '../layouts/Base.astro';
   }
 
   @media (max-width: 640px) {
-    .stack {
-      grid-template-columns: repeat(2, 1fr);
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
     .grid {
       grid-template-columns: 1fr;
@@ -979,12 +1021,12 @@ import Base from '../layouts/Base.astro';
       'projects.planetlogin': 'Portal de autenticación white-label. Login stateless que se integra en cualquier app.',
       'projects.more': 'Más productos en camino.',
       'about.label': 'Sobre mí',
-      'about.heading': 'Cómo trabajo',
-      'about.p1': 'Soy Ricard — un desarrollador al que le gusta controlar el panorama completo. Mis proyectos corren en infraestructura que gestiono yo, desde el clúster Docker Swarm hasta los pipelines CI/CD que despliegan código en cada push.',
-      'about.p2': 'Construyo productos, no solo funcionalidades. Cada proyecto de este portfolio lo he concebido, diseñado y desplegado de principio a fin. Cuando trabajo con clientes, aplico la misma mentalidad de ownership.',
-      'stack.database': 'base de datos',
-      'stack.orchestration': 'orquestación',
-      'stack.infra': 'infraestructura',
+      'about.heading': 'De la idea al servidor',
+      'about.p1': 'Cada producto de este portfolio existe porque lo necesitaba y no encontré nada que me convenciera. Así que lo construí: desde el diseño de la base de datos hasta el pipeline que despliega en cada push a un VPS que administro yo.',
+      'about.p2': 'No delego la infraestructura. Mis proyectos corren en un clúster Docker Swarm sobre Linux, con CI/CD en GitHub Actions y zero downtime en cada deploy. Cuando algo se rompe a las 3 AM, soy yo quien lo arregla.',
+      'about.p3': 'Busco el mismo tipo de proyectos como freelance: productos con ambición técnica donde una sola persona pueda mover más que un equipo lento.',
+      'about.stack_label': 'Stack principal',
+      'about.also_label': 'También trabajo con',
       'contact.heading': 'Construyamos algo.',
       'contact.sub': '¿Tienes un proyecto en mente? Abierto a freelance y colaboraciones interesantes.',
       'form.name': 'Nombre',
@@ -1010,12 +1052,12 @@ import Base from '../layouts/Base.astro';
       'projects.planetlogin': 'White-label authentication portal. Stateless login you drop into any app.',
       'projects.more': 'More products shipping soon.',
       'about.label': 'About',
-      'about.heading': 'How I work',
-      'about.p1': 'I\'m Ricard — a developer who likes owning the full picture. Most of my projects run on infrastructure I manage myself, from the Docker Swarm cluster to the CI/CD pipelines that ship code on every push.',
-      'about.p2': 'I build products, not just features. Every project in this portfolio is something I conceived, designed, and shipped end-to-end. When I work with clients, I bring the same ownership mindset.',
-      'stack.database': 'database',
-      'stack.orchestration': 'orchestration',
-      'stack.infra': 'infrastructure',
+      'about.heading': 'From idea to server',
+      'about.p1': 'Every product in this portfolio exists because I needed it and couldn\'t find anything that convinced me. So I built it: from database design to the pipeline that deploys on every push to a VPS I manage myself.',
+      'about.p2': 'I don\'t delegate infrastructure. My projects run on a Docker Swarm cluster on Linux, with CI/CD on GitHub Actions and zero downtime on every deploy. When something breaks at 3 AM, I\'m the one who fixes it.',
+      'about.p3': 'I look for the same kind of projects as a freelancer: technically ambitious products where one person can move faster than a slow team.',
+      'about.stack_label': 'Main stack',
+      'about.also_label': 'Also work with',
       'contact.heading': 'Let\'s build something.',
       'contact.sub': 'Got a project in mind? Open to freelance work and interesting collaborations.',
       'form.name': 'Name',
@@ -1041,12 +1083,12 @@ import Base from '../layouts/Base.astro';
       'projects.planetlogin': '白标认证门户。可集成到任何应用的无状态登录系统。',
       'projects.more': '更多产品即将推出。',
       'about.label': '关于',
-      'about.heading': '我的工作方式',
-      'about.p1': '我是Ricard——一个喜欢掌控全局的开发者。我的项目运行在我自己管理的基础设施上，从Docker Swarm集群到每次推送都会部署代码的CI/CD流水线。',
-      'about.p2': '我构建的是产品，而不仅仅是功能。这个作品集中的每个项目都是我从构思、设计到端到端部署的成果。与客户合作时，我带来同样的主人翁意识。',
-      'stack.database': '数据库',
-      'stack.orchestration': '编排',
-      'stack.infra': '基础设施',
+      'about.heading': '从构想到服务器',
+      'about.p1': '这个作品集中的每个产品都源于我的真实需求——找不到满意的解决方案，于是自己动手：从数据库设计到部署流水线，推送到我自己管理的VPS。',
+      'about.p2': '我不外包基础设施。我的项目运行在Linux上的Docker Swarm集群中，使用GitHub Actions实现CI/CD，每次部署零停机。凌晨3点出了问题，修的人是我。',
+      'about.p3': '作为自由职业者，我寻找同类项目：有技术野心的产品，一个人能比一个缓慢的团队走得更快。',
+      'about.stack_label': '主要技术栈',
+      'about.also_label': '也使用',
       'contact.heading': '一起创造点什么。',
       'contact.sub': '有项目想法？欢迎自由职业合作和有趣的项目。',
       'form.name': '姓名',
