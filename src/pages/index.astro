@@ -1642,7 +1642,7 @@ import Base from '../layouts/Base.astro';
         if (contactFormEl) {
           contactFormEl.classList.add('visible');
           setTimeout(() => {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (msg) msg.focus();
           }, 100);
         }
