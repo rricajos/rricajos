@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rricajos.github.io/rricajos/sitemap.xml
+Sitemap: https://ricajos.com/sitemap-index.xml

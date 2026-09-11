@@ -5,8 +5,8 @@ import Base from '../layouts/Base.astro';
 <Base title="404 — ricajos">
   <div class="page">
     <h1>404</h1>
-    <p>Nothing here.</p>
-    <a href="/">Back to ricajos.com</a>
+    <p class="msg" id="msg-404">Aquí no hay nada.</p>
+    <a href="/" class="back" id="back-404">Volver a ricajos.com</a>
   </div>
 </Base>
 
@@ -31,12 +31,12 @@ import Base from '../layouts/Base.astro';
     color: var(--muted);
   }
 
-  p {
+  .msg {
     font-size: 1.125rem;
     color: var(--text-2);
   }
 
-  a {
+  .back {
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     color: var(--accent);
@@ -48,8 +48,30 @@ import Base from '../layouts/Base.astro';
     transition: background 0.2s, color 0.2s;
   }
 
-  a:hover {
+  .back:hover {
     background: var(--accent);
     color: var(--bg);
   }
 </style>
+
+<script>
+  const t = {
+    es: { msg: 'Aquí no hay nada.', back: 'Volver a ricajos.com' },
+    en: { msg: 'Nothing here.', back: 'Back to ricajos.com' },
+    zh: { msg: '这里什么也没有。', back: '返回 ricajos.com' },
+  };
+
+  const raw = navigator.language?.split('-')[0] || 'es';
+  const lang = ['es', 'en', 'zh'].includes(raw) ? raw : 'en';
+
+  try {
+    const saved = localStorage.getItem('lang');
+    if (saved && t[saved]) {
+      document.getElementById('msg-404').textContent = t[saved].msg;
+      document.getElementById('back-404').textContent = t[saved].back;
+    } else if (t[lang]) {
+      document.getElementById('msg-404').textContent = t[lang].msg;
+      document.getElementById('back-404').textContent = t[lang].back;
+    }
+  } catch {}
+</script>
