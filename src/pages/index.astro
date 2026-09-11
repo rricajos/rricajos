@@ -100,7 +100,20 @@ import Base from '../layouts/Base.astro';
           </div>
         </a>
       </div>
-      <p class="more" data-i18n="projects.more">Más productos en camino.</p>
+      <div class="proof">
+        <div class="proof-item">
+          <span class="proof-num">3</span>
+          <span class="proof-label" data-i18n="projects.proof_products">productos en producción</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">821</span>
+          <span class="proof-label" data-i18n="projects.proof_pages">páginas publicadas</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">0</span>
+          <span class="proof-label" data-i18n="projects.proof_downtime">downtime en deploys</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -123,9 +136,10 @@ import Base from '../layouts/Base.astro';
             quien lo arregla.
           </p>
           <p data-i18n="about.p3">
-            Busco el mismo tipo de proyectos como freelance: productos con
-            ambición técnica donde una sola persona pueda mover más que un
-            equipo lento.
+            Si tienes un producto que necesita salir y no quieres coordinar
+            tres equipos para lograrlo, yo soy esa persona. Una sola
+            conversación, un solo responsable, del wireframe al dominio
+            apuntando a producción.
           </p>
         </div>
         <div class="about-aside">
@@ -158,10 +172,10 @@ import Base from '../layouts/Base.astro';
 
   <section id="contact" class="contact-section">
     <div class="wrap reveal">
-      <h2 class="contact-heading" data-i18n="contact.heading">Construyamos algo.</h2>
+      <h2 class="contact-heading" data-i18n="contact.heading">¿Tienes algo que necesita salir?</h2>
       <p class="contact-sub" data-i18n="contact.sub">
-        ¿Tienes un proyecto en mente? Abierto a freelance y colaboraciones
-        interesantes.
+        Cuéntame qué quieres construir. Si encaja, en 48h tienes una
+        propuesta con alcance, stack y timeline.
       </p>
       <form class="contact-form" action="https://formsubmit.co/ergoegos@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New message from ricajos.com" />
@@ -680,12 +694,35 @@ import Base from '../layouts/Base.astro';
     border-radius: 4px;
   }
 
-  .more {
-    margin-top: 1.5rem;
+  .proof {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .proof-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .proof-num {
     font-family: var(--font-mono);
-    font-size: 0.8125rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .proof-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
     color: var(--muted);
-    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   /* ── About ── */
@@ -1023,16 +1060,18 @@ import Base from '../layouts/Base.astro';
       'projects.pingunix': 'Plataforma de estudio para la certificación LPIC. 821 páginas de contenido con flashcards en PWA.',
       'projects.darink': 'Tracker de salud offline-first. Alimentación, ejercicio, sueño y constantes vitales — funciona sin conexión.',
       'projects.planetlogin': 'Portal de autenticación white-label. Login stateless que se integra en cualquier app.',
-      'projects.more': 'Más productos en camino.',
+      'projects.proof_products': 'productos en producción',
+      'projects.proof_pages': 'páginas publicadas',
+      'projects.proof_downtime': 'downtime en deploys',
       'about.label': 'Sobre mí',
       'about.heading': 'De la idea al servidor',
       'about.p1': 'Cada producto de este portfolio existe porque lo necesitaba y no encontré nada que me convenciera. Así que lo construí: desde el diseño de la base de datos hasta el pipeline que despliega en cada push a un VPS que administro yo.',
       'about.p2': 'No delego la infraestructura. Mis proyectos corren en un clúster Docker Swarm sobre Linux, con CI/CD en GitHub Actions y zero downtime en cada deploy. Cuando algo se rompe a las 3 AM, soy yo quien lo arregla.',
-      'about.p3': 'Busco el mismo tipo de proyectos como freelance: productos con ambición técnica donde una sola persona pueda mover más que un equipo lento.',
+      'about.p3': 'Si tienes un producto que necesita salir y no quieres coordinar tres equipos para lograrlo, yo soy esa persona. Una sola conversación, un solo responsable, del wireframe al dominio apuntando a producción.',
       'about.stack_label': 'Stack principal',
       'about.also_label': 'También trabajo con',
-      'contact.heading': 'Construyamos algo.',
-      'contact.sub': '¿Tienes un proyecto en mente? Abierto a freelance y colaboraciones interesantes.',
+      'contact.heading': '¿Tienes algo que necesita salir?',
+      'contact.sub': 'Cuéntame qué quieres construir. Si encaja, en 48h tienes una propuesta con alcance, stack y timeline.',
       'form.name': 'Nombre',
       'form.name_ph': 'Tu nombre',
       'form.email': 'Email',
@@ -1054,16 +1093,18 @@ import Base from '../layouts/Base.astro';
       'projects.pingunix': 'Study platform for LPIC certification. 821 pages of content with PWA-powered flashcards.',
       'projects.darink': 'Offline-first health tracker. Food, exercise, sleep, and vitals — works without a connection.',
       'projects.planetlogin': 'White-label authentication portal. Stateless login you drop into any app.',
-      'projects.more': 'More products shipping soon.',
+      'projects.proof_products': 'products in production',
+      'projects.proof_pages': 'pages published',
+      'projects.proof_downtime': 'downtime on deploys',
       'about.label': 'About',
       'about.heading': 'From idea to server',
       'about.p1': 'Every product in this portfolio exists because I needed it and couldn\'t find anything that convinced me. So I built it: from database design to the pipeline that deploys on every push to a VPS I manage myself.',
       'about.p2': 'I don\'t delegate infrastructure. My projects run on a Docker Swarm cluster on Linux, with CI/CD on GitHub Actions and zero downtime on every deploy. When something breaks at 3 AM, I\'m the one who fixes it.',
-      'about.p3': 'I look for the same kind of projects as a freelancer: technically ambitious products where one person can move faster than a slow team.',
+      'about.p3': 'If you have a product that needs to ship and don\'t want to coordinate three teams to make it happen, I\'m that person. One conversation, one owner, from wireframe to domain pointing at production.',
       'about.stack_label': 'Main stack',
       'about.also_label': 'Also work with',
-      'contact.heading': 'Let\'s build something.',
-      'contact.sub': 'Got a project in mind? Open to freelance work and interesting collaborations.',
+      'contact.heading': 'Got something that needs to ship?',
+      'contact.sub': 'Tell me what you want to build. If it\'s a fit, you\'ll have a proposal with scope, stack, and timeline in 48h.',
       'form.name': 'Name',
       'form.name_ph': 'Your name',
       'form.email': 'Email',
@@ -1085,16 +1126,18 @@ import Base from '../layouts/Base.astro';
       'projects.pingunix': 'LPIC认证学习平台。821页内容，配备PWA闪卡功能。',
       'projects.darink': '离线优先的健康追踪器。饮食、运动、睡眠和生命体征——无需网络连接。',
       'projects.planetlogin': '白标认证门户。可集成到任何应用的无状态登录系统。',
-      'projects.more': '更多产品即将推出。',
+      'projects.proof_products': '产品上线运行',
+      'projects.proof_pages': '页面已发布',
+      'projects.proof_downtime': '部署停机时间',
       'about.label': '关于',
       'about.heading': '从构想到服务器',
       'about.p1': '这个作品集中的每个产品都源于我的真实需求——找不到满意的解决方案，于是自己动手：从数据库设计到部署流水线，推送到我自己管理的VPS。',
       'about.p2': '我不外包基础设施。我的项目运行在Linux上的Docker Swarm集群中，使用GitHub Actions实现CI/CD，每次部署零停机。凌晨3点出了问题，修的人是我。',
-      'about.p3': '作为自由职业者，我寻找同类项目：有技术野心的产品，一个人能比一个缓慢的团队走得更快。',
+      'about.p3': '如果你有一个产品需要上线，又不想协调三个团队来实现，我就是那个人。一次对话，一个负责人，从线框图到域名指向生产环境。',
       'about.stack_label': '主要技术栈',
       'about.also_label': '也使用',
-      'contact.heading': '一起创造点什么。',
-      'contact.sub': '有项目想法？欢迎自由职业合作和有趣的项目。',
+      'contact.heading': '有产品需要上线？',
+      'contact.sub': '告诉我你想构建什么。如果合适，48小时内你会收到包含范围、技术栈和时间表的提案。',
       'form.name': '姓名',
       'form.name_ph': '你的名字',
       'form.email': '邮箱',
