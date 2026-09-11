@@ -715,6 +715,16 @@ import Base from '../layouts/Base.astro';
     }
   }
 
+  /* ── i18n transition ── */
+  [data-i18n] {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  [data-i18n].i18n-out {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cursor {
       animation: none;
@@ -722,8 +732,12 @@ import Base from '../layouts/Base.astro';
     .card,
     .cta,
     nav a,
-    .submit-btn {
+    .submit-btn,
+    [data-i18n] {
       transition: none;
+    }
+    [data-i18n].i18n-out {
+      transform: none;
     }
   }
 </style>
@@ -828,17 +842,43 @@ import Base from '../layouts/Base.astro';
     zh: 'zh', 'zh-CN': 'zh', 'zh-TW': 'zh',
   };
 
-  function setLang(lang) {
+  let currentLang = 'es';
+
+  function setLang(lang, animate) {
+    if (lang === currentLang && animate) return;
+    currentLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[lang]?.[key]) el.textContent = translations[lang][key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (translations[lang]?.[key]) el.placeholder = translations[lang][key];
-    });
-    try { localStorage.setItem('lang', lang); } catch {}
+
+    const els = document.querySelectorAll('[data-i18n]');
+    const phEls = document.querySelectorAll('[data-i18n-placeholder]');
+
+    if (!animate) {
+      els.forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang]?.[key]) el.textContent = translations[lang][key];
+      });
+      phEls.forEach((el) => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang]?.[key]) el.placeholder = translations[lang][key];
+      });
+      try { localStorage.setItem('lang', lang); } catch {}
+      return;
+    }
+
+    els.forEach((el) => el.classList.add('i18n-out'));
+
+    setTimeout(() => {
+      els.forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang]?.[key]) el.textContent = translations[lang][key];
+        el.classList.remove('i18n-out');
+      });
+      phEls.forEach((el) => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang]?.[key]) el.placeholder = translations[lang][key];
+      });
+      try { localStorage.setItem('lang', lang); } catch {}
+    }, 200);
   }
 
   const globe = document.querySelector('planet-login');
@@ -849,13 +889,13 @@ import Base from '../layouts/Base.astro';
       const raw = loc.language || '';
       const base = raw.split('-')[0].toLowerCase();
       const lang = langMap[raw] || langMap[base] || 'en';
-      setLang(lang);
+      setLang(lang, true);
     });
   }
 
   try {
     const saved = localStorage.getItem('lang');
-    if (saved && translations[saved]) setLang(saved);
+    if (saved && translations[saved]) setLang(saved, false);
   } catch {}
 
   const observer = new IntersectionObserver(
