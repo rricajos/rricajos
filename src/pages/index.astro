@@ -177,6 +177,7 @@ import Base from '../layouts/Base.astro';
         Cuéntame qué necesitas. En 48h te respondo con una propuesta
         concreta: alcance, tecnología y calendario.
       </p>
+      <div class="contact-body" id="contact-body">
       <div class="topic-cards" id="topic-cards">
         <button class="topic-card" data-topic="new">
           <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -229,6 +230,7 @@ import Base from '../layouts/Base.astro';
         </div>
         <button type="submit" class="submit-btn" data-i18n="form.send">Enviar mensaje</button>
       </form>
+      </div>
     </div>
   </section>
 
@@ -856,7 +858,7 @@ import Base from '../layouts/Base.astro';
   /* ── Contact ── */
   .contact-section {
     text-align: center;
-    padding: 6rem 0 5rem;
+    padding: 7rem 0 6rem;
   }
 
   .contact-heading {
@@ -873,23 +875,25 @@ import Base from '../layouts/Base.astro';
     margin-bottom: 2.5rem;
   }
 
+  .contact-body {
+    position: relative;
+    overflow: hidden;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .topic-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
     max-width: 640px;
-    margin: 0 auto 2.5rem;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin: 0 auto;
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
   .topic-cards.hidden {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     pointer-events: none;
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
   }
 
   .topic-card {
@@ -932,23 +936,15 @@ import Base from '../layouts/Base.astro';
     margin: 0 auto;
     text-align: left;
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
     pointer-events: none;
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
   }
 
   .contact-form.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
-    position: static;
-    width: auto;
-    height: auto;
-    overflow: visible;
   }
 
   .form-row {
@@ -1625,6 +1621,7 @@ import Base from '../layouts/Base.astro';
   };
   const topicCardsEl = document.getElementById('topic-cards');
   const contactFormEl = document.getElementById('contact-form');
+  const contactBody = document.getElementById('contact-body');
   document.querySelectorAll('.topic-card').forEach(card => {
     card.addEventListener('click', () => {
       const topic = card.dataset.topic;
@@ -1637,16 +1634,21 @@ import Base from '../layouts/Base.astro';
         const opt = topicSelect.querySelector('[data-topic="' + topic + '"]');
         if (opt) topicSelect.value = opt.value;
       }
-      if (topicCardsEl) topicCardsEl.classList.add('hidden');
-      setTimeout(() => {
-        if (contactFormEl) {
-          contactFormEl.classList.add('visible');
-          setTimeout(() => {
-            document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            if (msg) msg.focus();
-          }, 100);
-        }
-      }, 300);
+      if (!contactBody || !topicCardsEl || !contactFormEl) return;
+      var startH = topicCardsEl.offsetHeight;
+      contactBody.style.height = startH + 'px';
+      topicCardsEl.classList.add('hidden');
+      contactFormEl.classList.add('visible');
+      requestAnimationFrame(function() {
+        var endH = contactFormEl.offsetHeight;
+        contactBody.style.height = endH + 'px';
+      });
+      setTimeout(function() {
+        contactBody.style.height = 'auto';
+        topicCardsEl.style.display = 'none';
+        document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (msg) msg.focus();
+      }, 550);
     });
   });
 
