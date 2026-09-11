@@ -32,7 +32,7 @@ import Base from '../layouts/Base.astro';
       <div class="hero-text">
         <h1><span id="typed-base"></span><span class="typed" id="typed"></span><span class="cursor"></span></h1>
         <p class="lead" data-i18n="hero.lead">
-          Diseño, construyo y despliego tu producto web. Del primer
+          Diseño, construyo y despliego tu producto multiplataforma. Del primer
           wireframe al servidor en producción, sin intermediarios.
         </p>
         <a href="#contact" class="cta">
@@ -178,6 +178,7 @@ import Base from '../layouts/Base.astro';
         Cuéntame qué necesitas. En 48h te respondo con una propuesta
         concreta: alcance, tecnología y calendario.
       </p>
+      <div class="contact-stage" id="contact-stage">
       <div class="topic-cards" id="topic-cards">
         <button class="topic-card" data-topic="new">
           <svg class="topic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -230,6 +231,7 @@ import Base from '../layouts/Base.astro';
         </div>
         <button type="submit" class="submit-btn" data-i18n="form.send">Enviar mensaje</button>
       </form>
+      </div>
     </div>
   </section>
 
@@ -237,7 +239,7 @@ import Base from '../layouts/Base.astro';
     <div class="wrap footer-grid">
       <div class="footer-brand">
         <a href="#" class="footer-logo">ricajos</a>
-        <p class="footer-desc" data-i18n="footer.desc">Diseño, construyo y despliego productos web de principio a fin.</p>
+        <p class="footer-desc" data-i18n="footer.desc">Diseño, construyo y despliego productos multiplataforma de principio a fin.</p>
         <div class="footer-social">
           <a href="https://github.com/rricajos" target="_blank" rel="noopener" aria-label="GitHub">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -875,16 +877,24 @@ import Base from '../layouts/Base.astro';
     margin-bottom: 1.75rem;
   }
 
+  .contact-stage {
+    position: relative;
+    overflow: hidden;
+  }
+
   .topic-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
     max-width: 640px;
     margin: 0 auto;
+    transition: opacity 0.35s ease, transform 0.35s ease;
   }
 
-  .topic-cards.hidden {
-    display: none;
+  .topic-cards.fading {
+    opacity: 0;
+    transform: scale(0.97);
+    pointer-events: none;
   }
 
   .topic-card {
@@ -923,26 +933,26 @@ import Base from '../layouts/Base.astro';
   }
 
   .contact-form {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     max-width: 520px;
-    margin: 0 auto;
     text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
   }
 
   .contact-form.visible {
-    display: block;
-    animation: fadeInUp 0.4s ease both;
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .contact-form.in-place {
+    position: static;
+    transform: none;
   }
 
   .form-row {
@@ -1298,7 +1308,7 @@ import Base from '../layouts/Base.astro';
       'nav.about': 'Sobre mí',
       'nav.blog': 'Blog',
       'nav.contact': 'Contacto',
-      'hero.lead': 'Diseño, construyo y despliego tu producto web. Del primer wireframe al servidor en producción, sin intermediarios.',
+      'hero.lead': 'Diseño, construyo y despliego tu producto multiplataforma. Del primer wireframe al servidor en producción, sin intermediarios.',
       'hero.cta': 'Cuéntame tu idea',
       'hero.globe_hint': 'Haz clic en un país para cambiar el idioma',
       'projects.label': 'Proyectos',
@@ -1339,7 +1349,7 @@ import Base from '../layouts/Base.astro';
       'topic.other': 'Otro',
       'topic.other_desc': 'Consulta abierta',
       'footer.tagline': 'Full-stack · Barcelona',
-      'footer.desc': 'Diseño, construyo y despliego productos web de principio a fin.',
+      'footer.desc': 'Diseño, construyo y despliego productos multiplataforma de principio a fin.',
       'footer.nav_heading': 'Navegación',
       'footer.projects_heading': 'Proyectos',
       'footer.available': 'Disponible para proyectos',
@@ -1354,7 +1364,7 @@ import Base from '../layouts/Base.astro';
       'nav.about': 'About',
       'nav.blog': 'Blog',
       'nav.contact': 'Contact',
-      'hero.lead': 'I design, build, and deploy your web product. From the first wireframe to the production server, no middlemen.',
+      'hero.lead': 'I design, build, and deploy your multiplatform product. From the first wireframe to the production server, no middlemen.',
       'hero.cta': 'Tell me your idea',
       'hero.globe_hint': 'Click a country to change the language',
       'projects.label': 'Projects',
@@ -1395,7 +1405,7 @@ import Base from '../layouts/Base.astro';
       'topic.other': 'Other',
       'topic.other_desc': 'Open inquiry',
       'footer.tagline': 'Full-stack · Barcelona',
-      'footer.desc': 'I design, build, and deploy web products from start to finish.',
+      'footer.desc': 'I design, build, and deploy multiplatform products from start to finish.',
       'footer.nav_heading': 'Navigation',
       'footer.projects_heading': 'Projects',
       'footer.available': 'Available for projects',
@@ -1410,7 +1420,7 @@ import Base from '../layouts/Base.astro';
       'nav.about': '关于',
       'nav.blog': '博客',
       'nav.contact': '联系',
-      'hero.lead': '我设计、构建并部署你的网络产品。从线框图到生产服务器，没有中间人。',
+      'hero.lead': '我设计、构建并部署你的跨平台产品。从线框图到生产服务器，没有中间人。',
       'hero.cta': '告诉我你的想法',
       'hero.globe_hint': '点击国家切换语言',
       'projects.label': '项目',
@@ -1451,7 +1461,7 @@ import Base from '../layouts/Base.astro';
       'topic.other': '其他',
       'topic.other_desc': '开放咨询',
       'footer.tagline': '全栈 · 巴塞罗那',
-      'footer.desc': '从头到尾设计、构建和部署网络产品。',
+      'footer.desc': '从头到尾设计、构建和部署跨平台产品。',
       'footer.nav_heading': '导航',
       'footer.projects_heading': '项目',
       'footer.available': '可接受新项目',
@@ -1620,26 +1630,40 @@ import Base from '../layouts/Base.astro';
     en: { new: 'Hi, I need a website from scratch. ', improve: 'Hi, I have a product and want to improve it. ', infra: 'Hi, I need help with infrastructure. ', other: '' },
     zh: { new: '你好，我需要从头开始建一个网站。', improve: '你好，我有一个产品想要改进。', infra: '你好，我需要基础设施方面的帮助。', other: '' },
   };
-  const topicCardsEl = document.getElementById('topic-cards');
-  const contactFormEl = document.getElementById('contact-form');
+  var stage = document.getElementById('contact-stage');
+  var cards = document.getElementById('topic-cards');
+  var form = document.getElementById('contact-form');
   document.querySelectorAll('.topic-card').forEach(function(card) {
     card.addEventListener('click', function() {
       var topic = card.dataset.topic;
       var msg = document.getElementById('message');
-      var topicSelect = document.getElementById('topic');
+      var sel = document.getElementById('topic');
       var lang = currentLang || 'es';
-      var prefills = topicPrefills[lang] || topicPrefills.es;
-      if (msg) msg.value = prefills[topic] || '';
-      if (topicSelect) {
-        var opt = topicSelect.querySelector('[data-topic="' + topic + '"]');
-        if (opt) topicSelect.value = opt.value;
+      var pre = topicPrefills[lang] || topicPrefills.es;
+      if (msg) msg.value = pre[topic] || '';
+      if (sel) {
+        var opt = sel.querySelector('[data-topic="' + topic + '"]');
+        if (opt) sel.value = opt.value;
       }
-      if (topicCardsEl) topicCardsEl.classList.add('hidden');
-      if (contactFormEl) contactFormEl.classList.add('visible');
+      if (!stage || !cards || !form) return;
+      var h0 = cards.offsetHeight;
+      stage.style.height = h0 + 'px';
+      cards.classList.add('fading');
       setTimeout(function() {
-        document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        if (msg) msg.focus();
-      }, 100);
+        cards.style.display = 'none';
+        form.classList.add('visible');
+        var h1 = form.scrollHeight;
+        stage.style.transition = 'height 0.45s cubic-bezier(0.4,0,0.2,1)';
+        stage.style.height = h1 + 'px';
+        setTimeout(function() {
+          stage.style.height = '';
+          stage.style.transition = '';
+          stage.style.overflow = '';
+          form.classList.add('in-place');
+          document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (msg) msg.focus();
+        }, 500);
+      }, 350);
     });
   });
 
