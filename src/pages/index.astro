@@ -172,7 +172,7 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section id="contact" class="contact-section">
-    <div class="wrap reveal">
+    <div class="wrap">
       <h2 class="contact-heading" data-i18n="contact.heading">¿Tienes un proyecto en mente?</h2>
       <p class="contact-sub" data-i18n="contact.sub">
         Cuéntame qué necesitas. En 48h te respondo con una propuesta
@@ -338,6 +338,13 @@ import Base from '../layouts/Base.astro';
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
   }
 
+  .site-header:not(.scrolled) {
+    --text: #cdd1e4;
+    --text-2: #8b90ad;
+    --accent: #34d399;
+    --accent-soft: rgba(52, 211, 153, 0.06);
+  }
+
   .nav-inner {
     display: flex;
     align-items: center;
@@ -355,14 +362,10 @@ import Base from '../layouts/Base.astro';
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: 1rem;
-    color: #cdd1e4;
+    color: var(--text);
     text-decoration: none;
     letter-spacing: -0.03em;
     transition: color 0.3s;
-  }
-
-  .site-header.scrolled .logo {
-    color: var(--text);
   }
 
   nav {
@@ -373,7 +376,7 @@ import Base from '../layouts/Base.astro';
   nav a {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #8b90ad;
+    color: var(--text-2);
     text-decoration: none;
     padding: 0.375rem 0.75rem;
     border-radius: 6px;
@@ -381,24 +384,11 @@ import Base from '../layouts/Base.astro';
   }
 
   nav a:hover {
-    color: #34d399;
-    background: rgba(52, 211, 153, 0.06);
-  }
-
-  nav a.active {
-    color: #34d399;
-  }
-
-  .site-header.scrolled nav a {
-    color: var(--text-2);
-  }
-
-  .site-header.scrolled nav a:hover {
     color: var(--accent);
     background: var(--accent-soft);
   }
 
-  .site-header.scrolled nav a.active {
+  nav a.active {
     color: var(--accent);
   }
 
@@ -411,22 +401,13 @@ import Base from '../layouts/Base.astro';
     height: 2rem;
     border: none;
     background: none;
-    color: #8b90ad;
+    color: var(--text-2);
     border-radius: 6px;
     cursor: pointer;
     transition: color 0.2s, background 0.2s;
   }
 
   .theme-toggle:hover {
-    color: #34d399;
-    background: rgba(52, 211, 153, 0.06);
-  }
-
-  .site-header.scrolled .theme-toggle {
-    color: var(--text-2);
-  }
-
-  .site-header.scrolled .theme-toggle:hover {
     color: var(--accent);
     background: var(--accent-soft);
   }
@@ -436,14 +417,21 @@ import Base from '../layouts/Base.astro';
     display: none;
   }
 
-  /* ── Hero ── */
+  /* ── Hero (always dark — override theme tokens locally) ── */
   .hero {
+    --bg: #070b16;
+    --text: #cdd1e4;
+    --text-2: #8b90ad;
+    --muted: #6d728f;
+    --accent: #34d399;
+    --accent-hover: #6ee7b7;
+    --accent-soft: rgba(52, 211, 153, 0.06);
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #070b16;
-    color: #cdd1e4;
+    background: var(--bg);
+    color: var(--text);
     position: relative;
     overflow: hidden;
     padding: 3.25rem 0 0;
@@ -498,7 +486,7 @@ import Base from '../layouts/Base.astro';
   .globe-hint {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
-    color: #6d728f;
+    color: var(--muted);
     text-align: center;
     font-style: italic;
     opacity: 0;
@@ -546,7 +534,7 @@ import Base from '../layouts/Base.astro';
   .lead {
     font-size: clamp(1.0625rem, 2.2vw, 1.375rem);
     font-weight: 300;
-    color: #8b90ad;
+    color: var(--text-2);
     margin-top: 1.5rem;
     max-width: 520px;
     line-height: 1.55;
@@ -559,17 +547,17 @@ import Base from '../layouts/Base.astro';
     margin-top: 2.5rem;
     font-family: var(--font-mono);
     font-size: 0.8125rem;
-    color: #34d399;
+    color: var(--accent);
     text-decoration: none;
     padding: 0.5rem 1.125rem;
-    border: 1px solid #34d399;
+    border: 1px solid var(--accent);
     border-radius: 6px;
     transition: background 0.2s, color 0.2s;
   }
 
   .cta:hover {
-    background: #34d399;
-    color: #070b16;
+    background: var(--accent);
+    color: var(--bg);
   }
 
   .arrow {
@@ -588,7 +576,7 @@ import Base from '../layouts/Base.astro';
     bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    color: #6d728f;
+    color: var(--muted);
     animation: bounce 2.5s ease infinite;
     transition: opacity 0.4s;
   }
@@ -720,7 +708,6 @@ import Base from '../layouts/Base.astro';
     color: var(--accent);
   }
 
-
   .badge {
     font-family: var(--font-mono);
     font-size: 0.6rem;
@@ -732,7 +719,7 @@ import Base from '../layouts/Base.astro';
   }
 
   .badge-live {
-    color: #34d399;
+    color: var(--accent);
     background: rgba(52, 211, 153, 0.1);
   }
 
@@ -1081,7 +1068,6 @@ import Base from '../layouts/Base.astro';
   .footer-col {
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
   .footer-heading {
@@ -1145,7 +1131,7 @@ import Base from '../layouts/Base.astro';
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 50%;
-    background: #22c55e;
+    background: var(--accent);
   }
 
   /* ── Responsive ── */
@@ -1630,37 +1616,37 @@ import Base from '../layouts/Base.astro';
     en: { new: 'Hi, I need a website from scratch. ', improve: 'Hi, I have a product and want to improve it. ', infra: 'Hi, I need help with infrastructure. ', other: '' },
     zh: { new: '你好，我需要从头开始建一个网站。', improve: '你好，我有一个产品想要改进。', infra: '你好，我需要基础设施方面的帮助。', other: '' },
   };
-  var stage = document.getElementById('contact-stage');
-  var cards = document.getElementById('topic-cards');
-  var form = document.getElementById('contact-form');
-  document.querySelectorAll('.topic-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      var topic = card.dataset.topic;
-      var msg = document.getElementById('message');
-      var sel = document.getElementById('topic');
-      var lang = currentLang || 'es';
-      var pre = topicPrefills[lang] || topicPrefills.es;
+  const stage = document.getElementById('contact-stage');
+  const topicCards = document.getElementById('topic-cards');
+  const contactForm = document.getElementById('contact-form');
+  document.querySelectorAll('.topic-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const topic = card.dataset.topic;
+      const msg = document.getElementById('message');
+      const sel = document.getElementById('topic');
+      const lang = currentLang || 'es';
+      const pre = topicPrefills[lang] || topicPrefills.es;
       if (msg) msg.value = pre[topic] || '';
       if (sel) {
-        var opt = sel.querySelector('[data-topic="' + topic + '"]');
+        const opt = sel.querySelector(`[data-topic="${topic}"]`);
         if (opt) sel.value = opt.value;
       }
-      if (!stage || !cards || !form) return;
-      var h0 = cards.offsetHeight;
+      if (!stage || !topicCards || !contactForm) return;
+      const h0 = topicCards.offsetHeight;
       stage.style.height = h0 + 'px';
-      cards.classList.add('fading');
-      setTimeout(function() {
-        cards.style.display = 'none';
-        form.classList.add('visible');
-        var h1 = form.scrollHeight;
+      topicCards.classList.add('fading');
+      setTimeout(() => {
+        topicCards.style.display = 'none';
+        contactForm.classList.add('visible');
+        const h1 = contactForm.scrollHeight;
         stage.style.transition = 'height 0.45s cubic-bezier(0.4,0,0.2,1)';
         stage.style.height = h1 + 'px';
-        setTimeout(function() {
+        setTimeout(() => {
           stage.style.height = '';
           stage.style.transition = '';
           stage.style.overflow = '';
-          form.classList.add('in-place');
-          document.querySelector('.contact-heading').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          contactForm.classList.add('in-place');
+          document.querySelector('.contact-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           if (msg) msg.focus();
         }, 500);
       }, 350);
