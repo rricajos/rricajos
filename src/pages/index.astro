@@ -109,18 +109,21 @@ import Base from '../layouts/Base.astro';
       <p class="label" data-i18n="about.label">Sobre mí</p>
       <h2 class="heading" data-i18n="about.heading">Cómo trabajo</h2>
       <div class="two-col">
-        <div class="prose">
-          <p data-i18n="about.p1">
-            Soy Ricard — un desarrollador al que le gusta controlar el panorama
-            completo. Mis proyectos corren en infraestructura que gestiono yo,
-            desde el clúster Docker Swarm hasta los pipelines CI/CD que
-            despliegan código en cada push.
-          </p>
-          <p data-i18n="about.p2">
-            Construyo productos, no solo funcionalidades. Cada proyecto de este
-            portfolio lo he concebido, diseñado y desplegado de principio a fin.
-            Cuando trabajo con clientes, aplico la misma mentalidad de ownership.
-          </p>
+        <div class="about-left">
+          <img src="/avatar.jpg" alt="Ricard Penin Honrubia" class="avatar" width="280" height="374" loading="lazy" />
+          <div class="prose">
+            <p data-i18n="about.p1">
+              Soy Ricard — un desarrollador al que le gusta controlar el panorama
+              completo. Mis proyectos corren en infraestructura que gestiono yo,
+              desde el clúster Docker Swarm hasta los pipelines CI/CD que
+              despliegan código en cada push.
+            </p>
+            <p data-i18n="about.p2">
+              Construyo productos, no solo funcionalidades. Cada proyecto de este
+              portfolio lo he concebido, diseñado y desplegado de principio a fin.
+              Cuando trabajo con clientes, aplico la misma mentalidad de ownership.
+            </p>
+          </div>
         </div>
         <ul class="stack">
           <li>SvelteKit <span class="role">framework</span></li>
@@ -672,6 +675,20 @@ import Base from '../layouts/Base.astro';
     align-items: start;
   }
 
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .avatar {
+    width: 140px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid var(--border);
+  }
+
   .prose {
     font-size: 1rem;
     line-height: 1.75;
@@ -885,6 +902,12 @@ import Base from '../layouts/Base.astro';
   }
 
   @media (max-width: 640px) {
+    .about-left {
+      align-items: center;
+    }
+    .avatar {
+      width: 120px;
+    }
     .grid {
       grid-template-columns: 1fr;
     }
