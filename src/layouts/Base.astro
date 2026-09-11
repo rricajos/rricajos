@@ -5,17 +5,19 @@ interface Props {
 }
 
 const {
-  title = 'ricajos',
-  description = 'Full-stack builder, Barcelona. Web products from schema to deploy.',
+  title = 'ricajos — Ricard Penin Honrubia, desarrollador full-stack en Barcelona',
+  description = 'Ricard Penin Honrubia (ricajos) — Desarrollador web full-stack en Barcelona. Diseño, construyo y despliego productos web de principio a fin.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="keywords" content="Ricard Penin Honrubia, ricajos, desarrollador web Barcelona, full-stack developer, programador Barcelona, portfolio desarrollador" />
+    <meta name="author" content="Ricard Penin Honrubia" />
     <title>{title}</title>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -45,7 +47,9 @@ const {
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Ricard Penin Honrubia',
-        jobTitle: 'Full-stack Developer',
+        alternateName: ['ricajos', 'Ricard Penin'],
+        jobTitle: 'Desarrollador Full-stack',
+        description: 'Desarrollador web full-stack en Barcelona. Diseño, construyo y despliego productos web de principio a fin.',
         url: 'https://ricajos.com/',
         image: 'https://ricajos.com/avatar.png',
         sameAs: [

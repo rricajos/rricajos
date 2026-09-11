@@ -2,16 +2,23 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="ricajos — Full-stack builder, Barcelona">
+<Base title="ricajos — Ricard Penin Honrubia, desarrollador full-stack en Barcelona">
   <!-- Nav -->
   <header>
     <div class="wrap nav-inner">
       <a href="/" class="logo">ricajos</a>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="nav-right">
+        <nav>
+          <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+          <a href="#about" data-i18n="nav.about">Sobre mí</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+        </nav>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="zh">中文</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -19,12 +26,12 @@ import Base from '../layouts/Base.astro';
   <section class="hero">
     <div class="wrap">
       <h1>ricajos<span class="cursor"></span></h1>
-      <p class="lead">
-        Full-stack builder, Barcelona. I design, build, and ship web products
-        — from the database schema to the deploy pipeline.
+      <p class="lead" data-i18n="hero.lead">
+        Desarrollador full-stack en Barcelona. Diseño, construyo y despliego
+        productos web — del esquema de base de datos al pipeline de deploy.
       </p>
       <a href="#projects" class="cta">
-        See what I've built
+        <span data-i18n="hero.cta">Ver mis proyectos</span>
         <svg
           class="arrow"
           viewBox="0 0 24 24"
@@ -41,14 +48,14 @@ import Base from '../layouts/Base.astro';
   <!-- Projects -->
   <section id="projects">
     <div class="wrap reveal">
-      <p class="label">Projects</p>
-      <h2 class="heading">What I've built</h2>
+      <p class="label" data-i18n="projects.label">Proyectos</p>
+      <h2 class="heading" data-i18n="projects.heading">Lo que he construido</h2>
       <div class="grid">
         <div class="card">
           <div class="card-name"><span class="dot"></span>pingunix</div>
-          <p class="card-desc">
-            Study platform for LPIC certification. 821 pages of content with
-            PWA-powered flashcards.
+          <p class="card-desc" data-i18n="projects.pingunix">
+            Plataforma de estudio para la certificación LPIC. 821 páginas de
+            contenido con flashcards en PWA.
           </p>
           <div class="tags">
             <span class="tag">Quartz</span>
@@ -58,9 +65,9 @@ import Base from '../layouts/Base.astro';
         </div>
         <div class="card">
           <div class="card-name"><span class="dot"></span>darink</div>
-          <p class="card-desc">
-            Offline-first health tracker. Food, exercise, sleep, and vitals —
-            works without a connection.
+          <p class="card-desc" data-i18n="projects.darink">
+            Tracker de salud offline-first. Alimentación, ejercicio, sueño y
+            constantes vitales — funciona sin conexión.
           </p>
           <div class="tags">
             <span class="tag">PWA</span>
@@ -70,9 +77,9 @@ import Base from '../layouts/Base.astro';
         </div>
         <div class="card">
           <div class="card-name"><span class="dot"></span>planetlogin</div>
-          <p class="card-desc">
-            White-label authentication portal. Stateless login you drop into any
-            app.
+          <p class="card-desc" data-i18n="projects.planetlogin">
+            Portal de autenticación white-label. Login stateless que se integra
+            en cualquier app.
           </p>
           <div class="tags">
             <span class="tag">SvelteKit</span>
@@ -81,35 +88,36 @@ import Base from '../layouts/Base.astro';
           </div>
         </div>
       </div>
-      <p class="more">More products shipping soon.</p>
+      <p class="more" data-i18n="projects.more">Más productos en camino.</p>
     </div>
   </section>
 
   <!-- About -->
   <section id="about">
     <div class="wrap reveal">
-      <p class="label">About</p>
-      <h2 class="heading">How I work</h2>
+      <p class="label" data-i18n="about.label">Sobre mí</p>
+      <h2 class="heading" data-i18n="about.heading">Cómo trabajo</h2>
       <div class="two-col">
         <div class="prose">
-          <p>
-            I'm Ricard — a developer who likes owning the full picture. Most of
-            my projects run on infrastructure I manage myself, from the Docker
-            Swarm cluster to the CI/CD pipelines that ship code on every push.
+          <p data-i18n="about.p1">
+            Soy Ricard — un desarrollador al que le gusta controlar el panorama
+            completo. Mis proyectos corren en infraestructura que gestiono yo,
+            desde el clúster Docker Swarm hasta los pipelines CI/CD que
+            despliegan código en cada push.
           </p>
-          <p>
-            I build products, not just features. Every project in this portfolio
-            is something I conceived, designed, and shipped end-to-end. When I
-            work with clients, I bring the same ownership mindset.
+          <p data-i18n="about.p2">
+            Construyo productos, no solo funcionalidades. Cada proyecto de este
+            portfolio lo he concebido, diseñado y desplegado de principio a fin.
+            Cuando trabajo con clientes, aplico la misma mentalidad de ownership.
           </p>
         </div>
         <ul class="stack">
           <li>SvelteKit <span class="role">framework</span></li>
           <li>Prisma <span class="role">ORM</span></li>
-          <li>PostgreSQL <span class="role">database</span></li>
-          <li>Docker Swarm <span class="role">orchestration</span></li>
+          <li>PostgreSQL <span class="role" data-i18n="stack.database">base de datos</span></li>
+          <li>Docker Swarm <span class="role" data-i18n="stack.orchestration">orquestación</span></li>
           <li>GitHub Actions <span class="role">CI/CD</span></li>
-          <li>Linux / VPS <span class="role">infrastructure</span></li>
+          <li>Linux / VPS <span class="role" data-i18n="stack.infra">infraestructura</span></li>
           <li>Node.js <span class="role">runtime</span></li>
           <li>Python <span class="role">scripting</span></li>
         </ul>
@@ -120,10 +128,10 @@ import Base from '../layouts/Base.astro';
   <!-- Contact -->
   <section id="contact" class="contact-section">
     <div class="wrap reveal">
-      <h2 class="contact-heading">Let's build something.</h2>
-      <p class="contact-sub">
-        Got a project in mind? Open to freelance work and interesting
-        collaborations.
+      <h2 class="contact-heading" data-i18n="contact.heading">Construyamos algo.</h2>
+      <p class="contact-sub" data-i18n="contact.sub">
+        ¿Tienes un proyecto en mente? Abierto a freelance y colaboraciones
+        interesantes.
       </p>
 
       <form
@@ -152,37 +160,40 @@ import Base from '../layouts/Base.astro';
         />
         <div class="form-row">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name" data-i18n="form.name">Nombre</label>
             <input
               id="name"
               type="text"
               name="name"
-              placeholder="Your name"
+              data-i18n-placeholder="form.name_ph"
+              placeholder="Tu nombre"
               required
             />
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" data-i18n="form.email">Email</label>
             <input
               id="email"
               type="email"
               name="email"
-              placeholder="you@example.com"
+              placeholder="tu@ejemplo.com"
+              data-i18n-placeholder="form.email_ph"
               required
             />
           </div>
         </div>
         <div class="form-group">
-          <label for="message">Message</label>
+          <label for="message" data-i18n="form.message">Mensaje</label>
           <textarea
             id="message"
             name="message"
-            placeholder="Tell me about your project..."
+            data-i18n-placeholder="form.message_ph"
+            placeholder="Cuéntame sobre tu proyecto..."
             rows="4"
             required
             maxlength="2000"></textarea>
         </div>
-        <button type="submit" class="submit-btn">Send message</button>
+        <button type="submit" class="submit-btn" data-i18n="form.send">Enviar mensaje</button>
       </form>
 
       <div class="social-links">
@@ -247,6 +258,12 @@ import Base from '../layouts/Base.astro';
     letter-spacing: -0.03em;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   nav {
     display: flex;
     gap: 0.25rem;
@@ -263,6 +280,38 @@ import Base from '../layouts/Base.astro';
   }
 
   nav a:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .lang-switcher {
+    display: flex;
+    gap: 2px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 2px;
+  }
+
+  .lang-btn {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+    line-height: 1;
+  }
+
+  .lang-btn:hover {
+    color: var(--text);
+  }
+
+  .lang-btn.active {
     color: var(--accent);
     background: var(--accent-soft);
   }
@@ -641,6 +690,14 @@ import Base from '../layouts/Base.astro';
     .logo {
       font-size: 0.9rem;
     }
+    .lang-switcher {
+      gap: 1px;
+      padding: 1px;
+    }
+    .lang-btn {
+      font-size: 0.5625rem;
+      padding: 0.15rem 0.3rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -657,6 +714,121 @@ import Base from '../layouts/Base.astro';
 </style>
 
 <script>
+  const translations = {
+    es: {
+      'nav.projects': 'Proyectos',
+      'nav.about': 'Sobre mí',
+      'nav.contact': 'Contacto',
+      'hero.lead': 'Desarrollador full-stack en Barcelona. Diseño, construyo y despliego productos web — del esquema de base de datos al pipeline de deploy.',
+      'hero.cta': 'Ver mis proyectos',
+      'projects.label': 'Proyectos',
+      'projects.heading': 'Lo que he construido',
+      'projects.pingunix': 'Plataforma de estudio para la certificación LPIC. 821 páginas de contenido con flashcards en PWA.',
+      'projects.darink': 'Tracker de salud offline-first. Alimentación, ejercicio, sueño y constantes vitales — funciona sin conexión.',
+      'projects.planetlogin': 'Portal de autenticación white-label. Login stateless que se integra en cualquier app.',
+      'projects.more': 'Más productos en camino.',
+      'about.label': 'Sobre mí',
+      'about.heading': 'Cómo trabajo',
+      'about.p1': 'Soy Ricard — un desarrollador al que le gusta controlar el panorama completo. Mis proyectos corren en infraestructura que gestiono yo, desde el clúster Docker Swarm hasta los pipelines CI/CD que despliegan código en cada push.',
+      'about.p2': 'Construyo productos, no solo funcionalidades. Cada proyecto de este portfolio lo he concebido, diseñado y desplegado de principio a fin. Cuando trabajo con clientes, aplico la misma mentalidad de ownership.',
+      'stack.database': 'base de datos',
+      'stack.orchestration': 'orquestación',
+      'stack.infra': 'infraestructura',
+      'contact.heading': 'Construyamos algo.',
+      'contact.sub': '¿Tienes un proyecto en mente? Abierto a freelance y colaboraciones interesantes.',
+      'form.name': 'Nombre',
+      'form.name_ph': 'Tu nombre',
+      'form.email': 'Email',
+      'form.email_ph': 'tu@ejemplo.com',
+      'form.message': 'Mensaje',
+      'form.message_ph': 'Cuéntame sobre tu proyecto...',
+      'form.send': 'Enviar mensaje',
+    },
+    en: {
+      'nav.projects': 'Projects',
+      'nav.about': 'About',
+      'nav.contact': 'Contact',
+      'hero.lead': 'Full-stack builder, Barcelona. I design, build, and ship web products — from the database schema to the deploy pipeline.',
+      'hero.cta': 'See what I\'ve built',
+      'projects.label': 'Projects',
+      'projects.heading': 'What I\'ve built',
+      'projects.pingunix': 'Study platform for LPIC certification. 821 pages of content with PWA-powered flashcards.',
+      'projects.darink': 'Offline-first health tracker. Food, exercise, sleep, and vitals — works without a connection.',
+      'projects.planetlogin': 'White-label authentication portal. Stateless login you drop into any app.',
+      'projects.more': 'More products shipping soon.',
+      'about.label': 'About',
+      'about.heading': 'How I work',
+      'about.p1': 'I\'m Ricard — a developer who likes owning the full picture. Most of my projects run on infrastructure I manage myself, from the Docker Swarm cluster to the CI/CD pipelines that ship code on every push.',
+      'about.p2': 'I build products, not just features. Every project in this portfolio is something I conceived, designed, and shipped end-to-end. When I work with clients, I bring the same ownership mindset.',
+      'stack.database': 'database',
+      'stack.orchestration': 'orchestration',
+      'stack.infra': 'infrastructure',
+      'contact.heading': 'Let\'s build something.',
+      'contact.sub': 'Got a project in mind? Open to freelance work and interesting collaborations.',
+      'form.name': 'Name',
+      'form.name_ph': 'Your name',
+      'form.email': 'Email',
+      'form.email_ph': 'you@example.com',
+      'form.message': 'Message',
+      'form.message_ph': 'Tell me about your project...',
+      'form.send': 'Send message',
+    },
+    zh: {
+      'nav.projects': '项目',
+      'nav.about': '关于',
+      'nav.contact': '联系',
+      'hero.lead': '巴塞罗那全栈开发者。我设计、构建并部署网络产品——从数据库架构到部署流水线。',
+      'hero.cta': '查看我的项目',
+      'projects.label': '项目',
+      'projects.heading': '我的作品',
+      'projects.pingunix': 'LPIC认证学习平台。821页内容，配备PWA闪卡功能。',
+      'projects.darink': '离线优先的健康追踪器。饮食、运动、睡眠和生命体征——无需网络连接。',
+      'projects.planetlogin': '白标认证门户。可集成到任何应用的无状态登录系统。',
+      'projects.more': '更多产品即将推出。',
+      'about.label': '关于',
+      'about.heading': '我的工作方式',
+      'about.p1': '我是Ricard——一个喜欢掌控全局的开发者。我的项目运行在我自己管理的基础设施上，从Docker Swarm集群到每次推送都会部署代码的CI/CD流水线。',
+      'about.p2': '我构建的是产品，而不仅仅是功能。这个作品集中的每个项目都是我从构思、设计到端到端部署的成果。与客户合作时，我带来同样的主人翁意识。',
+      'stack.database': '数据库',
+      'stack.orchestration': '编排',
+      'stack.infra': '基础设施',
+      'contact.heading': '一起创造点什么。',
+      'contact.sub': '有项目想法？欢迎自由职业合作和有趣的项目。',
+      'form.name': '姓名',
+      'form.name_ph': '你的名字',
+      'form.email': '邮箱',
+      'form.email_ph': 'you@example.com',
+      'form.message': '留言',
+      'form.message_ph': '告诉我你的项目...',
+      'form.send': '发送消息',
+    },
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang]?.[key]) el.textContent = translations[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang]?.[key]) el.placeholder = translations[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    try { localStorage.setItem('lang', lang); } catch {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+
+  try {
+    const saved = localStorage.getItem('lang');
+    if (saved && translations[saved]) setLang(saved);
+  } catch {}
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
