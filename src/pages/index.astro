@@ -31,11 +31,11 @@ import Base from '../layouts/Base.astro';
       <div class="hero-text">
         <h1>ricajos<span class="typed" id="typed"></span><span class="cursor"></span></h1>
         <p class="lead" data-i18n="hero.lead">
-          Desarrollador full-stack en Barcelona. Diseño, construyo y despliego
-          productos web — del esquema de base de datos al pipeline de deploy.
+          Tu producto web en producción — diseño, código, infra y deploy.
+          Una sola persona, cero excusas.
         </p>
-        <a href="#projects" class="cta">
-          <span data-i18n="hero.cta">Ver mis proyectos</span>
+        <a href="#contact" class="cta">
+          <span data-i18n="hero.cta">Hablemos de tu proyecto</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
         </a>
       </div>
@@ -59,9 +59,11 @@ import Base from '../layouts/Base.astro';
             <div class="card-name"><span class="dot"></span>pingunix</div>
             <span class="badge badge-live">live</span>
           </div>
+          <p class="card-metric" data-i18n="projects.pingunix_metric">821 páginas · PWA con flashcards</p>
           <p class="card-desc" data-i18n="projects.pingunix">
-            Plataforma de estudio para la certificación LPIC. 821 páginas de
-            contenido con flashcards en PWA.
+            Construí mi propia plataforma de estudio para LPIC porque las que
+            había eran lentas y no funcionaban offline. Quartz v5, estática,
+            se carga al instante.
           </p>
           <div class="tags">
             <span class="tag">Quartz</span>
@@ -74,9 +76,11 @@ import Base from '../layouts/Base.astro';
             <div class="card-name"><span class="dot"></span>darink</div>
             <span class="badge badge-wip">wip</span>
           </div>
+          <p class="card-metric" data-i18n="projects.darink_metric">100% offline · IndexedDB local</p>
           <p class="card-desc" data-i18n="projects.darink">
-            Tracker de salud offline-first. Alimentación, ejercicio, sueño y
-            constantes vitales — funciona sin conexión.
+            App de salud que funciona sin internet. Registro de alimentación,
+            ejercicio, sueño y constantes — tus datos se quedan en tu
+            dispositivo, no en un servidor.
           </p>
           <div class="tags">
             <span class="tag">PWA</span>
@@ -89,14 +93,16 @@ import Base from '../layouts/Base.astro';
             <div class="card-name"><span class="dot"></span>planetlogin</div>
             <span class="badge badge-live">live</span>
           </div>
+          <p class="card-metric" data-i18n="projects.planetlogin_metric">Publicado en npm · Lo estás viendo arriba</p>
           <p class="card-desc" data-i18n="projects.planetlogin">
-            Portal de autenticación white-label. Login stateless que se integra
-            en cualquier app.
+            Componente web de login con un globo interactivo — el que has visto
+            en el hero. Una línea de HTML y tu app tiene autenticación con
+            selector de país.
           </p>
           <div class="tags">
-            <span class="tag">SvelteKit</span>
-            <span class="tag">Auth</span>
-            <span class="tag">Stateless</span>
+            <span class="tag">Web Component</span>
+            <span class="tag">npm</span>
+            <span class="tag">Canvas</span>
           </div>
         </a>
       </div>
@@ -124,22 +130,20 @@ import Base from '../layouts/Base.astro';
       <div class="about-grid">
         <div class="prose">
           <p data-i18n="about.p1">
-            Cada producto de este portfolio existe porque lo necesitaba y no
-            encontré nada que me convenciera. Así que lo construí: desde el
-            diseño de la base de datos hasta el pipeline que despliega en cada
-            push a un VPS que administro yo.
+            Monto toda mi infra en un VPS de 9 euros. No es por ahorrar — es
+            porque cuando controlas el servidor, controlas los plazos. Un
+            <code>git push</code> y está en producción, sin tickets ni esperas.
           </p>
           <p data-i18n="about.p2">
-            No delego la infraestructura. Mis proyectos corren en un clúster
-            Docker Swarm sobre Linux, con CI/CD en GitHub Actions y zero
-            downtime en cada deploy. Cuando algo se rompe a las 3 AM, soy yo
-            quien lo arregla.
+            Cada proyecto de este portfolio lo construí porque lo necesitaba y
+            lo que había no me convencía. Esa es mi forma de trabajar: si el
+            problema es real, la solución sale sola.
           </p>
           <p data-i18n="about.p3">
-            Si tienes un producto que necesita salir y no quieres coordinar
-            tres equipos para lograrlo, yo soy esa persona. Una sola
-            conversación, un solo responsable, del wireframe al dominio
-            apuntando a producción.
+            Busco clientes que quieran un solo responsable de principio a fin.
+            Tú me cuentas qué necesitas, yo te entrego el producto desplegado,
+            con dominio, HTTPS y un pipeline que se actualiza solo. Sin
+            coordinar tres equipos, sin reuniones innecesarias.
           </p>
         </div>
         <div class="about-aside">
@@ -683,6 +687,14 @@ import Base from '../layouts/Base.astro';
     background: rgba(251, 191, 36, 0.1);
   }
 
+  .card-metric {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
   .card-desc {
     font-size: 0.9rem;
     color: var(--text-2);
@@ -1070,22 +1082,25 @@ import Base from '../layouts/Base.astro';
       'nav.projects': 'Proyectos',
       'nav.about': 'Sobre mí',
       'nav.contact': 'Contacto',
-      'hero.lead': 'Desarrollador full-stack en Barcelona. Diseño, construyo y despliego productos web — del esquema de base de datos al pipeline de deploy.',
-      'hero.cta': 'Ver mis proyectos',
+      'hero.lead': 'Tu producto web en producción — diseño, código, infra y deploy. Una sola persona, cero excusas.',
+      'hero.cta': 'Hablemos de tu proyecto',
       'hero.globe_hint': 'Haz clic en un país para cambiar el idioma',
       'projects.label': 'Proyectos',
       'projects.heading': 'Lo que he construido',
-      'projects.pingunix': 'Plataforma de estudio para la certificación LPIC. 821 páginas de contenido con flashcards en PWA.',
-      'projects.darink': 'Tracker de salud offline-first. Alimentación, ejercicio, sueño y constantes vitales — funciona sin conexión.',
-      'projects.planetlogin': 'Portal de autenticación white-label. Login stateless que se integra en cualquier app.',
+      'projects.pingunix_metric': '821 páginas · PWA con flashcards',
+      'projects.pingunix': 'Construí mi propia plataforma de estudio para LPIC porque las que había eran lentas y no funcionaban offline. Quartz v5, estática, se carga al instante.',
+      'projects.darink_metric': '100% offline · IndexedDB local',
+      'projects.darink': 'App de salud que funciona sin internet. Registro de alimentación, ejercicio, sueño y constantes — tus datos se quedan en tu dispositivo, no en un servidor.',
+      'projects.planetlogin_metric': 'Publicado en npm · Lo estás viendo arriba',
+      'projects.planetlogin': 'Componente web de login con un globo interactivo — el que has visto en el hero. Una línea de HTML y tu app tiene autenticación con selector de país.',
       'projects.proof_products': 'productos en producción',
       'projects.proof_pages': 'páginas publicadas',
       'projects.proof_downtime': 'downtime en deploys',
       'about.label': 'Sobre mí',
       'about.heading': 'De la idea al servidor',
-      'about.p1': 'Cada producto de este portfolio existe porque lo necesitaba y no encontré nada que me convenciera. Así que lo construí: desde el diseño de la base de datos hasta el pipeline que despliega en cada push a un VPS que administro yo.',
-      'about.p2': 'No delego la infraestructura. Mis proyectos corren en un clúster Docker Swarm sobre Linux, con CI/CD en GitHub Actions y zero downtime en cada deploy. Cuando algo se rompe a las 3 AM, soy yo quien lo arregla.',
-      'about.p3': 'Si tienes un producto que necesita salir y no quieres coordinar tres equipos para lograrlo, yo soy esa persona. Una sola conversación, un solo responsable, del wireframe al dominio apuntando a producción.',
+      'about.p1': 'Monto toda mi infra en un VPS de 9 euros. No es por ahorrar — es porque cuando controlas el servidor, controlas los plazos. Un git push y está en producción, sin tickets ni esperas.',
+      'about.p2': 'Cada proyecto de este portfolio lo construí porque lo necesitaba y lo que había no me convencía. Esa es mi forma de trabajar: si el problema es real, la solución sale sola.',
+      'about.p3': 'Busco clientes que quieran un solo responsable de principio a fin. Tú me cuentas qué necesitas, yo te entrego el producto desplegado, con dominio, HTTPS y un pipeline que se actualiza solo. Sin coordinar tres equipos, sin reuniones innecesarias.',
       'about.stack_label': 'Stack principal',
       'about.also_label': 'También trabajo con',
       'contact.heading': '¿Tienes algo que necesita salir?',
@@ -1103,22 +1118,25 @@ import Base from '../layouts/Base.astro';
       'nav.projects': 'Projects',
       'nav.about': 'About',
       'nav.contact': 'Contact',
-      'hero.lead': 'Full-stack builder, Barcelona. I design, build, and ship web products — from the database schema to the deploy pipeline.',
-      'hero.cta': 'See what I\'ve built',
+      'hero.lead': 'Your web product in production — design, code, infra, and deploy. One person, zero excuses.',
+      'hero.cta': 'Let\'s talk about your project',
       'hero.globe_hint': 'Click a country to change the language',
       'projects.label': 'Projects',
       'projects.heading': 'What I\'ve built',
-      'projects.pingunix': 'Study platform for LPIC certification. 821 pages of content with PWA-powered flashcards.',
-      'projects.darink': 'Offline-first health tracker. Food, exercise, sleep, and vitals — works without a connection.',
-      'projects.planetlogin': 'White-label authentication portal. Stateless login you drop into any app.',
+      'projects.pingunix_metric': '821 pages · PWA with flashcards',
+      'projects.pingunix': 'I built my own study platform for LPIC because the existing ones were slow and didn\'t work offline. Quartz v5, static, loads instantly.',
+      'projects.darink_metric': '100% offline · Local IndexedDB',
+      'projects.darink': 'Health app that works without internet. Food, exercise, sleep, and vitals tracking — your data stays on your device, not on a server.',
+      'projects.planetlogin_metric': 'Published on npm · You\'re looking at it above',
+      'projects.planetlogin': 'Login web component with an interactive globe — the one you saw in the hero. One line of HTML and your app has auth with a country selector.',
       'projects.proof_products': 'products in production',
       'projects.proof_pages': 'pages published',
       'projects.proof_downtime': 'downtime on deploys',
       'about.label': 'About',
       'about.heading': 'From idea to server',
-      'about.p1': 'Every product in this portfolio exists because I needed it and couldn\'t find anything that convinced me. So I built it: from database design to the pipeline that deploys on every push to a VPS I manage myself.',
-      'about.p2': 'I don\'t delegate infrastructure. My projects run on a Docker Swarm cluster on Linux, with CI/CD on GitHub Actions and zero downtime on every deploy. When something breaks at 3 AM, I\'m the one who fixes it.',
-      'about.p3': 'If you have a product that needs to ship and don\'t want to coordinate three teams to make it happen, I\'m that person. One conversation, one owner, from wireframe to domain pointing at production.',
+      'about.p1': 'I run all my infra on a 9-euro VPS. Not to save money — because when you control the server, you control the deadlines. One git push and it\'s in production, no tickets, no waiting.',
+      'about.p2': 'Every project in this portfolio I built because I needed it and nothing out there convinced me. That\'s how I work: if the problem is real, the solution comes naturally.',
+      'about.p3': 'I\'m looking for clients who want one person end-to-end. You tell me what you need, I deliver the product deployed, with domain, HTTPS, and a pipeline that updates itself. No coordinating three teams, no unnecessary meetings.',
       'about.stack_label': 'Main stack',
       'about.also_label': 'Also work with',
       'contact.heading': 'Got something that needs to ship?',
@@ -1136,22 +1154,25 @@ import Base from '../layouts/Base.astro';
       'nav.projects': '项目',
       'nav.about': '关于',
       'nav.contact': '联系',
-      'hero.lead': '巴塞罗那全栈开发者。我设计、构建并部署网络产品——从数据库架构到部署流水线。',
-      'hero.cta': '查看我的项目',
+      'hero.lead': '你的网络产品上线——设计、代码、基础设施和部署。一个人，零借口。',
+      'hero.cta': '聊聊你的项目',
       'hero.globe_hint': '点击国家切换语言',
       'projects.label': '项目',
       'projects.heading': '我的作品',
-      'projects.pingunix': 'LPIC认证学习平台。821页内容，配备PWA闪卡功能。',
-      'projects.darink': '离线优先的健康追踪器。饮食、运动、睡眠和生命体征——无需网络连接。',
-      'projects.planetlogin': '白标认证门户。可集成到任何应用的无状态登录系统。',
+      'projects.pingunix_metric': '821页 · PWA闪卡',
+      'projects.pingunix': '我为LPIC认证建了自己的学习平台，因为现有的都很慢且不支持离线。Quartz v5，静态，秒加载。',
+      'projects.darink_metric': '100%离线 · 本地IndexedDB',
+      'projects.darink': '无需网络的健康应用。饮食、运动、睡眠和体征记录——数据留在你的设备上，不在服务器。',
+      'projects.planetlogin_metric': '已发布到npm · 你正在上方看到它',
+      'projects.planetlogin': '带交互地球仪的登录组件——就是你在页面顶部看到的那个。一行HTML，你的应用就有了带国家选择的认证。',
       'projects.proof_products': '产品上线运行',
       'projects.proof_pages': '页面已发布',
       'projects.proof_downtime': '部署停机时间',
       'about.label': '关于',
       'about.heading': '从构想到服务器',
-      'about.p1': '这个作品集中的每个产品都源于我的真实需求——找不到满意的解决方案，于是自己动手：从数据库设计到部署流水线，推送到我自己管理的VPS。',
-      'about.p2': '我不外包基础设施。我的项目运行在Linux上的Docker Swarm集群中，使用GitHub Actions实现CI/CD，每次部署零停机。凌晨3点出了问题，修的人是我。',
-      'about.p3': '如果你有一个产品需要上线，又不想协调三个团队来实现，我就是那个人。一次对话，一个负责人，从线框图到域名指向生产环境。',
+      'about.p1': '我用9欧元的VPS运行所有基础设施。不是为了省钱——而是当你控制服务器时，你控制了进度。一个git push就上线，无需工单，无需等待。',
+      'about.p2': '作品集中的每个项目都是因为我需要它而现有方案不够好。这就是我的工作方式：问题真实，方案自然出现。',
+      'about.p3': '我寻找需要一个人从头到尾负责的客户。你告诉我你需要什么，我交付已部署的产品，包含域名、HTTPS和自动更新的流水线。无需协调三个团队，无需多余的会议。',
       'about.stack_label': '主要技术栈',
       'about.also_label': '也使用',
       'contact.heading': '有产品需要上线？',
