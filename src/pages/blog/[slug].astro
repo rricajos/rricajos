@@ -15,9 +15,33 @@ const pubDate = post.data.pubDate.toLocaleDateString('es-ES', {
   month: 'long',
   year: 'numeric',
 });
+const articleSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Ricard Penin Honrubia',
+    url: 'https://ricajos.com',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Ricard Penin Honrubia',
+  },
+  mainEntityOfPage: `https://ricajos.com/blog/${post.id}/`,
+  keywords: post.data.tags,
+});
 ---
 
-<Base title={`${post.data.title} — ricajos`} description={post.data.description}>
+<Base title={`${post.data.title} — ricajos`} description={post.data.description} ogType="article">
+  <meta slot="head" property="article:published_time" content={post.data.pubDate.toISOString()} />
+  <meta slot="head" property="article:author" content="https://ricajos.com" />
+  {post.data.tags.map((tag: string) => (
+    <meta slot="head" property="article:tag" content={tag} />
+  ))}
+  <script slot="head" type="application/ld+json" set:html={articleSchema} />
   <article class="page">
     <a href="/blog/" class="back" id="back-top">&larr; Blog</a>
     <header>

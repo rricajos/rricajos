@@ -2,12 +2,16 @@
 interface Props {
   title?: string;
   description?: string;
+  ogType?: string;
 }
 
 const {
   title = 'ricajos — Ricard Penin Honrubia, desarrollador full-stack en Barcelona',
   description = 'Ricard Penin Honrubia (ricajos) — Desarrollador web full-stack en Barcelona. Diseño, construyo y despliego productos multiplataforma de principio a fin.',
+  ogType = 'website',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://ricajos.com').href;
 ---
 
 <!doctype html>
@@ -35,14 +39,15 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://ricajos.com/avatar.jpg" />
-    <meta property="og:url" content="https://ricajos.com/" />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:locale:alternate" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@rricajos" /><!-- kept for card preview -->
-    <link rel="canonical" href="https://ricajos.com/" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" type="application/rss+xml" title="ricajos — Blog" href="/rss.xml" />
 
     <script
       type="application/ld+json"

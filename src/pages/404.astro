@@ -7,6 +7,11 @@ import Base from '../layouts/Base.astro';
     <h1>404</h1>
     <p class="msg" id="msg-404">Aquí no hay nada.</p>
     <a href="/" class="back" id="back-404">Volver a ricajos.com</a>
+    <nav class="nav-404">
+      <a href="/#projects" id="nav-projects">Proyectos</a>
+      <a href="/blog/" id="nav-blog">Blog</a>
+      <a href="/#contact" id="nav-contact">Contacto</a>
+    </nav>
   </div>
 </Base>
 
@@ -52,13 +57,31 @@ import Base from '../layouts/Base.astro';
     background: var(--accent);
     color: var(--bg);
   }
+
+  .nav-404 {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .nav-404 a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-404 a:hover {
+    color: var(--accent);
+  }
 </style>
 
 <script>
   const t = {
-    es: { msg: 'Aquí no hay nada.', back: 'Volver a ricajos.com' },
-    en: { msg: 'Nothing here.', back: 'Back to ricajos.com' },
-    zh: { msg: '这里什么也没有。', back: '返回 ricajos.com' },
+    es: { msg: 'Aquí no hay nada.', back: 'Volver a ricajos.com', projects: 'Proyectos', blog: 'Blog', contact: 'Contacto' },
+    en: { msg: 'Nothing here.', back: 'Back to ricajos.com', projects: 'Projects', blog: 'Blog', contact: 'Contact' },
+    zh: { msg: '这里什么也没有。', back: '返回 ricajos.com', projects: '项目', blog: '博客', contact: '联系' },
   };
 
   const raw = navigator.language?.split('-')[0] || 'es';
@@ -66,12 +89,11 @@ import Base from '../layouts/Base.astro';
 
   try {
     const saved = localStorage.getItem('lang');
-    if (saved && t[saved]) {
-      document.getElementById('msg-404').textContent = t[saved].msg;
-      document.getElementById('back-404').textContent = t[saved].back;
-    } else if (t[lang]) {
-      document.getElementById('msg-404').textContent = t[lang].msg;
-      document.getElementById('back-404').textContent = t[lang].back;
-    }
+    const l = (saved && t[saved]) ? saved : (t[lang] ? lang : 'es');
+    document.getElementById('msg-404').textContent = t[l].msg;
+    document.getElementById('back-404').textContent = t[l].back;
+    document.getElementById('nav-projects').textContent = t[l].projects;
+    document.getElementById('nav-blog').textContent = t[l].blog;
+    document.getElementById('nav-contact').textContent = t[l].contact;
   } catch {}
 </script>
