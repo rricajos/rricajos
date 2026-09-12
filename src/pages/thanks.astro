@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Mensaje enviado — ricajos" description="Confirmaci&oacute;n de contacto">
+  <div class="page">
+    <a href="/" class="back" id="back">&larr; ricajos.com</a>
+    <div class="check">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h1 id="title">Mensaje enviado</h1>
+    <p class="body" id="body">Gracias por escribirme. Te respondo en menos de 48h con una propuesta concreta.</p>
+    <a href="/" class="cta" id="cta">Volver al portfolio</a>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 4rem;
+    text-align: center;
+    line-height: 1.75;
+  }
+
+  .back {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .back:hover {
+    opacity: 0.7;
+  }
+
+  .check {
+    margin: 3rem 0 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin: 0 0 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .body {
+    color: var(--text-2);
+    margin-bottom: 2rem;
+    font-size: 1.0625rem;
+  }
+
+  .cta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cta:hover {
+    opacity: 0.85;
+  }
+</style>
+
+<script>
+  const t = {
+    es: {
+      title: 'Mensaje enviado',
+      back: '← ricajos.com',
+      body: 'Gracias por escribirme. Te respondo en menos de 48h con una propuesta concreta.',
+      cta: 'Volver al portfolio',
+    },
+    en: {
+      title: 'Message sent',
+      back: '← ricajos.com',
+      body: 'Thanks for reaching out. I\'ll get back to you within 48h with a concrete proposal.',
+      cta: 'Back to portfolio',
+    },
+    zh: {
+      title: '消息已发送',
+      back: '← ricajos.com',
+      body: '感谢你的留言。我会在48小时内回复你一份具体方案。',
+      cta: '返回作品集',
+    },
+  };
+
+  const raw = navigator.language?.split('-')[0] || 'es';
+  const lang = ['es', 'en', 'zh'].includes(raw) ? raw : 'en';
+
+  try {
+    const saved = localStorage.getItem('lang');
+    const l = (saved && t[saved]) ? saved : (t[lang] ? lang : 'es');
+    document.getElementById('title').textContent = t[l].title;
+    document.getElementById('back').innerHTML = t[l].back;
+    document.getElementById('body').textContent = t[l].body;
+    document.getElementById('cta').textContent = t[l].cta;
+  } catch {}
+</script>

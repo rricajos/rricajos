@@ -12,7 +12,6 @@ import Base from '../layouts/Base.astro';
         <nav>
           <a href="#projects" data-i18n="nav.projects" data-section="projects">Proyectos</a>
           <a href="#about" data-i18n="nav.about" data-section="about">Sobre mí</a>
-          <a href="/blog/" data-i18n="nav.blog">Blog</a>
           <a href="#contact" data-i18n="nav.contact" data-section="contact">Contacto</a>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
@@ -53,7 +52,7 @@ import Base from '../layouts/Base.astro';
   <section id="projects">
     <div class="wrap reveal">
       <p class="label" data-i18n="projects.label">Proyectos</p>
-      <h2 class="heading" data-i18n="projects.heading">Productos en producción</h2>
+      <h2 class="heading" data-i18n="projects.heading">Mis proyectos en producción</h2>
       <div class="grid">
         <a href="https://github.com/rricajos/pingunix" class="card" target="_blank" rel="noopener">
           <div class="card-header">
@@ -101,6 +100,22 @@ import Base from '../layouts/Base.astro';
             <span class="tag">Web Component</span>
             <span class="tag">npm</span>
             <span class="tag">Canvas</span>
+          </div>
+        </a>
+        <a href="/blog/" class="card">
+          <div class="card-header">
+            <div class="card-name">@rricajos</div>
+            <span class="badge badge-live">blog</span>
+          </div>
+          <p class="card-metric" data-i18n="projects.blog_metric">Artículos técnicos · publicación semanal</p>
+          <p class="card-desc" data-i18n="projects.blog">
+            Notas técnicas sobre desarrollo web, infraestructura y
+            decisiones de producto. Lo que aprendo construyendo.
+          </p>
+          <div class="tags">
+            <span class="tag">Astro</span>
+            <span class="tag">GitHub Pages</span>
+            <span class="tag">RSS</span>
           </div>
         </a>
       </div>
@@ -185,8 +200,8 @@ import Base from '../layouts/Base.astro';
           <p data-i18n="faq.a2">Cada proyecto se presupuesta por alcance, no por horas. En la propuesta detallo exactamente qué incluye y cuánto cuesta. Sin sorpresas ni costes ocultos.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q3">¿Solo haces proyectos nuevos?</summary>
-          <p data-i18n="faq.a3">No. También mejoro productos existentes, monto infraestructura, automatizo deploys o migro de proveedor. Las tarjetas de contacto reflejan los casos más habituales.</p>
+          <summary data-i18n="faq.q3">¿Cómo funciona?</summary>
+          <p data-i18n="faq.a3">Rellenas el formulario de abajo. En 48h te contesto para entender el alcance. Te envío una propuesta cerrada con precio, tecnología y calendario. Desarrollamos con entregas visibles en una URL de staging. Deploy a producción y handoff completo.</p>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q4">¿Qué pasa después de la entrega?</summary>
@@ -196,16 +211,13 @@ import Base from '../layouts/Base.astro';
           <summary data-i18n="faq.q5">¿El código es mío?</summary>
           <p data-i18n="faq.a5">Sí. Trabajamos en tu repositorio desde el día uno. Tú eres el dueño del código, el dominio y la infraestructura. Cero dependencia de mí.</p>
         </details>
-        <details class="faq-item">
-          <summary data-i18n="faq.q6">¿Cómo es el proceso?</summary>
-          <p data-i18n="faq.a6">Me cuentas la idea, en 48h te envío una propuesta con alcance, tecnología y calendario. Desarrollamos con entregas visibles y terminamos con deploy a producción y entrega final.</p>
-        </details>
       </div>
     </div>
   </section>
 
   <section id="contact" class="contact-section">
     <div class="wrap">
+      <p class="label" data-i18n="contact.label">Contacto</p>
       <h2 class="contact-heading" data-i18n="contact.heading">¿Tienes un proyecto en mente?</h2>
       <p class="contact-sub" data-i18n="contact.sub">
         Cuéntame qué necesitas. En 48h te respondo con una propuesta
@@ -236,7 +248,7 @@ import Base from '../layouts/Base.astro';
       </div>
       <form class="contact-form" id="contact-form" action="https://formsubmit.co/ergoegos@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="https://ricajos.com/#contact" />
+        <input type="hidden" name="_next" value="https://ricajos.com/thanks" />
         <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button type="button" class="form-back" id="contact-back">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -275,7 +287,8 @@ import Base from '../layouts/Base.astro';
   <footer>
     <div class="wrap footer-grid">
       <div class="footer-brand">
-        <a href="#" class="footer-logo">ricajos</a>
+        <a href="#" class="footer-logo">ricajos<span class="footer-tld">.com</span></a>
+        <span class="footer-copy">&copy; <span id="year"></span> ricajos<span class="footer-tld">.com</span></span>
         <p class="footer-desc" data-i18n="footer.desc">Diseño, construyo y despliego productos multiplataforma de principio a fin.</p>
         <div class="footer-social">
           <a href="https://github.com/rricajos" target="_blank" rel="noopener" aria-label="GitHub">
@@ -313,15 +326,6 @@ import Base from '../layouts/Base.astro';
           <li><a href="/terms" data-i18n="footer.terms">Términos</a></li>
           <li><a href="mailto:ergoegos@gmail.com" data-i18n="footer.support">Soporte</a></li>
         </ul>
-      </div>
-    </div>
-    <div class="footer-bar">
-      <div class="wrap footer-bar-inner">
-        <p class="footer-copy">&copy; <span id="year"></span> Ricard Penin Honrubia</p>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span data-i18n="footer.available">Disponible para proyectos</span>
-        </div>
       </div>
     </div>
   </footer>
@@ -945,7 +949,18 @@ import Base from '../layouts/Base.astro';
   /* ── Contact ── */
   .contact-section {
     text-align: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5rem 0 4rem;
+    background: var(--accent-soft);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-section > .wrap {
+    width: 100%;
   }
 
   .contact-heading {
@@ -1147,6 +1162,17 @@ import Base from '../layouts/Base.astro';
     font-size: 1.25rem;
     color: var(--text);
     text-decoration: none;
+  }
+
+  .footer-tld {
+    color: var(--accent);
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
     letter-spacing: -0.02em;
   }
 
@@ -1216,38 +1242,7 @@ import Base from '../layouts/Base.astro';
     color: var(--accent);
   }
 
-  .footer-bar {
-    border-top: 1px solid var(--border);
-    background: var(--accent-soft);
-  }
 
-  .footer-bar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  .footer-copy {
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  .footer-status {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  .status-dot {
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background: var(--accent);
-  }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
@@ -1336,11 +1331,6 @@ import Base from '../layouts/Base.astro';
     .footer-brand {
       grid-column: 1 / -1;
     }
-    .footer-bar-inner {
-      flex-direction: column;
-      gap: 0.75rem;
-      text-align: center;
-    }
   }
 
   @media (max-width: 480px) {
@@ -1413,13 +1403,15 @@ import Base from '../layouts/Base.astro';
       'hero.cta': 'Cuéntame tu idea',
       'hero.globe_hint': 'Haz clic en un país para cambiar el idioma',
       'projects.label': 'Proyectos',
-      'projects.heading': 'Productos en producción',
+      'projects.heading': 'Mis proyectos en producción',
       'projects.pingunix_metric': '821 páginas · carga instantánea',
       'projects.pingunix': 'Plataforma de estudio para la certificación LPIC con flashcards PWA. Estática, funciona offline y se indexa al completo.',
       'projects.darink_metric': '100% offline · datos solo en tu dispositivo',
       'projects.darink': 'Tracker de salud integral: alimentación, ejercicio, sueño y constantes vitales. Funciona sin conexión, nada sale de tu móvil.',
       'projects.planetlogin_metric': 'En npm · el globo de arriba es este componente',
       'projects.planetlogin': 'Web component de login con globo interactivo y selector de país. Una línea de HTML y tu app tiene autenticación geolocalizada.',
+      'projects.blog_metric': 'Artículos técnicos · publicación semanal',
+      'projects.blog': 'Notas técnicas sobre desarrollo web, infraestructura y decisiones de producto. Lo que aprendo construyendo.',
       'projects.proof_products': 'productos en producción',
       'projects.proof_pages': 'páginas publicadas',
       'projects.proof_downtime': 'downtime en deploys',
@@ -1436,14 +1428,13 @@ import Base from '../layouts/Base.astro';
       'faq.a1': 'Depende del alcance. Una landing o portfolio, 1-2 semanas. Un producto con backend, auth y base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.',
       'faq.q2': '¿Cuánto cuesta?',
       'faq.a2': 'Cada proyecto se presupuesta por alcance, no por horas. En la propuesta detallo exactamente qué incluye y cuánto cuesta. Sin sorpresas ni costes ocultos.',
-      'faq.q3': '¿Solo haces proyectos nuevos?',
-      'faq.a3': 'No. También mejoro productos existentes, monto infraestructura, automatizo deploys o migro de proveedor. Las tarjetas de contacto reflejan los casos más habituales.',
+      'faq.q3': '¿Cómo funciona?',
+      'faq.a3': 'Rellenas el formulario de abajo. En 48h te contesto para entender el alcance. Te envío una propuesta cerrada con precio, tecnología y calendario. Desarrollamos con entregas visibles en una URL de staging. Deploy a producción y handoff completo.',
       'faq.q4': '¿Qué pasa después de la entrega?',
       'faq.a4': 'Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después del deploy.',
       'faq.q5': '¿El código es mío?',
       'faq.a5': 'Sí. Trabajamos en tu repositorio desde el día uno. Tú eres el dueño del código, el dominio y la infraestructura. Cero dependencia de mí.',
-      'faq.q6': '¿Cómo es el proceso?',
-      'faq.a6': 'Me cuentas la idea, en 48h te envío una propuesta con alcance, tecnología y calendario. Desarrollamos con entregas visibles y terminamos con deploy a producción y entrega final.',
+      'contact.label': 'Contacto',
       'contact.heading': '¿Tienes un proyecto en mente?',
       'contact.sub': 'Cuéntame qué necesitas. En 48h te respondo con una propuesta concreta: alcance, tecnología y calendario.',
       'form.name': 'Nombre',
@@ -1468,7 +1459,6 @@ import Base from '../layouts/Base.astro';
       'footer.desc': 'Diseño, construyo y despliego productos multiplataforma de principio a fin.',
       'footer.nav_heading': 'Navegación',
       'footer.projects_heading': 'Proyectos',
-      'footer.available': 'Disponible para proyectos',
       'footer.legal_heading': 'Legal',
       'footer.privacy': 'Privacidad',
       'footer.terms': 'Términos',
@@ -1484,13 +1474,15 @@ import Base from '../layouts/Base.astro';
       'hero.cta': 'Tell me your idea',
       'hero.globe_hint': 'Click a country to change the language',
       'projects.label': 'Projects',
-      'projects.heading': 'Products in production',
+      'projects.heading': 'My projects in production',
       'projects.pingunix_metric': '821 pages · loads instantly',
       'projects.pingunix': 'Study platform for LPIC certification with PWA flashcards. Static, works offline, fully indexed.',
       'projects.darink_metric': '100% offline · data stays on your device',
       'projects.darink': 'Full health tracker: food, exercise, sleep, and vitals. Works without a connection, nothing leaves your phone.',
       'projects.planetlogin_metric': 'On npm · the globe above is this component',
       'projects.planetlogin': 'Login web component with interactive globe and country selector. One line of HTML and your app has geolocated auth.',
+      'projects.blog_metric': 'Technical articles · weekly publishing',
+      'projects.blog': 'Technical notes on web development, infrastructure, and product decisions. What I learn by building.',
       'projects.proof_products': 'products in production',
       'projects.proof_pages': 'pages published',
       'projects.proof_downtime': 'downtime on deploys',
@@ -1507,14 +1499,13 @@ import Base from '../layouts/Base.astro';
       'faq.a1': 'It depends on the scope. A landing page or portfolio, 1-2 weeks. A product with backend, auth, and database, 4-8 weeks. I give you a concrete estimate in the proposal.',
       'faq.q2': 'How much does it cost?',
       'faq.a2': 'Each project is budgeted by scope, not by hours. The proposal details exactly what\'s included and how much it costs. No surprises or hidden fees.',
-      'faq.q3': 'Do you only do new projects?',
-      'faq.a3': 'No. I also improve existing products, set up infrastructure, automate deploys, or migrate providers. The contact cards reflect the most common cases.',
+      'faq.q3': 'How does it work?',
+      'faq.a3': 'Fill out the form below. I\'ll reply within 48h to understand the scope. Then I send a fixed proposal with price, tech, and timeline. We develop with visible deliveries on a staging URL. Production deploy and full handoff.',
       'faq.q4': 'What happens after delivery?',
       'faq.a4': 'I deliver the working product with documentation to maintain it. If you need ongoing maintenance, we discuss it separately. I don\'t disappear after deploy.',
       'faq.q5': 'Do I own the code?',
       'faq.a5': 'Yes. We work in your repository from day one. You own the code, the domain, and the infrastructure. Zero dependency on me.',
-      'faq.q6': 'What\'s the process like?',
-      'faq.a6': 'You tell me the idea, in 48h I send a proposal with scope, tech, and timeline. We develop with visible deliveries and finish with production deploy and final handoff.',
+      'contact.label': 'Contact',
       'contact.heading': 'Got a project in mind?',
       'contact.sub': 'Tell me what you need. I\'ll get back to you in 48h with a concrete proposal: scope, technology, and timeline.',
       'form.name': 'Name',
@@ -1539,7 +1530,6 @@ import Base from '../layouts/Base.astro';
       'footer.desc': 'I design, build, and deploy multiplatform products from start to finish.',
       'footer.nav_heading': 'Navigation',
       'footer.projects_heading': 'Projects',
-      'footer.available': 'Available for projects',
       'footer.legal_heading': 'Legal',
       'footer.privacy': 'Privacy',
       'footer.terms': 'Terms',
@@ -1555,13 +1545,15 @@ import Base from '../layouts/Base.astro';
       'hero.cta': '告诉我你的想法',
       'hero.globe_hint': '点击国家切换语言',
       'projects.label': '项目',
-      'projects.heading': '正在运行的产品',
+      'projects.heading': '我的上线项目',
       'projects.pingunix_metric': '821页 · 秒加载',
       'projects.pingunix': 'LPIC认证学习平台，配备PWA闪卡。静态生成，支持离线，完整索引。',
       'projects.darink_metric': '100%离线 · 数据仅在你设备上',
       'projects.darink': '全面的健康追踪器：饮食、运动、睡眠和生命体征。无需网络，数据不离开你的手机。',
       'projects.planetlogin_metric': '在npm上 · 上方的地球仪就是这个组件',
       'projects.planetlogin': '带交互地球仪和国家选择器的登录组件。一行HTML，你的应用就有了地理定位认证。',
+      'projects.blog_metric': '技术文章 · 每周发布',
+      'projects.blog': '关于Web开发、基础设施和产品决策的技术笔记。在构建中学到的东西。',
       'projects.proof_products': '产品上线运行',
       'projects.proof_pages': '页面已发布',
       'projects.proof_downtime': '部署停机时间',
@@ -1578,14 +1570,13 @@ import Base from '../layouts/Base.astro';
       'faq.a1': '取决于范围。落地页或作品集，1-2周。包含后端、认证和数据库的产品，4-8周。我会在方案中给出具体估算。',
       'faq.q2': '费用是多少？',
       'faq.a2': '每个项目按范围报价，不按小时计费。方案中会详细说明包含什么和费用。没有隐藏费用。',
-      'faq.q3': '只做新项目吗？',
-      'faq.a3': '不是。我也改进现有产品、搭建基础设施、自动化部署或迁移服务商。联系卡片反映了最常见的情况。',
+      'faq.q3': '流程是怎样的？',
+      'faq.a3': '填写下方的表单。48小时内回复你了解需求范围。然后发送包含价格、技术和时间表的固定方案。在staging URL上可见交付开发。生产部署和完整交接。',
       'faq.q4': '交付后怎么办？',
       'faq.a4': '我交付可运行的产品和维护文档。如果需要持续维护，我们另行商议。部署后我不会消失。',
       'faq.q5': '代码归我所有吗？',
       'faq.a5': '是的。从第一天起在你的仓库中工作。代码、域名和基础设施都归你所有。对我零依赖。',
-      'faq.q6': '流程是怎样的？',
-      'faq.a6': '你告诉我想法，48小时内发送包含范围、技术和时间表的方案。可见交付的开发，最终生产部署和交接。',
+      'contact.label': '联系',
       'contact.heading': '有项目想做？',
       'contact.sub': '告诉我你需要什么。48小时内回复你一份具体方案：范围、技术和时间表。',
       'form.name': '姓名',
@@ -1610,7 +1601,6 @@ import Base from '../layouts/Base.astro';
       'footer.desc': '从头到尾设计、构建和部署跨平台产品。',
       'footer.nav_heading': '导航',
       'footer.projects_heading': '项目',
-      'footer.available': '可接受新项目',
       'footer.legal_heading': '法律',
       'footer.privacy': '隐私',
       'footer.terms': '条款',
@@ -1795,7 +1785,7 @@ import Base from '../layouts/Base.astro';
       setTimeout(() => {
         topicCards.classList.add('hidden');
         contactForm.classList.add('visible');
-        document.querySelector('.contact-heading')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.querySelector('.contact-heading')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         if (msg) msg.focus();
       }, 300);
     });
