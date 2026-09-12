@@ -27,7 +27,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://ricajos.com').href;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/avatar.jpg" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0c0f1a" />
+    <meta name="referrer" content="origin-when-cross-origin" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -83,7 +85,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://ricajos.com').href;
     />
 
     <script is:inline>
-      (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();
+      (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l==='zh'?'zh-CN':l}catch(e){}})();
     </script>
     <slot name="head" />
   </head>

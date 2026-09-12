@@ -1,0 +1,21 @@
+{
+  "name": "ricajos — Ricard Penin Honrubia",
+  "short_name": "ricajos",
+  "description": "Desarrollador web full-stack en Barcelona. Diseño, construyo y despliego productos de principio a fin.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0f1a",
+  "theme_color": "#0c0f1a",
+  "icons": [
+    {
+      "src": "/avatar.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
