@@ -31,8 +31,8 @@ import Base from '../layouts/Base.astro';
       <div class="hero-text">
         <h1><span id="typed-base"></span><span class="typed" id="typed"></span><span class="cursor"></span></h1>
         <p class="lead" data-i18n="hero.lead">
-          Diseño, construyo y despliego tu producto multiplataforma. Del primer
-          wireframe al servidor en producción, sin intermediarios.
+          Diseño y construyo tu web o app de principio a fin. De la idea
+          al producto funcionando, sin intermediarios.
         </p>
         <a href="#contact" class="cta">
           <span data-i18n="hero.cta">Cuéntame tu idea</span>
@@ -139,23 +139,23 @@ import Base from '../layouts/Base.astro';
   <section id="about">
     <div class="wrap reveal">
       <p class="label" data-i18n="about.label">Sobre mí</p>
-      <h2 class="heading" data-i18n="about.heading">De la idea al servidor</h2>
+      <h2 class="heading" data-i18n="about.heading">Una persona, un producto</h2>
       <div class="about-grid">
         <div class="prose">
           <p data-i18n="about.p1">
-            Gestiono mis propios servidores. Eso significa que un
-            <code>git push</code> pone tu producto en producción al
-            instante, sin depender de nadie.
+            No subcontrato nada. Yo diseño, programo y pongo en marcha tu
+            web. Un solo interlocutor de principio a fin — sin coordinar
+            equipos, sin esperar a terceros.
           </p>
           <p data-i18n="about.p2">
-            Los tres proyectos de arriba los hice porque necesitaba algo que
-            no existía. Prefiero construir la herramienta a conformarme con
-            una que no funciona bien.
+            Los proyectos de arriba son míos. Los construí porque quería
+            algo que funcionase bien de verdad. Aplico el mismo nivel de
+            exigencia a lo que hago para ti.
           </p>
           <p data-i18n="about.p3">
-            Trabajo mejor cuando soy el único responsable. Tú me cuentas la
-            idea, yo te entrego el producto con dominio, HTTPS y deploys
-            automáticos. Una conversación, no tres equipos.
+            Me cuentas qué necesitas, yo te entrego el producto terminado:
+            tu dominio, tu web funcionando, todo listo para que solo tengas
+            que usarlo. Una conversación, no tres equipos.
           </p>
         </div>
         <div class="about-aside">
@@ -183,17 +183,11 @@ import Base from '../layouts/Base.astro';
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="wrap reveal">
-      <p class="label" data-i18n="faq.label">FAQ</p>
-      <h2 class="heading" data-i18n="faq.heading">Preguntas frecuentes</h2>
+      <h3 class="faq-title" data-i18n="faq.heading">Preguntas frecuentes</h3>
       <div class="faq-list">
         <details class="faq-item">
           <summary data-i18n="faq.q1">¿Cuánto tarda un proyecto?</summary>
-          <p data-i18n="faq.a1">Depende del alcance. Una landing o portfolio, 1-2 semanas. Un producto con backend, auth y base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.</p>
+          <p data-i18n="faq.a1">Depende del alcance. Una web sencilla, 1-2 semanas. Un producto con usuarios, pagos o base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.</p>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q2">¿Cuánto cuesta?</summary>
@@ -201,11 +195,11 @@ import Base from '../layouts/Base.astro';
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q3">¿Cómo funciona?</summary>
-          <p data-i18n="faq.a3">Rellenas el formulario de abajo. En 48h te contesto para entender el alcance. Te envío una propuesta cerrada con precio, tecnología y calendario. Desarrollamos con entregas visibles en una URL de staging. Deploy a producción y handoff completo.</p>
+          <p data-i18n="faq.a3">Rellenas el formulario de abajo. En 48h te contesto para entender qué necesitas. Te envío una propuesta cerrada con precio y calendario. Desarrollamos con entregas visibles que puedes probar. Puesta en marcha y entrega completa.</p>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q4">¿Qué pasa después de la entrega?</summary>
-          <p data-i18n="faq.a4">Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después del deploy.</p>
+          <p data-i18n="faq.a4">Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después de la entrega.</p>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q5">¿El código es mío?</summary>
@@ -289,7 +283,7 @@ import Base from '../layouts/Base.astro';
       <div class="footer-brand">
         <a href="#" class="footer-logo">ricajos<span class="footer-tld">.com</span></a>
         <span class="footer-copy">&copy; <span id="year"></span> Ricard Penin Honrubia</span>
-        <p class="footer-desc" data-i18n="footer.desc">Diseño, construyo y despliego productos multiplataforma de principio a fin.</p>
+        <p class="footer-desc" data-i18n="footer.desc">Diseño y construyo productos digitales de principio a fin.</p>
         <div class="footer-social">
           <a href="https://github.com/rricajos" target="_blank" rel="noopener" aria-label="GitHub">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -885,7 +879,15 @@ import Base from '../layouts/Base.astro';
     color: var(--text-2);
   }
 
-  /* ── FAQ ── */
+  /* ── FAQ (inside about) ── */
+  .faq-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-2);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
   .faq-list {
     max-width: 640px;
     margin: 0 auto;
@@ -1414,7 +1416,7 @@ import Base from '../layouts/Base.astro';
       'nav.about': 'Sobre mí',
       'nav.blog': 'Blog',
       'nav.contact': 'Contacto',
-      'hero.lead': 'Diseño, construyo y despliego tu producto multiplataforma. Del primer wireframe al servidor en producción, sin intermediarios.',
+      'hero.lead': 'Diseño y construyo tu web o app de principio a fin. De la idea al producto funcionando, sin intermediarios.',
       'hero.cta': 'Cuéntame tu idea',
       'hero.globe_hint': 'Haz clic en un país para cambiar el idioma',
       'projects.label': 'Proyectos',
@@ -1431,22 +1433,21 @@ import Base from '../layouts/Base.astro';
       'projects.proof_pages': 'páginas publicadas',
       'projects.proof_downtime': 'downtime en deploys',
       'about.label': 'Sobre mí',
-      'about.heading': 'De la idea al servidor',
-      'about.p1': 'Gestiono mis propios servidores. Eso significa que un git push pone tu producto en producción al instante, sin depender de nadie.',
-      'about.p2': 'Los tres proyectos de arriba los hice porque necesitaba algo que no existía. Prefiero construir la herramienta a conformarme con una que no funciona bien.',
-      'about.p3': 'Trabajo mejor cuando soy el único responsable. Tú me cuentas la idea, yo te entrego el producto con dominio, HTTPS y deploys automáticos. Una conversación, no tres equipos.',
+      'about.heading': 'Una persona, un producto',
+      'about.p1': 'No subcontrato nada. Yo diseño, programo y pongo en marcha tu web. Un solo interlocutor de principio a fin — sin coordinar equipos, sin esperar a terceros.',
+      'about.p2': 'Los proyectos de arriba son míos. Los construí porque quería algo que funcionase bien de verdad. Aplico el mismo nivel de exigencia a lo que hago para ti.',
+      'about.p3': 'Me cuentas qué necesitas, yo te entrego el producto terminado: tu dominio, tu web funcionando, todo listo para que solo tengas que usarlo. Una conversación, no tres equipos.',
       'about.stack_label': 'Stack principal',
       'about.also_label': 'También trabajo con',
-      'faq.label': 'FAQ',
       'faq.heading': 'Preguntas frecuentes',
       'faq.q1': '¿Cuánto tarda un proyecto?',
-      'faq.a1': 'Depende del alcance. Una landing o portfolio, 1-2 semanas. Un producto con backend, auth y base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.',
+      'faq.a1': 'Depende del alcance. Una web sencilla, 1-2 semanas. Un producto con usuarios, pagos o base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.',
       'faq.q2': '¿Cuánto cuesta?',
       'faq.a2': 'Cada proyecto se presupuesta por alcance, no por horas. En la propuesta detallo exactamente qué incluye y cuánto cuesta. Sin sorpresas ni costes ocultos.',
       'faq.q3': '¿Cómo funciona?',
-      'faq.a3': 'Rellenas el formulario de abajo. En 48h te contesto para entender el alcance. Te envío una propuesta cerrada con precio, tecnología y calendario. Desarrollamos con entregas visibles en una URL de staging. Deploy a producción y handoff completo.',
+      'faq.a3': 'Rellenas el formulario de abajo. En 48h te contesto para entender qué necesitas. Te envío una propuesta cerrada con precio y calendario. Desarrollamos con entregas visibles que puedes probar. Puesta en marcha y entrega completa.',
       'faq.q4': '¿Qué pasa después de la entrega?',
-      'faq.a4': 'Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después del deploy.',
+      'faq.a4': 'Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después de la entrega.',
       'faq.q5': '¿El código es mío?',
       'faq.a5': 'Sí. Trabajamos en tu repositorio desde el día uno. Tú eres el dueño del código, el dominio y la infraestructura. Cero dependencia de mí.',
       'contact.label': 'Contacto',
@@ -1471,7 +1472,7 @@ import Base from '../layouts/Base.astro';
       'topic.other': 'Otro',
       'topic.other_desc': 'Consulta abierta',
       'footer.tagline': 'Full-stack · Barcelona',
-      'footer.desc': 'Diseño, construyo y despliego productos multiplataforma de principio a fin.',
+      'footer.desc': 'Diseño y construyo productos digitales de principio a fin.',
       'footer.nav_heading': 'Navegación',
       'footer.projects_heading': 'Proyectos',
       'footer.legal_heading': 'Legal',
@@ -1485,7 +1486,7 @@ import Base from '../layouts/Base.astro';
       'nav.about': 'About',
       'nav.blog': 'Blog',
       'nav.contact': 'Contact',
-      'hero.lead': 'I design, build, and deploy your multiplatform product. From the first wireframe to the production server, no middlemen.',
+      'hero.lead': 'I design and build your website or app from start to finish. From idea to working product, no middlemen.',
       'hero.cta': 'Tell me your idea',
       'hero.globe_hint': 'Click a country to change the language',
       'projects.label': 'Projects',
@@ -1502,22 +1503,21 @@ import Base from '../layouts/Base.astro';
       'projects.proof_pages': 'pages published',
       'projects.proof_downtime': 'downtime on deploys',
       'about.label': 'About',
-      'about.heading': 'From idea to server',
-      'about.p1': 'I manage my own servers. That means one git push puts your product in production instantly, no dependencies.',
-      'about.p2': 'The three projects above exist because I needed something that wasn\'t out there. I\'d rather build the tool than settle for one that doesn\'t work well.',
-      'about.p3': 'I work best as the sole owner. You tell me the idea, I deliver the product with domain, HTTPS, and automatic deploys. One conversation, not three teams.',
+      'about.heading': 'One person, one product',
+      'about.p1': 'I don\'t outsource anything. I design, code, and launch your website. One point of contact from start to finish — no coordinating teams, no waiting on third parties.',
+      'about.p2': 'The projects above are mine. I built them because I wanted something that actually worked well. I bring the same standard to what I build for you.',
+      'about.p3': 'Tell me what you need, I deliver the finished product: your domain, your website running, everything ready for you to just use it. One conversation, not three teams.',
       'about.stack_label': 'Main stack',
       'about.also_label': 'Also work with',
-      'faq.label': 'FAQ',
       'faq.heading': 'Frequently asked questions',
       'faq.q1': 'How long does a project take?',
-      'faq.a1': 'It depends on the scope. A landing page or portfolio, 1-2 weeks. A product with backend, auth, and database, 4-8 weeks. I give you a concrete estimate in the proposal.',
+      'faq.a1': 'It depends on the scope. A simple website, 1-2 weeks. A product with users, payments, or a database, 4-8 weeks. I give you a concrete estimate in the proposal.',
       'faq.q2': 'How much does it cost?',
       'faq.a2': 'Each project is budgeted by scope, not by hours. The proposal details exactly what\'s included and how much it costs. No surprises or hidden fees.',
       'faq.q3': 'How does it work?',
-      'faq.a3': 'Fill out the form below. I\'ll reply within 48h to understand the scope. Then I send a fixed proposal with price, tech, and timeline. We develop with visible deliveries on a staging URL. Production deploy and full handoff.',
+      'faq.a3': 'Fill out the form below. I\'ll reply within 48h to understand what you need. Then I send a fixed proposal with price and timeline. We develop with visible deliveries you can test. Launch and full handoff.',
       'faq.q4': 'What happens after delivery?',
-      'faq.a4': 'I deliver the working product with documentation to maintain it. If you need ongoing maintenance, we discuss it separately. I don\'t disappear after deploy.',
+      'faq.a4': 'I deliver the working product with documentation to maintain it. If you need ongoing maintenance, we discuss it separately. I don\'t disappear after launch.',
       'faq.q5': 'Do I own the code?',
       'faq.a5': 'Yes. We work in your repository from day one. You own the code, the domain, and the infrastructure. Zero dependency on me.',
       'contact.label': 'Contact',
@@ -1542,7 +1542,7 @@ import Base from '../layouts/Base.astro';
       'topic.other': 'Other',
       'topic.other_desc': 'Open inquiry',
       'footer.tagline': 'Full-stack · Barcelona',
-      'footer.desc': 'I design, build, and deploy multiplatform products from start to finish.',
+      'footer.desc': 'I design and build digital products from start to finish.',
       'footer.nav_heading': 'Navigation',
       'footer.projects_heading': 'Projects',
       'footer.legal_heading': 'Legal',
@@ -1556,7 +1556,7 @@ import Base from '../layouts/Base.astro';
       'nav.about': '关于',
       'nav.blog': '博客',
       'nav.contact': '联系',
-      'hero.lead': '我设计、构建并部署你的跨平台产品。从线框图到生产服务器，没有中间人。',
+      'hero.lead': '我从头到尾设计和构建你的网站或应用。从想法到成品，没有中间人。',
       'hero.cta': '告诉我你的想法',
       'hero.globe_hint': '点击国家切换语言',
       'projects.label': '项目',
@@ -1573,22 +1573,21 @@ import Base from '../layouts/Base.astro';
       'projects.proof_pages': '页面已发布',
       'projects.proof_downtime': '部署停机时间',
       'about.label': '关于',
-      'about.heading': '从构想到服务器',
-      'about.p1': '我管理自己的服务器。一个git push就能让你的产品立即上线，不依赖任何人。',
-      'about.p2': '上面三个项目都是因为我需要一个还不存在的东西。比起凑合用不好的工具，我更愿意自己造。',
-      'about.p3': '当我是唯一负责人时工作最好。你告诉我想法，我交付带域名、HTTPS和自动部署的产品。一次对话，不是三个团队。',
+      'about.heading': '一个人，一个产品',
+      'about.p1': '我不外包任何环节。设计、编程、上线全部由我完成。一个联系人从头到尾——不用协调团队，不用等第三方。',
+      'about.p2': '上面的项目都是我自己的。我做它们是因为想要真正好用的东西。我对你的项目也用同样的标准。',
+      'about.p3': '告诉我你需要什么，我交付成品：你的域名、你的网站运行中、一切就绪直接使用。一次对话，不是三个团队。',
       'about.stack_label': '主要技术栈',
       'about.also_label': '也使用',
-      'faq.label': '常见问题',
       'faq.heading': '常见问题解答',
       'faq.q1': '一个项目需要多长时间？',
-      'faq.a1': '取决于范围。落地页或作品集，1-2周。包含后端、认证和数据库的产品，4-8周。我会在方案中给出具体估算。',
+      'faq.a1': '取决于范围。简单网站，1-2周。包含用户、支付或数据库的产品，4-8周。我会在方案中给出具体估算。',
       'faq.q2': '费用是多少？',
       'faq.a2': '每个项目按范围报价，不按小时计费。方案中会详细说明包含什么和费用。没有隐藏费用。',
       'faq.q3': '流程是怎样的？',
-      'faq.a3': '填写下方的表单。48小时内回复你了解需求范围。然后发送包含价格、技术和时间表的固定方案。在staging URL上可见交付开发。生产部署和完整交接。',
+      'faq.a3': '填写下方表单。48小时内回复了解你的需求。然后发送包含价格和时间表的固定方案。开发过程中你可以随时测试。上线和完整交接。',
       'faq.q4': '交付后怎么办？',
-      'faq.a4': '我交付可运行的产品和维护文档。如果需要持续维护，我们另行商议。部署后我不会消失。',
+      'faq.a4': '我交付可运行的产品和维护文档。如果需要持续维护，我们另行商议。上线后我不会消失。',
       'faq.q5': '代码归我所有吗？',
       'faq.a5': '是的。从第一天起在你的仓库中工作。代码、域名和基础设施都归你所有。对我零依赖。',
       'contact.label': '联系',
@@ -1613,7 +1612,7 @@ import Base from '../layouts/Base.astro';
       'topic.other': '其他',
       'topic.other_desc': '开放咨询',
       'footer.tagline': '全栈 · 巴塞罗那',
-      'footer.desc': '从头到尾设计、构建和部署跨平台产品。',
+      'footer.desc': '从头到尾设计和构建数字产品。',
       'footer.nav_heading': '导航',
       'footer.projects_heading': '项目',
       'footer.legal_heading': '法律',
