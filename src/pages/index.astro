@@ -1147,7 +1147,7 @@ import Base from '../layouts/Base.astro';
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 2rem;
     padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3.5rem;
   }
 
   .footer-brand {
@@ -1172,8 +1172,6 @@ import Base from '../layouts/Base.astro';
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     color: var(--muted);
-    letter-spacing: 0.02em;
-    letter-spacing: -0.02em;
   }
 
   .footer-desc {
@@ -1359,6 +1357,23 @@ import Base from '../layouts/Base.astro';
     }
     .contact-heading {
       font-size: 1.375rem;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      align-items: center;
+    }
+    .footer-desc {
+      max-width: none;
+    }
+    .footer-social {
+      justify-content: center;
+    }
+    .footer-col {
+      align-items: center;
     }
   }
 
