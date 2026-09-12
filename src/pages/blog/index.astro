@@ -139,3 +139,39 @@ const posts = (await getCollection('blog'))
     border-radius: 4px;
   }
 </style>
+
+<script>
+  const t = {
+    es: {
+      title: 'Blog',
+      back: '← ricajos.com',
+      intro: 'Notas sobre desarrollo web, infraestructura y lo que aprendo por el camino.',
+      empty: 'Todavía no hay publicaciones. Vuelve pronto.',
+    },
+    en: {
+      title: 'Blog',
+      back: '← ricajos.com',
+      intro: 'Notes on web development, infrastructure, and what I learn along the way.',
+      empty: 'No posts yet. Check back soon.',
+    },
+    zh: {
+      title: '博客',
+      back: '← ricajos.com',
+      intro: '关于Web开发、基础设施和一路上学到的东西的笔记。',
+      empty: '暂无文章，请稍后再来。',
+    },
+  };
+
+  const raw = navigator.language?.split('-')[0] || 'es';
+  const lang = ['es', 'en', 'zh'].includes(raw) ? raw : 'en';
+
+  try {
+    const saved = localStorage.getItem('lang');
+    const l = (saved && t[saved]) ? saved : (t[lang] ? lang : 'es');
+    document.getElementById('title').textContent = t[l].title;
+    document.getElementById('back').innerHTML = t[l].back;
+    document.getElementById('intro').textContent = t[l].intro;
+    const empty = document.getElementById('empty');
+    if (empty) empty.textContent = t[l].empty;
+  } catch {}
+</script>

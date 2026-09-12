@@ -153,9 +153,22 @@ import Base from '../layouts/Base.astro';
             exigencia a lo que hago para ti.
           </p>
           <p data-i18n="about.p3">
-            Me cuentas qué necesitas, yo te entrego el producto terminado:
-            tu dominio, tu web funcionando, todo listo para que solo tengas
-            que usarlo. Una conversación, no tres equipos.
+            Rellenas el formulario de abajo y en 48h tienes una propuesta
+            cerrada con precio y calendario. Una web sencilla, 1-2 semanas.
+            Un producto con usuarios o base de datos, 4-8 semanas.
+            Desarrollamos con entregas visibles que puedes probar antes de
+            la puesta en marcha.
+          </p>
+          <p data-i18n="about.p4">
+            Presupuesto cerrado por alcance, no por horas. Sin sorpresas ni
+            costes ocultos. Trabajamos en tu repositorio desde el día uno:
+            tú eres el dueño del código, el dominio y la infraestructura.
+            Cero dependencia de mí.
+          </p>
+          <p data-i18n="about.p5">
+            Te entrego el producto funcionando con documentación para
+            mantenerlo. Si necesitas soporte continuo, lo hablamos aparte.
+            No desaparezco después de la entrega.
           </p>
         </div>
         <div class="about-aside">
@@ -183,36 +196,13 @@ import Base from '../layouts/Base.astro';
           </div>
         </div>
       </div>
-      <h3 class="faq-title" data-i18n="faq.heading">Preguntas frecuentes</h3>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary data-i18n="faq.q1">¿Cuánto tarda un proyecto?</summary>
-          <p data-i18n="faq.a1">Depende del alcance. Una web sencilla, 1-2 semanas. Un producto con usuarios, pagos o base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.</p>
-        </details>
-        <details class="faq-item">
-          <summary data-i18n="faq.q2">¿Cuánto cuesta?</summary>
-          <p data-i18n="faq.a2">Cada proyecto se presupuesta por alcance, no por horas. En la propuesta detallo exactamente qué incluye y cuánto cuesta. Sin sorpresas ni costes ocultos.</p>
-        </details>
-        <details class="faq-item">
-          <summary data-i18n="faq.q3">¿Cómo funciona?</summary>
-          <p data-i18n="faq.a3">Rellenas el formulario de abajo. En 48h te contesto para entender qué necesitas. Te envío una propuesta cerrada con precio y calendario. Desarrollamos con entregas visibles que puedes probar. Puesta en marcha y entrega completa.</p>
-        </details>
-        <details class="faq-item">
-          <summary data-i18n="faq.q4">¿Qué pasa después de la entrega?</summary>
-          <p data-i18n="faq.a4">Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después de la entrega.</p>
-        </details>
-        <details class="faq-item">
-          <summary data-i18n="faq.q5">¿El código es mío?</summary>
-          <p data-i18n="faq.a5">Sí. Trabajamos en tu repositorio desde el día uno. Tú eres el dueño del código, el dominio y la infraestructura. Cero dependencia de mí.</p>
-        </details>
-      </div>
     </div>
   </section>
 
   <section id="contact" class="contact-section">
     <div class="wrap">
       <p class="label" data-i18n="contact.label">Contacto</p>
-      <h2 class="contact-heading" data-i18n="contact.heading">¿Tienes un proyecto en mente?</h2>
+      <h2 class="contact-heading" id="contact-heading" data-i18n="contact.heading">¿Tienes un proyecto en mente?</h2>
       <p class="contact-sub" data-i18n="contact.sub">
         Cuéntame qué necesitas. En 48h te respondo con una propuesta
         concreta: alcance, tecnología y calendario.
@@ -879,75 +869,6 @@ import Base from '../layouts/Base.astro';
     color: var(--text-2);
   }
 
-  /* ── FAQ (inside about) ── */
-  .faq-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-2);
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .faq-list {
-    max-width: 640px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .faq-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    transition: border-color 0.2s;
-  }
-
-  .faq-item[open] {
-    border-color: var(--accent);
-  }
-
-  .faq-item summary {
-    padding: 1rem 1.25rem;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    transition: color 0.2s;
-  }
-
-  .faq-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-item summary::after {
-    content: '+';
-    font-family: var(--font-mono);
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: var(--accent);
-    flex-shrink: 0;
-    margin-left: 1rem;
-  }
-
-  .faq-item[open] summary::after {
-    content: '−';
-  }
-
-  .faq-item summary:hover {
-    color: var(--accent);
-  }
-
-  .faq-item p {
-    padding: 0 1.25rem 1rem;
-    font-size: 0.875rem;
-    color: var(--text-2);
-    line-height: 1.65;
-  }
-
   /* ── Contact ── */
   .contact-section {
     text-align: center;
@@ -971,6 +892,7 @@ import Base from '../layouts/Base.astro';
     letter-spacing: -0.025em;
     text-wrap: balance;
     margin-bottom: 0.5rem;
+    scroll-margin-top: 4.5rem;
   }
 
   .contact-sub {
@@ -1436,20 +1358,11 @@ import Base from '../layouts/Base.astro';
       'about.heading': 'Una persona, un producto',
       'about.p1': 'No subcontrato nada. Yo diseño, programo y pongo en marcha tu web. Un solo interlocutor de principio a fin — sin coordinar equipos, sin esperar a terceros.',
       'about.p2': 'Los proyectos de arriba son míos. Los construí porque quería algo que funcionase bien de verdad. Aplico el mismo nivel de exigencia a lo que hago para ti.',
-      'about.p3': 'Me cuentas qué necesitas, yo te entrego el producto terminado: tu dominio, tu web funcionando, todo listo para que solo tengas que usarlo. Una conversación, no tres equipos.',
+      'about.p3': 'Rellenas el formulario de abajo y en 48h tienes una propuesta cerrada con precio y calendario. Una web sencilla, 1-2 semanas. Un producto con usuarios o base de datos, 4-8 semanas. Desarrollamos con entregas visibles que puedes probar antes de la puesta en marcha.',
+      'about.p4': 'Presupuesto cerrado por alcance, no por horas. Sin sorpresas ni costes ocultos. Trabajamos en tu repositorio desde el día uno: tú eres el dueño del código, el dominio y la infraestructura. Cero dependencia de mí.',
+      'about.p5': 'Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas soporte continuo, lo hablamos aparte. No desaparezco después de la entrega.',
       'about.stack_label': 'Stack principal',
       'about.also_label': 'También trabajo con',
-      'faq.heading': 'Preguntas frecuentes',
-      'faq.q1': '¿Cuánto tarda un proyecto?',
-      'faq.a1': 'Depende del alcance. Una web sencilla, 1-2 semanas. Un producto con usuarios, pagos o base de datos, 4-8 semanas. Te doy una estimación concreta en la propuesta.',
-      'faq.q2': '¿Cuánto cuesta?',
-      'faq.a2': 'Cada proyecto se presupuesta por alcance, no por horas. En la propuesta detallo exactamente qué incluye y cuánto cuesta. Sin sorpresas ni costes ocultos.',
-      'faq.q3': '¿Cómo funciona?',
-      'faq.a3': 'Rellenas el formulario de abajo. En 48h te contesto para entender qué necesitas. Te envío una propuesta cerrada con precio y calendario. Desarrollamos con entregas visibles que puedes probar. Puesta en marcha y entrega completa.',
-      'faq.q4': '¿Qué pasa después de la entrega?',
-      'faq.a4': 'Te entrego el producto funcionando con documentación para mantenerlo. Si necesitas mantenimiento continuo, lo hablamos aparte. No desaparezco después de la entrega.',
-      'faq.q5': '¿El código es mío?',
-      'faq.a5': 'Sí. Trabajamos en tu repositorio desde el día uno. Tú eres el dueño del código, el dominio y la infraestructura. Cero dependencia de mí.',
       'contact.label': 'Contacto',
       'contact.heading': '¿Tienes un proyecto en mente?',
       'contact.sub': 'Cuéntame qué necesitas. En 48h te respondo con una propuesta concreta: alcance, tecnología y calendario.',
@@ -1506,20 +1419,11 @@ import Base from '../layouts/Base.astro';
       'about.heading': 'One person, one product',
       'about.p1': 'I don\'t outsource anything. I design, code, and launch your website. One point of contact from start to finish — no coordinating teams, no waiting on third parties.',
       'about.p2': 'The projects above are mine. I built them because I wanted something that actually worked well. I bring the same standard to what I build for you.',
-      'about.p3': 'Tell me what you need, I deliver the finished product: your domain, your website running, everything ready for you to just use it. One conversation, not three teams.',
+      'about.p3': 'Fill out the form below and within 48h you\'ll have a fixed proposal with price and timeline. A simple website, 1-2 weeks. A product with users or a database, 4-8 weeks. We develop with visible deliveries you can test before launch.',
+      'about.p4': 'Fixed budget by scope, not by hours. No surprises or hidden fees. We work in your repository from day one: you own the code, the domain, and the infrastructure. Zero dependency on me.',
+      'about.p5': 'I deliver the working product with documentation to maintain it. If you need ongoing support, we discuss it separately. I don\'t disappear after launch.',
       'about.stack_label': 'Main stack',
       'about.also_label': 'Also work with',
-      'faq.heading': 'Frequently asked questions',
-      'faq.q1': 'How long does a project take?',
-      'faq.a1': 'It depends on the scope. A simple website, 1-2 weeks. A product with users, payments, or a database, 4-8 weeks. I give you a concrete estimate in the proposal.',
-      'faq.q2': 'How much does it cost?',
-      'faq.a2': 'Each project is budgeted by scope, not by hours. The proposal details exactly what\'s included and how much it costs. No surprises or hidden fees.',
-      'faq.q3': 'How does it work?',
-      'faq.a3': 'Fill out the form below. I\'ll reply within 48h to understand what you need. Then I send a fixed proposal with price and timeline. We develop with visible deliveries you can test. Launch and full handoff.',
-      'faq.q4': 'What happens after delivery?',
-      'faq.a4': 'I deliver the working product with documentation to maintain it. If you need ongoing maintenance, we discuss it separately. I don\'t disappear after launch.',
-      'faq.q5': 'Do I own the code?',
-      'faq.a5': 'Yes. We work in your repository from day one. You own the code, the domain, and the infrastructure. Zero dependency on me.',
       'contact.label': 'Contact',
       'contact.heading': 'Got a project in mind?',
       'contact.sub': 'Tell me what you need. I\'ll get back to you in 48h with a concrete proposal: scope, technology, and timeline.',
@@ -1576,20 +1480,11 @@ import Base from '../layouts/Base.astro';
       'about.heading': '一个人，一个产品',
       'about.p1': '我不外包任何环节。设计、编程、上线全部由我完成。一个联系人从头到尾——不用协调团队，不用等第三方。',
       'about.p2': '上面的项目都是我自己的。我做它们是因为想要真正好用的东西。我对你的项目也用同样的标准。',
-      'about.p3': '告诉我你需要什么，我交付成品：你的域名、你的网站运行中、一切就绪直接使用。一次对话，不是三个团队。',
+      'about.p3': '填写下方表单，48小时内你会收到一份固定方案，包含价格和时间表。简单网站1-2周，包含用户或数据库的产品4-8周。开发过程中你可以随时测试可见的交付。',
+      'about.p4': '按范围固定报价，不按小时计费。没有隐藏费用。从第一天起在你的仓库中工作：代码、域名和基础设施都归你所有。对我零依赖。',
+      'about.p5': '我交付可运行的产品和维护文档。如果需要持续支持，我们另行商议。上线后我不会消失。',
       'about.stack_label': '主要技术栈',
       'about.also_label': '也使用',
-      'faq.heading': '常见问题解答',
-      'faq.q1': '一个项目需要多长时间？',
-      'faq.a1': '取决于范围。简单网站，1-2周。包含用户、支付或数据库的产品，4-8周。我会在方案中给出具体估算。',
-      'faq.q2': '费用是多少？',
-      'faq.a2': '每个项目按范围报价，不按小时计费。方案中会详细说明包含什么和费用。没有隐藏费用。',
-      'faq.q3': '流程是怎样的？',
-      'faq.a3': '填写下方表单。48小时内回复了解你的需求。然后发送包含价格和时间表的固定方案。开发过程中你可以随时测试。上线和完整交接。',
-      'faq.q4': '交付后怎么办？',
-      'faq.a4': '我交付可运行的产品和维护文档。如果需要持续维护，我们另行商议。上线后我不会消失。',
-      'faq.q5': '代码归我所有吗？',
-      'faq.a5': '是的。从第一天起在你的仓库中工作。代码、域名和基础设施都归你所有。对我零依赖。',
       'contact.label': '联系',
       'contact.heading': '有项目想做？',
       'contact.sub': '告诉我你需要什么。48小时内回复你一份具体方案：范围、技术和时间表。',
@@ -1799,7 +1694,7 @@ import Base from '../layouts/Base.astro';
       setTimeout(() => {
         topicCards.classList.add('hidden');
         contactForm.classList.add('visible');
-        document.querySelector('.contact-heading')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.querySelector('.contact-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         if (msg) msg.focus();
       }, 300);
     });
@@ -1809,6 +1704,13 @@ import Base from '../layouts/Base.astro';
     if (!contactForm || !topicCards) return;
     contactForm.classList.remove('visible');
     topicCards.classList.remove('hidden', 'fading');
+  });
+
+  document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('contact-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 
   // Footer year

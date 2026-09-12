@@ -19,7 +19,7 @@ const pubDate = post.data.pubDate.toLocaleDateString('es-ES', {
 
 <Base title={`${post.data.title} — ricajos`} description={post.data.description}>
   <article class="page">
-    <a href="/blog/" class="back">&larr; Blog</a>
+    <a href="/blog/" class="back" id="back-top">&larr; Blog</a>
     <header>
       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{pubDate}</time>
       <h1>{post.data.title}</h1>
@@ -32,7 +32,7 @@ const pubDate = post.data.pubDate.toLocaleDateString('es-ES', {
     <div class="prose">
       <Content />
     </div>
-    <a href="/blog/" class="back back-bottom">&larr; Volver al blog</a>
+    <a href="/blog/" class="back back-bottom" id="back-bottom">&larr; Volver al blog</a>
   </article>
 </Base>
 
@@ -186,3 +186,21 @@ const pubDate = post.data.pubDate.toLocaleDateString('es-ES', {
     margin: 2rem 0;
   }
 </style>
+
+<script>
+  const t = {
+    es: { top: '← Blog', bottom: '← Volver al blog' },
+    en: { top: '← Blog', bottom: '← Back to blog' },
+    zh: { top: '← 博客', bottom: '← 返回博客' },
+  };
+
+  const raw = navigator.language?.split('-')[0] || 'es';
+  const lang = ['es', 'en', 'zh'].includes(raw) ? raw : 'en';
+
+  try {
+    const saved = localStorage.getItem('lang');
+    const l = (saved && t[saved]) ? saved : (t[lang] ? lang : 'es');
+    document.getElementById('back-top').innerHTML = t[l].top;
+    document.getElementById('back-bottom').innerHTML = t[l].bottom;
+  } catch {}
+</script>
