@@ -1,12 +1,10 @@
-Desarrollador full-stack en Barcelona. Diseño, construyo y pongo en marcha productos web de principio a fin.
+Software developer based in Barcelona.
 
-### Proyectos
+### Open Source
 
-- **[pingunix.org](https://pingunix.org)** — Plataforma de estudio LPIC con flashcards PWA. 821 páginas, carga instantánea, funciona offline.
-- **[darink.app](https://darink.app)** — Tracker de salud integral offline-first. Alimentación, ejercicio, sueño y constantes vitales.
-- **[planetlogin.org](https://planetlogin.org)** — Web component de login con globo interactivo y selector de país. En npm.
+- **[pingunix.org](https://pingunix.org)** — Linux study platform with PWA flashcards. 821 pages, instant load, works offline.
+- **[planetlogin.org](https://planetlogin.org)** — Login web component with interactive globe and country selector. On npm.
 
+### Contact
 
-### Contacto
-- [ricajos.com](https://ricajos.com)
 - [LinkedIn](https://linkedin.com/in/rricajos)

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ricajos.com/sitemap-index.xml
